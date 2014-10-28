@@ -1,0 +1,6 @@
+Krach
+  doc
+    Angebot
+      protokoll-des-ersten-meetings.txt
+  src
+
