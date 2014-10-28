@@ -3,4 +3,4 @@ Krach
     Angebot
       protokoll-des-ersten-meetings.txt
   src
-
+    Krach.sln
