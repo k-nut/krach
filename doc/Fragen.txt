@@ -1,0 +1,4 @@
+Soll aus dem Tool der Geschäftsbericht erstellt werden können?
+Und soll ein Export möglich sein, wenn ja nach was? excel, csv, xml?
+Regelmäßige Messungen selber einrichten?
+Überblick-> welche UN Anforderungen sind vorhanden?
