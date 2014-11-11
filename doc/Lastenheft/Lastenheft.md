@@ -60,12 +60,6 @@ Excel - Tabelle speichert, sollen in das neue System übernommen werden können.
  
 
 
-## Skizze des Lebenszykluses und der Gesamtarchitektur
-![Lebenszyklus des Projekts](./Lebenszyklus.png)
-
-![3 Schichten Architektur](./3-Schichten-Architektur.png)
-
-
 
 ## Lieferumfang
 Zu liefern ist eine funktionstüchtige und einsatzfähige, nach den Punkten 3 und 4 aufgebaute Anwendung und deren Source Code. Außerdem im Lieferumfang enthalten ist ein Bedienerhandbuch sowie Dokumentationen und Problemdokumentationen. Die Lieferung erfolgt am 10. Februar 2015 und muss die unter dem Punkt “Abnahmekriterien” aufgeführten Bedingungen zur Abnahme erfüllen.

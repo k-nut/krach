@@ -33,6 +33,12 @@ Im Rahmen dieses Angebotes werden wir folgende Leistungen erbringen:
    * die Geräte der Messungen
 * Testlauf im Unternehmen für  5 Werktage
 
+## Skizze des Lebenszykluses und der Gesamtarchitektur
+![Lebenszyklus des Projekts](./Lebenszyklus.png)
+
+![3 Schichten Architektur](./3-Schichten-Architektur.png)
+
+
 
 ###        d.Welche Ergebnisse werden am Ende geliefert
 Liefergegenstände sind:
