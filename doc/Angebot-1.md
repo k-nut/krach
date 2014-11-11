@@ -89,34 +89,15 @@ Der Preis setzt sich wie folgt zusammen:
 Die Zahlung erfolgt nach folgenden Zahlungsmeilensteine:
 
 
-Nr.
-	Beschreibung
-	Betrag in Euro
-	1.
-	bei Auftragserteilung
-	
+| Nr | Beschreibung                 | Preis in Euro |
+|----|------------------------------|---------------|
+| 1  | bei Auftragerstellung        |               |
+| 2  | bei Lieferung der Gui        |               |
+| 3  | bei Lieferung des Prototypen |               |
+| 4  | bei Installation             |               |
+| 5  | nach ersten Schulungen       |               |
+| 6  | bei Endabnahme               |               |
 
-	2. 
-	bei Lieferung der GUI
-	
-
-	3.
-	bei Lieferung des Prototypen
-	
-
-	4.
-	bei Installation
-	
-
-	5.
-	nach ersten Schulungen
-	
-
-	6.
-	bei Endabnahme
-	
-
-	
 
 ###        c.Lieferumfang und Abnahmeregelung
 Alle Ergebnisse oder Teilergebnisse werden nach den folgendenen Regeln abgenommen:
