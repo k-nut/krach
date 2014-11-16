@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-Soll aus dem Tool der Geschäftsbericht erstellt werden können?
-Und soll ein Export möglich sein, wenn ja nach was? excel, csv, xml?
-Regelmäßige Messungen selber einrichten?
-Überblick-> welche UN Anforderungen sind vorhanden?
-Soll ein Teslauf im Unternhemen von 5 Werktagen geschehen? Alos Schulung der ersten 5 Werktagen?
-Soll ein Bedienerhandbuch mitgeliefert werden?
-Soll eine Problemdokumentation mitgeliefert werden?
-=======
 Soll aus dem Tool der GeschÃ¤ftsbericht erstellt werden kÃ¶nnen?
 Und soll ein Export mÃ¶glich sein, wenn ja nach was? excel, csv, xml?
 RegelmÃ¤ÃŸige Messungen selber einrichten?
 Ãœberblick-> welche UN Anforderungen sind vorhanden?
-Sollen Schulungen angeboten werden?
->>>>>>> origin/master
+Soll ein Teslauf im Unternhemen von 5 Werktagen geschehen? Alos Schulung der ersten 5 Werktagen?
+Soll ein Bedienerhandbuch mitgeliefert werden?
+Soll eine Problemdokumentation mitgeliefert werden?
