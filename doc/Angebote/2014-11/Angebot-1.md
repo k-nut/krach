@@ -31,7 +31,7 @@ Im Rahmen dieses Angebotes werden wir folgende Leistungen erbringen:
    * die Visualisierung der Daten
    * die Speicherung der Daten
    * die Geräte der Messungen
-* Testlauf im Unternehmen für  5 Werktage
+* 
 
 ## Skizze des Lebenszykluses und der Gesamtarchitektur
 ![Lebenszyklus des Projekts](./Lebenszyklus.png)
@@ -44,9 +44,8 @@ Im Rahmen dieses Angebotes werden wir folgende Leistungen erbringen:
 Liefergegenstände sind:
 * Lauffähiges Programm
 * Software -Source Code des Programms
-* Bedienungshandbuch
 * Dokumentationen
-* Problemdokumentation
+
 
 
 ## 2. Rahmenbedingungen
@@ -58,7 +57,7 @@ Das Angebot umfasst keine Wartung des Systems nach Ablauf des 17. Februar 2015. 
 
 ###        b.Welche Mitwirkungspflicht hat der Auftraggeber
 Der Auftraggeber hat Mitteilungspflicht und muss Angaben zu Anforderungänderungen unmittelbar mitteilen. Zu Meetings muss der Auftraggeber immer selbst erscheinen. 
-Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters  durch die Krach GmbH den vollständigen Betrieb und die Wartung. Weiterhin übernimmt die Gewissen GmbH  Schulungtätigkeiten, um die Mitarbeiter auf das neue System zu trainieren. Die Krach GmbH übernimmt nur erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
+Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters  durch die Krach GmbH den vollständigen Betrieb und die Wartung. Die Krach GmbH übernimmt nur erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
 
 
 ###       c.Besondere Regelungen zur Zusammenarbeit oder zum Projektablauf
@@ -74,35 +73,20 @@ Die Leistung wird in der Zeit vom 01. Oktober bis zum 10. Februar 2015 erbracht.
 ##3.Kommerzielle Regelungen
 
 
-###        a.Preis
-Gesamtpreis der Leistung: ……….,- € einschl. Mwst. 
-Der Preis setzt sich wie folgt zusammen:
-* Projektmanagement: …...€
-* Qualitätssicherung: …..€
-* Spezifikation: …...€
-* Entwicklung:......€
-   * Modul Datendokumentation:......€
-   * Modul Datenvisualisierung:.....€
-   * Modul Karte:......€
-   * Modul Datenveränderung:....€
-   * Modul Ökosystem OpenResKit:....€
-* Test:.....€
-* Installation:......€
-* Schulung:....€
+###        a.Preis : 55 085,00€ incl. MwST.
 
 
 ###        b.Zahlungsweise
 Die Zahlung erfolgt nach folgenden Zahlungsmeilensteine:
 
-
 | Nr | Beschreibung                 | Preis in Euro |
 |----|------------------------------|---------------|
-| 1  | bei Auftragerstellung        |               |
-| 2  | bei Lieferung der Gui        |               |
-| 3  | bei Lieferung des Prototypen |               |
-| 4  | bei Installation             |               |
-| 5  | nach ersten Schulungen       |               |
-| 6  | bei Endabnahme               |               |
+| 1  | bei Auftragerstellung        |     18.000,00 |
+| 2  | bei Lieferung der Gui        |      9.000,00 |
+| 3  | bei Lieferung des Prototypen |     13.000,00 |
+| 4  | bei Installation             |     11.085,00 |
+| 5  | bei Endabnahme               |      4.000,00 |
+
 
 
 ###        c.Lieferumfang und Abnahmeregelung
@@ -111,7 +95,5 @@ Dokumente werden in Form von Reviews abgenommen. Für Software-Komponenten werde
 
 
 ##4.Rechtliche Aspekte
-
-
 Die Gewissen GmbH verpflichtet sich, das ausgelieferte System nur für ihre Zwecke zu nutzen. Das Unternehmen Gewissen GmbH darf den Source Code, das funktionstüchtige Programm oder die GUI nicht an Dritte weitergeben. 
 Nach Abnahme des Systems durch die Gewissen GmbH ist die Krach GmbH rechtlich nicht mehr zu belangen.
