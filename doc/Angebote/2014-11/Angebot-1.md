@@ -57,7 +57,8 @@ Das Angebot umfasst keine Wartung des Systems nach Ablauf des 17. Februar 2015. 
 
 ###        b.Welche Mitwirkungspflicht hat der Auftraggeber
 Der Auftraggeber hat Mitteilungspflicht und muss Angaben zu Anforderungänderungen unmittelbar mitteilen. Zu Meetings muss der Auftraggeber immer selbst erscheinen. 
-Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters  durch die Krach GmbH den vollständigen Betrieb und die Wartung. Die Krach GmbH übernimmt nur erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
+Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. 
+Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters durch die Krach GmbH den vollständigen Betrieb und die Wartung. Die Krach GmbH übernimmt nur erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
 
 
 ###       c.Besondere Regelungen zur Zusammenarbeit oder zum Projektablauf
@@ -94,6 +95,11 @@ Alle Ergebnisse oder Teilergebnisse werden nach den folgendenen Regeln abgenomme
 Dokumente werden in Form von Reviews abgenommen. Für Software-Komponenten werden jeweils Testspezifikationen erstellt und dem Auftraggeber, der Gewissen GmbH, mindestens zwei Wochen vor dem jeweiligen Abnahmetermin zur Prüfung vorgelegt. Alle gewünschten Änderung werden schriftlich von der Gewissen GmbH der Krach GmbH innerhalb dieser zwei Wochen vorgelegt. Die Änderungenn werden von der Krach GmbH innerhalb von zwei Wochen in die Testspezifikation eingearbeitet. Nach Abnahme aller Liefergegenstände gilt das Projekt als abgeschlossen. Wird die Abnahme durch die Gewissen GmbH verweigert oder verzögert, so gelten alle Liefergegenstände dreißig Tage nach Erklärung der Abnahmebereitschaft als abgenommen. Die Abnahmebereitschaft wird durch die Krach GmbH schriftlich der Gewissen GmbH mitgeteilt. 
 
 
+###       d. Vorbehaltserklärung
+„Bei Änderungen der Projektanforderungen oder bei erheblichen Abweichungen von der Zeitplanung in diesem Angebot, 
+sofern sie nicht durch uns verantwortet werden, behalten wir uns vor die Zeitplanung, die von uns zu erbringenden Leistungen, und die Kosten entsprechend anzupassen.“
+
+
 ##4.Rechtliche Aspekte
-Die Gewissen GmbH verpflichtet sich, das ausgelieferte System nur für ihre Zwecke zu nutzen. Das Unternehmen Gewissen GmbH darf den Source Code, das funktionstüchtige Programm oder die GUI nicht an Dritte weitergeben. 
+Die Gewissen GmbH verpflichtet sich, das ausgelieferte System nur für ihre Zwecke zu nutzen. Das Unternehmen Gewissen GmbH darf den Source Code, das funktionstüchtige Programm, die GUI sowie alle Dokumente zwischen den beiden Vertragspartner nicht an Dritte weitergeben. 
 Nach Abnahme des Systems durch die Gewissen GmbH ist die Krach GmbH rechtlich nicht mehr zu belangen.
