@@ -5,3 +5,7 @@ Regelmäßige Messungen selber einrichten?
 Soll ein Teslauf im Unternhemen von 5 Werktagen geschehen? Alos Schulung der ersten 5 Werktagen?
 Soll ein Bedienerhandbuch mitgeliefert werden?
 Soll eine Problemdokumentation mitgeliefert werden?
+Gibt es Wünsche für die Darstellung der Messwerte (Karte/Graph etc.)
+Soll das Programm über Grenzwerte bescheid wissen und warnen, wenn diese überschritten werden?
+  Und wenn ja, sollen die dann fest eingestellt oder setzbar sein?
+Wie soll der Bericht-Export aussehen?
