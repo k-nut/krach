@@ -96,8 +96,8 @@ Dokumente werden in Form von Reviews abgenommen. Für Software-Komponenten werde
 
 
 ###       d. Vorbehaltserklärung
-„Bei Änderungen der Projektanforderungen oder bei erheblichen Abweichungen von der Zeitplanung in diesem Angebot, 
-sofern sie nicht durch uns verantwortet werden, behalten wir uns vor die Zeitplanung, die von uns zu erbringenden Leistungen, und die Kosten entsprechend anzupassen.“
+Bei Änderungen der Projektanforderungen oder bei erheblichen Abweichungen von der Zeitplanung in diesem Angebot, 
+sofern sie nicht durch uns verantwortet werden, behalten wir uns vor die Zeitplanung, die von uns zu erbringenden Leistungen, und die Kosten entsprechend anzupassen.
 
 
 ##4.Rechtliche Aspekte
