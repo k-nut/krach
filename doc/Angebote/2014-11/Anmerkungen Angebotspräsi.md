@@ -6,3 +6,4 @@
 * Anzeigen von Arbeitsstunden
 * Meetings nicht so explizit festlegen, sowie die Kommunikation
 * wer mit der Software arbeitet
+* netto-Preis statt brutto-Preis angeben
