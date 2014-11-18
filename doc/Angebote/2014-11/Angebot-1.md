@@ -5,7 +5,7 @@
 
 
 ###       a. Beschreibung der Aufgabe
-Die Gewissen GmbH strebt ein neues Lärmkataster-System an, welches einfach, effizient, effektiv und zuverlässig sein soll. Im Rahmen dieser Gesamtaufgabe soll Krach GmbH die Entwicklung, Installation und erste Schulungen des Systems übernehmen. Die Wartung des Lärmkataster-Systems ist im Angebot nicht enthalten.
+Die Gewissen GmbH strebt ein neues Lärmkataster-System an, welches einfach, effizient, effektiv und zuverlässig sein soll. Im Rahmen dieser Gesamtaufgabe soll Krach GmbH die Entwicklung, Installation und erste Schulungen des Systems übernehmen.
 
 
 ###        b.Bezugsdokumente

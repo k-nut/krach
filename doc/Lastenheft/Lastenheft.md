@@ -1,4 +1,4 @@
-﻿#Lastenheft Krach GmbH für Gewissen GmbH
+﻿#Lastenheft für Gewissen GmbH
 
 ## Erstellung eines Systems zur Lärmkartierung
 
@@ -8,13 +8,13 @@
 
 
 Datum:        1. November 2014
-Erstellt von: Krach GmbH, Constanze Richter, Johanna Terp
+Erstellt von: Constanze Richter, Johanna Terp
 
 
 
 
 ##Anwendungsbereich
-Dieses Lastenheft ist für die Krach GmbH und die Gewissen GmbH während der Zusammenarbeit zur Erstellung eines Systems zur Lärmkartierung gültig.
+Dieses Lastenheft ist für die auftragnehmende Firma und die Gewissen GmbH während der Zusammenarbeit zur Erstellung eines Systems zur Lärmkartierung gültig.
 
 
 ###Anmerkung 1:
@@ -32,7 +32,7 @@ Die Begriffe „soll“, „muss“, „wird“, „sollte“ und „darf“ sin
 
 
 ## Einleitung
-Das Unternehmen Krach GmbH soll dem Unternehmen Gewissen GmbH ein neues System liefern, das gemessene Lärmquellen dokumentiert und visualisiert. Aufgabe dieses Lastenheftes ist es, einen Überblick über alle gewünschten/ relevanten Funktionen zu geben und alle relevanten Anforderungen zu ermitteln.
+Die auftragnehmende Firma soll dem Unternehmen Gewissen GmbH ein neues System liefern, das gemessene Lärmquellen dokumentiert und visualisiert. Aufgabe dieses Lastenheftes ist es, einen Überblick über alle gewünschten/ relevanten Funktionen zu geben und alle relevanten Anforderungen zu ermitteln.
 
 
 ## Ausgangssituation und Ziele
