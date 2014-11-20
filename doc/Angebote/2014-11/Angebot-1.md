@@ -5,7 +5,7 @@
 
 
 ###       a. Beschreibung der Aufgabe
-Die Gewissen GmbH strebt ein neues Lärmkataster-System an, welches einfach, effizient, effektiv und zuverlässig sein soll. Im Rahmen dieser Gesamtaufgabe soll Krach GmbH die Entwicklung, Installation und erste Schulungen des Systems übernehmen.
+Die Gewissen GmbH strebt ein neues Lärmkataster-System an, welches einfach, effizient, effektiv und zuverlässig sein soll. Im Rahmen dieser Gesamtaufgabe soll Krach GmbH die Entwicklung, Installation des Systems übernehmen.
 
 
 ###        b.Bezugsdokumente
@@ -17,7 +17,6 @@ Für die Einhaltung der rechtlichen Vorschriften werden folgende Lärmschutzvero
 * Lärm- und Vibrations-Arbeitsschutzverordnung
 * Technische Anleitung zum Schutz gegen Lärm und Technische Regeln zur Lärm- und Vibrations-Arbeitsschutzverordnung 
 * Unfallverhütungsvorschrift und Verordnung zur arbeitsmedizinischen Vorsorge
-(Schreibweise noch falsch!! Lars fragen ob erforderlich)
 
 
 ###        c. Welche Leistung wird erbracht
@@ -57,12 +56,12 @@ Das Angebot umfasst keine Wartung des Systems nach Ablauf des 10. Februar 2015. 
 
 ###        b.Welche Mitwirkungspflicht hat der Auftraggeber
 Der Auftraggeber hat Mitteilungspflicht und muss Angaben zu Anforderungänderungen unmittelbar mitteilen. Zu Meetings muss der Auftraggeber immer selbst erscheinen. 
-Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters  durch die Krach GmbH den vollständigen Betrieb und die Wartung. Weiterhin übernimmt die Gewissen GmbH  Schulungtätigkeiten, um die Mitarbeiter auf das neue System zu trainieren. Die Krach GmbH übernimmt erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
+Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters  durch die Krach GmbH den vollständigen Betrieb und die Wartung. Die Krach GmbH übernimmt erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
 
 
 ###       c.Besondere Regelungen zur Zusammenarbeit oder zum Projektablauf
 Die Dokumentation des Projektes enthält folgende Punkte: Zielstellung, Projektplanung, Anforderunganalyse, technische Konzeption, Implementierung.
-Die Krach GmbH verpflichtet sich, jede Woche dienstags der Gewissen GmbH einen aktuellen Stand des Projektstatusses mitzuteilen. Frau Constanze Richter und Frau Johanna Terp von der Krach GmbH sind verpflichtet, jeden Dienstag Herrn Lars Schiemann von der Gewissen GmbH persönlich einen Projektstatus mitzuteilen und gegebenfalls neue Anforderungen zu besprechen. 
+Die Krach GmbH verpflichtet sich, jede Woche evtl. dienstags der Gewissen GmbH einen aktuellen Stand des Projektstatusses mitzuteilen. Frau Constanze Richter und Frau Johanna Terp von der Krach GmbH werden Herrn Lars Schiemann von der Gewissen GmbH zum persönlichen Kontakt zur Verfügng stehen und einen Projektstatus mitzuteilen und gegebenfalls neue Anforderungen zu besprechen. 
 
 
 ###        d.In welchem Zeitraum wird das Projekt abgewickelt
@@ -74,34 +73,19 @@ Die Leistung wird in der Zeit vom 01. Oktober bis zum 10. Februar 2015 erbracht.
 
 
 ###        a.Preis
-Gesamtpreis der Leistung: ……….,- € einschl. Mwst. 
-Der Preis setzt sich wie folgt zusammen:
-* Projektmanagement: …...€
-* Qualitätssicherung: …..€
-* Spezifikation: …...€
-* Entwicklung:......€
-   * Modul Datendokumentation:......€
-   * Modul Datenvisualisierung:.....€
-   * Modul Karte:......€
-   * Modul Datenveränderung:....€
-   * Modul Ökosystem OpenResKit:....€
-* Test:.....€
-* Installation:......€
-* Schulung:....€
+Gesamtpreis: 46. 290,00 €
+*bei insgesamt 485 Stunden für das gesammt Projekt.
+*Für die Bearbeitung des Projekts stehen 5 Angestellte der Krach GmbH zur Verfügung.
 
 
 ###        b.Zahlungsweise
-Die Zahlung erfolgt nach folgenden Zahlungsmeilensteine:
+Die Zahlung erfolgt nach Monatszzahlungen:
+*Ende November 1.Rate
+*Ende Dezember 2. Rate
+*Ende Janurar 3. Rate
+*Ende Februar 4. Rate
 
-
-| Nr | Beschreibung                 | Preis in Euro |
-|----|------------------------------|---------------|
-| 1  | bei Auftragerstellung        |               |
-| 2  | bei Lieferung der Gui        |               |
-| 3  | bei Lieferung des Prototypen |               |
-| 4  | bei Installation             |               |
-| 5  | nach ersten Schulungen       |               |
-| 6  | bei Endabnahme               |               |
+*Die Höhe der Ratenzahlungen werden individuell und extra vereinbart.
 
 
 ###        c.Lieferumfang und Abnahmeregelung
@@ -112,5 +96,5 @@ Dokumente werden in Form von Reviews abgenommen. Für Software-Komponenten werde
 ##4.Rechtliche Aspekte
 
 
-Die Gewissen GmbH verpflichtet sich, das ausgelieferte System nur für ihre Zwecke zu nutzen. Das Unternehmen Gewissen GmbH darf den Source Code, das funktionstüchtige Programm oder die GUI nicht an Dritte weitergeben. 
+Die Gewissen GmbH verpflichtet sich, das ausgelieferte System nur für ihre Zwecke zu nutzen. 
 Nach Abnahme des Systems durch die Gewissen GmbH ist die Krach GmbH rechtlich nicht mehr zu belangen.
