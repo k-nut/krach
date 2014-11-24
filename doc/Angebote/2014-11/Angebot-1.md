@@ -5,7 +5,7 @@
 
 
 ###       a. Beschreibung der Aufgabe
-Die Gewissen GmbH strebt ein neues Lärmkataster-System an, welches einfach, effizient, effektiv und zuverlässig sein soll. Im Rahmen dieser Gesamtaufgabe soll Krach GmbH die Entwicklung, Installation des Systems übernehmen.
+Die Gewissen GmbH strebt ein neues Lärmkataster-System an, welches einfach, effizient, effektiv und zuverlässig sein soll. Im Rahmen dieser Gesamtaufgabe wird die Krach GmbH mit der Entwicklung und Installation des Systems beauftragt.
 
 
 ###        b.Bezugsdokumente
@@ -15,21 +15,21 @@ Für die Einhaltung der rechtlichen Vorschriften werden folgende Lärmschutzvero
 * Arbeitsschutzgesetz und Arbeitsstättenverordnung
 * Maschinenrichtlinien und Maschinenverordnungen
 * Lärm- und Vibrations-Arbeitsschutzverordnung
-* Technische Anleitung zum Schutz gegen Lärm und Technische Regeln zur Lärm- und Vibrations-Arbeitsschutzverordnung 
+* Technische Anleitung zum Schutz gegen Lärm und technische Regeln zur Lärm- und Vibrations-Arbeitsschutzverordnung 
 * Unfallverhütungsvorschrift und Verordnung zur arbeitsmedizinischen Vorsorge
 
 
 ###        c. Welche Leistung wird erbracht
-Im Rahmen dieses Angebotes werden wir folgende Leistungen erbringen:
+Im Rahmen dieses Angebotes werden wir (Krach GmbH) folgende Leistungen erbringen:
 * Analyse des schon vorhandenen Ökosystems OpenResKit
 * Analyse zu den geforderten Richtlinien und Verordnungen der Lärmmessungen
-* Analyse und Einpflege von vorhandenen Daten
+* Analyse und Einpflege der vorhandenen Daten
 * Analyse der Arbeitsumgebung
-* Implementierung für 
-   * die dokumentierten Daten
-   * die Visualisierung der Daten
-   * die Speicherung der Daten
-   * die Geräte der Messungen
+* Implementierung für die
+   * dokumentierten Daten
+   * Visualisierung der Daten
+   * Speicherung der Daten
+   * Geräte der Messungen
 * Testlauf im Unternehmen für  5 Werktage
 
 ## Skizze des Lebenszykluses und der Gesamtarchitektur
@@ -55,13 +55,13 @@ Das Angebot umfasst keine Wartung des Systems nach Ablauf des 10. Februar 2015. 
 
 
 ###        b.Welche Mitwirkungspflicht hat der Auftraggeber
-Der Auftraggeber hat Mitteilungspflicht und muss Angaben zu Anforderungänderungen unmittelbar mitteilen. Zu Meetings muss der Auftraggeber immer selbst erscheinen. 
-Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach Installation des Lärmkatasters  durch die Krach GmbH den vollständigen Betrieb und die Wartung. Die Krach GmbH übernimmt erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
+Der Auftraggeber unterliegt der Mitteilungspflicht und muss Angaben zu Anforderungänderungen unmittelbar mitteilen. Zu Meetings muss der Auftraggeber immer selbst erscheinen. 
+Der Auftraggeber stellt alle notwendigen Informationen und Dokumente kostenlos und frühzeitig zur Verfügung und wird gemeinsam mit der Krach GmbH alles Notwendige unternehmen, um das Projekt gemeinsam erfolgreich abschließen zu können. Die Gewissen GmbH übernimmt nach der Installation des Lärmkatasters durch die Krach GmbH den vollständigen Betrieb und die Wartung. Die Krach GmbH übernimmt erste Einweisungen in das System und Erklärungen über dessen grundlegende Funktionen. 
 
 
 ###       c.Besondere Regelungen zur Zusammenarbeit oder zum Projektablauf
 Die Dokumentation des Projektes enthält folgende Punkte: Zielstellung, Projektplanung, Anforderunganalyse, technische Konzeption, Implementierung.
-Die Krach GmbH verpflichtet sich, jede Woche evtl. dienstags der Gewissen GmbH einen aktuellen Stand des Projektstatusses mitzuteilen. Frau Constanze Richter und Frau Johanna Terp von der Krach GmbH werden Herrn Lars Schiemann von der Gewissen GmbH zum persönlichen Kontakt zur Verfügng stehen und einen Projektstatus mitzuteilen und gegebenfalls neue Anforderungen zu besprechen. 
+Die Krach GmbH verpflichtet sich, jede Woche evtl. dienstags der Gewissen GmbH einen aktuellen Stand des Projektstatusses mitzuteilen. Frau Constanze Richter und Frau Johanna Terp von der Krach GmbH werden Herrn Lars Schiemann von der Gewissen GmbH zum persönlichen Kontakt zur Verfügng stehen, um einen Projektstatus mitzuteilen und gegebenfalls neue Anforderungen zu besprechen. 
 
 
 ###        d.In welchem Zeitraum wird das Projekt abgewickelt
@@ -82,7 +82,7 @@ Gesamtpreis: 46. 290,00 €
 Die Zahlung erfolgt nach Monatszzahlungen:
 *Ende November 1.Rate
 *Ende Dezember 2. Rate
-*Ende Janurar 3. Rate
+*Ende Januar 3. Rate
 *Ende Februar 4. Rate
 
 *Die Höhe der Ratenzahlungen werden individuell und extra vereinbart.
@@ -90,7 +90,7 @@ Die Zahlung erfolgt nach Monatszzahlungen:
 
 ###        c.Lieferumfang und Abnahmeregelung
 Alle Ergebnisse oder Teilergebnisse werden nach den folgendenen Regeln abgenommen:
-Dokumente werden in Form von Reviews abgenommen. Für Software-Komponenten werden jeweils Testspezifikationen erstellt und dem Auftraggeber, der Gewissen GmbH, mindestens zwei Wochen vor dem jeweiligen Abnahmetermin zur Prüfung vorgelegt. Alle gewünschten Änderung werden schriftlich von der Gewissen GmbH der Krach GmbH innerhalb dieser zwei Wochen vorgelegt. Die Änderungenn werden von der Krach GmbH innerhalb von zwei Wochen in die Testspezifikation eingearbeitet. Nach Abnahme aller Liefergegenstände gilt das Projekt als abgeschlossen. Wird die Abnahme durch die Gewissen GmbH verweigert oder verzögert, so gelten alle Liefergegenstände dreißig Tage nach Erklärung der Abnahmebereitschaft als abgenommen. Die Abnahmebereitschaft wird durch die Krach GmbH schriftlich der Gewissen GmbH mitgeteilt. 
+Dokumente werden in Form von Reviews abgenommen. Für Software-Komponenten werden jeweils Testspezifikationen erstellt und dem Auftraggeber, der Gewissen GmbH, mindestens zwei Wochen vor dem jeweiligen Abnahmetermin zur Prüfung vorgelegt. Alle gewünschten Änderung werden schriftlich von der Gewissen GmbH innerhalb dieser zwei Wochen der Krach GmbH vorgelegt. Die Änderungenn werden von der Krach GmbH innerhalb von zwei Wochen in die Testspezifikation eingearbeitet. Nach Abnahme aller Liefergegenstände gilt das Projekt als abgeschlossen. Wird die Abnahme durch die Gewissen GmbH verweigert oder verzögert, so gelten alle Liefergegenstände dreißig Tage nach Erklärung der Abnahmebereitschaft als abgenommen. Die Abnahmebereitschaft wird durch die Krach GmbH schriftlich der Gewissen GmbH mitgeteilt. 
 
 
 ##4.Rechtliche Aspekte
