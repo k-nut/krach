@@ -1,0 +1,20 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="703" measuredH="429" mockupW="450" mockupH="400">
+  <controls>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::TitleWindow" x="253" y="29" w="-1" h="-1" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>L%E4rmkataster</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::TabBar" x="253" y="51" w="450" h="353" measuredW="298" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Karte%2C%20Berichte%2C%20Export%2C*Einstellungen*</text>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Label" x="274" y="96" w="-1" h="-1" measuredW="118" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Rot-Gr%FCn%20Schw%E4che</text>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Switch" x="407" y="92" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="3" locked="false" isInGroup="-1"/>
+  </controls>
+</mockup>
