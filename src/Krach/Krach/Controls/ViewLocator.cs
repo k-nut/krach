@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Caliburn.Micro;
 
-namespace Caliburn.Metro.Demo.Controls
+namespace Krach.Controls
 {
     [Export(typeof(IViewLocator))]
     public class ViewLocator : IViewLocator
@@ -23,7 +23,7 @@ namespace Caliburn.Metro.Demo.Controls
             var cached = IoC.GetAllInstances(viewType).OfType<UIElement>().FirstOrDefault();
             if (cached != null)
             {
-                Micro.ViewLocator.InitializeComponent(cached);
+                Caliburn.Micro.ViewLocator.InitializeComponent(cached);
                 return cached;
             }
 
@@ -39,7 +39,7 @@ namespace Caliburn.Metro.Demo.Controls
                 frameworkElement.Resources.MergedDictionaries.Add(this.themeManager.GetThemeResources());
             }
 
-            Micro.ViewLocator.InitializeComponent(newInstance);
+            Caliburn.Micro.ViewLocator.InitializeComponent(newInstance);
             return newInstance;
         }
     }

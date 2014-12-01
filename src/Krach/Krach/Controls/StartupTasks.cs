@@ -3,11 +3,11 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
-using Caliburn.Metro.Demo.Services;
+using Krach.Services;
 using Caliburn.Micro;
 using MahApps.Metro.Controls;
 
-namespace Caliburn.Metro.Demo.Controls
+namespace Krach.Controls
 {
     public delegate void StartupTask();
 
@@ -52,7 +52,7 @@ namespace Caliburn.Metro.Demo.Controls
         public void ApplyViewLocatorOverride()
         {
             var viewLocator = this.serviceLocator.GetInstance<IViewLocator>();
-            Micro.ViewLocator.GetOrCreateViewType = viewLocator.GetOrCreateViewType;
+            Caliburn.Micro.ViewLocator.GetOrCreateViewType = viewLocator.GetOrCreateViewType;
         }
     }
 }

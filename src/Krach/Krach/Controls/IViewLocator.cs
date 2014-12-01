@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Caliburn.Metro.Demo.Controls
+namespace Krach.Controls
 {
     public interface IViewLocator
     {

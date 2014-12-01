@@ -5,10 +5,10 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 using System.Windows;
-using Caliburn.Metro.Demo.Controls;
+using Krach.Controls;
 using Caliburn.Micro;
 
-namespace Caliburn.Metro.Demo
+namespace Krach
 {
     public class AppBootstrapper : BootstrapperBase
     {

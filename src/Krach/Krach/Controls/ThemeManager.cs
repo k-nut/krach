@@ -2,7 +2,7 @@
 using System.ComponentModel.Composition;
 using System.Windows;
 
-namespace Caliburn.Metro.Demo.Controls
+namespace Krach.Controls
 {
     [Export(typeof(IThemeManager))]
     public class ThemeManager : IThemeManager

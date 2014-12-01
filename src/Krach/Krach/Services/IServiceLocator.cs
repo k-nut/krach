@@ -1,4 +1,4 @@
-﻿namespace Caliburn.Metro.Demo.Services
+﻿namespace Krach.Services
 {
     public interface IServiceLocator
     {

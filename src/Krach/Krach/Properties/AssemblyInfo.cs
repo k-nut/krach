@@ -16,11 +16,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Caliburn.Metro.Demo")]
+[assembly: AssemblyTitle("Krach")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CEM Systems")]
-[assembly: AssemblyProduct("Caliburn.Metro.Demo")]
+[assembly: AssemblyProduct("Krach")]
 [assembly: AssemblyCopyright("Copyright © CEM Systems 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

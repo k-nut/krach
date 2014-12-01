@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Caliburn.Metro.Demo.Views
+namespace Krach.Views
 {
   /// <summary>
   /// Interaction logic for MapView.xaml

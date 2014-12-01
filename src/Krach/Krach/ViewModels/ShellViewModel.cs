@@ -1,7 +1,7 @@
 using System.ComponentModel.Composition;
 using Caliburn.Micro;
 
-namespace Caliburn.Metro.Demo.ViewModels
+namespace Krach.ViewModels
 {
     [Export(typeof(IShell))]
     public class ShellViewModel : Screen, IShell

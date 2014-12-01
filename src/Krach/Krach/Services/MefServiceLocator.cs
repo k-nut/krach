@@ -2,7 +2,7 @@
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 
-namespace Caliburn.Metro.Demo.Services
+namespace Krach.Services
 {
     [Export(typeof(IServiceLocator))]
     public class MefServiceLocator : IServiceLocator

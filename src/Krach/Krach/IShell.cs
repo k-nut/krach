@@ -1,4 +1,4 @@
-namespace Caliburn.Metro.Demo
+namespace Krach
 {
     public interface IShell
     {

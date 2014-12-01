@@ -1,3 +1,3 @@
-namespace Caliburn.Metro.Demo {
+namespace Krach {
     public class ShellViewModel : IShell {}
 }
