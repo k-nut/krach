@@ -7,12 +7,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid Background="White">
 
-    <Grid.ColumnDefinitions>
-    </Grid.ColumnDefinitions>
     <StackPanel>
       <TextBlock FontSize="20" Text="Export" />
       <StackPanel Orientation="Horizontal">
-
         <TextBlock Text="Zeitraum: " />
         <DatePicker />
         <TextBlock Text=" - " />
