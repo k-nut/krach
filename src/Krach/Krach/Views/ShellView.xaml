@@ -26,7 +26,10 @@
       <Controls:MetroTabItem Header="Export">
         <views:ExportView Margin="20 0"/>
       </Controls:MetroTabItem>
-    </Controls:MetroAnimatedTabControl>
+            <Controls:MetroTabItem Header="Messpunkt hinzufuegen">
+                <views:AddMeasurePointView Margin="20 0"/>
+            </Controls:MetroTabItem>
+        </Controls:MetroAnimatedTabControl>
   </Grid>
 
 </Controls:MetroWindow>
