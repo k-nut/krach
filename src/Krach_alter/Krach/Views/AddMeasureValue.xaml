@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Krach.Views.ReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+  <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Content="Datum"></Label>
+            <TextBox>20.10.2014</TextBox>
+           <TextBox></TextBox>
+            <TextBox></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label Content="Uhrzeit"></Label>
+            <TextBox>12:13</TextBox>
+            <TextBox></TextBox>
+            <TextBox></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="Messverfahren"></Label>
+            <TextBox>ISO 3141</TextBox>
+            <TextBox></TextBox>
+            <TextBox></TextBox>
+            <Button  Content="Abbrechen" />
+        </StackPanel>
+        <StackPanel Grid.Column="3">
+            <Label Content="Kürzel"></Label>
+            <TextBox>K.H.</TextBox>
+            <TextBox></TextBox>
+            <TextBox></TextBox>
+            <Button  Content="Speichern" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>
