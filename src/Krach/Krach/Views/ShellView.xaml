@@ -18,6 +18,9 @@
   <Grid>
     <Controls:MetroAnimatedTabControl>
       <Controls:MetroTabItem Header="Karte">
+        <views:StartMapView Margin="20 0 "/>
+      </Controls:MetroTabItem>
+      <Controls:MetroTabItem Header="Karte - hinzufuegen">
         <views:MapView Margin="20 0 "/>
       </Controls:MetroTabItem>
       <Controls:MetroTabItem Header="Berichte">
