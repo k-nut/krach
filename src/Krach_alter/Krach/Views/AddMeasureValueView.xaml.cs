@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Krach.Views
 {
   /// <summary>
-  /// Interaction logic for ReportView.xaml
+  /// Interaction logic for AddMeasureValueView.xaml
   /// </summary>
-  public partial class ReportView : UserControl
+  public partial class AddMeasureValueView : UserControl
   {
-    public ReportView()
+    public AddMeasureValueView()
     {
       InitializeComponent();
     }

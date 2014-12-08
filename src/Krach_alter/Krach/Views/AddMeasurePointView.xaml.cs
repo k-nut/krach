@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 
 namespace Krach.Views
 {
-    /// <summary>
-    /// Interaktionslogik für AddMeasurePointView.xaml
-    /// </summary>
-    public partial class AddMeasurePointView : UserControl
+  /// <summary>
+  /// Interaction logic for AddMeasurePoint.xaml
+  /// </summary>
+  public partial class AddMeasurePointView : UserControl
+  {
+    public AddMeasurePointView()
     {
-        public AddMeasurePointView()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

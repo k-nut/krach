@@ -18,25 +18,25 @@
   <Grid>
     <Controls:MetroAnimatedTabControl>
       <Controls:MetroTabItem Header="Karte">
-        <views:MapView Margin="20 0 "/>
+        <views:MapView Margin="20 0 " />
       </Controls:MetroTabItem>
       <Controls:MetroTabItem Header="Berichte">
-        <views:ReportView Margin="20 0"/>
+        <views:ReportView Margin="20 0" />
       </Controls:MetroTabItem>
       <Controls:MetroTabItem Header="Export">
-        <views:ExportView Margin="20 0"/>
+        <views:ExportView Margin="20 0" />
       </Controls:MetroTabItem>
       <Controls:MetroTabItem Header="Messpunkt hinzufuegen">
-                <views:AddMeasurePointView Margin="20 0"/>
-            </Controls:MetroTabItem>
-            <Controls:MetroTabItem Header="Messwert hinzuf">
-                <Controls:MetroAnimatedTabControl>
-                    <views:AddMeasureValue Margin="20 0" />
-                    </Controls:MetroAnimatedTabControl>
-            </Controls:MetroTabItem>
-
-
+        <views:AddMeasurePointView Margin="20 0" />
+      </Controls:MetroTabItem>
+      <Controls:MetroTabItem Header="Messwert hinzuf">
+        <Controls:MetroAnimatedTabControl>
+          <views:AddMeasureValueView Margin="20 0" />
         </Controls:MetroAnimatedTabControl>
+      </Controls:MetroTabItem>
+
+
+    </Controls:MetroAnimatedTabControl>
   </Grid>
 
 </Controls:MetroWindow>
