@@ -15,7 +15,6 @@
     <StackPanel Grid.Column="0">
       <TextBlock FontSize="20" Text="Messwerte hinzufügen" />
       <TextBlock Text="Datum" />
-      <TextBlock Text="{Binding Name}" />
       <DatePicker />
       <Label Content="Uhrzeit" />
       <TextBox Text="12:13" />
@@ -40,6 +39,10 @@
         <TextBox Text="K.H." Grid.Row="1" Grid.Column="1" />
 
       </Grid>
+      
+      <Label>Messwert in Dezibel</Label>
+      <TextBox></TextBox>
+      
 
       <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
         <Button Content="Überspringen" />
