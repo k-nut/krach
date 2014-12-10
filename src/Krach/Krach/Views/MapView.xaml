@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid Background="White">
@@ -13,7 +15,6 @@
     <StackPanel Grid.Column="0">
       <TextBlock FontSize="20" Text="Messwerte hinzufügen" />
       <TextBlock Text="Datum" />
-      <TextBlock Text="{Binding Name}" />
       <DatePicker />
       <Label Content="Uhrzeit" />
       <TextBox Text="12:13" />
@@ -38,13 +39,52 @@
         <TextBox Text="K.H." Grid.Row="1" Grid.Column="1" />
 
       </Grid>
+      
+      <Label>Messwert in Dezibel</Label>
+      <TextBox></TextBox>
+      
 
       <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
         <Button Content="Überspringen" />
-        <Button Content="Nächster" />
+        <Button Content="Nächster">
+          <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Click">
+              <cal:ActionMessage MethodName="SelectNext" />
+            </i:EventTrigger>
+          </i:Interaction.Triggers>
+        </Button>
       </StackPanel>
 
     </StackPanel>
-    <Image Grid.Column="1" Source="../Resources/Map.jpg" />
+    <Grid Grid.Column="1">
+      <Image Source="../Resources/Map.jpg" />
+      <Canvas Background="Transparent">
+        <Ellipse
+          Canvas.Top="50"
+          Canvas.Left="50"
+          Fill="Red"
+          Height="20"
+          Width="20"
+          StrokeThickness="5"
+          Stroke="{Binding FirstSelected}" />
+        <Ellipse
+          Canvas.Top="90"
+          Canvas.Left="120"
+          Fill="Yellow"
+          Height="20"
+          Width="20"
+          StrokeThickness="5"
+          Stroke="{Binding SecondSelected}" />
+        <Ellipse
+          Canvas.Top="200"
+          Canvas.Left="190"
+          Fill="Green"
+          Height="20"
+          Width="20"
+          StrokeThickness="5"
+          Stroke="{Binding ThirdSelected}" />
+      </Canvas>
+
+    </Grid>
   </Grid>
 </UserControl>
