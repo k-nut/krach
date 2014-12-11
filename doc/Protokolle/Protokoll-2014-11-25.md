@@ -17,7 +17,7 @@ Die Krach GmbH stellt der Gewissen GmbH die erste Variante eines Mokups für das
 
 ##Vorstellung zweites Mokup
 Die Krach GmbH stellt eine zweite Variante eines Mokups vor. Der Gewissen GmbH gefallen folgende Punkte:
-- Karte mit sichtbaren Messpunkten, diese sind Rot, Orange, Grün gekennzeichnet, je nach wie hoch der Messwert ist
+- Karte mit sichtbaren Messpunkten, diese sind Rot, Orange, Grün gekennzeichnet, je nach dem wie hoch der Messwert ist
 - Tabelle von Messdaten
 - Verlaufsgrafik, diese soll aber nicht wie vorgestellt durch Linien gekennzeichnet werden, sondern es soll ein Balkendiagramm abgebildet werden. In diesem sollen die 10 Messpunkte mit den Häugisten übrschreitungen des Grenzwerts erkenntlich sein. Ein Trend der Belastungsentwicklung soll weiterhin dargestellt werden.
 
