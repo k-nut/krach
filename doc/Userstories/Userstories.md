@@ -1,39 +1,39 @@
-1.) Als Angestellter benötige ich eine Karte der Werkhalle um Messpunkte visuell darstellen zu können 
-	/ Test: ist Karte vorhanden
+1.) Als Angestellter benötige ich eine Karte der Werkhalle um Messpunkte visuell darstellen zu können. 
+	/ Test: Ist die Karte vorhanden, um einen Messpunkt visuell darstellen zu können?
 	/ Schätzung: 1 
 
-2.) Als Angestellter möchte ich einen neuen Messpunkt hinzufügen
-	/ Test: ist eingegebener Messpunkt vorhanden 
+2.) Als Angestellter möchte ich einen neuen Messpunkt hinzufügen.
+	/ Test: Kann ich einen neuen Messpunkt an dieser Stelle hinzufügen? 
 	/ Schätzung: 5 
 
-3.) Als Angestellter möchte ich zu allen Messpunkten neue Messwerte hinzufügen 
-	/ Test: sind alle eingegebenen Messwerte vorhanden
+3.) Als Angestellter möchte ich zu allen Messpunkten neue Messwerte hinzufügen. 
+	/ Test: Sind alle eingegebenen Messpunkte vorhanden, um neue Messwerte hinzufügen zu können?
 	/ Schätzung: 8
 
-4.) Als Angestellter möchte ich nicht weiter benötigte Messpunkte archivieren 
-	/ Test: sind archivierte Messpunkte nicht mehr änderbar, aber noch vorhanden
+4.) Als Angestellter möchte ich nicht weiter benötigte Messpunkte archivieren.
+	/ Test: Kann der Messpunkt archiviert werden, oder ist er schon archiviert?
 	/ Schätzung: 13 
 
-5.) Als Geschäftsführer möchte ich eine Übersicht von Grenzwertüberschreitungen der Messpunkte als visuelle Darstellung (rotes !) 
-	/ Test: sind Grenzwertüberschreitungen ersichtlich?
+5.) Als Geschäftsführer möchte ich eine visuelle Übersicht von Grenzwertüberschreitungen der Messpunkte.
+	/ Test: Kann eine Übersicht aus überschrittenen Grenzwerten erstellt werden?
 	/ Schätzung: 8
 
-6.) Als Geschäftsführer möchte ich eine Übersicht der Grenzwertüberschreitungen nach Uhrzeit sortiert dargestellt haben
-	/ Test: sind die Überschreitungen in jedem Zeitraum der Übersicht = den gemessenen Überschreitungen im Zeitraum
+6.) Als Geschäftsführer möchte ich eine sortierte Übersicht der Grenzwertüberschreitungen erhalten.
+	/ Test: Ist eine Sortierung der Grenzwertüberschreitungen nach Datum möglich?
 	/ Schätzung: 8
 
-7.) Als Geschäftsführer möchte ich eine Übersicht der Grenzwertüberschreitungen nach Datum sortiert dargestellt haben 
-	/ Test: sind die Überschreitungen der Übersicht = den gemessenen Überschreitungen an dem Datum
+7.) Als Geschäftsführer möchte ich eine sortierte Übersicht der Grenzwertüberschreitungen erhalten.
+	/ Test: Ist eine Sortierung der Grenzwertüberschreitungen nach Uhrzeit möglich?
 	/ Schätzung: 8
 
-8.) Als Angestellter möchte ich die Messungen nach Datum filtern 
-	/Test: Können die Messwerte nach Datum gefiltert werden?
+8.) Als Angestellter möchte ich die Messungen filtern.
+	/Test: Können die Messungen nach Datum gefiltert werden?
 	/ Schätzung: 8
 
-9.) Als Angestellter möchte ich die Daten in Word oder Excel importieren um Sie für ein Geschäftsbericht zu nutzen 
-	/ Test: ist ein Import nach Word/ Excel für den Bericht möglich
+9.) Als Angestellter möchte ich die Daten exportieren, um sie für ein Geschäftsbericht zu nutzen.
+	/ Test: Ist ein Import nach Word/ Excel für den Geschäftsbericht möglich?
 	/ Schätzung: 13
 
-10.) Als Angestellter möchte ich die Daten in Word oder Excel importieren um Sie für eine visuelle Darstellung zu nutzen 
-	/ Test: ist ein Import nach Word/ Excel für die visuelle Darstellung möglich
+10.) Als Angestellter möchte ich die Daten exportieren, um Sie für eine visuelle Darstellung zu nutzen.
+	/ Test: Ist ein Import nach Word/ Excel für die visuelle Darstellung möglich?
 	/ Schätzung: 13
