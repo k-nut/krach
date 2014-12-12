@@ -6,7 +6,7 @@ using KrachConnect.DomainModelService;
 
 namespace KrachConnect
 {
-  internal class NoiseRepository
+  public class NoiseRepository
   {
     private readonly DomainModelContext _context;
     private DataServiceCollection<MeasuringPoint> _measuringPoints;
@@ -18,6 +18,17 @@ namespace KrachConnect
       _context.Credentials = new NetworkCredential("root", "ork123");
       LoadMeasuringPoints();
       LoadNoiseMeasurements();
+      //addMeasuringPoint();
+    }
+
+    public DataServiceCollection<MeasuringPoint> MeasuringPoints
+    {
+      get { return _measuringPoints; }
+    }
+
+    public DataServiceCollection<NoiseMeasurement> NoiseMeasurements
+    {
+      get { return _noiseMeasurements; }
     }
 
     private void LoadNoiseMeasurements()
@@ -35,6 +46,14 @@ namespace KrachConnect
       _measuringPoints.Load(query);
     }
 
+    private void addMeasuringPoint()
+    {
+      var mp = new MeasuringPoint();
+      mp.Name = "Große Maschine";
+      _measuringPoints.Add(mp);
+      Save();
+    }
+
     private void Save()
     {
       IAsyncResult result = _context.BeginSaveChanges(SaveChangesOptions.Batch, r =>
@@ -42,15 +61,6 @@ namespace KrachConnect
         var dm = (DomainModelContext) r.AsyncState;
         dm.EndSaveChanges(r);
       }, _context);
-    }
-
-    public DataServiceCollection<MeasuringPoint> MeasuringPoints {
-      get { return _measuringPoints; }
-    }
-
-    public DataServiceCollection<NoiseMeasurement> NoiseMeasurements
-    {
-      get { return _noiseMeasurements; }
     }
   }
 }
