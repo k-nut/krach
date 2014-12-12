@@ -50,7 +50,7 @@ namespace KrachConnect
     private void addMeasuringPoint()
     {
       var position = new NoiseMapPosition {XPosition = 300, YPosition = 190};
-      var mp = new MeasuringPoint{Name = "Schleifmaschine Maschine", Position = position};
+      var mp = new MeasuringPoint{Name = "Schleifmaschine", Position = position};
       _measuringPoints.Add(mp);
       Save();
     }

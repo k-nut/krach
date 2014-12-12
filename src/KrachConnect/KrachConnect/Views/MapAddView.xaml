@@ -6,23 +6,74 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid>
-    <ItemsControl ItemsSource="{Binding MeasuringPoints}">
-      <ItemsControl.ItemsPanel>
-        <ItemsPanelTemplate>
-          <Canvas/>
-        </ItemsPanelTemplate>
-      </ItemsControl.ItemsPanel>
-      <ItemsControl.ItemContainerStyle>
-        <Style>
-          <Setter Property="Canvas.Left" Value="{Binding Position.XPosition}"/>
-          <Setter Property="Canvas.Top" Value="{Binding Position.YPosition}"/>
-        </Style>
-      </ItemsControl.ItemContainerStyle>
-      <ItemsControl.ItemTemplate>
-        <DataTemplate>
-          <Ellipse Height="20" Width="20" Fill="Firebrick"></Ellipse>
-        </DataTemplate>
-      </ItemsControl.ItemTemplate>
-    </ItemsControl>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition></ColumnDefinition>
+      <ColumnDefinition></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <StackPanel Grid.Column="0">
+      <TextBlock FontSize="20" Text="Messwerte hinzufügen" />
+      <TextBlock Text="Datum" />
+      <DatePicker />
+      <Label Content="Uhrzeit" />
+      <TextBox Text="12:13" />
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Messverfahren" Grid.Row="0" Grid.Column="0" />
+        <ComboBox Grid.Row="1" Grid.Column="0" SelectedIndex="1">
+          <ComboBoxItem Content="DIN 12121" />
+          <ComboBoxItem Content="ISO 3141" />
+          <ComboBoxItem Content="VDI 12178" />
+        </ComboBox>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Kürzel" />
+        <TextBox Text="K.H." Grid.Row="1" Grid.Column="1" />
+
+      </Grid>
+
+      <Label>Minmalwert in Dezibel</Label>
+      <TextBox></TextBox>
+      <Label>Mittelwert in Dezibel</Label>
+      <TextBox></TextBox>
+      <Label>Maximalwert in Dezibel</Label>
+      <TextBox></TextBox>
+      
+
+
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+        <Button Content="Überspringen" />
+        <Button Content="Nächster">
+        </Button>
+      </StackPanel>
+
+    </StackPanel>
+    <Grid Grid.Column="1">
+      <Image Source="../Resources/Map.jpg"></Image>
+      <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <Canvas/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemContainerStyle>
+          <Style>
+            <Setter Property="Canvas.Left" Value="{Binding Position.XPosition}"/>
+            <Setter Property="Canvas.Top" Value="{Binding Position.YPosition}"/>
+          </Style>
+        </ItemsControl.ItemContainerStyle>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Ellipse Height="20" Width="20" Fill="Firebrick"></Ellipse>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
   </Grid>
 </UserControl>
