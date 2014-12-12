@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 09.12.2014 16:54:29
+// Generation date: 12.12.2014 11:58:51
 namespace KrachConnect.DomainModelService
 {
     
@@ -78,56 +78,22 @@ namespace KrachConnect.DomainModelService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<NoiseMeasurement> _NoiseMeasurements;
         /// <summary>
-        /// There are no comments for MeasuringDevices in the schema.
+        /// There are no comments for MeasuringMethods in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<MeasuringDevice> MeasuringDevices
+        public global::System.Data.Services.Client.DataServiceQuery<MeasuringMethod> MeasuringMethods
         {
             get
             {
-                if ((this._MeasuringDevices == null))
+                if ((this._MeasuringMethods == null))
                 {
-                    this._MeasuringDevices = base.CreateQuery<MeasuringDevice>("MeasuringDevices");
+                    this._MeasuringMethods = base.CreateQuery<MeasuringMethod>("MeasuringMethods");
                 }
-                return this._MeasuringDevices;
+                return this._MeasuringMethods;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<MeasuringDevice> _MeasuringDevices;
-        /// <summary>
-        /// There are no comments for LegalBasis in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<LegalBasis> LegalBasis
-        {
-            get
-            {
-                if ((this._LegalBasis == null))
-                {
-                    this._LegalBasis = base.CreateQuery<LegalBasis>("LegalBasis");
-                }
-                return this._LegalBasis;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<LegalBasis> _LegalBasis;
-        /// <summary>
-        /// There are no comments for NoiseEmployees in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<NoiseEmployee> NoiseEmployees
-        {
-            get
-            {
-                if ((this._NoiseEmployees == null))
-                {
-                    this._NoiseEmployees = base.CreateQuery<NoiseEmployee>("NoiseEmployees");
-                }
-                return this._NoiseEmployees;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<NoiseEmployee> _NoiseEmployees;
+        private global::System.Data.Services.Client.DataServiceQuery<MeasuringMethod> _MeasuringMethods;
         /// <summary>
         /// There are no comments for MeasuringPoints in the schema.
         /// </summary>
@@ -145,23 +111,6 @@ namespace KrachConnect.DomainModelService
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<MeasuringPoint> _MeasuringPoints;
-        /// <summary>
-        /// There are no comments for DescriptivePositions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<DescriptivePosition> DescriptivePositions
-        {
-            get
-            {
-                if ((this._DescriptivePositions == null))
-                {
-                    this._DescriptivePositions = base.CreateQuery<DescriptivePosition>("DescriptivePositions");
-                }
-                return this._DescriptivePositions;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<DescriptivePosition> _DescriptivePositions;
         /// <summary>
         /// There are no comments for NoiseMapPositions in the schema.
         /// </summary>
@@ -214,74 +163,6 @@ namespace KrachConnect.DomainModelService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<File> _Files;
         /// <summary>
-        /// There are no comments for GeoPositions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<GeoPosition> GeoPositions
-        {
-            get
-            {
-                if ((this._GeoPositions == null))
-                {
-                    this._GeoPositions = base.CreateQuery<GeoPosition>("GeoPositions");
-                }
-                return this._GeoPositions;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<GeoPosition> _GeoPositions;
-        /// <summary>
-        /// There are no comments for Attachments in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<Attachment> Attachments
-        {
-            get
-            {
-                if ((this._Attachments == null))
-                {
-                    this._Attachments = base.CreateQuery<Attachment>("Attachments");
-                }
-                return this._Attachments;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<Attachment> _Attachments;
-        /// <summary>
-        /// There are no comments for Comments in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<Comment> Comments
-        {
-            get
-            {
-                if ((this._Comments == null))
-                {
-                    this._Comments = base.CreateQuery<Comment>("Comments");
-                }
-                return this._Comments;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<Comment> _Comments;
-        /// <summary>
-        /// There are no comments for LogEntries in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<LogEntry> LogEntries
-        {
-            get
-            {
-                if ((this._LogEntries == null))
-                {
-                    this._LogEntries = base.CreateQuery<LogEntry>("LogEntries");
-                }
-                return this._LogEntries;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<LogEntry> _LogEntries;
-        /// <summary>
         /// There are no comments for NoiseMeasurements in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -290,28 +171,12 @@ namespace KrachConnect.DomainModelService
             base.AddObject("NoiseMeasurements", noiseMeasurement);
         }
         /// <summary>
-        /// There are no comments for MeasuringDevices in the schema.
+        /// There are no comments for MeasuringMethods in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToMeasuringDevices(MeasuringDevice measuringDevice)
+        public void AddToMeasuringMethods(MeasuringMethod measuringMethod)
         {
-            base.AddObject("MeasuringDevices", measuringDevice);
-        }
-        /// <summary>
-        /// There are no comments for LegalBasis in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToLegalBasis(LegalBasis legalBasis)
-        {
-            base.AddObject("LegalBasis", legalBasis);
-        }
-        /// <summary>
-        /// There are no comments for NoiseEmployees in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToNoiseEmployees(NoiseEmployee noiseEmployee)
-        {
-            base.AddObject("NoiseEmployees", noiseEmployee);
+            base.AddObject("MeasuringMethods", measuringMethod);
         }
         /// <summary>
         /// There are no comments for MeasuringPoints in the schema.
@@ -320,14 +185,6 @@ namespace KrachConnect.DomainModelService
         public void AddToMeasuringPoints(MeasuringPoint measuringPoint)
         {
             base.AddObject("MeasuringPoints", measuringPoint);
-        }
-        /// <summary>
-        /// There are no comments for DescriptivePositions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToDescriptivePositions(DescriptivePosition descriptivePosition)
-        {
-            base.AddObject("DescriptivePositions", descriptivePosition);
         }
         /// <summary>
         /// There are no comments for NoiseMapPositions in the schema.
@@ -353,38 +210,6 @@ namespace KrachConnect.DomainModelService
         {
             base.AddObject("Files", file);
         }
-        /// <summary>
-        /// There are no comments for GeoPositions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToGeoPositions(GeoPosition geoPosition)
-        {
-            base.AddObject("GeoPositions", geoPosition);
-        }
-        /// <summary>
-        /// There are no comments for Attachments in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToAttachments(Attachment attachment)
-        {
-            base.AddObject("Attachments", attachment);
-        }
-        /// <summary>
-        /// There are no comments for Comments in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToComments(Comment comment)
-        {
-            base.AddObject("Comments", comment);
-        }
-        /// <summary>
-        /// There are no comments for LogEntries in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToLogEntries(LogEntry logEntry)
-        {
-            base.AddObject("LogEntries", logEntry);
-        }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private abstract class GeneratedEdmModel
         {
@@ -401,66 +226,31 @@ namespace KrachConnect.DomainModelService
                 "Property Name=\"MeasurementDate\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property" +
                 " Name=\"MinValue\" Type=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"MaxValue\" " +
                 "Type=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"AverageValue\" Type=\"Edm.Sin" +
-                "gle\" Nullable=\"false\" /><NavigationProperty Name=\"MeasuringDevice\" Relationship=" +
-                "\"OpenResKit.DomainModel.NoiseMeasurement_MeasuringDevice\" ToRole=\"NoiseMeasureme" +
-                "nt_MeasuringDevice_Target\" FromRole=\"NoiseMeasurement_MeasuringDevice_Source\" />" +
-                "<NavigationProperty Name=\"LegalBasis\" Relationship=\"OpenResKit.DomainModel.Noise" +
-                "Measurement_LegalBasis\" ToRole=\"NoiseMeasurement_LegalBasis_Target\" FromRole=\"No" +
-                "iseMeasurement_LegalBasis_Source\" /><NavigationProperty Name=\"NoiseEmployee\" Rel" +
-                "ationship=\"OpenResKit.DomainModel.NoiseMeasurement_NoiseEmployee\" ToRole=\"NoiseM" +
-                "easurement_NoiseEmployee_Target\" FromRole=\"NoiseMeasurement_NoiseEmployee_Source" +
-                "\" /><NavigationProperty Name=\"MeasuringPoint\" Relationship=\"OpenResKit.DomainMod" +
-                "el.NoiseMeasurement_MeasuringPoint\" ToRole=\"NoiseMeasurement_MeasuringPoint_Targ" +
-                "et\" FromRole=\"NoiseMeasurement_MeasuringPoint_Source\" /><NavigationProperty Name" +
-                "=\"Attachments\" Relationship=\"OpenResKit.DomainModel.NoiseMeasurement_Attachments" +
-                "\" ToRole=\"NoiseMeasurement_Attachments_Target\" FromRole=\"NoiseMeasurement_Attach" +
-                "ments_Source\" /><NavigationProperty Name=\"Comments\" Relationship=\"OpenResKit.Dom" +
-                "ainModel.NoiseMeasurement_Comments\" ToRole=\"NoiseMeasurement_Comments_Target\" Fr" +
-                "omRole=\"NoiseMeasurement_Comments_Source\" /></EntityType><EntityType Name=\"Measu" +
-                "ringDevice\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.In" +
-                "t32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schem" +
-                "as.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"Name\" Type=\"Edm.S" +
-                "tring\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Desc" +
-                "ription\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" />" +
-                "</EntityType><EntityType Name=\"LegalBasis\"><Key><PropertyRef Name=\"Id\" /></Key><" +
-                "Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"I" +
-                "dentity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><P" +
-                "roperty Name=\"Name\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicod" +
-                "e=\"true\" /><Property Name=\"Date\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Propert" +
-                "y Name=\"Description\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unico" +
-                "de=\"true\" /><Property Name=\"GreenValue\" Type=\"Edm.Single\" Nullable=\"false\" /><Pr" +
-                "operty Name=\"YellowValue\" Type=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"R" +
-                "edValue\" Type=\"Edm.Single\" Nullable=\"false\" /></EntityType><EntityType Name=\"Noi" +
-                "seEmployee\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.In" +
-                "t32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schem" +
-                "as.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"FirstName\" Type=\"" +
+                "gle\" Nullable=\"false\" /><Property Name=\"Employee\" Type=\"Edm.String\" MaxLength=\"M" +
+                "ax\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Comment\" Type=\"Edm.Stri" +
+                "ng\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Nam" +
+                "e=\"Method\" Relationship=\"OpenResKit.DomainModel.NoiseMeasurement_Method\" ToRole=" +
+                "\"NoiseMeasurement_Method_Target\" FromRole=\"NoiseMeasurement_Method_Source\" /><Na" +
+                "vigationProperty Name=\"MeasuringPoint\" Relationship=\"OpenResKit.DomainModel.Nois" +
+                "eMeasurement_MeasuringPoint\" ToRole=\"NoiseMeasurement_MeasuringPoint_Target\" Fro" +
+                "mRole=\"NoiseMeasurement_MeasuringPoint_Source\" /></EntityType><EntityType Name=\"" +
+                "MeasuringMethod\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"E" +
+                "dm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://" +
+                "schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"Name\" Type=\"" +
                 "Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=" +
-                "\"LastName\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" " +
-                "/><Property Name=\"Role\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Depa" +
-                "rtment\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><" +
-                "Property Name=\"Email\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unic" +
-                "ode=\"true\" /><Property Name=\"Password\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLe" +
-                "ngth=\"false\" Unicode=\"true\" /></EntityType><EntityType Name=\"MeasuringPoint\"><Ke" +
-                "y><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"" +
-                "false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.co" +
-                "m/ado/2009/02/edm/annotation\" /><Property Name=\"Name\" Type=\"Edm.String\" MaxLengt" +
-                "h=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Barcode\" Type=\"Edm." +
-                "String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty" +
-                " Name=\"DescriptivePosition\" Relationship=\"OpenResKit.DomainModel.MeasuringPoint_" +
-                "DescriptivePosition\" ToRole=\"MeasuringPoint_DescriptivePosition_Target\" FromRole" +
-                "=\"MeasuringPoint_DescriptivePosition_Source\" /><NavigationProperty Name=\"NoiseMa" +
-                "pPosition\" Relationship=\"OpenResKit.DomainModel.MeasuringPoint_NoiseMapPosition\"" +
-                " ToRole=\"MeasuringPoint_NoiseMapPosition_Target\" FromRole=\"MeasuringPoint_NoiseM" +
-                "apPosition_Source\" /><NavigationProperty Name=\"GeoPosition\" Relationship=\"OpenRe" +
-                "sKit.DomainModel.MeasuringPoint_GeoPosition\" ToRole=\"MeasuringPoint_GeoPosition_" +
-                "Target\" FromRole=\"MeasuringPoint_GeoPosition_Source\" /></EntityType><EntityType " +
-                "Name=\"DescriptivePosition\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"I" +
-                "d\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p" +
-                "6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"Si" +
-                "te\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Prop" +
-                "erty Name=\"Building\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unico" +
-                "de=\"true\" /><Property Name=\"Level\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength" +
-                "=\"false\" Unicode=\"true\" /></EntityType><EntityType Name=\"NoiseMapPosition\"><Key>" +
+                "\"Description\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"tru" +
+                "e\" /></EntityType><EntityType Name=\"MeasuringPoint\"><Key><PropertyRef Name=\"Id\" " +
+                "/></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedP" +
+                "attern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotat" +
+                "ion\" /><Property Name=\"Name\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"fals" +
+                "e\" Unicode=\"true\" /><Property Name=\"Barcode\" Type=\"Edm.String\" MaxLength=\"Max\" F" +
+                "ixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Notes\" Type=\"Edm.String\" Max" +
+                "Length=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"GreenValue\" Ty" +
+                "pe=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"YellowValue\" Type=\"Edm.Single" +
+                "\" Nullable=\"false\" /><Property Name=\"RedValue\" Type=\"Edm.Single\" Nullable=\"false" +
+                "\" /><NavigationProperty Name=\"Position\" Relationship=\"OpenResKit.DomainModel.Mea" +
+                "suringPoint_Position\" ToRole=\"MeasuringPoint_Position_Target\" FromRole=\"Measurin" +
+                "gPoint_Position_Source\" /></EntityType><EntityType Name=\"NoiseMapPosition\"><Key>" +
                 "<PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"fa" +
                 "lse\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/" +
                 "ado/2009/02/edm/annotation\" /><Property Name=\"XPosition\" Type=\"Edm.Int32\" Nullab" +
@@ -470,161 +260,64 @@ namespace KrachConnect.DomainModelService
                 "tion_NoiseMap_Source\" /></EntityType><EntityType Name=\"NoiseMap\"><Key><PropertyR" +
                 "ef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:St" +
                 "oreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/0" +
-                "2/edm/annotation\" /><NavigationProperty Name=\"File\" Relationship=\"OpenResKit.Dom" +
-                "ainModel.NoiseMap_File\" ToRole=\"NoiseMap_File_Target\" FromRole=\"NoiseMap_File_So" +
-                "urce\" /><NavigationProperty Name=\"DescriptivePosition\" Relationship=\"OpenResKit." +
-                "DomainModel.NoiseMap_DescriptivePosition\" ToRole=\"NoiseMap_DescriptivePosition_T" +
-                "arget\" FromRole=\"NoiseMap_DescriptivePosition_Source\" /></EntityType><EntityType" +
-                " Name=\"File\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.I" +
-                "nt32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://sche" +
-                "mas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"BinarySource\" Ty" +
-                "pe=\"Edm.Binary\" MaxLength=\"Max\" FixedLength=\"false\" /></EntityType><EntityType N" +
-                "ame=\"GeoPosition\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"" +
-                "Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http:/" +
-                "/schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"Latitude\" T" +
-                "ype=\"Edm.Double\" Nullable=\"false\" /><Property Name=\"Longitude\" Type=\"Edm.Double\"" +
-                " Nullable=\"false\" /></EntityType><EntityType Name=\"Attachment\"><Key><PropertyRef" +
-                " Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nul";
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart1 = "lable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.micros" +
-                "oft.com/ado/2009/02/edm/annotation\" /><Property Name=\"FileName\" Type=\"Edm.String" +
-                "\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=" +
-                "\"File\" Relationship=\"OpenResKit.DomainModel.Attachment_File\" ToRole=\"Attachment_" +
-                "File_Target\" FromRole=\"Attachment_File_Source\" /></EntityType><EntityType Name=\"" +
-                "Comment\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32" +
+                "2/edm/annotation\" /><Property Name=\"Site\" Type=\"Edm.String\" MaxLength=\"Max\" Fixe" +
+                "dLength=\"false\" Unicode=\"true\" /><Property Name=\"Building\" Type=\"Edm.String\" Max" +
+                "Length=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Level\" Type=\"E" +
+                "dm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationPrope" +
+                "rty Name=\"File\" Relationship=\"OpenResKit.DomainModel.NoiseMap_File\" ToRole=\"Nois" +
+                "eMap_File_Target\" FromRole=\"NoiseMap_File_Source\" /></EntityType><EntityType Nam" +
+                "e=\"File\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32" +
                 "\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas." +
-                "microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"CommentDate\" Type=\"E" +
-                "dm.DateTime\" Nullable=\"false\" /><Property Name=\"CommentText\" Type=\"Edm.String\" M" +
-                "axLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"No" +
-                "iseEmployee\" Relationship=\"OpenResKit.DomainModel.Comment_NoiseEmployee\" ToRole=" +
-                "\"Comment_NoiseEmployee_Target\" FromRole=\"Comment_NoiseEmployee_Source\" /></Entit" +
-                "yType><EntityType Name=\"LogEntry\"><Key><PropertyRef Name=\"Id\" /></Key><Property " +
-                "Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" " +
-                "xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property N" +
-                "ame=\"EntryDate\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"Descripti" +
-                "on\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Prop" +
-                "erty Name=\"OldValue\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unico" +
-                "de=\"true\" /><Property Name=\"NewValue\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLen" +
-                "gth=\"false\" Unicode=\"true\" /></EntityType><Association Name=\"NoiseMeasurement_Me" +
-                "asuringDevice\"><End Type=\"OpenResKit.DomainModel.MeasuringDevice\" Role=\"NoiseMea" +
-                "surement_MeasuringDevice_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.Dom" +
-                "ainModel.NoiseMeasurement\" Role=\"NoiseMeasurement_MeasuringDevice_Source\" Multip" +
-                "licity=\"*\" /></Association><Association Name=\"NoiseMeasurement_LegalBasis\"><End " +
-                "Type=\"OpenResKit.DomainModel.LegalBasis\" Role=\"NoiseMeasurement_LegalBasis_Targe" +
-                "t\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.DomainModel.NoiseMeasurement\" Rol" +
-                "e=\"NoiseMeasurement_LegalBasis_Source\" Multiplicity=\"*\" /></Association><Associa" +
-                "tion Name=\"NoiseMeasurement_NoiseEmployee\"><End Type=\"OpenResKit.DomainModel.Noi" +
-                "seEmployee\" Role=\"NoiseMeasurement_NoiseEmployee_Target\" Multiplicity=\"0..1\" /><" +
-                "End Type=\"OpenResKit.DomainModel.NoiseMeasurement\" Role=\"NoiseMeasurement_NoiseE" +
-                "mployee_Source\" Multiplicity=\"*\" /></Association><Association Name=\"NoiseMeasure" +
-                "ment_MeasuringPoint\"><End Type=\"OpenResKit.DomainModel.MeasuringPoint\" Role=\"Noi" +
-                "seMeasurement_MeasuringPoint_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit" +
-                ".DomainModel.NoiseMeasurement\" Role=\"NoiseMeasurement_MeasuringPoint_Source\" Mul" +
-                "tiplicity=\"*\" /></Association><Association Name=\"NoiseMeasurement_Attachments\"><" +
-                "End Type=\"OpenResKit.DomainModel.Attachment\" Role=\"NoiseMeasurement_Attachments_" +
-                "Target\" Multiplicity=\"*\" /><End Type=\"OpenResKit.DomainModel.NoiseMeasurement\" R" +
-                "ole=\"NoiseMeasurement_Attachments_Source\" Multiplicity=\"0..1\" /></Association><A" +
-                "ssociation Name=\"NoiseMeasurement_Comments\"><End Type=\"OpenResKit.DomainModel.Co" +
-                "mment\" Role=\"NoiseMeasurement_Comments_Target\" Multiplicity=\"*\" /><End Type=\"Ope" +
-                "nResKit.DomainModel.NoiseMeasurement\" Role=\"NoiseMeasurement_Comments_Source\" Mu" +
-                "ltiplicity=\"0..1\" /></Association><Association Name=\"MeasuringPoint_DescriptiveP" +
-                "osition\"><End Type=\"OpenResKit.DomainModel.DescriptivePosition\" Role=\"MeasuringP" +
-                "oint_DescriptivePosition_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.Dom" +
-                "ainModel.MeasuringPoint\" Role=\"MeasuringPoint_DescriptivePosition_Source\" Multip" +
-                "licity=\"*\" /></Association><Association Name=\"MeasuringPoint_NoiseMapPosition\"><" +
-                "End Type=\"OpenResKit.DomainModel.MeasuringPoint\" Role=\"MeasuringPoint_NoiseMapPo" +
-                "sition_Source\" Multiplicity=\"*\" /><End Type=\"OpenResKit.DomainModel.NoiseMapPosi" +
-                "tion\" Role=\"MeasuringPoint_NoiseMapPosition_Target\" Multiplicity=\"0..1\" /></Asso" +
-                "ciation><Association Name=\"MeasuringPoint_GeoPosition\"><End Type=\"OpenResKit.Dom" +
-                "ainModel.GeoPosition\" Role=\"MeasuringPoint_GeoPosition_Target\" Multiplicity=\"0.." +
-                "1\" /><End Type=\"OpenResKit.DomainModel.MeasuringPoint\" Role=\"MeasuringPoint_GeoP" +
-                "osition_Source\" Multiplicity=\"*\" /></Association><Association Name=\"NoiseMapPosi" +
-                "tion_NoiseMap\"><End Type=\"OpenResKit.DomainModel.NoiseMap\" Role=\"NoiseMapPositio" +
-                "n_NoiseMap_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.DomainModel.Noise" +
-                "MapPosition\" Role=\"NoiseMapPosition_NoiseMap_Source\" Multiplicity=\"*\" /></Associ" +
-                "ation><Association Name=\"NoiseMap_File\"><End Type=\"OpenResKit.DomainModel.File\" " +
-                "Role=\"NoiseMap_File_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.DomainMo" +
-                "del.NoiseMap\" Role=\"NoiseMap_File_Source\" Multiplicity=\"*\" /></Association><Asso" +
-                "ciation Name=\"NoiseMap_DescriptivePosition\"><End Type=\"OpenResKit.DomainModel.De" +
-                "scriptivePosition\" Role=\"NoiseMap_DescriptivePosition_Target\" Multiplicity=\"0..1" +
-                "\" /><End Type=\"OpenResKit.DomainModel.NoiseMap\" Role=\"NoiseMap_DescriptivePositi" +
-                "on_Source\" Multiplicity=\"*\" /></Association><Association Name=\"Attachment_File\">" +
-                "<End Type=\"OpenResKit.DomainModel.Attachment\" Role=\"Attachment_File_Source\" Mult" +
-                "iplicity=\"*\" /><End Type=\"OpenResKit.DomainModel.File\" Role=\"Attachment_File_Tar" +
-                "get\" Multiplicity=\"0..1\" /></Association><Association Name=\"Comment_NoiseEmploye" +
-                "e\"><End Type=\"OpenResKit.DomainModel.Comment\" Role=\"Comment_NoiseEmployee_Source" +
-                "\" Multiplicity=\"*\" /><End Type=\"OpenResKit.DomainModel.NoiseEmployee\" Role=\"Comm" +
-                "ent_NoiseEmployee_Target\" Multiplicity=\"0..1\" /></Association><EntityContainer N" +
-                "ame=\"DomainModelContext\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=\"Nois" +
-                "eMeasurements\" EntityType=\"OpenResKit.DomainModel.NoiseMeasurement\" /><EntitySet" +
-                " Name=\"MeasuringDevices\" EntityType=\"OpenResKit.DomainModel.MeasuringDevice\" /><" +
-                "EntitySet Name=\"LegalBasis\" EntityType=\"OpenResKit.DomainModel.LegalBasis\" /><En" +
-                "titySet Name=\"NoiseEmployees\" EntityType=\"OpenResKit.DomainModel.NoiseEmployee\" " +
-                "/><EntitySet Name=\"MeasuringPoints\" EntityType=\"OpenResKit.DomainModel.Measuring" +
-                "Point\" /><EntitySet Name=\"DescriptivePositions\" EntityType=\"OpenResKit.DomainMod" +
-                "el.DescriptivePosition\" /><EntitySet Name=\"NoiseMapPositions\" EntityType=\"OpenRe" +
-                "sKit.DomainModel.NoiseMapPosition\" /><EntitySet Name=\"NoiseMaps\" EntityType=\"Ope" +
-                "nResKit.DomainModel.NoiseMap\" /><EntitySet Name=\"Files\" EntityType=\"OpenResKit.D" +
-                "omainModel.File\" /><EntitySet Name=\"GeoPositions\" EntityType=\"OpenResKit.DomainM" +
-                "odel.GeoPosition\" /><EntitySet Name=\"Attachments\" EntityType=\"OpenResKit.DomainM" +
-                "odel.Attachment\" /><EntitySet Name=\"Comments\" EntityType=\"OpenResKit.DomainModel" +
-                ".Comment\" /><EntitySet Name=\"LogEntries\" EntityType=\"OpenResKit.DomainModel.LogE" +
-                "ntry\" /><AssociationSet Name=\"NoiseMeasurement_MeasuringDevice\" Association=\"Ope" +
-                "nResKit.DomainModel.NoiseMeasurement_MeasuringDevice\"><End Role=\"NoiseMeasuremen" +
-                "t_MeasuringDevice_Source\" EntitySet=\"NoiseMeasurements\" /><End Role=\"NoiseMeasur" +
-                "ement_MeasuringDevice_Target\" EntitySet=\"MeasuringDevices\" /></AssociationSet><A" +
-                "ssociationSet Name=\"NoiseMeasurement_LegalBasis\" Association=\"OpenResKit.DomainM" +
-                "odel.NoiseMeasurement_LegalBasis\"><End Role=\"NoiseMeasurement_LegalBasis_Source\"" +
-                " EntitySet=\"NoiseMeasurements\" /><End Role=\"NoiseMeasurement_LegalBasis_Target\" " +
-                "EntitySet=\"LegalBasis\" /></AssociationSet><AssociationSet Name=\"NoiseMeasurement" +
-                "_NoiseEmployee\" Association=\"OpenResKit.DomainModel.NoiseMeasurement_NoiseEmploy" +
-                "ee\"><End Role=\"NoiseMeasurement_NoiseEmployee_Source\" EntitySet=\"NoiseMeasuremen" +
-                "ts\" /><End Role=\"NoiseMeasurement_NoiseEmployee_Target\" Ent";
+                "microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"BinarySource\" Type=\"" +
+                "Edm.Binary\" MaxLength=\"Max\" FixedLength=\"false\" /></EntityType><Association Name" +
+                "=\"NoiseMeasurement_Method\"><End Type=\"OpenResKit.DomainModel.MeasuringMethod\" Ro" +
+                "le=\"NoiseMeasurement_Method_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit." +
+                "DomainModel.NoiseMeasurement\" Role=\"NoiseMeasurement_Method_Source\" Multiplicity" +
+                "=\"*\" /></Association><Association Name=\"NoiseMeasurement_MeasuringPoint\"><End Ty" +
+                "pe=\"OpenResKit.DomainModel.MeasuringPoint\" Role=\"NoiseMeasurement_MeasuringPoint" +
+                "_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.DomainModel.NoiseMeasuremen" +
+                "t\" Role=\"NoiseMeasurement_MeasuringPoint_Source\" Multiplicity=\"*\" /></Associatio" +
+                "n><Association Name=\"MeasuringPoint_Position\"><End Type=\"OpenResKit.DomainModel." +
+                "MeasuringPoint\" Role=\"MeasuringPoint_Position_Source\" Multiplicity=\"0..1\" /><End" +
+                " Type=\"OpenResKit.DomainModel.NoiseMapPosition\" Role=\"MeasuringPoint_Position_Ta" +
+                "rget\" Multiplicity=\"0..1\"><OnDelete Action=\"Cascade\" /></End></Association><Asso" +
+                "ciation Name=\"NoiseMapPosition_NoiseMap\"><End Type=\"OpenResKit.DomainModel.Noise" +
+                "Map\" Role=\"NoiseMapPosition_NoiseMap_Target\" Multiplicity=\"0..1\" /><End Type=\"Op" +
+                "enResKit.DomainModel.NoiseMapPosition\" Role=\"NoiseMapPosition_NoiseMap_Source\" M" +
+                "ultiplicity=\"*\" /></Association><Association Name=\"NoiseMap_File\"><End Type=\"Ope" +
+                "nResKit.DomainModel.File\" Role=\"NoiseMap_File_Target\" Multiplicity=\"0..1\"><OnDel" +
+                "ete Action=\"Cascade\" /></End><End Type=\"OpenResKit.DomainModel.NoiseMap\" Role=\"N" +
+                "oiseMap_File_Source\" Multiplicity=\"0..1\" /></Association><EntityContainer Name=\"" +
+                "DomainModelContext\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=\"NoiseMeas" +
+                "urements\" EntityType=\"OpenResKit.DomainModel.NoiseMeasurement\" /><EntitySet Name" +
+                "=\"MeasuringMethods\" EntityType=\"OpenResKit.DomainModel.MeasuringMethod\" /><Entit" +
+                "ySet Name=\"MeasuringPoints\" EntityType=\"OpenResKit.DomainModel.MeasuringPoint\" /" +
+                "><EntitySet Name=\"NoiseMapPositions\" EntityType=\"OpenResKit.DomainModel.NoiseMap" +
+                "Position\" /><EntitySet Name=\"NoiseMaps\" EntityType=\"OpenResKit.DomainModel.Noise" +
+                "Map\" /><EntitySet Name=\"Files\" EntityType=\"OpenResKit.DomainModel.File\" /><Assoc" +
+                "iationSet Name=\"NoiseMeasurement_Method\" Association=\"OpenResKit.DomainModel.Noi" +
+                "seMeasurement_Method\"><End Role=\"NoiseMeasurement_Method_Source\" EntitySet=\"Nois" +
+                "eMeasurements\" /><End Role=\"NoiseMeasurement_Method_Target\" EntitySet=\"Measuring" +
+                "Methods\" /></AssociationSet><AssociationSet Name=\"NoiseMeasurement_MeasuringPoin" +
+                "t\" Association=\"OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint\"><End Rol" +
+                "e=\"NoiseMeasurement_MeasuringPoint_Source\" EntitySet=\"NoiseMeasurements\" /><End " +
+                "Role=\"NoiseMeasurement_MeasuringPoint_Target\" EntitySet=\"MeasuringPoints\" /></As" +
+                "sociationSet><AssociationSet Name=\"MeasuringPoint_Position\" Association=\"OpenRes" +
+                "Kit.DomainModel.MeasuringPoint_Position\"><End Role=\"MeasuringPoint_Position_Sour" +
+                "ce\" EntitySet=\"MeasuringPoints\" /><End Role=\"MeasuringPoint_Position_Target\" Ent" +
+                "itySet=\"NoiseMapPositions\" /></AssociationSet><AssociationSet Name=\"NoiseMapPosi" +
+                "tion_NoiseMap\" Association=\"OpenResKit.DomainModel.NoiseMapPosition_NoiseMap\"><E" +
+                "nd Role=\"NoiseMapPosition_NoiseMap_Source\" EntitySet=\"NoiseMapPositions\" /><End " +
+                "Role=\"NoiseMapPosition_NoiseMap_Target\" EntitySet=\"NoiseMaps\" /></AssociationSet" +
+                "><AssociationSet Name=\"NoiseMap_File\" Association=\"OpenResK";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart2 = "itySet=\"NoiseEmployees\" /></AssociationSet><AssociationSet Name=\"NoiseMeasurement" +
-                "_MeasuringPoint\" Association=\"OpenResKit.DomainModel.NoiseMeasurement_MeasuringP" +
-                "oint\"><End Role=\"NoiseMeasurement_MeasuringPoint_Source\" EntitySet=\"NoiseMeasure" +
-                "ments\" /><End Role=\"NoiseMeasurement_MeasuringPoint_Target\" EntitySet=\"Measuring" +
-                "Points\" /></AssociationSet><AssociationSet Name=\"NoiseMeasurement_Attachments\" A" +
-                "ssociation=\"OpenResKit.DomainModel.NoiseMeasurement_Attachments\"><End Role=\"Nois" +
-                "eMeasurement_Attachments_Source\" EntitySet=\"NoiseMeasurements\" /><End Role=\"Nois" +
-                "eMeasurement_Attachments_Target\" EntitySet=\"Attachments\" /></AssociationSet><Ass" +
-                "ociationSet Name=\"NoiseMeasurement_Comments\" Association=\"OpenResKit.DomainModel" +
-                ".NoiseMeasurement_Comments\"><End Role=\"NoiseMeasurement_Comments_Source\" EntityS" +
-                "et=\"NoiseMeasurements\" /><End Role=\"NoiseMeasurement_Comments_Target\" EntitySet=" +
-                "\"Comments\" /></AssociationSet><AssociationSet Name=\"MeasuringPoint_DescriptivePo" +
-                "sition\" Association=\"OpenResKit.DomainModel.MeasuringPoint_DescriptivePosition\">" +
-                "<End Role=\"MeasuringPoint_DescriptivePosition_Source\" EntitySet=\"MeasuringPoints" +
-                "\" /><End Role=\"MeasuringPoint_DescriptivePosition_Target\" EntitySet=\"Descriptive" +
-                "Positions\" /></AssociationSet><AssociationSet Name=\"MeasuringPoint_NoiseMapPosit" +
-                "ion\" Association=\"OpenResKit.DomainModel.MeasuringPoint_NoiseMapPosition\"><End R" +
-                "ole=\"MeasuringPoint_NoiseMapPosition_Source\" EntitySet=\"MeasuringPoints\" /><End " +
-                "Role=\"MeasuringPoint_NoiseMapPosition_Target\" EntitySet=\"NoiseMapPositions\" /></" +
-                "AssociationSet><AssociationSet Name=\"MeasuringPoint_GeoPosition\" Association=\"Op" +
-                "enResKit.DomainModel.MeasuringPoint_GeoPosition\"><End Role=\"MeasuringPoint_GeoPo" +
-                "sition_Source\" EntitySet=\"MeasuringPoints\" /><End Role=\"MeasuringPoint_GeoPositi" +
-                "on_Target\" EntitySet=\"GeoPositions\" /></AssociationSet><AssociationSet Name=\"Noi" +
-                "seMapPosition_NoiseMap\" Association=\"OpenResKit.DomainModel.NoiseMapPosition_Noi" +
-                "seMap\"><End Role=\"NoiseMapPosition_NoiseMap_Source\" EntitySet=\"NoiseMapPositions" +
-                "\" /><End Role=\"NoiseMapPosition_NoiseMap_Target\" EntitySet=\"NoiseMaps\" /></Assoc" +
-                "iationSet><AssociationSet Name=\"NoiseMap_File\" Association=\"OpenResKit.DomainMod" +
-                "el.NoiseMap_File\"><End Role=\"NoiseMap_File_Source\" EntitySet=\"NoiseMaps\" /><End " +
-                "Role=\"NoiseMap_File_Target\" EntitySet=\"Files\" /></AssociationSet><AssociationSet" +
-                " Name=\"NoiseMap_DescriptivePosition\" Association=\"OpenResKit.DomainModel.NoiseMa" +
-                "p_DescriptivePosition\"><End Role=\"NoiseMap_DescriptivePosition_Source\" EntitySet" +
-                "=\"NoiseMaps\" /><End Role=\"NoiseMap_DescriptivePosition_Target\" EntitySet=\"Descri" +
-                "ptivePositions\" /></AssociationSet><AssociationSet Name=\"Attachment_File\" Associ" +
-                "ation=\"OpenResKit.DomainModel.Attachment_File\"><End Role=\"Attachment_File_Source" +
-                "\" EntitySet=\"Attachments\" /><End Role=\"Attachment_File_Target\" EntitySet=\"Files\"" +
-                " /></AssociationSet><AssociationSet Name=\"Comment_NoiseEmployee\" Association=\"Op" +
-                "enResKit.DomainModel.Comment_NoiseEmployee\"><End Role=\"Comment_NoiseEmployee_Sou" +
-                "rce\" EntitySet=\"Comments\" /><End Role=\"Comment_NoiseEmployee_Target\" EntitySet=\"" +
-                "NoiseEmployees\" /></AssociationSet></EntityContainer></Schema></edmx:DataService" +
-                "s></edmx:Edmx>";
+            private const string ModelPart1 = "it.DomainModel.NoiseMap_File\"><End Role=\"NoiseMap_File_Source\" EntitySet=\"NoiseMa" +
+                "ps\" /><End Role=\"NoiseMap_File_Target\" EntitySet=\"Files\" /></AssociationSet></En" +
+                "tityContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
-                return string.Concat(ModelPart0, ModelPart1, ModelPart2);
+                return string.Concat(ModelPart0, ModelPart1);
             }
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             public static global::Microsoft.Data.Edm.IEdmModel GetInstance()
@@ -792,59 +485,67 @@ namespace KrachConnect.DomainModelService
         partial void OnAverageValueChanging(float value);
         partial void OnAverageValueChanged();
         /// <summary>
-        /// There are no comments for MeasuringDevice in the schema.
+        /// There are no comments for Property Employee in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public MeasuringDevice MeasuringDevice
+        public string Employee
         {
             get
             {
-                return this._MeasuringDevice;
+                return this._Employee;
             }
             set
             {
-                this._MeasuringDevice = value;
-                this.OnPropertyChanged("MeasuringDevice");
+                this.OnEmployeeChanging(value);
+                this._Employee = value;
+                this.OnEmployeeChanged();
+                this.OnPropertyChanged("Employee");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private MeasuringDevice _MeasuringDevice;
+        private string _Employee;
+        partial void OnEmployeeChanging(string value);
+        partial void OnEmployeeChanged();
         /// <summary>
-        /// There are no comments for LegalBasis in the schema.
+        /// There are no comments for Property Comment in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public LegalBasis LegalBasis
+        public string Comment
         {
             get
             {
-                return this._LegalBasis;
+                return this._Comment;
             }
             set
             {
-                this._LegalBasis = value;
-                this.OnPropertyChanged("LegalBasis");
+                this.OnCommentChanging(value);
+                this._Comment = value;
+                this.OnCommentChanged();
+                this.OnPropertyChanged("Comment");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private LegalBasis _LegalBasis;
+        private string _Comment;
+        partial void OnCommentChanging(string value);
+        partial void OnCommentChanged();
         /// <summary>
-        /// There are no comments for NoiseEmployee in the schema.
+        /// There are no comments for Method in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public NoiseEmployee NoiseEmployee
+        public MeasuringMethod Method
         {
             get
             {
-                return this._NoiseEmployee;
+                return this._Method;
             }
             set
             {
-                this._NoiseEmployee = value;
-                this.OnPropertyChanged("NoiseEmployee");
+                this._Method = value;
+                this.OnPropertyChanged("Method");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private NoiseEmployee _NoiseEmployee;
+        private MeasuringMethod _Method;
         /// <summary>
         /// There are no comments for MeasuringPoint in the schema.
         /// </summary>
@@ -863,42 +564,6 @@ namespace KrachConnect.DomainModelService
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private MeasuringPoint _MeasuringPoint;
-        /// <summary>
-        /// There are no comments for Attachments in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<Attachment> Attachments
-        {
-            get
-            {
-                return this._Attachments;
-            }
-            set
-            {
-                this._Attachments = value;
-                this.OnPropertyChanged("Attachments");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<Attachment> _Attachments = new global::System.Data.Services.Client.DataServiceCollection<Attachment>(null, global::System.Data.Services.Client.TrackingMode.None);
-        /// <summary>
-        /// There are no comments for Comments in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<Comment> Comments
-        {
-            get
-            {
-                return this._Comments;
-            }
-            set
-            {
-                this._Comments = value;
-                this.OnPropertyChanged("Comments");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<Comment> _Comments = new global::System.Data.Services.Client.DataServiceCollection<Comment>(null, global::System.Data.Services.Client.TrackingMode.None);
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -911,25 +576,25 @@ namespace KrachConnect.DomainModelService
         }
     }
     /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.MeasuringDevice in the schema.
+    /// There are no comments for OpenResKit.DomainModel.MeasuringMethod in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("MeasuringDevices")]
+    [global::System.Data.Services.Common.EntitySetAttribute("MeasuringMethods")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class MeasuringDevice : global::System.ComponentModel.INotifyPropertyChanged
+    public partial class MeasuringMethod : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
-        /// Create a new MeasuringDevice object.
+        /// Create a new MeasuringMethod object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static MeasuringDevice CreateMeasuringDevice(int ID)
+        public static MeasuringMethod CreateMeasuringMethod(int ID)
         {
-            MeasuringDevice measuringDevice = new MeasuringDevice();
-            measuringDevice.Id = ID;
-            return measuringDevice;
+            MeasuringMethod measuringMethod = new MeasuringMethod();
+            measuringMethod.Id = ID;
+            return measuringMethod;
         }
         /// <summary>
         /// There are no comments for Property Id in the schema.
@@ -997,388 +662,6 @@ namespace KrachConnect.DomainModelService
         private string _Description;
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.LegalBasis in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("LegalBasis")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class LegalBasis : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new LegalBasis object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="date">Initial value of Date.</param>
-        /// <param name="greenValue">Initial value of GreenValue.</param>
-        /// <param name="yellowValue">Initial value of YellowValue.</param>
-        /// <param name="redValue">Initial value of RedValue.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static LegalBasis CreateLegalBasis(int ID, global::System.DateTime date, float greenValue, float yellowValue, float redValue)
-        {
-            LegalBasis legalBasis = new LegalBasis();
-            legalBasis.Id = ID;
-            legalBasis.Date = date;
-            legalBasis.GreenValue = greenValue;
-            legalBasis.YellowValue = yellowValue;
-            legalBasis.RedValue = redValue;
-            return legalBasis;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-                this.OnPropertyChanged("Name");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property Date in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.DateTime Date
-        {
-            get
-            {
-                return this._Date;
-            }
-            set
-            {
-                this.OnDateChanging(value);
-                this._Date = value;
-                this.OnDateChanged();
-                this.OnPropertyChanged("Date");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.DateTime _Date;
-        partial void OnDateChanging(global::System.DateTime value);
-        partial void OnDateChanged();
-        /// <summary>
-        /// There are no comments for Property Description in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Description
-        {
-            get
-            {
-                return this._Description;
-            }
-            set
-            {
-                this.OnDescriptionChanging(value);
-                this._Description = value;
-                this.OnDescriptionChanged();
-                this.OnPropertyChanged("Description");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Description;
-        partial void OnDescriptionChanging(string value);
-        partial void OnDescriptionChanged();
-        /// <summary>
-        /// There are no comments for Property GreenValue in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public float GreenValue
-        {
-            get
-            {
-                return this._GreenValue;
-            }
-            set
-            {
-                this.OnGreenValueChanging(value);
-                this._GreenValue = value;
-                this.OnGreenValueChanged();
-                this.OnPropertyChanged("GreenValue");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private float _GreenValue;
-        partial void OnGreenValueChanging(float value);
-        partial void OnGreenValueChanged();
-        /// <summary>
-        /// There are no comments for Property YellowValue in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public float YellowValue
-        {
-            get
-            {
-                return this._YellowValue;
-            }
-            set
-            {
-                this.OnYellowValueChanging(value);
-                this._YellowValue = value;
-                this.OnYellowValueChanged();
-                this.OnPropertyChanged("YellowValue");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private float _YellowValue;
-        partial void OnYellowValueChanging(float value);
-        partial void OnYellowValueChanged();
-        /// <summary>
-        /// There are no comments for Property RedValue in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public float RedValue
-        {
-            get
-            {
-                return this._RedValue;
-            }
-            set
-            {
-                this.OnRedValueChanging(value);
-                this._RedValue = value;
-                this.OnRedValueChanged();
-                this.OnPropertyChanged("RedValue");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private float _RedValue;
-        partial void OnRedValueChanging(float value);
-        partial void OnRedValueChanged();
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.NoiseEmployee in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("NoiseEmployees")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class NoiseEmployee : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new NoiseEmployee object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="role">Initial value of Role.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static NoiseEmployee CreateNoiseEmployee(int ID, int role)
-        {
-            NoiseEmployee noiseEmployee = new NoiseEmployee();
-            noiseEmployee.Id = ID;
-            noiseEmployee.Role = role;
-            return noiseEmployee;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property FirstName in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string FirstName
-        {
-            get
-            {
-                return this._FirstName;
-            }
-            set
-            {
-                this.OnFirstNameChanging(value);
-                this._FirstName = value;
-                this.OnFirstNameChanged();
-                this.OnPropertyChanged("FirstName");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _FirstName;
-        partial void OnFirstNameChanging(string value);
-        partial void OnFirstNameChanged();
-        /// <summary>
-        /// There are no comments for Property LastName in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string LastName
-        {
-            get
-            {
-                return this._LastName;
-            }
-            set
-            {
-                this.OnLastNameChanging(value);
-                this._LastName = value;
-                this.OnLastNameChanged();
-                this.OnPropertyChanged("LastName");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _LastName;
-        partial void OnLastNameChanging(string value);
-        partial void OnLastNameChanged();
-        /// <summary>
-        /// There are no comments for Property Role in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Role
-        {
-            get
-            {
-                return this._Role;
-            }
-            set
-            {
-                this.OnRoleChanging(value);
-                this._Role = value;
-                this.OnRoleChanged();
-                this.OnPropertyChanged("Role");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Role;
-        partial void OnRoleChanging(int value);
-        partial void OnRoleChanged();
-        /// <summary>
-        /// There are no comments for Property Department in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Department
-        {
-            get
-            {
-                return this._Department;
-            }
-            set
-            {
-                this.OnDepartmentChanging(value);
-                this._Department = value;
-                this.OnDepartmentChanged();
-                this.OnPropertyChanged("Department");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Department;
-        partial void OnDepartmentChanging(string value);
-        partial void OnDepartmentChanged();
-        /// <summary>
-        /// There are no comments for Property Email in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Email
-        {
-            get
-            {
-                return this._Email;
-            }
-            set
-            {
-                this.OnEmailChanging(value);
-                this._Email = value;
-                this.OnEmailChanged();
-                this.OnPropertyChanged("Email");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Email;
-        partial void OnEmailChanging(string value);
-        partial void OnEmailChanged();
-        /// <summary>
-        /// There are no comments for Property Password in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Password
-        {
-            get
-            {
-                return this._Password;
-            }
-            set
-            {
-                this.OnPasswordChanging(value);
-                this._Password = value;
-                this.OnPasswordChanged();
-                this.OnPropertyChanged("Password");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Password;
-        partial void OnPasswordChanging(string value);
-        partial void OnPasswordChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1404,11 +687,17 @@ namespace KrachConnect.DomainModelService
         /// Create a new MeasuringPoint object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="greenValue">Initial value of GreenValue.</param>
+        /// <param name="yellowValue">Initial value of YellowValue.</param>
+        /// <param name="redValue">Initial value of RedValue.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static MeasuringPoint CreateMeasuringPoint(int ID)
+        public static MeasuringPoint CreateMeasuringPoint(int ID, float greenValue, float yellowValue, float redValue)
         {
             MeasuringPoint measuringPoint = new MeasuringPoint();
             measuringPoint.Id = ID;
+            measuringPoint.GreenValue = greenValue;
+            measuringPoint.YellowValue = yellowValue;
+            measuringPoint.RedValue = redValue;
             return measuringPoint;
         }
         /// <summary>
@@ -1478,179 +767,111 @@ namespace KrachConnect.DomainModelService
         partial void OnBarcodeChanging(string value);
         partial void OnBarcodeChanged();
         /// <summary>
-        /// There are no comments for DescriptivePosition in the schema.
+        /// There are no comments for Property Notes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public DescriptivePosition DescriptivePosition
+        public string Notes
         {
             get
             {
-                return this._DescriptivePosition;
+                return this._Notes;
             }
             set
             {
-                this._DescriptivePosition = value;
-                this.OnPropertyChanged("DescriptivePosition");
+                this.OnNotesChanging(value);
+                this._Notes = value;
+                this.OnNotesChanged();
+                this.OnPropertyChanged("Notes");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private DescriptivePosition _DescriptivePosition;
+        private string _Notes;
+        partial void OnNotesChanging(string value);
+        partial void OnNotesChanged();
         /// <summary>
-        /// There are no comments for NoiseMapPosition in the schema.
+        /// There are no comments for Property GreenValue in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public NoiseMapPosition NoiseMapPosition
+        public float GreenValue
         {
             get
             {
-                return this._NoiseMapPosition;
+                return this._GreenValue;
             }
             set
             {
-                this._NoiseMapPosition = value;
-                this.OnPropertyChanged("NoiseMapPosition");
+                this.OnGreenValueChanging(value);
+                this._GreenValue = value;
+                this.OnGreenValueChanged();
+                this.OnPropertyChanged("GreenValue");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private NoiseMapPosition _NoiseMapPosition;
+        private float _GreenValue;
+        partial void OnGreenValueChanging(float value);
+        partial void OnGreenValueChanged();
         /// <summary>
-        /// There are no comments for GeoPosition in the schema.
+        /// There are no comments for Property YellowValue in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public GeoPosition GeoPosition
+        public float YellowValue
         {
             get
             {
-                return this._GeoPosition;
+                return this._YellowValue;
             }
             set
             {
-                this._GeoPosition = value;
-                this.OnPropertyChanged("GeoPosition");
+                this.OnYellowValueChanging(value);
+                this._YellowValue = value;
+                this.OnYellowValueChanged();
+                this.OnPropertyChanged("YellowValue");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private GeoPosition _GeoPosition;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.DescriptivePosition in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("DescriptivePositions")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class DescriptivePosition : global::System.ComponentModel.INotifyPropertyChanged
-    {
+        private float _YellowValue;
+        partial void OnYellowValueChanging(float value);
+        partial void OnYellowValueChanged();
         /// <summary>
-        /// Create a new DescriptivePosition object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static DescriptivePosition CreateDescriptivePosition(int ID)
-        {
-            DescriptivePosition descriptivePosition = new DescriptivePosition();
-            descriptivePosition.Id = ID;
-            return descriptivePosition;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
+        /// There are no comments for Property RedValue in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
+        public float RedValue
         {
             get
             {
-                return this._Id;
+                return this._RedValue;
             }
             set
             {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
+                this.OnRedValueChanging(value);
+                this._RedValue = value;
+                this.OnRedValueChanged();
+                this.OnPropertyChanged("RedValue");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
+        private float _RedValue;
+        partial void OnRedValueChanging(float value);
+        partial void OnRedValueChanged();
         /// <summary>
-        /// There are no comments for Property Site in the schema.
+        /// There are no comments for Position in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Site
+        public NoiseMapPosition Position
         {
             get
             {
-                return this._Site;
+                return this._Position;
             }
             set
             {
-                this.OnSiteChanging(value);
-                this._Site = value;
-                this.OnSiteChanged();
-                this.OnPropertyChanged("Site");
+                this._Position = value;
+                this.OnPropertyChanged("Position");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Site;
-        partial void OnSiteChanging(string value);
-        partial void OnSiteChanged();
-        /// <summary>
-        /// There are no comments for Property Building in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Building
-        {
-            get
-            {
-                return this._Building;
-            }
-            set
-            {
-                this.OnBuildingChanging(value);
-                this._Building = value;
-                this.OnBuildingChanged();
-                this.OnPropertyChanged("Building");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Building;
-        partial void OnBuildingChanging(string value);
-        partial void OnBuildingChanged();
-        /// <summary>
-        /// There are no comments for Property Level in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Level
-        {
-            get
-            {
-                return this._Level;
-            }
-            set
-            {
-                this.OnLevelChanging(value);
-                this._Level = value;
-                this.OnLevelChanged();
-                this.OnPropertyChanged("Level");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Level;
-        partial void OnLevelChanging(string value);
-        partial void OnLevelChanged();
+        private NoiseMapPosition _Position;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1826,6 +1047,72 @@ namespace KrachConnect.DomainModelService
         partial void OnIdChanging(int value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Site in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Site
+        {
+            get
+            {
+                return this._Site;
+            }
+            set
+            {
+                this.OnSiteChanging(value);
+                this._Site = value;
+                this.OnSiteChanged();
+                this.OnPropertyChanged("Site");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Site;
+        partial void OnSiteChanging(string value);
+        partial void OnSiteChanged();
+        /// <summary>
+        /// There are no comments for Property Building in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Building
+        {
+            get
+            {
+                return this._Building;
+            }
+            set
+            {
+                this.OnBuildingChanging(value);
+                this._Building = value;
+                this.OnBuildingChanged();
+                this.OnPropertyChanged("Building");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Building;
+        partial void OnBuildingChanging(string value);
+        partial void OnBuildingChanged();
+        /// <summary>
+        /// There are no comments for Property Level in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Level
+        {
+            get
+            {
+                return this._Level;
+            }
+            set
+            {
+                this.OnLevelChanging(value);
+                this._Level = value;
+                this.OnLevelChanged();
+                this.OnPropertyChanged("Level");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Level;
+        partial void OnLevelChanging(string value);
+        partial void OnLevelChanged();
+        /// <summary>
         /// There are no comments for File in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1843,24 +1130,6 @@ namespace KrachConnect.DomainModelService
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private File _File;
-        /// <summary>
-        /// There are no comments for DescriptivePosition in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public DescriptivePosition DescriptivePosition
-        {
-            get
-            {
-                return this._DescriptivePosition;
-            }
-            set
-            {
-                this._DescriptivePosition = value;
-                this.OnPropertyChanged("DescriptivePosition");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private DescriptivePosition _DescriptivePosition;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1944,464 +1213,6 @@ namespace KrachConnect.DomainModelService
         private byte[] _BinarySource;
         partial void OnBinarySourceChanging(byte[] value);
         partial void OnBinarySourceChanged();
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.GeoPosition in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("GeoPositions")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class GeoPosition : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new GeoPosition object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="latitude">Initial value of Latitude.</param>
-        /// <param name="longitude">Initial value of Longitude.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static GeoPosition CreateGeoPosition(int ID, double latitude, double longitude)
-        {
-            GeoPosition geoPosition = new GeoPosition();
-            geoPosition.Id = ID;
-            geoPosition.Latitude = latitude;
-            geoPosition.Longitude = longitude;
-            return geoPosition;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Latitude in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public double Latitude
-        {
-            get
-            {
-                return this._Latitude;
-            }
-            set
-            {
-                this.OnLatitudeChanging(value);
-                this._Latitude = value;
-                this.OnLatitudeChanged();
-                this.OnPropertyChanged("Latitude");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private double _Latitude;
-        partial void OnLatitudeChanging(double value);
-        partial void OnLatitudeChanged();
-        /// <summary>
-        /// There are no comments for Property Longitude in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public double Longitude
-        {
-            get
-            {
-                return this._Longitude;
-            }
-            set
-            {
-                this.OnLongitudeChanging(value);
-                this._Longitude = value;
-                this.OnLongitudeChanged();
-                this.OnPropertyChanged("Longitude");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private double _Longitude;
-        partial void OnLongitudeChanging(double value);
-        partial void OnLongitudeChanged();
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.Attachment in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("Attachments")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class Attachment : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new Attachment object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static Attachment CreateAttachment(int ID)
-        {
-            Attachment attachment = new Attachment();
-            attachment.Id = ID;
-            return attachment;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property FileName in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string FileName
-        {
-            get
-            {
-                return this._FileName;
-            }
-            set
-            {
-                this.OnFileNameChanging(value);
-                this._FileName = value;
-                this.OnFileNameChanged();
-                this.OnPropertyChanged("FileName");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _FileName;
-        partial void OnFileNameChanging(string value);
-        partial void OnFileNameChanged();
-        /// <summary>
-        /// There are no comments for File in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public File File
-        {
-            get
-            {
-                return this._File;
-            }
-            set
-            {
-                this._File = value;
-                this.OnPropertyChanged("File");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private File _File;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.Comment in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("Comments")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class Comment : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new Comment object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="commentDate">Initial value of CommentDate.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static Comment CreateComment(int ID, global::System.DateTime commentDate)
-        {
-            Comment comment = new Comment();
-            comment.Id = ID;
-            comment.CommentDate = commentDate;
-            return comment;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property CommentDate in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.DateTime CommentDate
-        {
-            get
-            {
-                return this._CommentDate;
-            }
-            set
-            {
-                this.OnCommentDateChanging(value);
-                this._CommentDate = value;
-                this.OnCommentDateChanged();
-                this.OnPropertyChanged("CommentDate");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.DateTime _CommentDate;
-        partial void OnCommentDateChanging(global::System.DateTime value);
-        partial void OnCommentDateChanged();
-        /// <summary>
-        /// There are no comments for Property CommentText in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string CommentText
-        {
-            get
-            {
-                return this._CommentText;
-            }
-            set
-            {
-                this.OnCommentTextChanging(value);
-                this._CommentText = value;
-                this.OnCommentTextChanged();
-                this.OnPropertyChanged("CommentText");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _CommentText;
-        partial void OnCommentTextChanging(string value);
-        partial void OnCommentTextChanged();
-        /// <summary>
-        /// There are no comments for NoiseEmployee in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public NoiseEmployee NoiseEmployee
-        {
-            get
-            {
-                return this._NoiseEmployee;
-            }
-            set
-            {
-                this._NoiseEmployee = value;
-                this.OnPropertyChanged("NoiseEmployee");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private NoiseEmployee _NoiseEmployee;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for OpenResKit.DomainModel.LogEntry in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("LogEntries")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class LogEntry : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new LogEntry object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="entryDate">Initial value of EntryDate.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static LogEntry CreateLogEntry(int ID, global::System.DateTime entryDate)
-        {
-            LogEntry logEntry = new LogEntry();
-            logEntry.Id = ID;
-            logEntry.EntryDate = entryDate;
-            return logEntry;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property EntryDate in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.DateTime EntryDate
-        {
-            get
-            {
-                return this._EntryDate;
-            }
-            set
-            {
-                this.OnEntryDateChanging(value);
-                this._EntryDate = value;
-                this.OnEntryDateChanged();
-                this.OnPropertyChanged("EntryDate");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.DateTime _EntryDate;
-        partial void OnEntryDateChanging(global::System.DateTime value);
-        partial void OnEntryDateChanged();
-        /// <summary>
-        /// There are no comments for Property Description in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Description
-        {
-            get
-            {
-                return this._Description;
-            }
-            set
-            {
-                this.OnDescriptionChanging(value);
-                this._Description = value;
-                this.OnDescriptionChanged();
-                this.OnPropertyChanged("Description");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Description;
-        partial void OnDescriptionChanging(string value);
-        partial void OnDescriptionChanged();
-        /// <summary>
-        /// There are no comments for Property OldValue in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string OldValue
-        {
-            get
-            {
-                return this._OldValue;
-            }
-            set
-            {
-                this.OnOldValueChanging(value);
-                this._OldValue = value;
-                this.OnOldValueChanged();
-                this.OnPropertyChanged("OldValue");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _OldValue;
-        partial void OnOldValueChanging(string value);
-        partial void OnOldValueChanged();
-        /// <summary>
-        /// There are no comments for Property NewValue in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string NewValue
-        {
-            get
-            {
-                return this._NewValue;
-            }
-            set
-            {
-                this.OnNewValueChanging(value);
-                this._NewValue = value;
-                this.OnNewValueChanged();
-                this.OnPropertyChanged("NewValue");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _NewValue;
-        partial void OnNewValueChanging(string value);
-        partial void OnNewValueChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

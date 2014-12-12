@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KrachConnect
+namespace KrachConnect.Views
 {
   /// <summary>
-  /// Interaction logic for MainWindow.xaml
+  /// Interaction logic for MapAddView.xaml
   /// </summary>
-  public partial class MainWindow : Window
+  public partial class MapAddView : UserControl
   {
-    public MainWindow()
+    public MapAddView()
     {
       InitializeComponent();
-      var x = new NoiseRepository();
     }
   }
 }

@@ -42,14 +42,15 @@ namespace KrachConnect
     private void LoadMeasuringPoints()
     {
       _measuringPoints = new DataServiceCollection<MeasuringPoint>(_context);
-      DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints;
+      DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints.Expand("Position");
+      
       _measuringPoints.Load(query);
     }
 
     private void addMeasuringPoint()
     {
-      var mp = new MeasuringPoint();
-      mp.Name = "Große Maschine";
+      var position = new NoiseMapPosition {XPosition = 12, YPosition = 120};
+      var mp = new MeasuringPoint{Name = "Große Maschine", Position = position};
       _measuringPoints.Add(mp);
       Save();
     }
