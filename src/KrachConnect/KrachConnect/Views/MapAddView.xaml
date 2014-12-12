@@ -5,8 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="HotPink">
-      <TextBlock Text="{Binding MeasuringPoints}"></TextBlock>
-            
-    </Grid>
+  <Grid>
+    <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <Canvas/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemContainerStyle>
+        <Style>
+          <Setter Property="Canvas.Left" Value="{Binding Position.XPosition}"/>
+          <Setter Property="Canvas.Top" Value="{Binding Position.YPosition}"/>
+        </Style>
+      </ItemsControl.ItemContainerStyle>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Ellipse Height="20" Width="20" Fill="Firebrick"></Ellipse>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </Grid>
 </UserControl>

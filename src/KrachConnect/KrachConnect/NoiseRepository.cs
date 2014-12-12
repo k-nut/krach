@@ -49,8 +49,8 @@ namespace KrachConnect
 
     private void addMeasuringPoint()
     {
-      var position = new NoiseMapPosition {XPosition = 12, YPosition = 120};
-      var mp = new MeasuringPoint{Name = "Große Maschine", Position = position};
+      var position = new NoiseMapPosition {XPosition = 300, YPosition = 190};
+      var mp = new MeasuringPoint{Name = "Schleifmaschine Maschine", Position = position};
       _measuringPoints.Add(mp);
       Save();
     }
