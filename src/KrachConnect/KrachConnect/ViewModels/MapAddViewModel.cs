@@ -12,7 +12,7 @@ namespace KrachConnect.ViewModels
   class MapAddViewModel
   {
     private NoiseRepository repository;
-    private DataServiceCollection<MeasuringPoint> measuringPoints;
+    private IEnumerable<MeasuringPointViewModel> measuringPoints;
 
     public MapAddViewModel(NoiseRepository repository)
     {
@@ -21,6 +21,11 @@ namespace KrachConnect.ViewModels
 
     }
 
-    public IEnumerable<MeasuringPoint> MeasuringPoints { get { return measuringPoints; }}
+    public MeasuringPointViewModel SelectedMeasuringPoint
+    {
+      get { return measuringPoints.First(mp => mp.IsSelected); }
+    }
+
+    public IEnumerable<MeasuringPointViewModel> MeasuringPoints { get { return measuringPoints; }}
   }
 }

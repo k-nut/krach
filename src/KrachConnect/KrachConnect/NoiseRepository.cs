@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Services.Client;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using KrachConnect.DomainModelService;
 
@@ -11,6 +13,7 @@ namespace KrachConnect
     private readonly DomainModelContext _context;
     private DataServiceCollection<MeasuringPoint> _measuringPoints;
     private DataServiceCollection<NoiseMeasurement> _noiseMeasurements;
+    private List<MeasuringPointViewModel> measuringPointViewModels = new List<MeasuringPointViewModel>();
 
     public NoiseRepository()
     {
@@ -21,9 +24,9 @@ namespace KrachConnect
       //addMeasuringPoint();
     }
 
-    public DataServiceCollection<MeasuringPoint> MeasuringPoints
+    public IEnumerable<MeasuringPointViewModel> MeasuringPoints
     {
-      get { return _measuringPoints; }
+      get { return measuringPointViewModels; }
     }
 
     public DataServiceCollection<NoiseMeasurement> NoiseMeasurements
@@ -36,7 +39,6 @@ namespace KrachConnect
       _noiseMeasurements = new DataServiceCollection<NoiseMeasurement>(_context);
       DataServiceQuery<NoiseMeasurement> query = _context.NoiseMeasurements;
       _noiseMeasurements.Load(query);
-      Debug.WriteLine(_noiseMeasurements);
     }
 
     private void LoadMeasuringPoints()
@@ -45,6 +47,11 @@ namespace KrachConnect
       DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints.Expand("Position");
       
       _measuringPoints.Load(query);
+      foreach (var mp in _measuringPoints)
+      {
+        measuringPointViewModels.Add(new MeasuringPointViewModel(mp));
+      }
+      measuringPointViewModels.Last().IsSelected = true;
     }
 
     private void addMeasuringPoint()

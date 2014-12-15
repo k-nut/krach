@@ -11,6 +11,7 @@
       <ColumnDefinition></ColumnDefinition>
     </Grid.ColumnDefinitions>
     <StackPanel Grid.Column="0">
+      <TextBlock FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
       <TextBlock FontSize="20" Text="Messwerte hinzufügen" />
       <TextBlock Text="Datum" />
       <DatePicker />
@@ -64,13 +65,13 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemContainerStyle>
           <Style>
-            <Setter Property="Canvas.Left" Value="{Binding Position.XPosition}"/>
-            <Setter Property="Canvas.Top" Value="{Binding Position.YPosition}"/>
+            <Setter Property="Canvas.Left" Value="{Binding Model.Position.XPosition}"/>
+            <Setter Property="Canvas.Top" Value="{Binding Model.Position.YPosition}"/>
           </Style>
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <Ellipse Height="20" Width="20" Fill="Firebrick"></Ellipse>
+            <Ellipse Height="20" Width="20" Stroke="Black" Fill="Firebrick" StrokeThickness="{Binding Stroke}" ></Ellipse>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
