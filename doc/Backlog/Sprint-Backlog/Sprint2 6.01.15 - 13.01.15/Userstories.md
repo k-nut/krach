@@ -1,7 +1,7 @@
-4.) Als Angestellter möchte ich nicht weiter benötigte Messpunkte archivieren.
+4.) Als Angestellter mÃ¶chte ich nicht weiter benÃ¶tigte Messpunkte archivieren.
 	/ Test: Kann der Messpunkt archiviert werden, oder ist er schon archiviert?
-	/ Schätzung: 13 
+	/ SchÃ¤tzung: 13 
 
-5.) Als Geschäftsführer möchte ich eine visuelle Übersicht von Grenzwertüberschreitungen der Messpunkte.
-	/ Test: Kann eine Übersicht aus überschrittenen Grenzwerten erstellt werden?
-	/ Schätzung: 8
+5.) Als Analyst mÃ¶chte ich eine visuelle Ãœbersicht von GrenzwertÃ¼berschreitungen der Messpunkte.
+	/ Test: Kann eine Ãœbersicht aus Ã¼berschrittenen Grenzwerten erstellt werden?
+	/ SchÃ¤tzung: 8
