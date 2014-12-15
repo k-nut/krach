@@ -14,7 +14,7 @@
       <TextBlock FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
       <TextBlock FontSize="20" Text="Messwerte hinzufügen" />
       <TextBlock Text="Datum" />
-      <DatePicker />
+      <DatePicker DataContext="{Binding NewNoiseMeasurement.MeasurementDate}" />
       <Label Content="Uhrzeit" />
       <TextBox Text="12:13" />
       <Grid>
@@ -35,12 +35,12 @@
         </ComboBox>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Kürzel" />
-        <TextBox Text="K.H." Grid.Row="1" Grid.Column="1" />
+        <TextBox Text="{Binding NewNoiseMeasurement.Employee}" Grid.Row="1" Grid.Column="1" />
 
       </Grid>
 
       <Label>Minmalwert in Dezibel</Label>
-      <TextBox></TextBox>
+      <TextBox Text="{Binding NewNoiseMeasurement.MinValue}" />
       <Label>Mittelwert in Dezibel</Label>
       <TextBox></TextBox>
       <Label>Maximalwert in Dezibel</Label>
@@ -49,10 +49,10 @@
 
 
       <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-        <Button Content="Überspringen" />
-        <Button Content="Nächster">
-        </Button>
+        <Button Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
+        <Button Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint" IsEnabled="{Binding CanClick}" />
       </StackPanel>
+      <TextBlock Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}"></TextBlock>
 
     </StackPanel>
     <Grid Grid.Column="1">

@@ -66,7 +66,7 @@ namespace KrachConnect
       {
         measuringPointViewModels.Add(new MeasuringPointViewModel(mp));
       }
-      measuringPointViewModels.Last().IsSelected = true;
+      //measuringPointViewModels.Last().IsSelected = true;
     }
 
     private void addMeasuringPoint()
