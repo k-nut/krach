@@ -13,6 +13,7 @@ namespace KrachConnect
     private readonly DomainModelContext _context;
     private DataServiceCollection<MeasuringPoint> _measuringPoints;
     private DataServiceCollection<NoiseMeasurement> _noiseMeasurements;
+    private DataServiceCollection<NoiseMap> _maps;
     private List<MeasuringPointViewModel> measuringPointViewModels = new List<MeasuringPointViewModel>();
 
     public NoiseRepository()
@@ -20,7 +21,9 @@ namespace KrachConnect
       _context = new DomainModelContext(new Uri("http://141.45.92.171:7000/OpenResKitHub"));
       _context.Credentials = new NetworkCredential("root", "ork123");
       LoadMeasuringPoints();
+      LoadMaps();
       LoadNoiseMeasurements();
+
       //addMeasuringPoint();
     }
 
@@ -34,11 +37,23 @@ namespace KrachConnect
       get { return _noiseMeasurements; }
     }
 
+    public DataServiceCollection<NoiseMap> Maps
+    {
+      get { return _maps; }
+    }
+
     private void LoadNoiseMeasurements()
     {
       _noiseMeasurements = new DataServiceCollection<NoiseMeasurement>(_context);
-      DataServiceQuery<NoiseMeasurement> query = _context.NoiseMeasurements;
+      DataServiceQuery<NoiseMeasurement> query = _context.NoiseMeasurements.Expand("MeasuringPoint");
       _noiseMeasurements.Load(query);
+    }
+
+    private void LoadMaps()
+    {
+      _maps = new DataServiceCollection<NoiseMap>(_context);
+      DataServiceQuery<NoiseMap> query = _context.NoiseMaps.Expand("File");
+      _maps.Load(query);
     }
 
     private void LoadMeasuringPoints()
