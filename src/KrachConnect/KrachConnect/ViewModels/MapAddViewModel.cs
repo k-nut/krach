@@ -26,6 +26,6 @@ namespace KrachConnect.ViewModels
       get { return measuringPoints.First(mp => mp.IsSelected); }
     }
 
-    public IEnumerable<MeasuringPointViewModel> MeasuringPoints { get { return measuringPoints; }}
+    public IEnumerable<MeasuringPointViewModel> MeasuringPoints { get { return repository.MeasuringPoints; }}
   }
 }
