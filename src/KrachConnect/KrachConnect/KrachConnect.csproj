@@ -80,6 +80,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="ViewModels\MeasuringPointViewModel.cs" />
     <Compile Include="NoiseRepository.cs" />
     <Compile Include="Service References\DomainModelService\Reference.cs">
       <AutoGen>True</AutoGen>

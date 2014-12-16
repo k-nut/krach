@@ -1,39 +1,39 @@
-1.) Als Angestellter benötige ich eine Karte der Werkhalle um Messpunkte visuell darstellen zu können. 
-	/ Test: Ist die Karte vorhanden, um einen Messpunkt visuell darstellen zu können?
-	/ Schätzung: 1 
+1.) Als Angestellter benÃ¶tige ich eine Karte der Werkhalle um Messpunkte visuell darstellen zu kÃ¶nnen. 
+	/ Test: Eine Karte ist vorhanden, um einen Messpunkt visuell darstellen zu kÃ¶nnen.
+	/ SchÃ¤tzung: 1 
 
-2.) Als Angestellter möchte ich einen neuen Messpunkt hinzufügen.
-	/ Test: Kann ich einen neuen Messpunkt an dieser Stelle hinzufügen? 
-	/ Schätzung: 5 
+2.) Als Angestellter mÃ¶chte ich einen neuen Messpunkt hinzufÃ¼gen.
+	/ Test: Ich kann einen neuen Messpunkt an dieser Stelle hinzufÃ¼gen.
+	/ SchÃ¤tzung: 5 
 
-3.) Als Angestellter möchte ich zu allen Messpunkten neue Messwerte hinzufügen. 
-	/ Test: Sind alle eingegebenen Messpunkte vorhanden, um neue Messwerte hinzufügen zu können?
-	/ Schätzung: 8
+3.) Als Angestellter mÃ¶chte ich zu allen Messpunkten neue Messwerte hinzufÃ¼gen. 
+	/ Test: Alle eingegebenen Messpunkte sind vorhanden, um neue Messwerte hinzuzufÃ¼gen.
+	/ SchÃ¤tzung: 8
 
-4.) Als Angestellter möchte ich nicht weiter benötigte Messpunkte archivieren.
-	/ Test: Kann der Messpunkt archiviert werden, oder ist er schon archiviert?
-	/ Schätzung: 13 
+4.) Als Angestellter mÃ¶chte ich nicht weiter benÃ¶tigte Messpunkte archivieren.
+	/ Test: Der Messpunkt kann archiviert werden und ist noch nicht archiviert.
+	/ SchÃ¤tzung: 13 
 
-5.) Als Geschäftsführer möchte ich eine visuelle Übersicht von Grenzwertüberschreitungen der Messpunkte.
-	/ Test: Kann eine Übersicht aus überschrittenen Grenzwerten erstellt werden?
-	/ Schätzung: 8
+5.) Als Analyst mÃ¶chte ich eine visuelle Ãœbersicht von GrenzwertÃ¼berschreitungen der Messpunkte.
+	/ Test: Eine Ãœbersicht aus Ã¼berschrittenen Grenzwerten kann erstellt werden.
+	/ SchÃ¤tzung: 8
 
-6.) Als Geschäftsführer möchte ich eine sortierte Übersicht der Grenzwertüberschreitungen erhalten.
-	/ Test: Ist eine Sortierung der Grenzwertüberschreitungen nach Datum möglich?
-	/ Schätzung: 8
+6.) Als Analyst mÃ¶chte ich eine sortierte Ãœbersicht der GrenzwertÃ¼berschreitungen erhalten.
+	/ Test: Eine Sortierung der GrenzwertÃ¼berschreitungen nach Datum ist mÃ¶glich.
+	/ SchÃ¤tzung: 8
 
-7.) Als Geschäftsführer möchte ich eine sortierte Übersicht der Grenzwertüberschreitungen erhalten.
-	/ Test: Ist eine Sortierung der Grenzwertüberschreitungen nach Uhrzeit möglich?
-	/ Schätzung: 8
+7.) Als Analyst mÃ¶chte ich eine sortierte Ãœbersicht der GrenzwertÃ¼berschreitungen erhalten.
+	/ Test: Eine Sortierung der GrenzwertÃ¼berschreitungen nach Uhrzeit ist mÃ¶glich.
+	/ SchÃ¤tzung: 8
 
-8.) Als Angestellter möchte ich die Messungen filtern.
-	/Test: Können die Messungen nach Datum gefiltert werden?
-	/ Schätzung: 8
+8.) Als Angestellter mÃ¶chte ich die Messungen filtern.
+	/Test: Die Messungen kÃ¶nnen nach Datum gefiltert werden.
+	/ SchÃ¤tzung: 8
 
-9.) Als Angestellter möchte ich die Daten exportieren, um sie für ein Geschäftsbericht zu nutzen.
-	/ Test: Ist ein Import nach Word/ Excel für den Geschäftsbericht möglich?
-	/ Schätzung: 13
+9.) Als Analyst mÃ¶chte ich die Daten exportieren, um sie fÃ¼r ein GeschÃ¤ftsbericht zu nutzen.
+	/ Test: Ein Import nach Word/ Excel fÃ¼r den GeschÃ¤ftsbericht ist mÃ¶glich.
+	/ SchÃ¤tzung: 13
 
-10.) Als Angestellter möchte ich die Daten exportieren, um Sie für eine visuelle Darstellung zu nutzen.
-	/ Test: Ist ein Import nach Word/ Excel für die visuelle Darstellung möglich?
-	/ Schätzung: 13
+10.) Als Analyst mÃ¶chte ich die Daten exportieren, um Sie fÃ¼r eine visuelle Darstellung zu nutzen.
+	/ Test: Ein Import nach Word/ Excel fÃ¼r die visuelle Darstellung ist mÃ¶glich.
+	/ SchÃ¤tzung: 13
