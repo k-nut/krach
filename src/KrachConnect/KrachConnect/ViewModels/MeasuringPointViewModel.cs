@@ -1,3 +1,4 @@
+using System.Windows.Media;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 

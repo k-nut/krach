@@ -42,10 +42,10 @@
       <Label>Minmalwert in Dezibel</Label>
       <TextBox Text="{Binding NewNoiseMeasurement.MinValue}" />
       <Label>Mittelwert in Dezibel</Label>
-      <TextBox></TextBox>
+      <TextBox Text="{Binding NewNoiseMeasurement.AverageValue}" />
       <Label>Maximalwert in Dezibel</Label>
-      <TextBox></TextBox>
-      
+      <TextBox Text="{Binding NewNoiseMeasurement.MaxValue}" />
+
 
 
       <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
@@ -71,7 +71,7 @@
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <Ellipse Height="20" Width="20" Stroke="Black" Fill="Firebrick" StrokeThickness="{Binding Stroke}" ></Ellipse>
+            <Ellipse Height="20" Width="20" Stroke="Black" Fill="Green" StrokeThickness="{Binding Stroke}" ></Ellipse>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>

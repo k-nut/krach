@@ -18,6 +18,7 @@ namespace KrachConnect.ViewModels
     private IEnumerable<MeasuringPointViewModel> measuringPoints;
     private NoiseMeasurement newNoiseMeasurement;
     private Stack<MeasuringPointViewModel> unusedMearingPoints;
+    private MeasuringPointViewModel selectedMeasuringPoint;
 
     public MapAddViewModel(NoiseRepository repository)
     {
@@ -25,12 +26,23 @@ namespace KrachConnect.ViewModels
       measuringPoints = repository.MeasuringPoints;
       unusedMearingPoints = new Stack<MeasuringPointViewModel>(measuringPoints);
       newNoiseMeasurement = new NoiseMeasurement();
-      unusedMearingPoints.Pop().IsSelected = true;
+      SelectedMeasuringPoint = unusedMearingPoints.Pop();
+      SelectedMeasuringPoint.IsSelected = true;
+      MeasuringPoints = MeasuringPoints.Select(mp =>
+      {
+        mp.IsSelected = mp.Model == SelectedMeasuringPoint.Model;
+        return mp;
+      });
     }
 
     public MeasuringPointViewModel SelectedMeasuringPoint
     {
-      get { return measuringPoints.First(mp => mp.IsSelected); }
+      get { return selectedMeasuringPoint; }
+      set
+      {
+        selectedMeasuringPoint = value;
+        NotifyOfPropertyChange(() => SelectedMeasuringPoint);
+      }
     }
 
     public NoiseMeasurement NewNoiseMeasurement
@@ -59,10 +71,18 @@ namespace KrachConnect.ViewModels
     public void SelectNextMeasuringPoint()
     {
       SelectedMeasuringPoint.IsSelected = false;
-      unusedMearingPoints.Pop().IsSelected = true;
+      SelectedMeasuringPoint = unusedMearingPoints.Pop();
+      SelectedMeasuringPoint.IsSelected = true;
+      MeasuringPoints = MeasuringPoints.Select(mp =>
+      {
+        mp.IsSelected = mp.Model == SelectedMeasuringPoint.Model;
+        return mp;
+      });
+
       NotifyOfPropertyChange(() => SelectedMeasuringPoint);
       NotifyOfPropertyChange(() => CanClick);
       NotifyOfPropertyChange(() => AllDone);
+      NotifyOfPropertyChange(() => MeasuringPoints);
     }
 
     public bool CanClick
@@ -75,6 +95,14 @@ namespace KrachConnect.ViewModels
       get { return unusedMearingPoints.Count > 0 ? Visibility.Hidden : Visibility.Visible; }
     }
 
-    public IEnumerable<MeasuringPointViewModel> MeasuringPoints { get { return repository.MeasuringPoints; }}
+    public IEnumerable<MeasuringPointViewModel> MeasuringPoints
+    {
+      get { return measuringPoints; }
+      set
+      {
+        measuringPoints = value;
+        NotifyOfPropertyChange(() => MeasuringPoints);
+      }
+    }
   }
 }
