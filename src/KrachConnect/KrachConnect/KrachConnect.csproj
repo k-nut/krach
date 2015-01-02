@@ -81,6 +81,7 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
+    <Compile Include="ViewModels\MapAddSliderViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPointViewModel.cs" />
     <Compile Include="NoiseRepository.cs" />
     <Compile Include="Service References\DomainModelService\Reference.cs">
@@ -96,6 +97,9 @@
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\HomepageView.xaml.cs">
       <DependentUpon>HomepageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapAddSliderView .xaml.cs">
+      <DependentUpon>MapAddSliderView .xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MapAddView.xaml.cs">
       <DependentUpon>MapAddView.xaml</DependentUpon>
@@ -158,6 +162,10 @@
     <Page Include="Views\HomepageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MapAddSliderView .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MapAddView.xaml">
       <SubType>Designer</SubType>

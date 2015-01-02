@@ -4,12 +4,14 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 
-    <DockPanel Width="800" Height="600" Background="LightBlue">
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-            <Button x:Name="ShowMapScreen" Content="Karte" Width="50" />
-            <!--<Button x:Name="ShowGreenScreen" Content="Green" Width="50" Margin="12,0,0,0" />-->
-            <Button x:Name="ShowBlueScreen" Content="Export" Width="50" Margin="12,0,0,0" />
-        </StackPanel>
-        <ContentControl x:Name="ActiveItem" />
-    </DockPanel>
+  <DockPanel Width="800" Height="600" Background="LightBlue">
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
+      <Button x:Name="ShowMapScreen" Content="Karte" Width="50" />
+      <Button x:Name="ShowMapSliderScreen" Content="Karte mit Schieberegler" Width="50" />
+
+      <!--<Button x:Name="ShowGreenScreen" Content="Green" Width="50" Margin="12,0,0,0" />-->
+      <Button x:Name="ShowBlueScreen" Content="Export" Width="50" Margin="12,0,0,0" />
+    </StackPanel>
+    <ContentControl x:Name="ActiveItem" />
+  </DockPanel>
 </UserControl>

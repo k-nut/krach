@@ -21,6 +21,11 @@ namespace KrachConnect.ViewModels
         ActivateItem(new MapAddViewModel(nr));
       }
 
+      public void ShowMapSliderScreen()
+      {
+        ActivateItem(new MapAddSliderViewModel(nr));
+      }
+
       public void ShowGreenScreen()
       {
         //ActivateItem(new GreenViewModel());
