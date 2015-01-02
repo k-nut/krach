@@ -18,9 +18,9 @@ namespace KrachConnect.Views
     /// <summary>
     /// Interaktionslogik für Homepage.xaml
     /// </summary>
-    public partial class Homepage : UserControl
+    public partial class HomepageView : UserControl
     {
-        public Homepage()
+        public HomepageView()
         {
             InitializeComponent();
         }
