@@ -93,6 +93,9 @@
     </Compile>
     <Compile Include="ViewModels\MapAddViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\Homepage.xaml.cs">
+      <DependentUpon>Homepage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MapAddView.xaml.cs">
       <DependentUpon>MapAddView.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Homepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MapAddView.xaml">
       <SubType>Designer</SubType>
