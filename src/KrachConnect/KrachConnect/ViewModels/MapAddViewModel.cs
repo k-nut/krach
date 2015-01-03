@@ -20,6 +20,14 @@ namespace KrachConnect.ViewModels
     private Stack<MeasuringPointViewModel> unusedMearingPoints;
     private MeasuringPointViewModel selectedMeasuringPoint;
 
+
+    public int TotalMeasuringPoints { get { return measuringPoints.Count(); } }
+
+    public int CurrentNumber
+    {
+      get { return measuringPoints.Count() - unusedMearingPoints.Count; }
+    }
+
     public MapAddViewModel(NoiseRepository repository)
     {
       this.repository = repository;
@@ -83,6 +91,9 @@ namespace KrachConnect.ViewModels
       NotifyOfPropertyChange(() => CanClick);
       NotifyOfPropertyChange(() => AllDone);
       NotifyOfPropertyChange(() => MeasuringPoints);
+      NotifyOfPropertyChange(() => TotalMeasuringPoints);
+      NotifyOfPropertyChange(() => CurrentNumber);
+
     }
 
     public bool CanClick
