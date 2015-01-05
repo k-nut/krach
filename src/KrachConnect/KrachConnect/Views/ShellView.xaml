@@ -6,11 +6,10 @@
 
   <DockPanel Width="800" Height="600" Background="LightBlue">
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-      <Button x:Name="ShowMapScreen" Content="Karte" Width="50" />
-      <Button x:Name="ShowMapSliderScreen" Content="Karte mit Schieberegler" Width="50" />
-
-      <!--<Button x:Name="ShowGreenScreen" Content="Green" Width="50" Margin="12,0,0,0" />-->
-      <Button x:Name="ShowBlueScreen" Content="Export" Width="50" Margin="12,0,0,0" />
+      <Button x:Name="ShowHomepageScreen" Content="Startseite" Padding="5"/>
+      <Button x:Name="ShowMapScreen" Content="Messreihe hinzufügen" Padding="5" Margin="12,0,0,0"/>
+      <Button x:Name="ShowMapSliderScreen" Content="Messreihe hinzufügen (Schieberegler)" Margin="12,0,0,0" Padding="5"/>
+      <Button x:Name="ShowBlueScreen" Content="Export" Margin="12,0,0,0" Padding="5"/>
     </StackPanel>
     <ContentControl x:Name="ActiveItem" />
   </DockPanel>
