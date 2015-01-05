@@ -21,49 +21,51 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Button x:Name="ShowMapScreen" Content="Karte" Width="50" Height="50" />
+            <Grid Grid.Column="0" RenderTransformOrigin="0.541,0.842">
+                <Button x:Name="ShowMapScreen" Width="auto" Height="50" VerticalAlignment="Top">
+                    <TextBlock Text="Messreihe hinzufügen" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
                 <ContentControl x:Name="ActiveItem" />
-            </Grid>
-            <Grid Grid.Column="1">
-                <Button x:Name="ShowBlueScreen" Content="Export" Width="50" Margin="12,0,0,0" Height="50"/>
+                <Button Name="MesspunktButton" Width="auto" Height="50" VerticalAlignment="Bottom">
+                    <TextBlock Text="Messreihe Schieberegler" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+                <Button Name="MesswertButton" Width="auto" Height="50">
+                    <TextBlock Text="Messpunkt hinzufügen" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" />
+                </Button>
 
             </Grid>
+
 
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1">
             <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"> Lärmkrach
                 professional</TextBlock>
+            <TextBlock FontSize="16"  VerticalAlignment="Bottom"> Letzte Änderungen:</TextBlock>
 
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Button Name="MesspunktButton" Width="65" Height="50">
-                    <TextBlock Text="Messpunkt hinzufügen" TextWrapping="Wrap" TextAlignment="Center" />
-                </Button>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Button Name="MesswertButton" Width="65" Height="50">
-                    <TextBlock Text="Messwert hinzufügen" TextWrapping="Wrap" TextAlignment="Center" />
-                </Button>
-            </Grid>
+            <Grid Grid.Column="0"/>
+
+            <Grid Grid.Column="0"/>
+            <Button x:Name="ShowBlueScreen" Content="Export" Width="auto" Height="50" VerticalAlignment="Center" Margin="0,0,0,100"/>
+
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <TextBlock FontSize="16"  VerticalAlignment="Top"> Letzte Änderungen:</TextBlock>
+            
             <DataGrid AutoGenerateColumns="False" 
-          Height="125" 
-          HorizontalAlignment="Left" 
+          Height="auto" 
+          HorizontalAlignment="Stretch" 
           Name="dataGrid1" 
-         VerticalAlignment="Bottom"
-          Width="150">
+          Width="auto" SelectionChanged="dataGrid1_SelectionChanged" >
                 <DataGrid.Columns >
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Path=A}" MaxWidth="45" />
-                    <DataGridTextColumn Header="Messpunkt"  Binding="{Binding Path=B}" MaxWidth="53" />
-                    <DataGridTextColumn Header="Messwert" Binding="{Binding Path=C}" MinWidth="52" />
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Path=A}" Width="auto" />
+                    <DataGridTextColumn Header="Messpunkt"  Binding="{Binding Path=B}" Width="auto" />
+                    <DataGridTextColumn Header="Messwert" Binding="{Binding Path=C}" Width="auto" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

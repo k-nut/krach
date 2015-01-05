@@ -24,5 +24,10 @@ namespace KrachConnect.Views
         {
             InitializeComponent();
         }
+
+        private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
