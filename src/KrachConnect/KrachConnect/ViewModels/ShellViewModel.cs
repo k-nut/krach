@@ -11,36 +11,36 @@ namespace KrachConnect.ViewModels
   {
     private NoiseRepository nr = new NoiseRepository();
 
-    public ShellViewModel() 
+    public ShellViewModel()
     {
       ActivateItem(new HomepageViewModel());
     }
 
-      public void ShowMapScreen()
-      {
-        ActivateItem(new MapAddViewModel(nr));
-      }
+    public void ShowMapScreen()
+    {
+      ActivateItem(new MapAddViewModel(nr));
+    }
 
 
-      public void ShowHomePageScreen()
-      {
-        ActivateItem(new HomepageViewModel());
-      }
+    public void ShowHomePageScreen()
+    {
+      ActivateItem(new HomepageViewModel());
+    }
 
 
-      public void ShowMapSliderScreen()
-      {
-        ActivateItem(new MapAddSliderViewModel(nr));
-      }
+    public void ShowMapSliderScreen()
+    {
+      ActivateItem(new MapAddSliderViewModel(nr));
+    }
 
-      public void ShowGreenScreen()
-      {
-        //ActivateItem(new GreenViewModel());
-      }
+    public void ShowGreenScreen()
+    {
+      //ActivateItem(new GreenViewModel());
+    }
 
-      public void ShowBlueScreen()
-      {
-        //ActivateItem(new BlueViewModel());
+    public void ShowBlueScreen()
+    {
+      //ActivateItem(new BlueViewModel());
     }
   }
 }

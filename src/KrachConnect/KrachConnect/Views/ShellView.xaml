@@ -4,7 +4,7 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 
-  <DockPanel Width="800" Height="600" Background="LightBlue">
+  <DockPanel MinWidth="800" MinHeight="600" Background="LightBlue">
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
       <Button x:Name="ShowHomepageScreen" Content="Startseite" Padding="5"/>
       <Button x:Name="ShowMapScreen" Content="Messreihe hinzufügen" Padding="5" Margin="12,0,0,0"/>
