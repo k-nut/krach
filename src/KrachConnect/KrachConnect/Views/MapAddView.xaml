@@ -8,10 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-  <Grid Background="PapayaWhip">
+  <Grid Background="White">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
+            <!--><ColumnDefinition></ColumnDefinition><!-->
+            <ColumnDefinition></ColumnDefinition>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
       <RowDefinition />
@@ -100,24 +100,6 @@
         <TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}"></TextBlock>
       </Grid>
     </Grid>
-    
-    <Grid Grid.Row="0" Grid.Column="1">
-      <StackPanel Orientation="Vertical">
-      <TextBlock Text="In dieser Messreihe abgelsene Werte:"></TextBlock>
-        <DataGrid ItemsSource="{Binding MeasurementsAddedInThisReading}" AutoGenerateColumns="False" >
-          <DataGrid.Columns>
-            <DataGridTextColumn Header="Datum" IsReadOnly="True" Binding="{Binding MeasurementDate, StringFormat=\{0:dd.MM.yy HH:mm\}}" />
-            <DataGridTextColumn Header="Mitarbeiter" IsReadOnly="True" Binding="{Binding Employee}" />
-            <DataGridTextColumn Header="Messpunkt" IsReadOnly="True" Binding="{Binding MeasuringPoint.Name}" />
-            <DataGridTextColumn Header="Minimalwert" IsReadOnly="True" Binding="{Binding MinValue}" />
-            <DataGridTextColumn Header="Mittelwert" IsReadOnly="True" Binding="{Binding AverageValue}" />
-            <DataGridTextColumn Header="Maximalwert" IsReadOnly="True" Binding="{Binding MaxValue}" />
-
-          </DataGrid.Columns>
-          </DataGrid>
-      </StackPanel>
-    </Grid>
-
     <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
       <Image Source="../Resources/map1.JPG"></Image>
       <ItemsControl ItemsSource="{Binding MeasuringPoints}">
