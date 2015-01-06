@@ -12,7 +12,7 @@ namespace KrachConnect
   {
     private readonly DomainModelContext _context;
     private DataServiceCollection<MeasuringPoint> _measuringPoints;
-    private DataServiceCollection<NoiseMeasurement> _noiseMeasurements;
+    public DataServiceCollection<NoiseMeasurement> _noiseMeasurements;
     private DataServiceCollection<NoiseMap> _maps;
     private IEnumerable<MeasuringPointViewModel> measuringPointViewModels;
 
@@ -23,8 +23,6 @@ namespace KrachConnect
       LoadMeasuringPoints();
       LoadMaps();
       LoadNoiseMeasurements();
-
-      //addMeasuringPoint();
     }
 
     public IEnumerable<MeasuringPointViewModel> MeasuringPoints
@@ -74,7 +72,7 @@ namespace KrachConnect
       Save();
     }
 
-    private void Save()
+    public void Save()
     {
       IAsyncResult result = _context.BeginSaveChanges(SaveChangesOptions.Batch, r =>
       {

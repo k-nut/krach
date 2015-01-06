@@ -7,13 +7,12 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
 
-    <Grid Background="PapayaWhip" >
+    <Grid Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.RowSpan="1">
@@ -22,26 +21,14 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" RenderTransformOrigin="0.541,0.842">
-                <Button x:Name="ShowMapScreen" Width="auto" Height="50" VerticalAlignment="Top">
-                    <TextBlock Text="Messreihe hinzufügen" TextWrapping="Wrap" TextAlignment="Center"/>
-                </Button>
+                
                 <ContentControl x:Name="ActiveItem" />
-                <Button Name="MesspunktButton" Width="auto" Height="50" VerticalAlignment="Bottom">
-                    <TextBlock Text="Messreihe Schieberegler" TextWrapping="Wrap" TextAlignment="Center"/>
-                </Button>
-                <Button Name="MesswertButton" Width="auto" Height="50">
-                    <TextBlock Text="Messpunkt hinzufügen" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" />
-                </Button>
-
             </Grid>
-
-
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1">
             <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"> Lärmkrach
                 professional</TextBlock>
             <TextBlock FontSize="16"  VerticalAlignment="Bottom"> Letzte Änderungen:</TextBlock>
-
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -50,13 +37,9 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0"/>
-
             <Grid Grid.Column="0"/>
-            <Button x:Name="ShowBlueScreen" Content="Export" Width="auto" Height="50" VerticalAlignment="Center" Margin="0,0,0,100"/>
-
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
-            
+        <Grid Grid.Row="1" Grid.Column="1">          
             <DataGrid AutoGenerateColumns="False" 
           Height="auto" 
           HorizontalAlignment="Stretch" 
@@ -69,8 +52,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-
-
-
     </Grid>
 </UserControl>

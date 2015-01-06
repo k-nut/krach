@@ -13,6 +13,9 @@ using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
+<<<<<<< HEAD
+    class MapAddViewModel : PropertyChangedBase
+=======
   class MapAddViewModel : PropertyChangedBase
   {
     private NoiseRepository repository;
@@ -121,6 +124,7 @@ namespace KrachConnect.ViewModels
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
+>>>>>>> origin/master
     {
         private NoiseRepository repository;
         private ObservableCollection<MeasuringPointViewModel> measuringPoints;

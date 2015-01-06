@@ -8,7 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-     <Grid Background="White">
+<<<<<<< HEAD
+    <Grid Background="PapayaWhip">
+=======
+  <Grid Background="White">
     <Grid.ColumnDefinitions>
             <!--><ColumnDefinition></ColumnDefinition><!-->
             <ColumnDefinition></ColumnDefinition>
@@ -26,6 +29,7 @@
         <RowDefinition />
       </Grid.RowDefinitions>
       <Grid Grid.Row="0">
+>>>>>>> origin/master
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -105,21 +109,8 @@
                 <Label Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
                 <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
 
-      <Grid Grid.Row="3" Height="25" VerticalAlignment="Bottom">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-        <Button Grid.Row="0" Grid.Column="0" Content="Zurück"  IsEnabled="{Binding CanClick}" />
-        <Button Grid.Row="0" Grid.Column="1" Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
-        <Button Grid.Row="0" Grid.Column="2" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint" IsEnabled="{Binding CanClick}" />
-        <TextBlock Grid.Row="0" Grid.Column="4" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
-                <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
-
+<<<<<<< HEAD
+            </Grid>
 
             <Grid Grid.Row="3" Height="25" VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
@@ -151,6 +142,26 @@
                 </DataGrid>
             </StackPanel>
         </Grid>
+=======
+      <Grid Grid.Row="3" Height="25" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition />
+          <ColumnDefinition />
+          <ColumnDefinition />
+          <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Content="Zurück"  IsEnabled="{Binding CanClick}" />
+        <Button Grid.Row="0" Grid.Column="1" Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
+        <Button Grid.Row="0" Grid.Column="2" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint" IsEnabled="{Binding CanClick}" />
+        <TextBlock Grid.Row="0" Grid.Column="4" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
+                <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
+
+
+            </Grid>
+    </Grid>
+>>>>>>> origin/master
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <Image Source="../Resources/map1.JPG"></Image>

@@ -7,8 +7,8 @@
   <DockPanel MinWidth="800" MinHeight="600" Background="LightBlue">
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
       <Button x:Name="ShowHomepageScreen" Content="Startseite" Padding="5"/>
-      <Button x:Name="ShowMapScreen" Content="Messreihe hinzufügen" Padding="5" Margin="12,0,0,0"/>
-      <Button x:Name="ShowMapSliderScreen" Content="Messreihe hinzufügen (Schieberegler)" Margin="12,0,0,0" Padding="5"/>
+      <Button x:Name="ShowMapScreen" Content="Begehung starten" Padding="5" Margin="12,0,0,0"/>
+      <Button x:Name="ShowMapSliderScreen" Content="Messpunkt hinzufügen" Margin="12,0,0,0" Padding="5"/>
       <Button x:Name="ShowBlueScreen" Content="Export" Margin="12,0,0,0" Padding="5"/>
     </StackPanel>
     <ContentControl x:Name="ActiveItem" />
