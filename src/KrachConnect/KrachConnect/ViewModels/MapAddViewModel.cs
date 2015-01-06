@@ -26,14 +26,17 @@ namespace KrachConnect.ViewModels
 
     public int CurrentNumber
     {
-      get { return MeasuringPoints.Count(mp => mp.JustMeasured); }
+      get { return MeasuringPoints.Count(mp => mp.JustMeasured) + 1; }
     }
 
     public MapAddViewModel(NoiseRepository repository)
     {
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPoints);
-      newNoiseMeasurement = new NoiseMeasurement();
+      newNoiseMeasurement = new NoiseMeasurement
+      {
+        MeasurementDate = DateTime.Now
+      };
       MeasuringPoints.First(mp => !mp.JustMeasured).IsSelected = true;
 
     }
@@ -71,8 +74,9 @@ namespace KrachConnect.ViewModels
       SelectedMeasuringPoint.IsSelected = false;
       SelectedMeasuringPoint.JustMeasured = true;
       NotifyOfPropertyChange(() => MeasuringPoints);
-
+      if (MeasuringPoints.Count(mp => !mp.JustMeasured) > 0){
       SelectNextMeasuringPoint();
+      }
     }
 
     public void SelectNextMeasuringPoint()
