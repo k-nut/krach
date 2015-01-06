@@ -59,6 +59,8 @@ namespace KrachConnect.ViewModels
     public void AddNoiseMeasurementToSelectedMeasuringPoint()
     {
       newNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
+      repository._noiseMeasurements.Add(NewNoiseMeasurement);
+
 
       MeasurementsAddedInThisReading.Add(new NoiseMeasurementViewModel(newNoiseMeasurement));
       NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
@@ -90,6 +92,11 @@ namespace KrachConnect.ViewModels
       NotifyOfPropertyChange(() => MeasuringPoints);
       NotifyOfPropertyChange(() => CurrentNumber);
 
+    }
+
+    public void SaveToHub()
+    {
+      repository.Save();
     }
 
     public bool CanClick

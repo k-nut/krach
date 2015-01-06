@@ -94,16 +94,17 @@
           <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Content="Zurück"  IsEnabled="{Binding CanClick}" />
-                <Button Grid.Row="0" Grid.Column="1" Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
+        <Button Grid.Row="0" Grid.Column="0" Content="Zurück"  IsEnabled="{Binding CanClick}" />
+        <Button Grid.Row="0" Grid.Column="1" Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
         <Button Grid.Row="0" Grid.Column="2" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint" IsEnabled="{Binding CanClick}" />
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
+        
       </Grid>
     </Grid>
-    
+
     <Grid Grid.Row="0" Grid.Column="1">
       <StackPanel Orientation="Vertical">
-      <TextBlock Text="In dieser Messreihe abgelsene Werte:"></TextBlock>
+        <TextBlock Text="In dieser Messreihe abgelsene Werte:"></TextBlock>
         <DataGrid ItemsSource="{Binding MeasurementsAddedInThisReading}" AutoGenerateColumns="False" >
           <DataGrid.Columns>
             <DataGridTextColumn Header="Datum" IsReadOnly="True" Binding="{Binding MeasurementDate, StringFormat=\{0:dd.MM.yy HH:mm\}}" />
@@ -114,7 +115,8 @@
             <DataGridTextColumn Header="Maximalwert" IsReadOnly="True" Binding="{Binding MaxValue}" />
 
           </DataGrid.Columns>
-          </DataGrid>
+        </DataGrid>
+        <Button x:Name="SaveToHub" Content="Speichern" />
       </StackPanel>
     </Grid>
 
