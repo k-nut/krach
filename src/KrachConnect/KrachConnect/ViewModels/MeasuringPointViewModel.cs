@@ -8,21 +8,32 @@ namespace KrachConnect
   {
     private MeasuringPoint model;
     private bool isSelected = false;
+    private bool justMeasured = false;
     public MeasuringPointViewModel(MeasuringPoint mp)
     {
       model = mp;
     }
 
     public MeasuringPoint Model { get { return model; } } 
+
     public bool IsSelected 
     {get { return isSelected; }
       set
       {
         isSelected = value;
         NotifyOfPropertyChange(() => Model);
+        NotifyOfPropertyChange(() => IsSelected);
       }
     }
 
-    public int Stroke { get { return isSelected ? 3 : 0; }}
+    public bool JustMeasured
+    {
+      get { return justMeasured; }
+      set
+      {
+        justMeasured = value;
+        NotifyOfPropertyChange(() => JustMeasured);
+      }
+    }
   }
 }

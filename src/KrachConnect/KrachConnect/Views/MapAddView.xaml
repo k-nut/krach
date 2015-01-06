@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:krachConnect="clr-namespace:KrachConnect"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -102,8 +103,10 @@
     </Grid>
     
     <Grid Grid.Row="0" Grid.Column="1">
+      <StackPanel Orientation="Vertical">
       <TextBlock Text="In dieser Messreihe abgelsene Werte:"></TextBlock>
-      <TextBlock Text="Tabelle"></TextBlock>
+      <DataGrid ItemsSource="{Binding MeasurementsAddedInThisReading}"></DataGrid>
+      </StackPanel>
     </Grid>
 
     <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
@@ -122,7 +125,7 @@
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <Ellipse Height="20" Width="20" Stroke="Black" Fill="Green" StrokeThickness="{Binding Stroke}" ></Ellipse>
+            <Ellipse Height="20" Width="20" Stroke="Black" Fill="{Binding JustMeasured, Converter={krachConnect:JustMeasuredToBrushConverter}}" StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}" ></Ellipse>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
