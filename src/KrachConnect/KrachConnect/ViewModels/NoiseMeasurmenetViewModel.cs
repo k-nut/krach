@@ -26,5 +26,55 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => MeasurementDate);
       }
     }
+
+    public float MinValue
+    {
+      get { return m_Model.MinValue; }
+      set
+      {
+        m_Model.MinValue = value;
+        NotifyOfPropertyChange(() => MinValue);
+      }
+    }
+
+    public float AverageValue
+    {
+      get { return m_Model.AverageValue; }
+      set
+      {
+        m_Model.AverageValue = value;
+        NotifyOfPropertyChange(() => AverageValue);
+      }
+    }
+
+    public float MaxValue
+    {
+      get { return m_Model.MaxValue; }
+      set
+      {
+        m_Model.MaxValue = value;
+        NotifyOfPropertyChange(() => MaxValue);
+      }
+    }
+
+    public String Employee
+    {
+      get { return m_Model.Employee; }
+      set
+      {
+        m_Model.Employee = value;
+        NotifyOfPropertyChange(() => Employee);
+      }
+    }
+
+    public MeasuringPoint MeasuringPoint
+    {
+      get { return m_Model.MeasuringPoint; }
+      set
+      {
+        m_Model.MeasuringPoint = value;
+        NotifyOfPropertyChange(() => MeasuringPoint);
+      }
+    }
   }
 }

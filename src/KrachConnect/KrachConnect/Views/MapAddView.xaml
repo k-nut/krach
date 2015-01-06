@@ -105,7 +105,17 @@
     <Grid Grid.Row="0" Grid.Column="1">
       <StackPanel Orientation="Vertical">
       <TextBlock Text="In dieser Messreihe abgelsene Werte:"></TextBlock>
-      <DataGrid ItemsSource="{Binding MeasurementsAddedInThisReading}"></DataGrid>
+        <DataGrid ItemsSource="{Binding MeasurementsAddedInThisReading}" AutoGenerateColumns="False" >
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Datum" IsReadOnly="True" Binding="{Binding MeasurementDate}" />
+            <DataGridTextColumn Header="Mitarbeiter" IsReadOnly="True" Binding="{Binding Employee}" />
+            <DataGridTextColumn Header="Messpunkt" IsReadOnly="True" Binding="{Binding MeasuringPoint.Name}" />
+            <DataGridTextColumn Header="Minimalwert" IsReadOnly="True" Binding="{Binding MinValue}" />
+            <DataGridTextColumn Header="Mittelwert" IsReadOnly="True" Binding="{Binding AverageValue}" />
+            <DataGridTextColumn Header="Maximalwert" IsReadOnly="True" Binding="{Binding MaxValue}" />
+
+          </DataGrid.Columns>
+          </DataGrid>
       </StackPanel>
     </Grid>
 
