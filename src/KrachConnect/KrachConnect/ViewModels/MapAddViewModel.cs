@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Services.Client;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,10 +16,10 @@ namespace KrachConnect.ViewModels
   class MapAddViewModel : PropertyChangedBase
   {
     private NoiseRepository repository;
-    private List<MeasuringPointViewModel> measuringPoints;
+    private ObservableCollection<MeasuringPointViewModel> measuringPoints;
     private NoiseMeasurement newNoiseMeasurement;
     private MeasuringPointViewModel selectedMeasuringPoint;
-    private List<NoiseMeasurementViewModel> measurementsAddedInThisReading = new List<NoiseMeasurementViewModel>();
+    private ObservableCollection<NoiseMeasurementViewModel> measurementsAddedInThisReading = new ObservableCollection<NoiseMeasurementViewModel>();
 
 
     public int TotalMeasuringPoints { get { return MeasuringPoints.Count(); } }
@@ -31,7 +32,7 @@ namespace KrachConnect.ViewModels
     public MapAddViewModel(NoiseRepository repository)
     {
       this.repository = repository;
-      MeasuringPoints = repository.MeasuringPoints.ToList();
+      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPoints);
       newNoiseMeasurement = new NoiseMeasurement();
       MeasuringPoints.First(mp => !mp.JustMeasured).IsSelected = true;
 
@@ -92,7 +93,7 @@ namespace KrachConnect.ViewModels
       get { return MeasuringPoints.Count(mp => !mp.JustMeasured) > 0; }
     }
 
-    public List<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
+    public ObservableCollection<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
     {
       get { return measurementsAddedInThisReading; }
       set
@@ -107,7 +108,7 @@ namespace KrachConnect.ViewModels
       get { return MeasuringPoints.Count(mp => !mp.JustMeasured) > 0 ? Visibility.Hidden : Visibility.Visible; }
     }
 
-    public List<MeasuringPointViewModel> MeasuringPoints
+    public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
     {
       get { return measuringPoints; }
       set
