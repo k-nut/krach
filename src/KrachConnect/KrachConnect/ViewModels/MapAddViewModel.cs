@@ -13,114 +13,7 @@ using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
-  class MapAddViewModel : PropertyChangedBase
-  {
-    private NoiseRepository repository;
-    private ObservableCollection<MeasuringPointViewModel> measuringPoints;
-    private NoiseMeasurement newNoiseMeasurement;
-    private MeasuringPointViewModel selectedMeasuringPoint;
-    private ObservableCollection<NoiseMeasurementViewModel> measurementsAddedInThisReading = new ObservableCollection<NoiseMeasurementViewModel>();
-
-
-    public int TotalMeasuringPoints { get { return MeasuringPoints.Count(); } }
-
-    public int CurrentNumber
-    {
-      get { return MeasuringPoints.Count(mp => mp.JustMeasured) + 1; }
-    }
-
-    public MapAddViewModel(NoiseRepository repository)
-    {
-      this.repository = repository;
-      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPoints);
-      newNoiseMeasurement = new NoiseMeasurement
-      {
-        MeasurementDate = DateTime.Now
-      };
-      MeasuringPoints.First(mp => !mp.JustMeasured).IsSelected = true;
-
-    }
-
-    public MeasuringPointViewModel SelectedMeasuringPoint
-    {
-      get { return MeasuringPoints.FirstOrDefault(mp => !mp.JustMeasured); }
-    }
-
-    public NoiseMeasurement NewNoiseMeasurement
-    {
-      get { return newNoiseMeasurement; }
-      set
-      {
-        newNoiseMeasurement = value;
-        NotifyOfPropertyChange(() => NewNoiseMeasurement);
-      }
-    }
-
-    public void AddNoiseMeasurementToSelectedMeasuringPoint()
-    {
-      newNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
-      repository._noiseMeasurements.Add(NewNoiseMeasurement);
-
-
-      MeasurementsAddedInThisReading.Add(new NoiseMeasurementViewModel(newNoiseMeasurement));
-      NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
-
-      var oldNewNoiseMearument = newNoiseMeasurement;
-      NewNoiseMeasurement = new NoiseMeasurement
-      {
-        MeasurementDate = oldNewNoiseMearument.MeasurementDate,
-        Employee = oldNewNoiseMearument.Employee,
-        Method = oldNewNoiseMearument.Method
-      };
-      
-      SelectedMeasuringPoint.IsSelected = false;
-      SelectedMeasuringPoint.JustMeasured = true;
-      NotifyOfPropertyChange(() => CanClick);
-      NotifyOfPropertyChange(() => AllDone);
-
-
-      if (MeasuringPoints.Count(mp => !mp.JustMeasured) > 0){
-      SelectNextMeasuringPoint();
-      }
-    }
-
-    public void SelectNextMeasuringPoint()
-    {
-      MeasuringPoints.First(mp => !mp.JustMeasured).IsSelected = true;
-
-      NotifyOfPropertyChange(() => SelectedMeasuringPoint);
-      NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
-      NotifyOfPropertyChange(() => MeasuringPoints);
-      NotifyOfPropertyChange(() => CurrentNumber);
-
-    }
-
-    public void SaveToHub()
-    {
-      repository.Save();
-    }
-
-    public bool CanClick
-    {
-      get { return MeasuringPoints.Any(mp => !mp.JustMeasured); }
-    }
-
-    public ObservableCollection<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
-    {
-      get { return measurementsAddedInThisReading; }
-      set
-      {
-        measurementsAddedInThisReading = value;
-        NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
-      }
-    } 
-
-    public Visibility AllDone
-    {
-      get { return MeasuringPoints.Any(mp => !mp.JustMeasured)? Visibility.Hidden : Visibility.Visible; }
-    }
-
-    public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
+    class MapAddViewModel : PropertyChangedBase
     {
         private NoiseRepository repository;
         private ObservableCollection<MeasuringPointViewModel> measuringPoints;
@@ -177,7 +70,7 @@ namespace KrachConnect.ViewModels
 
         public MeasuringPointViewModel SelectedMeasuringPoint
         {
-            get { return MeasuringPoints.First(mp => !mp.JustMeasured); }
+            get { return MeasuringPoints.FirstOrDefault(mp => !mp.JustMeasured); }
         }
 
         public NoiseMeasurement NewNoiseMeasurement
@@ -193,6 +86,8 @@ namespace KrachConnect.ViewModels
         public void AddNoiseMeasurementToSelectedMeasuringPoint()
         {
             newNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
+            repository._noiseMeasurements.Add(NewNoiseMeasurement);
+
 
             MeasurementsAddedInThisReading.Add(new NoiseMeasurementViewModel(newNoiseMeasurement));
             NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
@@ -207,7 +102,10 @@ namespace KrachConnect.ViewModels
 
             SelectedMeasuringPoint.IsSelected = false;
             SelectedMeasuringPoint.JustMeasured = true;
-            NotifyOfPropertyChange(() => MeasuringPoints);
+            NotifyOfPropertyChange(() => CanClick);
+            NotifyOfPropertyChange(() => AllDone);
+
+
             if (MeasuringPoints.Count(mp => !mp.JustMeasured) > 0)
             {
                 SelectNextMeasuringPoint();
@@ -220,16 +118,24 @@ namespace KrachConnect.ViewModels
 
             NotifyOfPropertyChange(() => SelectedMeasuringPoint);
             NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
-            NotifyOfPropertyChange(() => CanClick);
-            NotifyOfPropertyChange(() => AllDone);
             NotifyOfPropertyChange(() => MeasuringPoints);
             NotifyOfPropertyChange(() => CurrentNumber);
 
         }
 
+        public void SayHello(object y)
+        {
+            var x = 2;
+        }
+
+        public void SaveToHub()
+        {
+            repository.Save();
+        }
+
         public bool CanClick
         {
-            get { return MeasuringPoints.Count(mp => !mp.JustMeasured) > 0; }
+            get { return MeasuringPoints.Any(mp => !mp.JustMeasured); }
         }
 
         public ObservableCollection<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
@@ -244,7 +150,7 @@ namespace KrachConnect.ViewModels
 
         public Visibility AllDone
         {
-            get { return MeasuringPoints.Count(mp => !mp.JustMeasured) > 0 ? Visibility.Hidden : Visibility.Visible; }
+            get { return MeasuringPoints.Any(mp => !mp.JustMeasured) ? Visibility.Hidden : Visibility.Visible; }
         }
 
         public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
@@ -256,7 +162,6 @@ namespace KrachConnect.ViewModels
                 NotifyOfPropertyChange(() => MeasuringPoints);
             }
         }
-
         public void ToggleDetails()
         {
             if (DetailVisibility == Visibility.Visible)
