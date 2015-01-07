@@ -20,9 +20,11 @@ namespace KrachConnect
     {
       _context = new DomainModelContext(new Uri("http://141.45.92.171:7000/OpenResKitHub"));
       _context.Credentials = new NetworkCredential("root", "ork123");
+
       LoadMeasuringPoints();
       LoadMaps();
       LoadNoiseMeasurements();
+      //addMeasuringPoint();
     }
 
     public IEnumerable<MeasuringPointViewModel> MeasuringPoints

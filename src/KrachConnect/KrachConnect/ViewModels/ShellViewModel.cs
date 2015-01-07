@@ -28,6 +28,11 @@ namespace KrachConnect.ViewModels
     }
 
 
+    public void ShowMeasuringPointsEditScreen()
+    {
+      ActivateItem(new MeasuringPointsEditViewModel(nr));
+    }
+
     public void ShowMapSliderScreen()
     {
       ActivateItem(new MapAddSliderViewModel(nr));

@@ -65,6 +65,7 @@ namespace KrachConnect.ViewModels
             {
                 MeasurementDate = DateTime.Now
             };
+          // TODO: Abfangen, wenn es keinerlei Messpunkte gibt
             SelectedMeasuringPoint = MeasuringPoints.First(mp => !mp.JustMeasured);
 
         }

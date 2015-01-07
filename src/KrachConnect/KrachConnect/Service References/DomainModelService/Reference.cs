@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 12.12.2014 11:58:51
+// Generation date: 07.01.2015 14:12:18
 namespace KrachConnect.DomainModelService
 {
     
@@ -248,72 +248,70 @@ namespace KrachConnect.DomainModelService
                 "Length=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"GreenValue\" Ty" +
                 "pe=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"YellowValue\" Type=\"Edm.Single" +
                 "\" Nullable=\"false\" /><Property Name=\"RedValue\" Type=\"Edm.Single\" Nullable=\"false" +
-                "\" /><NavigationProperty Name=\"Position\" Relationship=\"OpenResKit.DomainModel.Mea" +
-                "suringPoint_Position\" ToRole=\"MeasuringPoint_Position_Target\" FromRole=\"Measurin" +
-                "gPoint_Position_Source\" /></EntityType><EntityType Name=\"NoiseMapPosition\"><Key>" +
+                "\" /><Property Name=\"IsArchived\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Navigatio" +
+                "nProperty Name=\"Position\" Relationship=\"OpenResKit.DomainModel.MeasuringPoint_Po" +
+                "sition\" ToRole=\"MeasuringPoint_Position_Target\" FromRole=\"MeasuringPoint_Positio" +
+                "n_Source\" /></EntityType><EntityType Name=\"NoiseMapPosition\"><Key><PropertyRef N" +
+                "ame=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreG" +
+                "eneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/ed" +
+                "m/annotation\" /><Property Name=\"XPosition\" Type=\"Edm.Int32\" Nullable=\"false\" /><" +
+                "Property Name=\"YPosition\" Type=\"Edm.Int32\" Nullable=\"false\" /><NavigationPropert" +
+                "y Name=\"NoiseMap\" Relationship=\"OpenResKit.DomainModel.NoiseMapPosition_NoiseMap" +
+                "\" ToRole=\"NoiseMapPosition_NoiseMap_Target\" FromRole=\"NoiseMapPosition_NoiseMap_" +
+                "Source\" /></EntityType><EntityType Name=\"NoiseMap\"><Key><PropertyRef Name=\"Id\" /" +
+                "></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPa" +
+                "ttern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotati" +
+                "on\" /><Property Name=\"Site\" Type=\"Edm.String\" MaxLength=\"Max\" FixedLength=\"false" +
+                "\" Unicode=\"true\" /><Property Name=\"Building\" Type=\"Edm.String\" MaxLength=\"Max\" F" +
+                "ixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Level\" Type=\"Edm.String\" Max" +
+                "Length=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"File" +
+                "\" Relationship=\"OpenResKit.DomainModel.NoiseMap_File\" ToRole=\"NoiseMap_File_Targ" +
+                "et\" FromRole=\"NoiseMap_File_Source\" /></EntityType><EntityType Name=\"File\"><Key>" +
                 "<PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"fa" +
                 "lse\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/" +
-                "ado/2009/02/edm/annotation\" /><Property Name=\"XPosition\" Type=\"Edm.Int32\" Nullab" +
-                "le=\"false\" /><Property Name=\"YPosition\" Type=\"Edm.Int32\" Nullable=\"false\" /><Nav" +
-                "igationProperty Name=\"NoiseMap\" Relationship=\"OpenResKit.DomainModel.NoiseMapPos" +
-                "ition_NoiseMap\" ToRole=\"NoiseMapPosition_NoiseMap_Target\" FromRole=\"NoiseMapPosi" +
-                "tion_NoiseMap_Source\" /></EntityType><EntityType Name=\"NoiseMap\"><Key><PropertyR" +
-                "ef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:St" +
-                "oreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/0" +
-                "2/edm/annotation\" /><Property Name=\"Site\" Type=\"Edm.String\" MaxLength=\"Max\" Fixe" +
-                "dLength=\"false\" Unicode=\"true\" /><Property Name=\"Building\" Type=\"Edm.String\" Max" +
-                "Length=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"Level\" Type=\"E" +
-                "dm.String\" MaxLength=\"Max\" FixedLength=\"false\" Unicode=\"true\" /><NavigationPrope" +
-                "rty Name=\"File\" Relationship=\"OpenResKit.DomainModel.NoiseMap_File\" ToRole=\"Nois" +
-                "eMap_File_Target\" FromRole=\"NoiseMap_File_Source\" /></EntityType><EntityType Nam" +
-                "e=\"File\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32" +
-                "\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas." +
-                "microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"BinarySource\" Type=\"" +
-                "Edm.Binary\" MaxLength=\"Max\" FixedLength=\"false\" /></EntityType><Association Name" +
-                "=\"NoiseMeasurement_Method\"><End Type=\"OpenResKit.DomainModel.MeasuringMethod\" Ro" +
-                "le=\"NoiseMeasurement_Method_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit." +
-                "DomainModel.NoiseMeasurement\" Role=\"NoiseMeasurement_Method_Source\" Multiplicity" +
-                "=\"*\" /></Association><Association Name=\"NoiseMeasurement_MeasuringPoint\"><End Ty" +
-                "pe=\"OpenResKit.DomainModel.MeasuringPoint\" Role=\"NoiseMeasurement_MeasuringPoint" +
-                "_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.DomainModel.NoiseMeasuremen" +
-                "t\" Role=\"NoiseMeasurement_MeasuringPoint_Source\" Multiplicity=\"*\" /></Associatio" +
-                "n><Association Name=\"MeasuringPoint_Position\"><End Type=\"OpenResKit.DomainModel." +
-                "MeasuringPoint\" Role=\"MeasuringPoint_Position_Source\" Multiplicity=\"0..1\" /><End" +
-                " Type=\"OpenResKit.DomainModel.NoiseMapPosition\" Role=\"MeasuringPoint_Position_Ta" +
-                "rget\" Multiplicity=\"0..1\"><OnDelete Action=\"Cascade\" /></End></Association><Asso" +
-                "ciation Name=\"NoiseMapPosition_NoiseMap\"><End Type=\"OpenResKit.DomainModel.Noise" +
-                "Map\" Role=\"NoiseMapPosition_NoiseMap_Target\" Multiplicity=\"0..1\" /><End Type=\"Op" +
-                "enResKit.DomainModel.NoiseMapPosition\" Role=\"NoiseMapPosition_NoiseMap_Source\" M" +
-                "ultiplicity=\"*\" /></Association><Association Name=\"NoiseMap_File\"><End Type=\"Ope" +
-                "nResKit.DomainModel.File\" Role=\"NoiseMap_File_Target\" Multiplicity=\"0..1\"><OnDel" +
-                "ete Action=\"Cascade\" /></End><End Type=\"OpenResKit.DomainModel.NoiseMap\" Role=\"N" +
-                "oiseMap_File_Source\" Multiplicity=\"0..1\" /></Association><EntityContainer Name=\"" +
-                "DomainModelContext\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=\"NoiseMeas" +
-                "urements\" EntityType=\"OpenResKit.DomainModel.NoiseMeasurement\" /><EntitySet Name" +
-                "=\"MeasuringMethods\" EntityType=\"OpenResKit.DomainModel.MeasuringMethod\" /><Entit" +
-                "ySet Name=\"MeasuringPoints\" EntityType=\"OpenResKit.DomainModel.MeasuringPoint\" /" +
-                "><EntitySet Name=\"NoiseMapPositions\" EntityType=\"OpenResKit.DomainModel.NoiseMap" +
-                "Position\" /><EntitySet Name=\"NoiseMaps\" EntityType=\"OpenResKit.DomainModel.Noise" +
-                "Map\" /><EntitySet Name=\"Files\" EntityType=\"OpenResKit.DomainModel.File\" /><Assoc" +
-                "iationSet Name=\"NoiseMeasurement_Method\" Association=\"OpenResKit.DomainModel.Noi" +
-                "seMeasurement_Method\"><End Role=\"NoiseMeasurement_Method_Source\" EntitySet=\"Nois" +
-                "eMeasurements\" /><End Role=\"NoiseMeasurement_Method_Target\" EntitySet=\"Measuring" +
-                "Methods\" /></AssociationSet><AssociationSet Name=\"NoiseMeasurement_MeasuringPoin" +
-                "t\" Association=\"OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint\"><End Rol" +
-                "e=\"NoiseMeasurement_MeasuringPoint_Source\" EntitySet=\"NoiseMeasurements\" /><End " +
-                "Role=\"NoiseMeasurement_MeasuringPoint_Target\" EntitySet=\"MeasuringPoints\" /></As" +
-                "sociationSet><AssociationSet Name=\"MeasuringPoint_Position\" Association=\"OpenRes" +
-                "Kit.DomainModel.MeasuringPoint_Position\"><End Role=\"MeasuringPoint_Position_Sour" +
-                "ce\" EntitySet=\"MeasuringPoints\" /><End Role=\"MeasuringPoint_Position_Target\" Ent" +
-                "itySet=\"NoiseMapPositions\" /></AssociationSet><AssociationSet Name=\"NoiseMapPosi" +
-                "tion_NoiseMap\" Association=\"OpenResKit.DomainModel.NoiseMapPosition_NoiseMap\"><E" +
-                "nd Role=\"NoiseMapPosition_NoiseMap_Source\" EntitySet=\"NoiseMapPositions\" /><End " +
-                "Role=\"NoiseMapPosition_NoiseMap_Target\" EntitySet=\"NoiseMaps\" /></AssociationSet" +
-                "><AssociationSet Name=\"NoiseMap_File\" Association=\"OpenResK";
+                "ado/2009/02/edm/annotation\" /><Property Name=\"BinarySource\" Type=\"Edm.Binary\" Ma" +
+                "xLength=\"Max\" FixedLength=\"false\" /></EntityType><Association Name=\"NoiseMeasure" +
+                "ment_Method\"><End Type=\"OpenResKit.DomainModel.MeasuringMethod\" Role=\"NoiseMeasu" +
+                "rement_Method_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.DomainModel.No" +
+                "iseMeasurement\" Role=\"NoiseMeasurement_Method_Source\" Multiplicity=\"*\" /></Assoc" +
+                "iation><Association Name=\"NoiseMeasurement_MeasuringPoint\"><End Type=\"OpenResKit" +
+                ".DomainModel.MeasuringPoint\" Role=\"NoiseMeasurement_MeasuringPoint_Target\" Multi" +
+                "plicity=\"0..1\" /><End Type=\"OpenResKit.DomainModel.NoiseMeasurement\" Role=\"Noise" +
+                "Measurement_MeasuringPoint_Source\" Multiplicity=\"*\" /></Association><Association" +
+                " Name=\"MeasuringPoint_Position\"><End Type=\"OpenResKit.DomainModel.MeasuringPoint" +
+                "\" Role=\"MeasuringPoint_Position_Source\" Multiplicity=\"0..1\" /><End Type=\"OpenRes" +
+                "Kit.DomainModel.NoiseMapPosition\" Role=\"MeasuringPoint_Position_Target\" Multipli" +
+                "city=\"0..1\"><OnDelete Action=\"Cascade\" /></End></Association><Association Name=\"" +
+                "NoiseMapPosition_NoiseMap\"><End Type=\"OpenResKit.DomainModel.NoiseMap\" Role=\"Noi" +
+                "seMapPosition_NoiseMap_Target\" Multiplicity=\"0..1\" /><End Type=\"OpenResKit.Domai" +
+                "nModel.NoiseMapPosition\" Role=\"NoiseMapPosition_NoiseMap_Source\" Multiplicity=\"*" +
+                "\" /></Association><Association Name=\"NoiseMap_File\"><End Type=\"OpenResKit.Domain" +
+                "Model.File\" Role=\"NoiseMap_File_Target\" Multiplicity=\"0..1\"><OnDelete Action=\"Ca" +
+                "scade\" /></End><End Type=\"OpenResKit.DomainModel.NoiseMap\" Role=\"NoiseMap_File_S" +
+                "ource\" Multiplicity=\"0..1\" /></Association><EntityContainer Name=\"DomainModelCon" +
+                "text\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=\"NoiseMeasurements\" Enti" +
+                "tyType=\"OpenResKit.DomainModel.NoiseMeasurement\" /><EntitySet Name=\"MeasuringMet" +
+                "hods\" EntityType=\"OpenResKit.DomainModel.MeasuringMethod\" /><EntitySet Name=\"Mea" +
+                "suringPoints\" EntityType=\"OpenResKit.DomainModel.MeasuringPoint\" /><EntitySet Na" +
+                "me=\"NoiseMapPositions\" EntityType=\"OpenResKit.DomainModel.NoiseMapPosition\" /><E" +
+                "ntitySet Name=\"NoiseMaps\" EntityType=\"OpenResKit.DomainModel.NoiseMap\" /><Entity" +
+                "Set Name=\"Files\" EntityType=\"OpenResKit.DomainModel.File\" /><AssociationSet Name" +
+                "=\"NoiseMeasurement_Method\" Association=\"OpenResKit.DomainModel.NoiseMeasurement_" +
+                "Method\"><End Role=\"NoiseMeasurement_Method_Source\" EntitySet=\"NoiseMeasurements\"" +
+                " /><End Role=\"NoiseMeasurement_Method_Target\" EntitySet=\"MeasuringMethods\" /></A" +
+                "ssociationSet><AssociationSet Name=\"NoiseMeasurement_MeasuringPoint\" Association" +
+                "=\"OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint\"><End Role=\"NoiseMeasur" +
+                "ement_MeasuringPoint_Source\" EntitySet=\"NoiseMeasurements\" /><End Role=\"NoiseMea" +
+                "surement_MeasuringPoint_Target\" EntitySet=\"MeasuringPoints\" /></AssociationSet><" +
+                "AssociationSet Name=\"MeasuringPoint_Position\" Association=\"OpenResKit.DomainMode" +
+                "l.MeasuringPoint_Position\"><End Role=\"MeasuringPoint_Position_Source\" EntitySet=" +
+                "\"MeasuringPoints\" /><End Role=\"MeasuringPoint_Position_Target\" EntitySet=\"NoiseM" +
+                "apPositions\" /></AssociationSet><AssociationSet Name=\"NoiseMapPosition_NoiseMap\"" +
+                " Association=\"OpenResKit.DomainModel.NoiseMapPosition_NoiseMap\"><End Role=\"Noise" +
+                "MapPosition_NoiseMap_Source\" EntitySet=\"NoiseMapPositions\" /><End Role=\"NoiseMap" +
+                "Position_NoiseMap_Target\" EntitySet=\"NoiseMaps\" /></Associa";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart1 = "it.DomainModel.NoiseMap_File\"><End Role=\"NoiseMap_File_Source\" EntitySet=\"NoiseMa" +
-                "ps\" /><End Role=\"NoiseMap_File_Target\" EntitySet=\"Files\" /></AssociationSet></En" +
-                "tityContainer></Schema></edmx:DataServices></edmx:Edmx>";
+            private const string ModelPart1 = @"tionSet><AssociationSet Name=""NoiseMap_File"" Association=""OpenResKit.DomainModel.NoiseMap_File""><End Role=""NoiseMap_File_Source"" EntitySet=""NoiseMaps"" /><End Role=""NoiseMap_File_Target"" EntitySet=""Files"" /></AssociationSet></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -690,14 +688,16 @@ namespace KrachConnect.DomainModelService
         /// <param name="greenValue">Initial value of GreenValue.</param>
         /// <param name="yellowValue">Initial value of YellowValue.</param>
         /// <param name="redValue">Initial value of RedValue.</param>
+        /// <param name="isArchived">Initial value of IsArchived.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static MeasuringPoint CreateMeasuringPoint(int ID, float greenValue, float yellowValue, float redValue)
+        public static MeasuringPoint CreateMeasuringPoint(int ID, float greenValue, float yellowValue, float redValue, bool isArchived)
         {
             MeasuringPoint measuringPoint = new MeasuringPoint();
             measuringPoint.Id = ID;
             measuringPoint.GreenValue = greenValue;
             measuringPoint.YellowValue = yellowValue;
             measuringPoint.RedValue = redValue;
+            measuringPoint.IsArchived = isArchived;
             return measuringPoint;
         }
         /// <summary>
@@ -854,6 +854,28 @@ namespace KrachConnect.DomainModelService
         private float _RedValue;
         partial void OnRedValueChanging(float value);
         partial void OnRedValueChanged();
+        /// <summary>
+        /// There are no comments for Property IsArchived in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool IsArchived
+        {
+            get
+            {
+                return this._IsArchived;
+            }
+            set
+            {
+                this.OnIsArchivedChanging(value);
+                this._IsArchived = value;
+                this.OnIsArchivedChanged();
+                this.OnPropertyChanged("IsArchived");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _IsArchived;
+        partial void OnIsArchivedChanging(bool value);
+        partial void OnIsArchivedChanged();
         /// <summary>
         /// There are no comments for Position in the schema.
         /// </summary>
