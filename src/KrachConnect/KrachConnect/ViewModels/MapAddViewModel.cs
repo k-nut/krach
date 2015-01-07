@@ -104,7 +104,7 @@ namespace KrachConnect.ViewModels
             NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
 
             var oldNewNoiseMearument = newNoiseMeasurement;
-            NewNoiseMeasurement = createNewNoseMeasurementWithStaticValuesFromOldOne(oldNewNoiseMearument);
+            NewNoiseMeasurement = createNewNoiseMeasurementWithStaticValuesFromOldOne(oldNewNoiseMearument);
 
 
             SelectedMeasuringPoint.IsSelected = false;
@@ -129,7 +129,7 @@ namespace KrachConnect.ViewModels
 
         }
 
-        private NoiseMeasurement createNewNoseMeasurementWithStaticValuesFromOldOne(NoiseMeasurement oldNoiseMeasurement)
+        private NoiseMeasurement createNewNoiseMeasurementWithStaticValuesFromOldOne(NoiseMeasurement oldNoiseMeasurement)
         {
           return new NoiseMeasurement
           {
@@ -140,7 +140,7 @@ namespace KrachConnect.ViewModels
         }
 
 
-        public void SayHello(object dataContext)
+        public void ChangeSelectedMeasuringPoint(object dataContext)
         {
           var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
           var measuringPoint = measuringPointViewModel.Model;
@@ -151,7 +151,7 @@ namespace KrachConnect.ViewModels
           }
           catch (InvalidOperationException e)
           {
-            NewNoiseMeasurement = createNewNoseMeasurementWithStaticValuesFromOldOne(NewNoiseMeasurement);
+            NewNoiseMeasurement = createNewNoiseMeasurementWithStaticValuesFromOldOne(NewNoiseMeasurement);
           }
           SetSelectedMeasuringPoint(measuringPointViewModel);
         }

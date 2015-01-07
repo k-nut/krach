@@ -11,34 +11,33 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
   <Grid Background="White">
-    <Grid.ColumnDefinitions>
-      <!--><ColumnDefinition></ColumnDefinition><!-->
-      <ColumnDefinition></ColumnDefinition>
-    </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
       <RowDefinition />
       <RowDefinition />
     </Grid.RowDefinitions>
 
-    <Grid Grid.Column="0" Grid.Row="0">
+    <Grid Grid.Row="0">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto"  />
         <RowDefinition Height="*" />
         <RowDefinition />
       </Grid.RowDefinitions>
+
       <Grid Grid.Row="0">
+
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
-        <TextBlock Grid.Column="0" FontSize="20" HorizontalAlignment="Right">
+        <TextBlock Grid.Column="0" FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
+        <TextBlock Grid.Column="1" FontSize="20" HorizontalAlignment="Right">
           (<TextBlock Text="{Binding CurrentNumber}" /> 
           von 
           <TextBlock Text="{Binding TotalMeasuringPoints}" />
         )</TextBlock>
-        <Button Grid.Row="0" Grid.Column="2"  x:Name="ToggleDetails" Height="25" Content="{Binding ShowHideContent}"/>
+        <Button Grid.Column="2"  x:Name="ToggleDetails" Height="25" Content="{Binding ShowHideContent}"/>
       </Grid>
       <Grid Grid.Row="1" Visibility="{Binding DetailVisibility}" >
         <Grid.RowDefinitions>
@@ -72,8 +71,6 @@
         <Grid.RowDefinitions>
           <RowDefinition />
           <RowDefinition />
-          <RowDefinition />
-          <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
           <ColumnDefinition />
@@ -81,11 +78,13 @@
           <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0">Minimalwert in Dezibel</Label>
+        <Label   Grid.Row="0" Grid.Column="0">Minimalwert in Dezibel</Label>
         <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewNoiseMeasurement.MinValue}" />
-        <Label Grid.Row="0"  Grid.Column="1">Mittelwert in Dezibel</Label>
+
+        <Label   Grid.Row="0" Grid.Column="1">Mittelwert in Dezibel</Label>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewNoiseMeasurement.AverageValue}" />
-        <Label Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
+
+        <Label   Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
         <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
 
       </Grid>
@@ -109,7 +108,7 @@
       </Grid>
     </Grid>
 
-    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+    <Grid Grid.Row="1">
       <Image Source="../Resources/map1.JPG" />
       <ItemsControl ItemsSource="{Binding MeasuringPoints}">
         <ItemsControl.ItemsPanel>
@@ -125,14 +124,13 @@
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <Button cal:Message.Attach="SayHello($datacontext)">
-              <Ellipse 
+            <Ellipse 
+                cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
                      Cursor="Hand"
                      Height="20" Width="20"
                      Stroke="Black"
                      Fill="{Binding JustMeasured, Converter={krachConnect:JustMeasuredToBrushConverter}}"
                      StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}" />
-            </Button>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
