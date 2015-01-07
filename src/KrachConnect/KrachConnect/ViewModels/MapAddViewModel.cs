@@ -37,13 +37,21 @@ namespace KrachConnect.ViewModels
       {
         MeasurementDate = DateTime.Now
       };
-      MeasuringPoints.First(mp => !mp.JustMeasured).IsSelected = true;
+
+      SelectedMeasuringPoint = MeasuringPoints.First(mp => !mp.JustMeasured);
 
     }
 
     public MeasuringPointViewModel SelectedMeasuringPoint
     {
-      get { return MeasuringPoints.FirstOrDefault(mp => !mp.JustMeasured); }
+      get { return selectedMeasuringPoint; }
+      set
+      {
+        selectedMeasuringPoint = value;
+        selectedMeasuringPoint.IsSelected = true;
+        NotifyOfPropertyChange(() => SelectedMeasuringPoint);
+      }
+
     }
 
     public NoiseMeasurement NewNoiseMeasurement
@@ -59,40 +67,71 @@ namespace KrachConnect.ViewModels
     public void AddNoiseMeasurementToSelectedMeasuringPoint()
     {
       newNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
-      repository._noiseMeasurements.Add(NewNoiseMeasurement);
+      if (!repository.NoiseMeasurements.Contains(NewNoiseMeasurement))
+      {
+        repository.NoiseMeasurements.Add(NewNoiseMeasurement);
+      }
 
 
       MeasurementsAddedInThisReading.Add(new NoiseMeasurementViewModel(newNoiseMeasurement));
       NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
 
       var oldNewNoiseMearument = newNoiseMeasurement;
-      NewNoiseMeasurement = new NoiseMeasurement
-      {
-        MeasurementDate = oldNewNoiseMearument.MeasurementDate,
-        Employee = oldNewNoiseMearument.Employee,
-        Method = oldNewNoiseMearument.Method
-      };
-      
+      NewNoiseMeasurement = createNewNoseMeasurementWithStaticValuesFromOldOne(oldNewNoiseMearument);
+
       SelectedMeasuringPoint.IsSelected = false;
       SelectedMeasuringPoint.JustMeasured = true;
       NotifyOfPropertyChange(() => CanClick);
       NotifyOfPropertyChange(() => AllDone);
 
 
-      if (MeasuringPoints.Count(mp => !mp.JustMeasured) > 0){
-      SelectNextMeasuringPoint();
+      if (MeasuringPoints.Count(mp => !mp.JustMeasured) > 0)
+      {
+        SelectNextMeasuringPoint();
       }
+    }
+
+    private NoiseMeasurement createNewNoseMeasurementWithStaticValuesFromOldOne(NoiseMeasurement oldNoiseMeasurement)
+    {
+      return new NoiseMeasurement
+      {
+        MeasurementDate = oldNoiseMeasurement.MeasurementDate,
+        Employee = oldNoiseMeasurement.Employee,
+        Method = oldNoiseMeasurement.Method
+      };
     }
 
     public void SelectNextMeasuringPoint()
     {
-      MeasuringPoints.First(mp => !mp.JustMeasured).IsSelected = true;
+      SelectedMeasuringPoint = MeasuringPoints.First(mp => !mp.JustMeasured);
 
-      NotifyOfPropertyChange(() => SelectedMeasuringPoint);
       NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
       NotifyOfPropertyChange(() => MeasuringPoints);
       NotifyOfPropertyChange(() => CurrentNumber);
 
+    }
+
+    public void SayHello(object dataContext)
+    {
+      var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
+      var measuringPoint = measuringPointViewModel.Model;
+      try
+      {
+        var correspondingNoiseMeasurement = measurementsAddedInThisReading.First(maitr => maitr.MeasuringPoint == measuringPoint);
+        NewNoiseMeasurement = correspondingNoiseMeasurement.Model;
+      }
+      catch (InvalidOperationException e)
+      {
+        NewNoiseMeasurement = createNewNoseMeasurementWithStaticValuesFromOldOne(NewNoiseMeasurement);
+      }
+      SetSelectedMeasuringPoint(measuringPointViewModel);
+
+    }
+
+    private void SetSelectedMeasuringPoint(MeasuringPointViewModel measuringPointViewModel)
+    {
+      SelectedMeasuringPoint.IsSelected = false;
+      SelectedMeasuringPoint = measuringPointViewModel;
     }
 
     public void SaveToHub()
@@ -113,11 +152,11 @@ namespace KrachConnect.ViewModels
         measurementsAddedInThisReading = value;
         NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
       }
-    } 
+    }
 
     public Visibility AllDone
     {
-      get { return MeasuringPoints.Any(mp => !mp.JustMeasured)? Visibility.Hidden : Visibility.Visible; }
+      get { return MeasuringPoints.Any(mp => !mp.JustMeasured) ? Visibility.Hidden : Visibility.Visible; }
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints

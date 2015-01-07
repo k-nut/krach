@@ -76,5 +76,16 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => MeasuringPoint);
       }
     }
+
+    public NoiseMeasurement Model
+    {
+      get { return m_Model; }
+      set
+      {
+        m_Model = value;
+        NotifyOfPropertyChange(() => Model);
+      }
+    }
+
   }
 }
