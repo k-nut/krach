@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using Caliburn.Micro;
+using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
@@ -35,5 +37,22 @@ namespace KrachConnect.ViewModels
       measuringPoint.IsArchived = !measuringPoint.IsArchived;
       repository.Save();
     }
+
+      public void AddNewMeasuringPoint(object xPosition, object yPosition)
+      {
+          var x = (int)xPosition;
+          var y = (int)yPosition;
+          var newPosition = new NoiseMapPosition
+          {
+              XPosition = x,
+              YPosition = y
+          };
+          var measuringPoint = new MeasuringPoint
+          {
+              Name = "Neuer Messpunkt",
+              Position = newPosition
+          };
+          repository.MeasuringPoints.Add(measuringPoint);
+      }
   }
 }

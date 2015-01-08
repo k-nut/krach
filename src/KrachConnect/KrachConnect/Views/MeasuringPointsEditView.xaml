@@ -15,7 +15,7 @@
 
         <TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" />
         <Grid Grid.Row="1">
-            <Image Source="../Resources/map1.JPG" />
+            <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
             <ItemsControl ItemsSource="{Binding MeasuringPoints}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
