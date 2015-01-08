@@ -42,7 +42,8 @@
         <Grid Grid.Row="1" Grid.Column="1">
             <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False">
                 <DataGrid.Columns >
-                    <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd/MM/yyyy}'}" Width="auto" />
+                    <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}" Width="auto" />
+                    <DataGridTextColumn Header="Uhrzeit" Binding="{Binding MeasurementDate, StringFormat='{}{0:HH:mm}'}" Width="auto" />
                     <DataGridTextColumn Header="Messpunkt"  Binding="{Binding MeasuringPoint.Name}" Width="auto" />
                     <DataGridTextColumn Header="Min-Messwert" Binding="{Binding MinValue}" Width="auto" />
                     <DataGridTextColumn Header="Mittel-Messwert" Binding="{Binding AverageValue}" Width="auto" />
