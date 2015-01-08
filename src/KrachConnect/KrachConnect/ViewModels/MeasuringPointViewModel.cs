@@ -6,15 +6,17 @@ namespace KrachConnect
 {
   public class MeasuringPointViewModel :PropertyChangedBase
   {
-    private MeasuringPoint model;
+    private MeasuringPoint m_Model;
     private bool isSelected = false;
     private bool justMeasured = false;
+    private bool isArchived = false;
+    
     public MeasuringPointViewModel(MeasuringPoint mp)
     {
-      model = mp;
+      m_Model = mp;
     }
 
-    public MeasuringPoint Model { get { return model; } } 
+    public MeasuringPoint Model { get { return m_Model; } } 
 
     public bool IsSelected 
     {get { return isSelected; }
@@ -25,6 +27,18 @@ namespace KrachConnect
         NotifyOfPropertyChange(() => IsSelected);
       }
     }
+
+    public bool IsArchived
+    {
+      get { return m_Model.IsArchived; }
+      set
+      {
+        m_Model.IsArchived = value;
+        NotifyOfPropertyChange(() => IsArchived);
+      }
+    }   
+
+
 
     public bool JustMeasured
     {

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="KrachConnect.Views.MeasuringPointsEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:krachConnect="clr-namespace:KrachConnect"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" />
+    <Grid Grid.Row="1">
+      <Image Source="../Resources/map1.JPG" />
+      <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <Canvas/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemContainerStyle>
+          <Style>
+            <Setter Property="Canvas.Left" Value="{Binding Model.Position.XPosition}"/>
+            <Setter Property="Canvas.Top" Value="{Binding Model.Position.YPosition}"/>
+          </Style>
+        </ItemsControl.ItemContainerStyle>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Ellipse cal:Message.Attach="[Event MouseRightButtonUp] = [Action ToggleArchivation($datacontext)]"
+                     Cursor="Hand"
+                     Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
+                     Height="20" Width="20"
+                     Stroke="Black" />
+
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
+  </Grid>
+
+</UserControl>

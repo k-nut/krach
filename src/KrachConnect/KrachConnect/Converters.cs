@@ -51,5 +51,24 @@ namespace KrachConnect
     }
   }
 
+  [ValueConversion(typeof(object), typeof(Brush))]
+  public class IsArchivedToBrushConverter : BaseConverter, IValueConverter
+  {
+    public object Convert(object value, Type targetType, object parameter,
+      System.Globalization.CultureInfo culture)
+    {
+      var booleanValue = (bool)value;
+      return booleanValue ? Brushes.SlateGray : Brushes.Green;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter,
+                    System.Globalization.CultureInfo culture)
+    {
+      return null;
+    }
+  }
+
+  
+
 
 }

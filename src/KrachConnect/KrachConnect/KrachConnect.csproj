@@ -101,6 +101,7 @@
     <Compile Include="Converters.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
     <Compile Include="ViewModels\MapAddSliderViewModel.cs" />
+    <Compile Include="ViewModels\MeasuringPointsEditViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPointViewModel.cs" />
     <Compile Include="NoiseRepository.cs" />
     <Compile Include="Service References\DomainModelService\Reference.cs">
@@ -123,6 +124,9 @@
     </Compile>
     <Compile Include="Views\MapAddView.xaml.cs">
       <DependentUpon>MapAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeasuringPointsEditView.xaml.cs">
+      <DependentUpon>MeasuringPointsEditView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +193,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MapAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeasuringPointsEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
