@@ -36,8 +36,16 @@ namespace KrachConnect
         m_Model.IsArchived = value;
         NotifyOfPropertyChange(() => IsArchived);
       }
+    }
+    public string Name
+    {
+        get { return m_Model.Name; }
+        set
+        {
+            m_Model.Name = value;
+            NotifyOfPropertyChange(() => Name);
+        }
     }   
-
 
 
     public bool JustMeasured

@@ -34,7 +34,8 @@
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
                      Height="20" Width="20"
-                     Stroke="Black" />
+                     Stroke="Black" 
+                     ToolTip="{Binding Name}"/>
 
           </DataTemplate>
         </ItemsControl.ItemTemplate>

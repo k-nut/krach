@@ -125,6 +125,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Ellipse 
+                            ToolTip="{Binding Name}"
                             cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
                             Cursor="Hand"
                             Height="20" Width="20"
