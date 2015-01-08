@@ -12,8 +12,25 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" />
+        <Grid Grid.Row="0">
+          <Grid.RowDefinitions>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+          </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text=" Messpunktname" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Height="30" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text=" Bemerkung" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="0" Height="300" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            
+          </Grid>
+            <!--><TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" /><!-->
         <Grid Grid.Row="1">
             <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
             <ItemsControl ItemsSource="{Binding MeasuringPoints}">

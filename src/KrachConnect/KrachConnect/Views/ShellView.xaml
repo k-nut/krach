@@ -11,6 +11,6 @@
       <Button x:Name="ShowMeasuringPointsEditScreen" Content="Messpunkte bearbeiten" Margin="12,0,0,0" Padding="5"/>
       <Button x:Name="ShowBlueScreen" Content="Export" Margin="12,0,0,0" Padding="5"/>
     </StackPanel>
-    <ContentControl x:Name="ActiveItem" />
+    <ContentControl Padding="10" x:Name="ActiveItem" /><!-->Funktioniert nicht<!-->
   </DockPanel>
 </UserControl>
