@@ -9,15 +9,22 @@ Anwesend:
 
 
 ##Vorstellung des Programmfortschrittes
-Vorstellung des Tab "Messreihe hinzufügen". Dort können die Daten: "Datum", "Uhrzeit", "Messverfahren", "Kürzel"
-Diese werden nur einmal eingetragen und sind dann automatisch für die anderen Messpunkte gespeichert. Für jeden Messpunkt kann
+Vorstellung des Tab "Messreihe hinzufügen". Dort können die Daten: "Datum", "Uhrzeit", "Messverfahren", "Kürzel" eingetragen werden.
+Diese Daten werden nur einmal eingetragen und sind dann automatisch für die anderen Messpunkte gespeichert. Für jeden Messpunkt kann
 man den Minimal-, Mittel- und Maximalwert eingeben. Hier erfolgt noch ein Bruch zwischen Maus und Tastertaur. Das muss noch geändert werden,
 es soll alles nur mit der Maus bedient werden. Wenn man für einen Messpunkt Werte eingegeben hat kann man auf "Nächster" clicken, somit
 gelangt man zum nächsten Messpunkt und kann für diese die Messdateneintragen. Falls man für diesen Punkt keine Messdaten eintragen möchte
 kann man mit dem Button "Überspringen" dies erreichen. Das wünscht der Kunde nicht. Der Button "Überspringen" bleibt trozdem erhalten, damit falls 
 der Anwender am Anfang Messpunkte ausgewählt hat die er doch nicht mit Messwerten belegen möchte, diesen Punkt überspringen kann.
 Inmoment gibt es auch keinen Start Button, womit man die Messbegehung starten kann. Das erfolgt noch mit dem
-Button "Messreihe hinzufügen". 
+Button "Messreihe hinzufügen". Um die Begehung zu beenden, kann der Anwender auf den Button "Speichern drücken". Dann werden alle Messwerte recht oben in
+einer Tabelle angezeigt. Das möchte Lars Schimemann nicht. Lars Schiemann fehlt eine Auswahl für die Messpunkte, die in der aktuellen Messbegehung 
+gemessen wurden. Die Lösung ist, das der Anwender auf alle Messpunkte die er gemessen hat klickt, dann die Begehung startet und dann die Werte für den
+Messpunkt eingibt. 
+Um alle Messwerte per Maus eingeben zu können, erfolgt dies über einen Schieberegler. Damit der Anwender keine falschen Eingaben eingeben kann
+bei den Minimal und Maximalwerten, soll ein automatischer angepasster Schieberegler eingesetzt werden. (Multislider)
+
+
 
 
 ##Weiteres Vorgehen
@@ -25,3 +32,7 @@ Alle Eingaben müssen nur mit der Maus erfolgen.
 Startbutton zum Beginn des Messrundgangs.
 Messpunkte anklickbar machen, um die Messpunkte auszuwählen, die für die Messbegehung wichtig sind.
 Button "speichern" anlegen, um alle eingegeben Messwerte zu speichern.
+Tabelle rechts oben löschen, bei dem Tab Messreihe hinzufügen".
+Tab "Messeihe hinzufügen" ändern in "Begehung".
+Schieberegler für Messwerte. (Mulislider)
+
