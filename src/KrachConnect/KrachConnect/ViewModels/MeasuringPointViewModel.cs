@@ -49,6 +49,16 @@ namespace KrachConnect
       }
     }
 
+    public NoiseMapPosition Position
+    {
+      get { return m_Model.Position; }
+      set
+      {
+        m_Model.Position = value;
+        NotifyOfPropertyChange(() => Position);
+      }
+    }
+
     public bool IsArchived
     {
       get { return m_Model.IsArchived; }

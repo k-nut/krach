@@ -13,12 +13,14 @@ namespace KrachConnect.ViewModels
   class MeasuringPointsEditViewModel : PropertyChangedBase
   {
     private NoiseRepository repository;
-    private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels; 
+    private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
+    private MeasuringPointViewModel selectedMeasuringPoint;
 
     public MeasuringPointsEditViewModel(NoiseRepository repository)
     {
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
+      SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint{Name="Große neue Maschine"});
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
@@ -29,6 +31,21 @@ namespace KrachConnect.ViewModels
         measuringPointViewModels = value;
         NotifyOfPropertyChange(() => MeasuringPoints);
       }
+    }
+
+    public MeasuringPointViewModel SelectedMeasuringPoint
+    {
+      get { return selectedMeasuringPoint; }
+      set
+      {
+        selectedMeasuringPoint = value;
+        NotifyOfPropertyChange(() => SelectedMeasuringPoint);
+      }
+    }
+
+    public void SaveToHub()
+    {
+      repository.Save();
     }
 
     public void ToggleArchivation(object dataContext)
@@ -51,14 +68,14 @@ namespace KrachConnect.ViewModels
             // in order to position the points in the center
             // we simply subtract half the size (10)
           };
-          var measuringPoint = new MeasuringPoint
-          {
-              Name = "Neuer Messpunkt",
-              Position = newPosition
-          };
-          MeasuringPoints.Add(new MeasuringPointViewModel(measuringPoint));
-          repository.MeasuringPoints.Add(measuringPoint);
-          repository.Save();
+        SelectedMeasuringPoint.Position = newPosition;
+        //var measuringPoint = new MeasuringPoint
+        //  {
+        //      Name = "Neuer Messpunkt",
+        //      Position = newPosition
+        //  };
+          MeasuringPoints.Add(SelectedMeasuringPoint);
+          repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
       }
   }
 }

@@ -12,6 +12,7 @@
       <RowDefinition></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
+    
     <Grid Grid.Row="0">
       <Grid.RowDefinitions>
         <RowDefinition/>
@@ -24,12 +25,16 @@
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
 
-      <TextBlock Grid.Row="0" Grid.Column="0" Text=" Messpunktname" VerticalAlignment="Center"/>
-      <TextBox Grid.Row="1" Grid.Column="0" Height="30" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-      <TextBlock Grid.Row="2" Grid.Column="0" Text=" Bemerkung" VerticalAlignment="Center"/>
-      <TextBox Grid.Row="3" Grid.Column="0" Height="300" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
+      <TextBlock Grid.Row="0" Grid.Column="0" Text="Messpunktname" VerticalAlignment="Center"/>
+      <TextBox   Grid.Row="1" Grid.Column="0" Height="30" Width="300" Text="{Binding SelectedMeasuringPoint.Name}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+      <TextBlock Grid.Row="2" Grid.Column="0" Text="Bemerkung" VerticalAlignment="Center"/>
+      <TextBox   Grid.Row="3" Grid.Column="0" Height="300" Width="500" Text="{Binding SelectedMeasuringPoint.Notes}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+  
+      <Label Content="Archiviert" Grid.Column="1" Grid.Row="0"></Label>
+      <CheckBox Grid.Column="1" Grid.Row="1" IsChecked="{Binding SelectedMeasuringPoint.IsArchived}"></CheckBox>
+      <Button Content="Speichern" x:Name="SaveToHub" Grid.Column="1" Grid.Row="2"/>
     </Grid>
+    
     <!--><TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" /><!-->
     <Grid Grid.Row="1">
       <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
