@@ -50,11 +50,18 @@ namespace KrachConnect.ViewModels
             }
         }
 
-        public int TotalMeasuringPoints { get { return MeasuringPoints.Count(); } }
+        public int TotalMeasuringPoints
+        {
+            get { return MeasuringPoints.Count(mp => !mp.IsArchived); }
+        }
 
         public int CurrentNumber
         {
-            get { return MeasuringPoints.Count(mp => mp.JustMeasured) + 1; }
+            get
+            {
+                
+               return MeasuringPoints.Count(mp => mp.JustMeasured) +1;
+            }
         }
 
         public MapAddViewModel(NoiseRepository repository)
@@ -66,13 +73,15 @@ namespace KrachConnect.ViewModels
                 MeasurementDate = DateTime.Now
             };
           // TODO: Abfangen, wenn es keinerlei Messpunkte gibt
-            SelectedMeasuringPoint = MeasuringPoints.First(mp => !mp.JustMeasured);
+             SelectNextMeasuringPoint();
 
         }
 
         public MeasuringPointViewModel SelectedMeasuringPoint
         {
-          get { return selectedMeasuringPoint; }
+          get {
+                return selectedMeasuringPoint;
+              }
           set
           {
             selectedMeasuringPoint = value;
@@ -114,7 +123,7 @@ namespace KrachConnect.ViewModels
             NotifyOfPropertyChange(() => AllDone);
 
 
-            if (MeasuringPoints.Count(mp => !mp.JustMeasured) > 0)
+            if (MeasuringPoints.Count(mp => !mp.JustMeasured && !mp.IsArchived) > 0)
             {
                 SelectNextMeasuringPoint();
             }
@@ -122,9 +131,9 @@ namespace KrachConnect.ViewModels
 
         public void SelectNextMeasuringPoint()
         {
-           SelectedMeasuringPoint = MeasuringPoints.First(mp => !mp.JustMeasured);
+           SelectedMeasuringPoint = MeasuringPoints.First(mp => !mp.JustMeasured && !mp.IsArchived);
 
-          NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
+            NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
             NotifyOfPropertyChange(() => MeasuringPoints);
             NotifyOfPropertyChange(() => CurrentNumber);
 
@@ -174,7 +183,7 @@ namespace KrachConnect.ViewModels
 
         public bool CanClick
         {
-            get { return MeasuringPoints.Any(mp => !mp.JustMeasured); }
+            get { return MeasuringPoints.Any(mp => !mp.JustMeasured && !mp.IsArchived); }
         }
 
         public ObservableCollection<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
