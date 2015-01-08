@@ -34,6 +34,7 @@
         <Property Name="GreenValue" Type="Edm.Single" Nullable="false" />
         <Property Name="YellowValue" Type="Edm.Single" Nullable="false" />
         <Property Name="RedValue" Type="Edm.Single" Nullable="false" />
+        <Property Name="IsArchived" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="Position" Relationship="OpenResKit.DomainModel.MeasuringPoint_Position" ToRole="MeasuringPoint_Position_Target" FromRole="MeasuringPoint_Position_Source" />
       </EntityType>
       <EntityType Name="NoiseMapPosition">

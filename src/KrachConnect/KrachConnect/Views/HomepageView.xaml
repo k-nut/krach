@@ -39,8 +39,16 @@
             <Grid Grid.Column="0"/>
             <Grid Grid.Column="0"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">          
-            <DataGrid AutoGenerateColumns="False" 
+        <Grid Grid.Row="1" Grid.Column="1">
+            <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False">
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate}" Width="auto" />
+                    <DataGridTextColumn Header="Messpunkt"  Binding="{Binding MeasuringPoint.Name}" Width="auto" />
+                    <DataGridTextColumn Header="Messwert" Binding="{Binding AverageValue}" Width="auto" />
+                    <DataGridTextColumn Header="Mitarbeiter" Binding="{Binding Employee}" Width="auto" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <!--<DataGrid AutoGenerateColumns="False" 
           Height="auto" 
           HorizontalAlignment="Stretch" 
           Name="dataGrid1" 
@@ -50,7 +58,7 @@
                     <DataGridTextColumn Header="Messpunkt"  Binding="{Binding Path=B}" Width="auto" />
                     <DataGridTextColumn Header="Messwert" Binding="{Binding Path=C}" Width="auto" />
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
         </Grid>
     </Grid>
 </UserControl>

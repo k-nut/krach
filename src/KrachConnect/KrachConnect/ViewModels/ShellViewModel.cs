@@ -13,7 +13,7 @@ namespace KrachConnect.ViewModels
 
     public ShellViewModel()
     {
-      ActivateItem(new HomepageViewModel());
+      ActivateItem(new HomepageViewModel(nr));
     }
 
     public void ShowMapScreen()
@@ -24,7 +24,7 @@ namespace KrachConnect.ViewModels
 
     public void ShowHomePageScreen()
     {
-      ActivateItem(new HomepageViewModel());
+      ActivateItem(new HomepageViewModel(nr));
     }
 
 
