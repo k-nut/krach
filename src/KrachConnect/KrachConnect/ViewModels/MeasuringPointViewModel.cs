@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Media;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
@@ -25,6 +26,26 @@ namespace KrachConnect
         isSelected = value;
         NotifyOfPropertyChange(() => Model);
         NotifyOfPropertyChange(() => IsSelected);
+      }
+    }
+
+    public int XPosition
+    {
+      get { return m_Model.Position.XPosition; }
+      set
+      {
+        m_Model.Position.XPosition = value;
+        NotifyOfPropertyChange(() => XPosition);
+      }
+    }
+
+    public int YPosition
+    {
+      get { return m_Model.Position.YPosition; }
+      set
+      {
+        m_Model.Position.YPosition = value;
+        NotifyOfPropertyChange(() => YPosition);
       }
     }
 

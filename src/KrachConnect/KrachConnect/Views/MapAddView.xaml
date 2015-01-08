@@ -113,13 +113,13 @@
             <ItemsControl ItemsSource="{Binding MeasuringPoints}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <Canvas/>
+                        <Canvas />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemContainerStyle>
                     <Style>
-                        <Setter Property="Canvas.Left" Value="{Binding Model.Position.XPosition}"/>
-                        <Setter Property="Canvas.Top" Value="{Binding Model.Position.YPosition}"/>
+                        <Setter Property="Canvas.Left" Value="{Binding XPosition}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding YPosition}"/>
                     </Style>
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>

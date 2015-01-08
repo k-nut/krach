@@ -67,7 +67,7 @@ namespace KrachConnect.ViewModels
         public MapAddViewModel(NoiseRepository repository)
         {
             this.repository = repository;
-            MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPoints);
+            MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
             NewNoiseMeasurement = new NoiseMeasurement
             {
                 MeasurementDate = DateTime.Now

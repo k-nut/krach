@@ -7,63 +7,63 @@
              xmlns:krachConnect="clr-namespace:KrachConnect"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-          <Grid.RowDefinitions>
-              <RowDefinition/>
-              <RowDefinition/>
-              <RowDefinition/>
-              <RowDefinition/>
-          </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            
-            <TextBlock Grid.Row="0" Grid.Column="0" Text=" Messpunktname" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="1" Grid.Column="0" Height="30" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text=" Bemerkung" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="3" Grid.Column="0" Height="300" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            
-          </Grid>
-            <!--><TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" /><!-->
-        <Grid Grid.Row="1">
-            <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
-            <ItemsControl ItemsSource="{Binding MeasuringPoints}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
-                    <Style>
-                        <Setter Property="Canvas.Left" Value="{Binding Model.Position.XPosition}"/>
-                        <Setter Property="Canvas.Top" Value="{Binding Model.Position.YPosition}"/>
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Ellipse cal:Message.Attach="[Event MouseRightButtonUp] = [Action ToggleArchivation($datacontext)]"
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0">
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Grid.Row="0" Grid.Column="0" Text=" Messpunktname" VerticalAlignment="Center"/>
+      <TextBox Grid.Row="1" Grid.Column="0" Height="30" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+      <TextBlock Grid.Row="2" Grid.Column="0" Text=" Bemerkung" VerticalAlignment="Center"/>
+      <TextBox Grid.Row="3" Grid.Column="0" Height="300" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+    </Grid>
+    <!--><TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" /><!-->
+    <Grid Grid.Row="1">
+      <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
+      <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <Canvas />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemContainerStyle>
+          <Style>
+            <Setter Property="Canvas.Left" Value="{Binding XPosition}"/>
+            <Setter Property="Canvas.Top" Value="{Binding YPosition}"/>
+          </Style>
+        </ItemsControl.ItemContainerStyle>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Ellipse cal:Message.Attach="[Event MouseRightButtonUp] = [Action ToggleArchivation($datacontext)]"
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
                      Height="20" Width="20"
                      Stroke="Black">
-                            <Ellipse.ToolTip>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="Ist Archiviert" Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}"/>
-                                </StackPanel>
-                            </Ellipse.ToolTip>
-                        </Ellipse>
+              <Ellipse.ToolTip>
+                <StackPanel>
+                  <TextBlock Text="{Binding Name}"/>
+                  <TextBlock Text="Ist Archiviert" Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}"/>
+                </StackPanel>
+              </Ellipse.ToolTip>
+            </Ellipse>
 
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Grid>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
     </Grid>
+  </Grid>
 
 </UserControl>

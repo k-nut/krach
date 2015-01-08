@@ -9,7 +9,7 @@ namespace KrachConnect.Tests
     public void After_Initialization_MeasuringPoints_Is_Not_Null()
     {
       var nr = new NoiseRepository();
-      Assert.NotNull(nr.MeasuringPoints);
+      Assert.NotNull(nr.MeasuringPointViewModels);
     }
     [Test]
     public void After_Initialization_NoiseMeasurments_Is_Not_Null()

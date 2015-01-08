@@ -20,6 +20,7 @@ namespace KrachConnect
           var img = ctx.Source as Image;
           var input = ctx.Source as IInputElement;
           var e = ctx.EventArgs as MouseEventArgs;
+        return (int)e.GetPosition(input).X;
 
           // If there is an image control, get the scaled position
           if (img != null && e != null)
@@ -40,6 +41,8 @@ namespace KrachConnect
           var img = ctx.Source as Image;
           var input = ctx.Source as IInputElement;
           var e = ctx.EventArgs as MouseEventArgs;
+          return (int)e.GetPosition(input).Y;
+
 
           // If there is an image control, get the scaled position
           if (img != null && e != null)

@@ -27,9 +27,18 @@ namespace KrachConnect
       //addMeasuringPoint();
     }
 
-    public IEnumerable<MeasuringPointViewModel> MeasuringPoints
+    public IEnumerable<MeasuringPointViewModel> MeasuringPointViewModels
     {
       get { return measuringPointViewModels; }
+    }
+
+    public DataServiceCollection<MeasuringPoint> MeasuringPoints
+    {
+      get { return _measuringPoints; }
+      set
+      {
+        _measuringPoints = value;
+      }
     }
 
     public DataServiceCollection<NoiseMeasurement> NoiseMeasurements

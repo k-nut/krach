@@ -23,7 +23,7 @@ namespace KrachConnect.ViewModels
     public MapAddSliderViewModel(NoiseRepository repository)
     {
       this.repository = repository;
-      measuringPoints = repository.MeasuringPoints;
+      measuringPoints = repository.MeasuringPointViewModels;
       unusedMearingPoints = new Stack<MeasuringPointViewModel>(measuringPoints);
       newNoiseMeasurement = new NoiseMeasurement();
       SelectedMeasuringPoint = unusedMearingPoints.Pop();
