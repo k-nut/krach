@@ -127,7 +127,7 @@
                         <Ellipse 
                             ToolTip="{Binding Name}"
                             cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
-                            Cursor="Hand"
+                            Cursor="{Binding IsArchived, Converter={krachConnect:IsArchivedToCursorConverter}}"
                             Height="20" Width="20"
                             Stroke="Black"
                             StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}" >

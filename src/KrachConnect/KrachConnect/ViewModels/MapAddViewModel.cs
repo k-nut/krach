@@ -99,7 +99,7 @@ namespace KrachConnect.ViewModels
           {
             repository.NoiseMeasurements.Add(NewNoiseMeasurement);
           }
-
+          
 
             MeasurementsAddedInThisReading.Add(new NoiseMeasurementViewModel(newNoiseMeasurement));
             NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
@@ -145,6 +145,10 @@ namespace KrachConnect.ViewModels
         {
           var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
           var measuringPoint = measuringPointViewModel.Model;
+          if (measuringPointViewModel.IsArchived)
+          {
+              return;
+          }
           try
           {
             var correspondingNoiseMeasurement = measurementsAddedInThisReading.First(maitr => maitr.MeasuringPoint == measuringPoint);
