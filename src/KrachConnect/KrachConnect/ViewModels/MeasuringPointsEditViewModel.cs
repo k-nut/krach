@@ -20,7 +20,7 @@ namespace KrachConnect.ViewModels
     {
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-      SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint{Name="Große neue Maschine"});
+      SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint { Name = "Große neue Maschine" });
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
@@ -50,32 +50,33 @@ namespace KrachConnect.ViewModels
 
     public void ToggleArchivation(object dataContext)
     {
-      var measuringPoint = (MeasuringPointViewModel) dataContext;
+      var measuringPoint = (MeasuringPointViewModel)dataContext;
       measuringPoint.IsArchived = !measuringPoint.IsArchived;
       repository.Save();
     }
 
-      public void AddNewMeasuringPoint(object xPosition, object yPosition)
+    public void ChangeSelectedMeasuringPoint(object dataContext)
+    {
+      var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
+      SelectedMeasuringPoint = measuringPointViewModel;
+    }
+
+    public void AddNewMeasuringPoint(object xPosition, object yPosition)
+    {
+      var x = (int)xPosition;
+      var y = (int)yPosition;
+      var newPosition = new NoiseMapPosition
       {
-          var x = (int)xPosition;
-          var y = (int)yPosition;
-          var newPosition = new NoiseMapPosition
-          {
-              XPosition = x - 10, 
-              YPosition = y - 10
-            // 10 is a magic number
-            // because our points are width and height 20px
-            // in order to position the points in the center
-            // we simply subtract half the size (10)
-          };
-        SelectedMeasuringPoint.Position = newPosition;
-        //var measuringPoint = new MeasuringPoint
-        //  {
-        //      Name = "Neuer Messpunkt",
-        //      Position = newPosition
-        //  };
-          MeasuringPoints.Add(SelectedMeasuringPoint);
-          repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
-      }
+        XPosition = x - 10,
+        YPosition = y - 10
+        // 10 is a magic number
+        // because our points are width and height 20px
+        // in order to position the points in the center
+        // we simply subtract half the size (10)
+      };
+      SelectedMeasuringPoint.Position = newPosition;
+      MeasuringPoints.Add(SelectedMeasuringPoint);
+      repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
+    }
   }
 }

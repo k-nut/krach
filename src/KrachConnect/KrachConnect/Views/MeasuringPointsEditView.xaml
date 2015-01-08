@@ -35,7 +35,6 @@
       <Button Content="Speichern" x:Name="SaveToHub" Grid.Column="1" Grid.Row="2"/>
     </Grid>
     
-    <!--><TextBlock Grid.Row="0" Text="Rechtsklick zum Archivieren/Unarchivieren" /><!-->
     <Grid Grid.Row="1">
       <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
       <ItemsControl ItemsSource="{Binding MeasuringPoints}">
@@ -52,7 +51,7 @@
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <Ellipse cal:Message.Attach="[Event MouseRightButtonUp] = [Action ToggleArchivation($datacontext)]"
+            <Ellipse cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
                      Height="20" Width="20"
