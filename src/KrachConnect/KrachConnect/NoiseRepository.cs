@@ -24,6 +24,7 @@ namespace KrachConnect
       LoadMeasuringPoints();
       LoadMaps();
       LoadNoiseMeasurements();
+      deleteMeasuringPointsWithoutPosition();
       //addMeasuringPoint();
     }
 
@@ -76,7 +77,6 @@ namespace KrachConnect
       
       _measuringPoints.Load(query);
       measuringPointViewModels = _measuringPoints.Select(mp => new MeasuringPointViewModel(mp));
-      var x = "b";
     }
 
     private void addMeasuringPoint()
@@ -84,6 +84,14 @@ namespace KrachConnect
       var position = new NoiseMapPosition {XPosition = 300, YPosition = 190};
       var mp = new MeasuringPoint{Name = "Schleifmaschine", Position = position};
       _measuringPoints.Add(mp);
+      Save();
+    }
+
+    private void deleteMeasuringPointsWithoutPosition()
+    {
+      var measuringPointsWithPosition = MeasuringPoints.Where(mp => mp.Position.XPosition != 0 && mp.Position.YPosition != 0).ToList();
+      MeasuringPoints.Clear();
+      MeasuringPoints.Load(measuringPointsWithPosition);
       Save();
     }
 
