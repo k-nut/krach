@@ -95,13 +95,11 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
-                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Content="Zurück"  IsEnabled="{Binding CanClick}" />
-                <Button Grid.Row="0" Grid.Column="1" Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
-                <Button Grid.Row="0" Grid.Column="2" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint" IsEnabled="{Binding CanClick}" />
-                <TextBlock Grid.Row="0" Grid.Column="4" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
+                <Button Grid.Row="0" Grid.Column="0" Content="Überspringen" x:Name="SelectNextMeasuringPoint" IsEnabled="{Binding CanClick}" />
+                <Button Grid.Row="0" Grid.Column="1" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint" IsEnabled="{Binding CanClick}" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
                 <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
 
 
