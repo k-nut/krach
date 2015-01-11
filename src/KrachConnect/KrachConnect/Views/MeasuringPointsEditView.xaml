@@ -25,14 +25,14 @@
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
 
-      <TextBlock Grid.Row="0" Grid.Column="0" Text="Messpunktname" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="0" Grid.Column="0" Text="Messpunktname" VerticalAlignment="Bottom" Height="20"/>
       <TextBox   Grid.Row="1" Grid.Column="0" Height="30" Width="300" Text="{Binding SelectedMeasuringPoint.Name}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-      <TextBlock Grid.Row="2" Grid.Column="0" Text="Bemerkung" VerticalAlignment="Center"/>
-      <TextBox   Grid.Row="3" Grid.Column="0" Height="300" Width="500" Text="{Binding SelectedMeasuringPoint.Notes}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+      <TextBlock Grid.Row="2" Grid.Column="0" Text="Bemerkung" VerticalAlignment="Bottom"/>
+      <TextBox   Grid.Row="3" Grid.Column="0" Height="500" Width="300" Text="{Binding SelectedMeasuringPoint.Notes}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
   
-      <Label Content="Archiviert" Grid.Column="1" Grid.Row="0"></Label>
-      <CheckBox Grid.Column="1" Grid.Row="1" IsChecked="{Binding SelectedMeasuringPoint.IsArchived}"></CheckBox>
-      <Button Content="Speichern" x:Name="SaveToHub" Grid.Column="1" Grid.Row="2"/>
+      <Label Content="Archiviert" Grid.Column="1" Grid.Row="0" Height="25" VerticalAlignment="Bottom"></Label>
+      <CheckBox Grid.Column="1" Grid.Row="1" IsChecked="{Binding SelectedMeasuringPoint.IsArchived}" Height="20" VerticalAlignment="Top"></CheckBox>
+      <Button Content="Speichern" x:Name="SaveToHub" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200"/>
     </Grid>
     
     <Grid Grid.Row="1">
