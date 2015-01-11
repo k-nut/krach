@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
+using System.Windows.Input;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 
@@ -20,7 +21,7 @@ namespace KrachConnect.ViewModels
     {
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-      SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint { Name = "Große neue Maschine" });
+      SelectedMeasuringPoint = MeasuringPoints.First();
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
@@ -39,6 +40,7 @@ namespace KrachConnect.ViewModels
       set
       {
         selectedMeasuringPoint = value;
+        selectedMeasuringPoint.IsSelected = true;
         NotifyOfPropertyChange(() => SelectedMeasuringPoint);
       }
     }
@@ -57,6 +59,7 @@ namespace KrachConnect.ViewModels
 
     public void ChangeSelectedMeasuringPoint(object dataContext)
     {
+      SelectedMeasuringPoint.IsSelected = false;
       var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
       SelectedMeasuringPoint = measuringPointViewModel;
     }
@@ -74,7 +77,11 @@ namespace KrachConnect.ViewModels
         // in order to position the points in the center
         // we simply subtract half the size (10)
       };
-      SelectedMeasuringPoint.Position = newPosition;
+      ChangeSelectedMeasuringPoint(new MeasuringPointViewModel(new MeasuringPoint
+      {
+        Position = newPosition,
+        Name = "Neuer Messpunkt"
+      }));
       MeasuringPoints.Add(SelectedMeasuringPoint);
       repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
     }

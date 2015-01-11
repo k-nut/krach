@@ -36,7 +36,7 @@
     </Grid>
     
     <Grid Grid.Row="1">
-      <Image Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
+      <Image Cursor="Cross" Source="../Resources/map1.JPG" cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]"/>
       <ItemsControl ItemsSource="{Binding MeasuringPoints}">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
@@ -54,6 +54,7 @@
             <Ellipse cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
+                     StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}"
                      Height="20" Width="20"
                      Stroke="Black">
               <Ellipse.ToolTip>
