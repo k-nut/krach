@@ -73,6 +73,7 @@
         <Grid.RowDefinitions>
           <RowDefinition />
           <RowDefinition />
+          <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
           <ColumnDefinition />
@@ -81,13 +82,21 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0">Minimalwert in Dezibel</Label>
-        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewNoiseMeasurement.MinValue}" />
+        <Slider Grid.Row="1" Grid.Column="0" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
+        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding NewNoiseMeasurement.MinValue}" />
+
 
         <Label Grid.Row="0" Grid.Column="1">Mittelwert in Dezibel</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewNoiseMeasurement.AverageValue}" />
+        <Slider Grid.Row="1" Grid.Column="1" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NewNoiseMeasurement.AverageValue}" />
+
+
 
         <Label Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
-        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
+        <Slider Grid.Row="1" Grid.Column="2" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
+
+
 
       </Grid>
 

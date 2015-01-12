@@ -28,6 +28,7 @@ namespace KrachConnect.ViewModels
       get { return m_Model.MinValue; }
       set
       {
+        value = (float)Math.Round(value, 1);
         m_Model.MinValue = value;
         if (AverageValue < value)
         {
@@ -44,6 +45,7 @@ namespace KrachConnect.ViewModels
       get { return m_Model.AverageValue; }
       set
       {
+        value = (float) Math.Round(value, 1);
         m_Model.AverageValue = value;
         if (MinValue > value)
         {
@@ -63,11 +65,15 @@ namespace KrachConnect.ViewModels
       get { return m_Model.MaxValue; }
       set
       {
+        value = (float)Math.Round(value, 1);
         m_Model.MaxValue = value;
+        if (MinValue > value)
+        {
+          MinValue = value;
+        }
         if (AverageValue > value)
         {
           AverageValue = value;
-          MinValue = value;
         }
         NotifyOfPropertyChange(() => MaxValue);
       }

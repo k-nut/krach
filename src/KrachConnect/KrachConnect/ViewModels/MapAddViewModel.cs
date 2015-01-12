@@ -30,7 +30,7 @@ namespace KrachConnect.ViewModels
       }
       else
       {
-        MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPoints);
+        MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
       }
       NewNoiseMeasurement = new NoiseMeasurementViewModel(new NoiseMeasurement
       {
