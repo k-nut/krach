@@ -12,10 +12,7 @@
       <RowDefinition />
       <RowDefinition />
     </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition />
-    </Grid.ColumnDefinitions>
-    <Grid Grid.Row="0" Grid.RowSpan="1">
+    <Grid Grid.Row="0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
         <ColumnDefinition />
@@ -25,7 +22,7 @@
         <ContentControl x:Name="ActiveItem" />
       </Grid>
     </Grid>
-    <Grid Grid.Row="0" Grid.Column="1">
+    <Grid Grid.Row="0" >
       <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
         Lärmkrach
         professional
@@ -41,7 +38,7 @@
       <Grid Grid.Column="0" />
       <Grid Grid.Column="0" />
     </Grid>
-    <Grid Grid.Row="1" Grid.Column="1">
+    <Grid Grid.Row="1">
       <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False">
         <DataGrid.Columns>
           <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}"
@@ -55,17 +52,6 @@
           <DataGridTextColumn Header="Mitarbeiter" Binding="{Binding Employee}" Width="auto" />
         </DataGrid.Columns>
       </DataGrid>
-      <!--<DataGrid AutoGenerateColumns="False" 
-          Height="auto" 
-          HorizontalAlignment="Stretch" 
-          Name="dataGrid1" 
-          Width="auto" SelectionChanged="dataGrid1_SelectionChanged" >
-                <DataGrid.Columns >
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Path=A}" Width="auto" />
-                    <DataGridTextColumn Header="Messpunkt"  Binding="{Binding Path=B}" Width="auto" />
-                    <DataGridTextColumn Header="Messwert" Binding="{Binding Path=C}" Width="auto" />
-                </DataGrid.Columns>
-            </DataGrid>-->
     </Grid>
   </Grid>
 </UserControl>
