@@ -10,6 +10,7 @@ namespace KrachConnect.ViewModels
     private readonly NoiseRepository repository;
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
+    private string _searchTerm = "";
 
     public MeasuringPlaningViewModel(NoiseRepository repository)
     {
@@ -27,10 +28,54 @@ namespace KrachConnect.ViewModels
       }
     }
 
+    public string SearchTerm
+    {
+      get { return _searchTerm; }
+      set
+      {
+        _searchTerm = value;
+        NotifyOfPropertyChange(() => SearchTerm);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    //TODO: Check if there is a cleaner solution for this (esp. on the xaml side)
+    public void Filter(object text)
+    {
+      SearchTerm = text.ToString();
+    }
+
+    public ObservableCollection<MeasuringPointViewModel> FilteredMeasuringPoints
+    {
+      get { return SearchTerm != "" ? new ObservableCollection<MeasuringPointViewModel>(measuringPointViewModels
+        .Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower()))) : measuringPointViewModels; }
+      set
+      {
+        measuringPointViewModels = value;
+        NotifyOfPropertyChange(() => MeasuringPoints);
+      }
+    }
+
     public void ToggleSelection(object dataContext)
     {
       var measuringPoint = (MeasuringPointViewModel) dataContext;
       measuringPoint.IsSelected = !measuringPoint.IsSelected;
+    }
+
+    public void SelectAll()
+    {
+      foreach (var measuringPointViewModel in MeasuringPoints)
+      {
+        measuringPointViewModel.IsSelected = true;
+      }
+    }
+
+    public void DeSelectAll()
+    {
+      foreach (var measuringPointViewModel in MeasuringPoints)
+      {
+        measuringPointViewModel.IsSelected = false;
+      }
     }
 
     public void Save()

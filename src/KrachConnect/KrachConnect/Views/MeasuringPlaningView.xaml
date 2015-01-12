@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:krachConnect="clr-namespace:KrachConnect"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid>
@@ -19,8 +20,16 @@
         <RowDefinition />
         <RowDefinition />
       </Grid.RowDefinitions>
+      
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Filter: "/>
+        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]">
+          </TextBox>
+          <Button x:Name="SelectAll" Content="Alle auswählen" />
+      <Button x:Name="DeSelectAll" Content="Alle abwählen" />
+      </StackPanel>
 
-      <DataGrid ItemsSource="{Binding MeasuringPoints}" AutoGenerateColumns="False">
+      <DataGrid Grid.Row="1"  ItemsSource="{Binding FilteredMeasuringPoints}" AutoGenerateColumns="False">
         <DataGrid.Columns>
           <DataGridTextColumn Header="Messpunkt" Binding="{Binding Name}" Width="auto" />
           <DataGridCheckBoxColumn Header="Einbeziehen?" Binding="{Binding IsSelected}" Width="auto" />
@@ -33,7 +42,7 @@
 
     <Grid Grid.Row="1">
       <Image Source="../Resources/map1.JPG" />
-      <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+      <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
             <Canvas />

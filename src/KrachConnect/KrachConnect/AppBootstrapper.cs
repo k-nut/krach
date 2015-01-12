@@ -54,7 +54,15 @@ namespace KrachConnect
         // Return 0 if no processing could be done
         return 0;
       });
+
+      MessageBinder.SpecialValues["$text"] = context =>
+      {
+        var textBox = (TextBox)context.Source;
+        return textBox.Text;
+      };
     }
+
+
 
     protected override void OnStartup(object sender, StartupEventArgs e)
     {
