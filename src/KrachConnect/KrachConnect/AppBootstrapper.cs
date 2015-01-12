@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Caliburn.Micro;
@@ -15,55 +11,54 @@ namespace KrachConnect
     public AppBootstrapper()
     {
       Initialize();
-      MessageBinder.SpecialValues.Add("$scaledmousex", (ctx) =>
+      MessageBinder.SpecialValues.Add("$scaledmousex", ctx =>
       {
-          var img = ctx.Source as Image;
-          var input = ctx.Source as IInputElement;
-          var e = ctx.EventArgs as MouseEventArgs;
-        return (int)e.GetPosition(input).X;
+        var img = ctx.Source as Image;
+        var input = ctx.Source as IInputElement;
+        var e = ctx.EventArgs as MouseEventArgs;
+        return (int) e.GetPosition(input).X;
 
-          // If there is an image control, get the scaled position
-          if (img != null && e != null)
-          {
-              Point position = e.GetPosition(img);
-              return (int)(img.Source.Width * (position.X / img.ActualWidth));
-          }
+        // If there is an image control, get the scaled position
+        if (img != null && e != null)
+        {
+          Point position = e.GetPosition(img);
+          return (int) (img.Source.Width*(position.X/img.ActualWidth));
+        }
 
-          // If there is another type of of IInputControl get the non-scaled position - or do some processing to get a scaled position, whatever needs to happen
-          if (e != null && input != null)
-              return e.GetPosition(input).X;
+        // If there is another type of of IInputControl get the non-scaled position - or do some processing to get a scaled position, whatever needs to happen
+        if (e != null && input != null)
+          return e.GetPosition(input).X;
 
-          // Return 0 if no processing could be done
-          return 0;
+        // Return 0 if no processing could be done
+        return 0;
       });
-      MessageBinder.SpecialValues.Add("$scaledmousey", (ctx) =>
+      MessageBinder.SpecialValues.Add("$scaledmousey", ctx =>
       {
-          var img = ctx.Source as Image;
-          var input = ctx.Source as IInputElement;
-          var e = ctx.EventArgs as MouseEventArgs;
-          return (int)e.GetPosition(input).Y;
+        var img = ctx.Source as Image;
+        var input = ctx.Source as IInputElement;
+        var e = ctx.EventArgs as MouseEventArgs;
+        return (int) e.GetPosition(input).Y;
 
 
-          // If there is an image control, get the scaled position
-          if (img != null && e != null)
-          {
-              Point position = e.GetPosition(img);
-              return (int)(img.Source.Height * (position.Y / img.ActualHeight));
-          }
+        // If there is an image control, get the scaled position
+        if (img != null && e != null)
+        {
+          Point position = e.GetPosition(img);
+          return (int) (img.Source.Height*(position.Y/img.ActualHeight));
+        }
 
-          // If there is another type of of IInputControl get the non-scaled position - or do some processing to get a scaled position, whatever needs to happen
-          if (e != null && input != null)
-              return e.GetPosition(input).Y;
+        // If there is another type of of IInputControl get the non-scaled position - or do some processing to get a scaled position, whatever needs to happen
+        if (e != null && input != null)
+          return e.GetPosition(input).Y;
 
-          // Return 0 if no processing could be done
-          return 0;
+        // Return 0 if no processing could be done
+        return 0;
       });
     }
+
     protected override void OnStartup(object sender, StartupEventArgs e)
     {
       DisplayRootViewFor<ShellViewModel>();
     }
-
-
   }
 }

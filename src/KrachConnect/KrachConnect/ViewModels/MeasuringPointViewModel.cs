@@ -1,26 +1,28 @@
-using System;
-using System.Windows.Media;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 
 namespace KrachConnect
 {
-  public class MeasuringPointViewModel :PropertyChangedBase
+  public class MeasuringPointViewModel : PropertyChangedBase
   {
-    private MeasuringPoint m_Model;
-    private bool isSelected = false;
-    private bool justMeasured = false;
+    private readonly MeasuringPoint m_Model;
     private bool isArchived = false;
-    
+    private bool isSelected;
+    private bool justMeasured;
+
     public MeasuringPointViewModel(MeasuringPoint mp)
     {
       m_Model = mp;
     }
 
-    public MeasuringPoint Model { get { return m_Model; } } 
+    public MeasuringPoint Model
+    {
+      get { return m_Model; }
+    }
 
-    public bool IsSelected 
-    {get { return isSelected; }
+    public bool IsSelected
+    {
+      get { return isSelected; }
       set
       {
         isSelected = value;
@@ -68,15 +70,16 @@ namespace KrachConnect
         NotifyOfPropertyChange(() => IsArchived);
       }
     }
+
     public string Name
     {
-        get { return m_Model.Name; }
-        set
-        {
-            m_Model.Name = value;
-            NotifyOfPropertyChange(() => Name);
-        }
-    }   
+      get { return m_Model.Name; }
+      set
+      {
+        m_Model.Name = value;
+        NotifyOfPropertyChange(() => Name);
+      }
+    }
 
 
     public bool JustMeasured

@@ -1,25 +1,31 @@
 ﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
-  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0"
+                     xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
     <Schema Namespace="OpenResKit.DomainModel" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
       <EntityType Name="NoiseMeasurement">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity"
+                  xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="MeasurementDate" Type="Edm.DateTime" Nullable="false" />
         <Property Name="MinValue" Type="Edm.Single" Nullable="false" />
         <Property Name="MaxValue" Type="Edm.Single" Nullable="false" />
         <Property Name="AverageValue" Type="Edm.Single" Nullable="false" />
         <Property Name="Employee" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="Comment" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        <NavigationProperty Name="Method" Relationship="OpenResKit.DomainModel.NoiseMeasurement_Method" ToRole="NoiseMeasurement_Method_Target" FromRole="NoiseMeasurement_Method_Source" />
-        <NavigationProperty Name="MeasuringPoint" Relationship="OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint" ToRole="NoiseMeasurement_MeasuringPoint_Target" FromRole="NoiseMeasurement_MeasuringPoint_Source" />
+        <NavigationProperty Name="Method" Relationship="OpenResKit.DomainModel.NoiseMeasurement_Method"
+                            ToRole="NoiseMeasurement_Method_Target" FromRole="NoiseMeasurement_Method_Source" />
+        <NavigationProperty Name="MeasuringPoint" Relationship="OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint"
+                            ToRole="NoiseMeasurement_MeasuringPoint_Target"
+                            FromRole="NoiseMeasurement_MeasuringPoint_Source" />
       </EntityType>
       <EntityType Name="MeasuringMethod">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity"
+                  xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="Name" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="Description" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
       </EntityType>
@@ -27,7 +33,8 @@
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity"
+                  xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="Name" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="Barcode" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="Notes" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -35,32 +42,38 @@
         <Property Name="YellowValue" Type="Edm.Single" Nullable="false" />
         <Property Name="RedValue" Type="Edm.Single" Nullable="false" />
         <Property Name="IsArchived" Type="Edm.Boolean" Nullable="false" />
-        <NavigationProperty Name="Position" Relationship="OpenResKit.DomainModel.MeasuringPoint_Position" ToRole="MeasuringPoint_Position_Target" FromRole="MeasuringPoint_Position_Source" />
+        <NavigationProperty Name="Position" Relationship="OpenResKit.DomainModel.MeasuringPoint_Position"
+                            ToRole="MeasuringPoint_Position_Target" FromRole="MeasuringPoint_Position_Source" />
       </EntityType>
       <EntityType Name="NoiseMapPosition">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity"
+                  xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="XPosition" Type="Edm.Int32" Nullable="false" />
         <Property Name="YPosition" Type="Edm.Int32" Nullable="false" />
-        <NavigationProperty Name="NoiseMap" Relationship="OpenResKit.DomainModel.NoiseMapPosition_NoiseMap" ToRole="NoiseMapPosition_NoiseMap_Target" FromRole="NoiseMapPosition_NoiseMap_Source" />
+        <NavigationProperty Name="NoiseMap" Relationship="OpenResKit.DomainModel.NoiseMapPosition_NoiseMap"
+                            ToRole="NoiseMapPosition_NoiseMap_Target" FromRole="NoiseMapPosition_NoiseMap_Source" />
       </EntityType>
       <EntityType Name="NoiseMap">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity"
+                  xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="Site" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="Building" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="Level" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        <NavigationProperty Name="File" Relationship="OpenResKit.DomainModel.NoiseMap_File" ToRole="NoiseMap_File_Target" FromRole="NoiseMap_File_Source" />
+        <NavigationProperty Name="File" Relationship="OpenResKit.DomainModel.NoiseMap_File"
+                            ToRole="NoiseMap_File_Target" FromRole="NoiseMap_File_Source" />
       </EntityType>
       <EntityType Name="File">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity"
+                  xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="BinarySource" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
       </EntityType>
       <Association Name="NoiseMeasurement_Method">
@@ -68,8 +81,10 @@
         <End Type="OpenResKit.DomainModel.NoiseMeasurement" Role="NoiseMeasurement_Method_Source" Multiplicity="*" />
       </Association>
       <Association Name="NoiseMeasurement_MeasuringPoint">
-        <End Type="OpenResKit.DomainModel.MeasuringPoint" Role="NoiseMeasurement_MeasuringPoint_Target" Multiplicity="0..1" />
-        <End Type="OpenResKit.DomainModel.NoiseMeasurement" Role="NoiseMeasurement_MeasuringPoint_Source" Multiplicity="*" />
+        <End Type="OpenResKit.DomainModel.MeasuringPoint" Role="NoiseMeasurement_MeasuringPoint_Target"
+             Multiplicity="0..1" />
+        <End Type="OpenResKit.DomainModel.NoiseMeasurement" Role="NoiseMeasurement_MeasuringPoint_Source"
+             Multiplicity="*" />
       </Association>
       <Association Name="MeasuringPoint_Position">
         <End Type="OpenResKit.DomainModel.MeasuringPoint" Role="MeasuringPoint_Position_Source" Multiplicity="0..1" />
@@ -98,7 +113,8 @@
           <End Role="NoiseMeasurement_Method_Source" EntitySet="NoiseMeasurements" />
           <End Role="NoiseMeasurement_Method_Target" EntitySet="MeasuringMethods" />
         </AssociationSet>
-        <AssociationSet Name="NoiseMeasurement_MeasuringPoint" Association="OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint">
+        <AssociationSet Name="NoiseMeasurement_MeasuringPoint"
+                        Association="OpenResKit.DomainModel.NoiseMeasurement_MeasuringPoint">
           <End Role="NoiseMeasurement_MeasuringPoint_Source" EntitySet="NoiseMeasurements" />
           <End Role="NoiseMeasurement_MeasuringPoint_Target" EntitySet="MeasuringPoints" />
         </AssociationSet>

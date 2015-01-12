@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Services.Client;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
-  class MapAddSliderViewModel : PropertyChangedBase
+  internal class MapAddSliderViewModel : PropertyChangedBase
   {
-    private NoiseRepository repository;
+    private readonly Stack<MeasuringPointViewModel> unusedMearingPoints;
     private IEnumerable<MeasuringPointViewModel> measuringPoints;
     private NoiseMeasurement newNoiseMeasurement;
-    private Stack<MeasuringPointViewModel> unusedMearingPoints;
+    private NoiseRepository repository;
     private MeasuringPointViewModel selectedMeasuringPoint;
 
     public MapAddSliderViewModel(NoiseRepository repository)
@@ -55,36 +49,6 @@ namespace KrachConnect.ViewModels
       }
     }
 
-    public void AddNoiseMeasurementToSelectedMeasuringPoint()
-    {
-      newNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
-      var oldNewNoiseMearument = newNoiseMeasurement;
-      NewNoiseMeasurement = new NoiseMeasurement
-      {
-        MeasurementDate = oldNewNoiseMearument.MeasurementDate,
-        Employee = oldNewNoiseMearument.Employee,
-        Method = oldNewNoiseMearument.Method
-      };
-     SelectNextMeasuringPoint();
-    }
-
-    public void SelectNextMeasuringPoint()
-    {
-      SelectedMeasuringPoint.IsSelected = false;
-      SelectedMeasuringPoint = unusedMearingPoints.Pop();
-      SelectedMeasuringPoint.IsSelected = true;
-      MeasuringPoints = MeasuringPoints.Select(mp =>
-      {
-        mp.IsSelected = mp.Model == SelectedMeasuringPoint.Model;
-        return mp;
-      });
-
-      NotifyOfPropertyChange(() => SelectedMeasuringPoint);
-      NotifyOfPropertyChange(() => CanClick);
-      NotifyOfPropertyChange(() => AllDone);
-      NotifyOfPropertyChange(() => MeasuringPoints);
-    }
-
     public bool CanClick
     {
       get { return unusedMearingPoints.Count > 0; }
@@ -103,6 +67,36 @@ namespace KrachConnect.ViewModels
         measuringPoints = value;
         NotifyOfPropertyChange(() => MeasuringPoints);
       }
+    }
+
+    public void AddNoiseMeasurementToSelectedMeasuringPoint()
+    {
+      newNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
+      NoiseMeasurement oldNewNoiseMearument = newNoiseMeasurement;
+      NewNoiseMeasurement = new NoiseMeasurement
+      {
+        MeasurementDate = oldNewNoiseMearument.MeasurementDate,
+        Employee = oldNewNoiseMearument.Employee,
+        Method = oldNewNoiseMearument.Method
+      };
+      SelectNextMeasuringPoint();
+    }
+
+    public void SelectNextMeasuringPoint()
+    {
+      SelectedMeasuringPoint.IsSelected = false;
+      SelectedMeasuringPoint = unusedMearingPoints.Pop();
+      SelectedMeasuringPoint.IsSelected = true;
+      MeasuringPoints = MeasuringPoints.Select(mp =>
+      {
+        mp.IsSelected = mp.Model == SelectedMeasuringPoint.Model;
+        return mp;
+      });
+
+      NotifyOfPropertyChange(() => SelectedMeasuringPoint);
+      NotifyOfPropertyChange(() => CanClick);
+      NotifyOfPropertyChange(() => AllDone);
+      NotifyOfPropertyChange(() => MeasuringPoints);
     }
   }
 }

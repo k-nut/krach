@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
-  class NoiseMeasurementViewModel : PropertyChangedBase
+  internal class NoiseMeasurementViewModel : PropertyChangedBase
   {
     private NoiseMeasurement m_Model;
 
     public NoiseMeasurementViewModel(NoiseMeasurement nm)
     {
-      this.m_Model = nm;
+      m_Model = nm;
     }
 
     public DateTime MeasurementDate
@@ -63,7 +57,6 @@ namespace KrachConnect.ViewModels
       }
     }
 
-    
 
     public float MaxValue
     {
@@ -110,6 +103,5 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => Model);
       }
     }
-
   }
 }

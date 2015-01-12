@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using KrachConnect.DomainModelService;
@@ -11,9 +10,9 @@ namespace KrachConnect
   public class NoiseRepository
   {
     private readonly DomainModelContext _context;
+    private DataServiceCollection<NoiseMap> _maps;
     private DataServiceCollection<MeasuringPoint> _measuringPoints;
     private DataServiceCollection<NoiseMeasurement> _noiseMeasurements;
-    private DataServiceCollection<NoiseMap> _maps;
     private IEnumerable<MeasuringPointViewModel> measuringPointViewModels;
 
     public NoiseRepository()
@@ -25,8 +24,10 @@ namespace KrachConnect
       LoadMaps();
       LoadNoiseMeasurements();
       deleteMeasuringPointsWithoutPosition();
-      //addMeasuringPoint();
     }
+
+    public List<MeasuringPointViewModel> MeasuringWalk { get; set; }
+
 
     public IEnumerable<MeasuringPointViewModel> MeasuringPointViewModels
     {
@@ -36,19 +37,13 @@ namespace KrachConnect
     public DataServiceCollection<MeasuringPoint> MeasuringPoints
     {
       get { return _measuringPoints; }
-      set
-      {
-        _measuringPoints = value;
-      }
+      set { _measuringPoints = value; }
     }
 
     public DataServiceCollection<NoiseMeasurement> NoiseMeasurements
     {
       get { return _noiseMeasurements; }
-      set
-      {
-        _noiseMeasurements = value;
-      }
+      set { _noiseMeasurements = value; }
     }
 
     public DataServiceCollection<NoiseMap> Maps
@@ -74,22 +69,15 @@ namespace KrachConnect
     {
       _measuringPoints = new DataServiceCollection<MeasuringPoint>(_context);
       DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints.Expand("Position");
-      
+
       _measuringPoints.Load(query);
       measuringPointViewModels = _measuringPoints.Select(mp => new MeasuringPointViewModel(mp));
     }
 
-    private void addMeasuringPoint()
-    {
-      var position = new NoiseMapPosition {XPosition = 300, YPosition = 190};
-      var mp = new MeasuringPoint{Name = "Schleifmaschine", Position = position};
-      _measuringPoints.Add(mp);
-      Save();
-    }
-
     private void deleteMeasuringPointsWithoutPosition()
     {
-      var measuringPointsWithPosition = MeasuringPoints.Where(mp => mp.Position.XPosition != 0 && mp.Position.YPosition != 0).ToList();
+      List<MeasuringPoint> measuringPointsWithPosition =
+        MeasuringPoints.Where(mp => mp.Position.XPosition != 0 && mp.Position.YPosition != 0).ToList();
       MeasuringPoints.Clear();
       MeasuringPoints.Load(measuringPointsWithPosition);
       Save();

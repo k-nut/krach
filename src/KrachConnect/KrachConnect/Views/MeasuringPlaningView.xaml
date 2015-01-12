@@ -1,30 +1,33 @@
 ﻿<UserControl x:Class="KrachConnect.Views.MeasuringPlaningView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:krachConnect="clr-namespace:KrachConnect"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
+      <RowDefinition />
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
     <Grid Grid.Row="0">
       <Grid.RowDefinitions>
-        <RowDefinition/>
-        <RowDefinition/>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
       </Grid.RowDefinitions>
 
       <DataGrid ItemsSource="{Binding MeasuringPoints}" AutoGenerateColumns="False">
-        <DataGrid.Columns >
-          <DataGridTextColumn Header="Messpunkt"  Binding="{Binding Name}" Width="auto" />
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Messpunkt" Binding="{Binding Name}" Width="auto" />
           <DataGridCheckBoxColumn Header="Einbeziehen?" Binding="{Binding IsSelected}" Width="auto" />
         </DataGrid.Columns>
-        </DataGrid>
+      </DataGrid>
+
+      <Button Grid.Row="2" x:Name="Save" Content="Speichern" />
 
     </Grid>
 
@@ -38,8 +41,8 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemContainerStyle>
           <Style>
-            <Setter Property="Canvas.Left" Value="{Binding XPosition}"/>
-            <Setter Property="Canvas.Top" Value="{Binding YPosition}"/>
+            <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
+            <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
           </Style>
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
@@ -52,8 +55,9 @@
                      Stroke="Black">
               <Ellipse.ToolTip>
                 <StackPanel>
-                  <TextBlock Text="{Binding Name}"/>
-                  <TextBlock Text="Ist Archiviert" Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}"/>
+                  <TextBlock Text="{Binding Name}" />
+                  <TextBlock Text="Ist Archiviert"
+                             Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}" />
                 </StackPanel>
               </Ellipse.ToolTip>
             </Ellipse>

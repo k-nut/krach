@@ -1,57 +1,61 @@
 ﻿<UserControl x:Class="KrachConnect.Views.HomepageView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
 
-    <Grid Background="White" >
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.RowSpan="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" RenderTransformOrigin="0.541,0.842">
-                
-                <ContentControl x:Name="ActiveItem" />
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="0" Grid.Column="1">
-            <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"> Lärmkrach
-                professional</TextBlock>
-            <TextBlock FontSize="16"  VerticalAlignment="Bottom"> Letzte Änderungen:</TextBlock>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0"/>
-            <Grid Grid.Column="0"/>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
-            <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False">
-                <DataGrid.Columns >
-                    <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}" Width="auto" />
-                    <DataGridTextColumn Header="Uhrzeit" Binding="{Binding MeasurementDate, StringFormat='{}{0:HH:mm}'}" Width="auto" />
-                    <DataGridTextColumn Header="Messpunkt"  Binding="{Binding MeasuringPoint.Name}" Width="auto" />
-                    <DataGridTextColumn Header="Min-Messwert" Binding="{Binding MinValue}" Width="auto" />
-                    <DataGridTextColumn Header="Mittel-Messwert" Binding="{Binding AverageValue}" Width="auto" />
-                    <DataGridTextColumn Header="Max-Messwert" Binding="{Binding MaxValue}" Width="auto" />
-                    <DataGridTextColumn Header="Mitarbeiter" Binding="{Binding Employee}" Width="auto" />
-                </DataGrid.Columns>
-            </DataGrid>
-            <!--<DataGrid AutoGenerateColumns="False" 
+  <Grid Background="White">
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid Grid.Row="0" Grid.RowSpan="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid Grid.Column="0" RenderTransformOrigin="0.541,0.842">
+
+        <ContentControl x:Name="ActiveItem" />
+      </Grid>
+    </Grid>
+    <Grid Grid.Row="0" Grid.Column="1">
+      <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        Lärmkrach
+        professional
+      </TextBlock>
+      <TextBlock FontSize="16" VerticalAlignment="Bottom"> Letzte Änderungen:</TextBlock>
+    </Grid>
+    <Grid Grid.Row="1" Grid.Column="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition Width="0*" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid Grid.Column="0" />
+      <Grid Grid.Column="0" />
+    </Grid>
+    <Grid Grid.Row="1" Grid.Column="1">
+      <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}"
+                              Width="auto" />
+          <DataGridTextColumn Header="Uhrzeit" Binding="{Binding MeasurementDate, StringFormat='{}{0:HH:mm}'}"
+                              Width="auto" />
+          <DataGridTextColumn Header="Messpunkt" Binding="{Binding MeasuringPoint.Name}" Width="auto" />
+          <DataGridTextColumn Header="Min-Messwert" Binding="{Binding MinValue}" Width="auto" />
+          <DataGridTextColumn Header="Mittel-Messwert" Binding="{Binding AverageValue}" Width="auto" />
+          <DataGridTextColumn Header="Max-Messwert" Binding="{Binding MaxValue}" Width="auto" />
+          <DataGridTextColumn Header="Mitarbeiter" Binding="{Binding Employee}" Width="auto" />
+        </DataGrid.Columns>
+      </DataGrid>
+      <!--<DataGrid AutoGenerateColumns="False" 
           Height="auto" 
           HorizontalAlignment="Stretch" 
           Name="dataGrid1" 
@@ -62,6 +66,6 @@
                     <DataGridTextColumn Header="Messwert" Binding="{Binding Path=C}" Width="auto" />
                 </DataGrid.Columns>
             </DataGrid>-->
-        </Grid>
     </Grid>
+  </Grid>
 </UserControl>

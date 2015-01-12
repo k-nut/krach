@@ -1,5 +1,4 @@
-﻿using KrachConnect.DomainModelService;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace KrachConnect.Tests
 {
@@ -11,6 +10,7 @@ namespace KrachConnect.Tests
       var nr = new NoiseRepository();
       Assert.NotNull(nr.MeasuringPointViewModels);
     }
+
     [Test]
     public void After_Initialization_NoiseMeasurments_Is_Not_Null()
     {

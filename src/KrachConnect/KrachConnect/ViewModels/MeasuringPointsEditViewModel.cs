@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-using System.Windows.Input;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
-  class MeasuringPointsEditViewModel : PropertyChangedBase
+  internal class MeasuringPointsEditViewModel : PropertyChangedBase
   {
-    private NoiseRepository repository;
+    private readonly NoiseRepository repository;
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
 
@@ -52,7 +46,7 @@ namespace KrachConnect.ViewModels
 
     public void ToggleArchivation(object dataContext)
     {
-      var measuringPoint = (MeasuringPointViewModel)dataContext;
+      var measuringPoint = (MeasuringPointViewModel) dataContext;
       measuringPoint.IsArchived = !measuringPoint.IsArchived;
       repository.Save();
     }
@@ -60,14 +54,14 @@ namespace KrachConnect.ViewModels
     public void ChangeSelectedMeasuringPoint(object dataContext)
     {
       SelectedMeasuringPoint.IsSelected = false;
-      var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
+      var measuringPointViewModel = (MeasuringPointViewModel) dataContext;
       SelectedMeasuringPoint = measuringPointViewModel;
     }
 
     public void AddNewMeasuringPoint(object xPosition, object yPosition)
     {
-      var x = (int)xPosition;
-      var y = (int)yPosition;
+      var x = (int) xPosition;
+      var y = (int) yPosition;
       var newPosition = new NoiseMapPosition
       {
         XPosition = x - 10,
