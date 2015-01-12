@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 
@@ -33,6 +35,12 @@ namespace KrachConnect.ViewModels
       set
       {
         m_Model.MinValue = value;
+        if (AverageValue < value)
+        {
+          AverageValue = value;
+          MaxValue = value;
+        }
+
         NotifyOfPropertyChange(() => MinValue);
       }
     }
@@ -43,9 +51,19 @@ namespace KrachConnect.ViewModels
       set
       {
         m_Model.AverageValue = value;
+        if (MinValue > value)
+        {
+          MinValue = value;
+        }
+        if (MaxValue < value)
+        {
+          MaxValue = value;
+        }
         NotifyOfPropertyChange(() => AverageValue);
       }
     }
+
+    
 
     public float MaxValue
     {
@@ -53,6 +71,11 @@ namespace KrachConnect.ViewModels
       set
       {
         m_Model.MaxValue = value;
+        if (AverageValue > value)
+        {
+          AverageValue = value;
+          MinValue = value;
+        }
         NotifyOfPropertyChange(() => MaxValue);
       }
     }
@@ -66,6 +89,7 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => Employee);
       }
     }
+
 
     public MeasuringPoint MeasuringPoint
     {

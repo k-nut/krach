@@ -18,7 +18,7 @@ namespace KrachConnect.ViewModels
     {
         private NoiseRepository repository;
         private ObservableCollection<MeasuringPointViewModel> measuringPoints;
-        private NoiseMeasurement newNoiseMeasurement;
+        private NoiseMeasurementViewModel newNoiseMeasurement;
         private MeasuringPointViewModel selectedMeasuringPoint;
         private ObservableCollection<NoiseMeasurementViewModel> measurementsAddedInThisReading = new ObservableCollection<NoiseMeasurementViewModel>();
         private Visibility detailVisibility = Visibility.Visible;
@@ -68,10 +68,10 @@ namespace KrachConnect.ViewModels
         {
             this.repository = repository;
             MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-            NewNoiseMeasurement = new NoiseMeasurement
+            NewNoiseMeasurement = new NoiseMeasurementViewModel(new NoiseMeasurement
             {
                 MeasurementDate = DateTime.Now
-            };
+            });
           // TODO: Abfangen, wenn es keinerlei Messpunkte gibt
              SelectNextMeasuringPoint();
 
@@ -91,7 +91,7 @@ namespace KrachConnect.ViewModels
 
         }
 
-        public NoiseMeasurement NewNoiseMeasurement
+        public NoiseMeasurementViewModel NewNoiseMeasurement
         {
             get { return newNoiseMeasurement; }
             set
@@ -104,13 +104,13 @@ namespace KrachConnect.ViewModels
         public void AddNoiseMeasurementToSelectedMeasuringPoint()
         {
           NewNoiseMeasurement.MeasuringPoint = SelectedMeasuringPoint.Model;
-          if (!repository.NoiseMeasurements.Contains(NewNoiseMeasurement))
+          if (!repository.NoiseMeasurements.Contains(NewNoiseMeasurement.Model))
           {
-            repository.NoiseMeasurements.Add(NewNoiseMeasurement);
+            repository.NoiseMeasurements.Add(NewNoiseMeasurement.Model);
           }
           
 
-            MeasurementsAddedInThisReading.Add(new NoiseMeasurementViewModel(newNoiseMeasurement));
+            MeasurementsAddedInThisReading.Add(newNoiseMeasurement);
             NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
 
             var oldNewNoiseMearument = newNoiseMeasurement;
@@ -139,14 +139,13 @@ namespace KrachConnect.ViewModels
 
         }
 
-        private NoiseMeasurement createNewNoiseMeasurementWithStaticValuesFromOldOne(NoiseMeasurement oldNoiseMeasurement)
+        private NoiseMeasurementViewModel createNewNoiseMeasurementWithStaticValuesFromOldOne(NoiseMeasurementViewModel oldNoiseMeasurement)
         {
-          return new NoiseMeasurement
+          return new NoiseMeasurementViewModel(new NoiseMeasurement
           {
             MeasurementDate = oldNoiseMeasurement.MeasurementDate,
             Employee = oldNoiseMeasurement.Employee,
-            Method = oldNoiseMeasurement.Method
-          };
+          });
         }
 
 
@@ -161,7 +160,7 @@ namespace KrachConnect.ViewModels
           try
           {
             var correspondingNoiseMeasurement = measurementsAddedInThisReading.First(maitr => maitr.MeasuringPoint == measuringPoint);
-            NewNoiseMeasurement = correspondingNoiseMeasurement.Model;
+            NewNoiseMeasurement = correspondingNoiseMeasurement;
           }
           catch (InvalidOperationException e)
           {
