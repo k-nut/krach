@@ -7,26 +7,17 @@
              xmlns:krachConnect="clr-namespace:KrachConnect"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-  <Grid>
+  <Grid Background="WhiteSmoke">
     <Grid.RowDefinitions>
       <RowDefinition />
-      <RowDefinition Height="*" />
+      <RowDefinition />
     </Grid.RowDefinitions>
 
-    <Grid Grid.Row="0">
-      <Grid.RowDefinitions>
-        <RowDefinition />
-        <RowDefinition />
-        <RowDefinition />
-        <RowDefinition />
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition />
-        <ColumnDefinition />
-      </Grid.ColumnDefinitions>
-
-      <TextBlock Grid.Row="0" Grid.Column="0" Text="Messpunktname" VerticalAlignment="Bottom" Height="20" />
-      <TextBox Grid.Row="1" Grid.Column="0" Height="30" Width="300" Text="{Binding SelectedMeasuringPoint.Name}"
+        <Grid Grid.Row="0" Height="25" VerticalAlignment="Top">
+     
+      <TextBlock Grid.Row="0"  Text="Messpunkte erstellen/bearbeiten"  FontSize="16" />
+        
+     <!--<TextBox Grid.Row="1" Grid.Column="0" Height="30" Width="300" Text="{Binding SelectedMeasuringPoint.Name}"
                HorizontalAlignment="Left" VerticalAlignment="Top" />
       <TextBlock Grid.Row="2" Grid.Column="0" Text="Bemerkung" VerticalAlignment="Bottom" />
       <TextBox Grid.Row="3" Grid.Column="0" Height="500" Width="300" Text="{Binding SelectedMeasuringPoint.Notes}"
@@ -36,12 +27,12 @@
       <CheckBox Grid.Column="1" Grid.Row="1" IsChecked="{Binding SelectedMeasuringPoint.IsArchived}" Height="20"
                 VerticalAlignment="Top" />
       <Button Content="Speichern" x:Name="SaveToHub" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"
-              HorizontalAlignment="Left" Width="200" />
+              HorizontalAlignment="Left" Width="200" />-->
     </Grid>
 
     <Grid Grid.Row="1">
-      <Image Cursor="Cross" Source="../Resources/map1.JPG"
-             cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey)]" />
+      <Image Cursor="Cross" Source="../Resources/map1.JPG" 
+             cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey) ]" />
       <ItemsControl ItemsSource="{Binding MeasuringPoints}">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
