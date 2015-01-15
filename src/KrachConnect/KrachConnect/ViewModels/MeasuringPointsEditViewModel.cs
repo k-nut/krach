@@ -15,7 +15,7 @@ namespace KrachConnect.ViewModels
     {
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-      SelectedMeasuringPoint = MeasuringPoints.First();
+      SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints

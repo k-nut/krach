@@ -35,9 +35,9 @@ namespace KrachConnect.ViewModels
       ActivateItem(new MeasuringPlaningViewModel(nr));
     }
 
-    public void ShowMapSliderScreen()
+    public void ShowEvaluationScreen()
     {
-      ActivateItem(new MapAddSliderViewModel(nr));
+      ActivateItem(new EvaluationViewModel(nr));
     }
 
   }
