@@ -84,7 +84,7 @@
         </ItemsControl.ItemTemplate>
       </ItemsControl>
     </Grid>
-    <Button Grid.Row="2" x:Name="Save" Content="Begehung starten!" />
+        <Button Grid.Row="2" x:Name="Save" IsEnabled="{Binding IsMeasuringPointEnabled}" Content="Begehung starten!" />
   </Grid>
 
 </UserControl>

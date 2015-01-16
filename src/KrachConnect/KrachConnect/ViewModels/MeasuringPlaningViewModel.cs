@@ -62,6 +62,7 @@ namespace KrachConnect.ViewModels
     {
       var measuringPoint = (MeasuringPointViewModel) dataContext;
       measuringPoint.IsSelected = !measuringPoint.IsSelected;
+      NotifyOfPropertyChange(() => IsMeasuringPointEnabled);
     }
 
     public void SelectAll()
@@ -89,6 +90,11 @@ namespace KrachConnect.ViewModels
       }
       repository.MeasuringWalk = selectedMeasuringPoints;
       shellViewModel.ShowMapScreen();
-    }
+      }
+
+      public bool IsMeasuringPointEnabled
+      {
+          get { return MeasuringPoints.Any(mp => mp.IsSelected); }
+      }
   }
 }
