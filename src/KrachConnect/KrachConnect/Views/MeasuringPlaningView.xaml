@@ -30,12 +30,22 @@
       <Button x:Name="DeSelectAll" Content="Alle abwählen" />
       </StackPanel>
 
-      <DataGrid Grid.Row="1"  ItemsSource="{Binding FilteredMeasuringPoints}" AutoGenerateColumns="False">
-        <DataGrid.Columns>
-          <DataGridTextColumn Header="Messpunkt" Binding="{Binding Name}" Width="auto" />
-          <DataGridCheckBoxColumn Header="Einbeziehen?" Binding="{Binding IsSelected}" Width="auto" />
-        </DataGrid.Columns>
-      </DataGrid>
+      <ItemsControl Grid.Row="1" ItemsSource="{Binding FilteredMeasuringPoints}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Vertical" />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Name}" />
+              <CheckBox IsChecked="{Binding IsSelected}"></CheckBox>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
 
     </Grid>
 
