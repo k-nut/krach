@@ -32,7 +32,7 @@ namespace KrachConnect.ViewModels
 
     public void ShowMeasuringPlaningScreen()
     {
-      ActivateItem(new MeasuringPlaningViewModel(nr));
+      ActivateItem(new MeasuringPlaningViewModel(nr, this));
     }
 
     public void ShowEvaluationScreen()

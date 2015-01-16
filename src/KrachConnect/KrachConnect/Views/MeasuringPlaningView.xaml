@@ -12,6 +12,7 @@
     <Grid.RowDefinitions>
       <RowDefinition />
       <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
     <Grid Grid.Row="0">
@@ -35,8 +36,6 @@
           <DataGridCheckBoxColumn Header="Einbeziehen?" Binding="{Binding IsSelected}" Width="auto" />
         </DataGrid.Columns>
       </DataGrid>
-
-      <Button Grid.Row="2" x:Name="Save" Content="Speichern" />
 
     </Grid>
 
@@ -75,6 +74,7 @@
         </ItemsControl.ItemTemplate>
       </ItemsControl>
     </Grid>
+    <Button Grid.Row="2" x:Name="Save" Content="Begehung starten!" />
   </Grid>
 
 </UserControl>

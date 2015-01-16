@@ -11,10 +11,12 @@ namespace KrachConnect.ViewModels
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
     private string _searchTerm = "";
+    private ShellViewModel shellViewModel;
 
-    public MeasuringPlaningViewModel(NoiseRepository repository)
+    public MeasuringPlaningViewModel(NoiseRepository repository, ShellViewModel shellviewModel)
     {
       this.repository = repository;
+      this.shellViewModel = shellviewModel;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels.Where(mp => !mp.IsArchived));
     }
 
@@ -86,6 +88,7 @@ namespace KrachConnect.ViewModels
         measuringPointViewModel.IsSelected = false;
       }
       repository.MeasuringWalk = selectedMeasuringPoints;
+      shellViewModel.ShowMapScreen();
     }
   }
 }
