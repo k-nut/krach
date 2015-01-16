@@ -59,6 +59,12 @@ namespace KrachConnect.ViewModels
             SelectedMeasuringPoint.IsSelected = false;
             var measuringPointViewModel = (MeasuringPointViewModel) dataContext;
             SelectedMeasuringPoint = measuringPointViewModel;
+          var box = new ConfirmationBoxViewModel(measuringPointViewModel);
+          var result = new WindowManager().ShowDialog(box);
+          if(result == true)
+          {
+          // OK was clicked
+}
         }
 
         public void AddNewMeasuringPoint(object xPosition, object yPosition)
