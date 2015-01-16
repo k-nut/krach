@@ -112,7 +112,7 @@
                 <Button Grid.Row="0" Grid.Column="1" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
                 IsEnabled="{Binding CanClick}" />
                 <Button Grid.Row="0" Grid.Column="0" Content="Zurück" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding IsBackButtonEnabled}"/>
-                <Button Grid.Row="0" Grid.Column="2" Content="abbrechen" x:Name="a" IsEnabled="{Binding CanClick}"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="abbrechen" x:Name="CancelMeasuring" />
                 <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />hab ich auf Zeile 68 verschoben-->
                 <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
 

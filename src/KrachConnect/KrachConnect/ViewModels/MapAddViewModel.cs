@@ -21,18 +21,24 @@ namespace KrachConnect.ViewModels
         private MeasuringPointViewModel selectedMeasuringPoint;
 
         private string showHideContent = "verstecke Details";
+        
+        private ShellViewModel shellViewModel;
 
-        public MapAddViewModel(NoiseRepository repository)
+
+        public MapAddViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
         {
+            // TODO: Complete member initialization
             this.repository = repository;
-            if (repository.MeasuringWalk != null)
-            {
-                MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringWalk);
-            }
-            else
-            {
-                MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-            }
+            this.shellViewModel = shellViewModel;
+           
+            //if (repository.MeasuringWalk != null)
+            //{
+            MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringWalk);
+            //}
+            //else
+            //{
+                //MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
+            //}
             NewNoiseMeasurement = new NoiseMeasurementViewModel(new NoiseMeasurement
             {
                 MeasurementDate = DateTime.Now
@@ -144,7 +150,9 @@ namespace KrachConnect.ViewModels
             NotifyOfPropertyChange(() => AllDone);
 
 
-            if (MeasuringPoints.Count(mp => !mp.JustMeasured && !mp.IsArchived) > 0)
+
+
+            if (MeasuringPoints.Any(mp => !mp.JustMeasured))
             {
                 SelectNextMeasuringPoint();
             }
@@ -157,6 +165,7 @@ namespace KrachConnect.ViewModels
             NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
             NotifyOfPropertyChange(() => MeasuringPoints);
             NotifyOfPropertyChange(() => CurrentNumber);
+            NotifyOfPropertyChange(() => IsBackButtonEnabled);
         }
 
         private NoiseMeasurementViewModel createNewNoiseMeasurementWithStaticValuesFromOldOne(
@@ -234,6 +243,11 @@ namespace KrachConnect.ViewModels
                 var index = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
                 return index > 0;
             }
+        }
+
+        public void CancelMeasuring ()
+        {
+           this.shellViewModel.ShowHomePageScreen();
         }
     }
 }

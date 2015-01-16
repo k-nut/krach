@@ -15,7 +15,7 @@ namespace KrachConnect.ViewModels
 
     public void ShowMapScreen()
     {
-      ActivateItem(new MapAddViewModel(nr));
+      ActivateItem(new MapAddViewModel(nr, this));
     }
 
 
