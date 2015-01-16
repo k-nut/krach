@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Services.Client;
 using System.Linq;
 using System.Net;
+using System.Windows.Forms.VisualStyles;
 using KrachConnect.DomainModelService;
 
 namespace KrachConnect
@@ -13,6 +14,7 @@ namespace KrachConnect
     private DataServiceCollection<NoiseMap> _maps;
     private DataServiceCollection<MeasuringPoint> _measuringPoints;
     private DataServiceCollection<NoiseMeasurement> _noiseMeasurements;
+    private DataServiceCollection<MeasuringMethod> _measuringMethods;
     private IEnumerable<MeasuringPointViewModel> measuringPointViewModels;
 
     public NoiseRepository()
@@ -23,7 +25,8 @@ namespace KrachConnect
       LoadMeasuringPoints();
       LoadMaps();
       LoadNoiseMeasurements();
-      //deleteMeasuringPointsWithoutPosition();
+      LoadMeasuringMethods();
+       //deleteMeasuringPointsWithoutPosition();
     }
 
     public List<MeasuringPointViewModel> MeasuringWalk { get; set; }
@@ -51,10 +54,16 @@ namespace KrachConnect
       get { return _maps; }
     }
 
-    private void LoadNoiseMeasurements()
+      public DataServiceCollection<MeasuringMethod> MeasuringMethods
+      {
+          get { return _measuringMethods; }
+          set { _measuringMethods = value; }
+      }
+
+      private void LoadNoiseMeasurements()
     {
       _noiseMeasurements = new DataServiceCollection<NoiseMeasurement>(_context);
-      DataServiceQuery<NoiseMeasurement> query = _context.NoiseMeasurements.Expand("MeasuringPoint");
+      DataServiceQuery<NoiseMeasurement> query = _context.NoiseMeasurements.Expand("MeasuringPoint").Expand("Method");
       _noiseMeasurements.Load(query);
     }
 
@@ -72,6 +81,15 @@ namespace KrachConnect
 
       _measuringPoints.Load(query);
       measuringPointViewModels = _measuringPoints.Select(mp => new MeasuringPointViewModel(mp));
+    }
+
+    private void LoadMeasuringMethods()
+    {
+        _measuringMethods = new DataServiceCollection<MeasuringMethod>(_context);
+        DataServiceQuery<MeasuringMethod> query = _context.MeasuringMethods;
+
+        _measuringMethods.Load(query);
+        //measu = _measuringMethods.Select(mp => new MeasuringPointViewModel(mp));
     }
 
     private void deleteMeasuringPointsWithoutPosition()
