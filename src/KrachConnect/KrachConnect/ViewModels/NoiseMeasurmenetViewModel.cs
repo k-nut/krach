@@ -23,6 +23,16 @@ namespace KrachConnect.ViewModels
       }
     }
 
+    public MeasuringMethod MeasuringMethod
+    {
+        get { return m_Model.Method; }
+        set
+        {
+            m_Model.Method = value;
+            NotifyOfPropertyChange(() => MeasuringMethod);
+        }
+    }
+
     public float MinValue
     {
       get { return m_Model.MinValue; }

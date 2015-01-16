@@ -160,6 +160,7 @@ namespace KrachConnect.DomainModelService
                 return this._Files;
             }
         }
+
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<File> _Files;
         /// <summary>

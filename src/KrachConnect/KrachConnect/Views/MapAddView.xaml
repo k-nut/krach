@@ -59,10 +59,12 @@
 
 
                 <TextBlock Text="Messverfahren" Grid.Row="2" Grid.Column="0" />
-                <ComboBox Grid.Row="3" Grid.Column="0" SelectedIndex="1">
-                    <ComboBoxItem Content="DIN 12121" />
-                    <ComboBoxItem Content="ISO 3141" />
-                    <ComboBoxItem Content="VDI 12178" />
+                <ComboBox Grid.Row="3" Grid.Column="0" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />

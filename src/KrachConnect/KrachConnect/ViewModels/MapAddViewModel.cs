@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
+using Microsoft.Data.OData;
 
 namespace KrachConnect.ViewModels
 {
@@ -19,6 +20,7 @@ namespace KrachConnect.ViewModels
         private ObservableCollection<MeasuringPointViewModel> measuringPoints;
         private NoiseMeasurementViewModel newNoiseMeasurement;
         private MeasuringPointViewModel selectedMeasuringPoint;
+        private ObservableCollection<MeasuringMethod> measuringMethods; 
 
         private string showHideContent = "verstecke Details";
         
@@ -30,6 +32,7 @@ namespace KrachConnect.ViewModels
             // TODO: Complete member initialization
             this.repository = repository;
             this.shellViewModel = shellViewModel;
+            MeasuringMethods = new ObservableCollection<MeasuringMethod>(repository.MeasuringMethods);
            
             //if (repository.MeasuringWalk != null)
             //{
@@ -175,6 +178,7 @@ namespace KrachConnect.ViewModels
             {
                 MeasurementDate = oldNoiseMeasurement.MeasurementDate,
                 Employee = oldNoiseMeasurement.Employee,
+                Method = oldNoiseMeasurement.MeasuringMethod,
                 MinValue = oldNoiseMeasurement.MinValue,
                 AverageValue = oldNoiseMeasurement.AverageValue,
                 MaxValue = oldNoiseMeasurement.MaxValue
@@ -243,6 +247,13 @@ namespace KrachConnect.ViewModels
                 var index = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
                 return index > 0;
             }
+        }
+
+        public ObservableCollection<MeasuringMethod> MeasuringMethods
+        {
+
+            get { return measuringMethods; }
+            set { measuringMethods = value; }
         }
 
         public void CancelMeasuring ()
