@@ -9,15 +9,16 @@ namespace KrachConnect.ViewModels
 {
     internal class MeasuringPointsEditViewModel : PropertyChangedBase
     {
-      this.repository = repository;
-      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-      SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
+         private readonly NoiseRepository repository;
+         private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
+         private MeasuringPointViewModel selectedMeasuringPoint;
+
 
         public MeasuringPointsEditViewModel(NoiseRepository repository)
         {
             this.repository = repository;
             MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-            SelectedMeasuringPoint = MeasuringPoints.First();
+            SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
         }
 
         public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
