@@ -8,10 +8,11 @@
 
     <Grid Background="AliceBlue">
         <Grid.RowDefinitions >
-            <RowDefinition Height="30" />
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid Row="0" Width="200" >
@@ -26,16 +27,25 @@
             </TextBlock>
         </Grid>
         <Grid Row="3">
-            <TextBox  TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+            <TextBox Text="{Binding MeasuringPoint.Notes}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
         </Grid>
-        <Grid Row="4" Column="0">
+        <Grid Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <CheckBox VerticalAlignment="Bottom" Grid.Column="0" IsChecked="{Binding MeasuringPoint.IsArchived}" Height="20" />
+            <Label  Grid.Column="1" Content="Archiviert" VerticalAlignment="Center" Grid.Row="0" Height="25"  />
+
+        </Grid>
+        <Grid Row="5" Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Content="Abbrechen" HorizontalAlignment="Right" Height="25"/>
+            <Button Content="Abbrechen" HorizontalAlignment="Center" Height="25" x:Name="Cancel"/>
             <Grid Column="1">
-                <Button x:Name="SaveButton" Content="Speichern"  HorizontalAlignment="Right" Height="25"/>
+                <Button  x:Name="OK" Content="Speichern"  HorizontalAlignment="Center" Height="25"/>
             </Grid>
 
         </Grid>

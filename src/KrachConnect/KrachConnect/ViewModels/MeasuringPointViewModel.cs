@@ -71,6 +71,16 @@ namespace KrachConnect
       }
     }
 
+    public string Notes
+    {
+        get { return m_Model.Notes; }
+        set
+        {
+            m_Model.Notes = value;
+            NotifyOfPropertyChange(() => Notes);
+        }
+    }
+
     public string Name
     {
       get { return m_Model.Name; }

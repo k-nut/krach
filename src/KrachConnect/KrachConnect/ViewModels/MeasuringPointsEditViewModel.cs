@@ -9,9 +9,9 @@ namespace KrachConnect.ViewModels
 {
     internal class MeasuringPointsEditViewModel : PropertyChangedBase
     {
-         private readonly NoiseRepository repository;
-         private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
-         private MeasuringPointViewModel selectedMeasuringPoint;
+        private readonly NoiseRepository repository;
+        private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
+        private MeasuringPointViewModel selectedMeasuringPoint;
 
 
         public MeasuringPointsEditViewModel(NoiseRepository repository)
@@ -49,7 +49,7 @@ namespace KrachConnect.ViewModels
 
         public void ToggleArchivation(object dataContext)
         {
-            var measuringPoint = (MeasuringPointViewModel) dataContext;
+            var measuringPoint = (MeasuringPointViewModel)dataContext;
             measuringPoint.IsArchived = !measuringPoint.IsArchived;
             repository.Save();
         }
@@ -57,20 +57,30 @@ namespace KrachConnect.ViewModels
         public void ChangeSelectedMeasuringPoint(object dataContext)
         {
             SelectedMeasuringPoint.IsSelected = false;
-            var measuringPointViewModel = (MeasuringPointViewModel) dataContext;
+            var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
             SelectedMeasuringPoint = measuringPointViewModel;
-          var box = new ConfirmationBoxViewModel(measuringPointViewModel);
-          var result = new WindowManager().ShowDialog(box);
-          if(result == true)
-          {
-          // OK was clicked
-}
+            var oldName = measuringPointViewModel.Name;
+            var oldDescription = measuringPointViewModel.Notes;
+            var oldIsArchived = measuringPointViewModel.IsArchived;
+            var box = new ConfirmationBoxViewModel(measuringPointViewModel);
+            var result = new WindowManager().ShowDialog(box);
+            if (result == true)
+            {
+                // OK was clicked
+                SaveToHub();
+            }
+            else
+            {
+                measuringPointViewModel.Name = oldName;
+                measuringPointViewModel.Notes = oldDescription;
+                measuringPointViewModel.IsArchived = oldIsArchived;
+            }
         }
 
         public void AddNewMeasuringPoint(object xPosition, object yPosition)
         {
-            var x = (int) xPosition;
-            var y = (int) yPosition;
+            var x = (int)xPosition;
+            var y = (int)yPosition;
             var newPosition = new NoiseMapPosition
             {
                 XPosition = x - 10,
@@ -80,13 +90,21 @@ namespace KrachConnect.ViewModels
                 // in order to position the points in the center
                 // we simply subtract half the size (10)
             };
-            ChangeSelectedMeasuringPoint(new MeasuringPointViewModel(new MeasuringPoint
+            SelectedMeasuringPoint.IsSelected = false;
+            SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint
             {
                 Position = newPosition,
                 Name = "Neuer Messpunkt"
-            }));
-            MeasuringPoints.Add(SelectedMeasuringPoint);
-            repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
+            });
+            var box = new ConfirmationBoxViewModel(SelectedMeasuringPoint);
+            var result = new WindowManager().ShowDialog(box);
+            if (result == true)
+            {
+                // OK was clicked
+                MeasuringPoints.Add(SelectedMeasuringPoint);
+                repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
+                SaveToHub();
+            }
         }
     }
 }
