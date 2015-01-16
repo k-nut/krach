@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Data.OleDb;
 using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
@@ -165,6 +166,9 @@ namespace KrachConnect.ViewModels
       {
         MeasurementDate = oldNoiseMeasurement.MeasurementDate,
         Employee = oldNoiseMeasurement.Employee,
+        MinValue = oldNoiseMeasurement.MinValue,
+        AverageValue = oldNoiseMeasurement.AverageValue,
+        MaxValue = oldNoiseMeasurement.MaxValue
       });
     }
 
