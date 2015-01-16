@@ -15,7 +15,7 @@ namespace KrachConnect.ViewModels
     public MeasuringPlaningViewModel(NoiseRepository repository)
     {
       this.repository = repository;
-      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
+      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels.Where(mp => !mp.IsArchived));
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
