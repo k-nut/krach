@@ -78,8 +78,6 @@ namespace KrachConnect
     {
       //List<MeasuringPoint> measuringPointsWithPosition =
       //  MeasuringPoints.Where(mp => mp.Position.XPosition != 0 && mp.Position.YPosition != 0).ToList();
-      MeasuringPoints.Clear();
-      NoiseMeasurements.Clear();
       foreach (var noiseMeasurement in NoiseMeasurements)
       {
         _context.DeleteObject(noiseMeasurement);
