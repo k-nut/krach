@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using Caliburn.Micro;
 
@@ -18,6 +19,18 @@ namespace KrachConnect.ViewModels
       this.repository = repository;
       this.shellViewModel = shellviewModel;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels.Where(mp => !mp.IsArchived));
+      foreach (var mp in MeasuringPoints)
+      {
+        mp.PropertyChanged += IsSelectedChanged;
+      }
+    }
+
+    private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == "IsSelected")
+      {
+        NotifyOfPropertyChange(() => IsMeasuringPointEnabled);
+      }
     }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
@@ -62,7 +75,6 @@ namespace KrachConnect.ViewModels
     {
       var measuringPoint = (MeasuringPointViewModel) dataContext;
       measuringPoint.IsSelected = !measuringPoint.IsSelected;
-      NotifyOfPropertyChange(() => IsMeasuringPointEnabled);
     }
 
     public void SelectAll()
