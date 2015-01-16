@@ -10,152 +10,155 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
-  <Grid Background="White">
-    <Grid.RowDefinitions>
-      <RowDefinition />
-      <RowDefinition />
-    </Grid.RowDefinitions>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-    <Grid Grid.Row="0">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-        <RowDefinition />
-      </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0">
+            <Grid Grid.Row="0">
 
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
-        <TextBlock Grid.Column="1" FontSize="20" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
+                <TextBlock Grid.Column="1" FontSize="20" HorizontalAlignment="Right">
           (<TextBlock Text="{Binding CurrentNumber}" />
           von
           <TextBlock Text="{Binding TotalMeasuringPoints}" />
           )
         </TextBlock>
-        <Button Grid.Column="2" x:Name="ToggleDetails" Height="25" Content="{Binding ShowHideContent}" />
-      </Grid>
-      <Grid Grid.Row="1" Visibility="{Binding DetailVisibility}">
-        <Grid.RowDefinitions>
-          <RowDefinition />
-          <RowDefinition />
-          <RowDefinition />
-          <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" x:Name="ToggleDetails" Height="25" Content="{Binding ShowHideContent}" />
+            </Grid>
+            <Grid Grid.Row="1" Visibility="{Binding DetailVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Messzeitpunkt" />
-        <xctk:DateTimePicker Grid.Row="1" Grid.Column="0" TimeFormat="ShortTime" Format="Custom"
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Messzeitpunkt" />
+                <xctk:DateTimePicker Grid.Row="1" Grid.Column="0" TimeFormat="ShortTime" Format="Custom"
                              FormatString="dd.MM.yy HH:mm" Value="{Binding NewNoiseMeasurement.MeasurementDate}" />
 
 
-        <TextBlock Text="Messverfahren" Grid.Row="2" Grid.Column="0" />
-        <ComboBox Grid.Row="3" Grid.Column="0" SelectedIndex="1">
-          <ComboBoxItem Content="DIN 12121" />
-          <ComboBoxItem Content="ISO 3141" />
-          <ComboBoxItem Content="VDI 12178" />
-        </ComboBox>
+                <TextBlock Text="Messverfahren" Grid.Row="2" Grid.Column="0" />
+                <ComboBox Grid.Row="3" Grid.Column="0" SelectedIndex="1">
+                    <ComboBoxItem Content="DIN 12121" />
+                    <ComboBoxItem Content="ISO 3141" />
+                    <ComboBoxItem Content="VDI 12178" />
+                </ComboBox>
 
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewNoiseMeasurement.Employee}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />
+                <TextBlock Grid.Row="3" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewNoiseMeasurement.Employee}" />
 
-      </Grid>
-      <Grid Grid.Row="2">
-        <Grid.RowDefinitions>
-          <RowDefinition />
-          <RowDefinition />
-          <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0">Minimalwert in Dezibel</Label>
-        <Slider Grid.Row="1" Grid.Column="0" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
-        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding NewNoiseMeasurement.MinValue}" />
-
-
-        <Label Grid.Row="0" Grid.Column="1">Mittelwert in Dezibel</Label>
-        <Slider Grid.Row="1" Grid.Column="1" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NewNoiseMeasurement.AverageValue}" />
+                <Label Grid.Row="0" Grid.Column="0">Minimalwert in Dezibel</Label>
+                <Slider Grid.Row="1" Grid.Column="0" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
+                <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding NewNoiseMeasurement.MinValue}" />
 
 
-
-        <Label Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
-        <Slider Grid.Row="1" Grid.Column="2" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
-        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
+                <Label Grid.Row="0" Grid.Column="1">Mittelwert in Dezibel</Label>
+                <Slider Grid.Row="1" Grid.Column="1" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NewNoiseMeasurement.AverageValue}" />
 
 
 
-      </Grid>
+                <Label Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
+                <Slider Grid.Row="1" Grid.Column="2" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
 
-      <Grid Grid.Row="3" Height="25" VerticalAlignment="Bottom">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-          <ColumnDefinition />
-        </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="1" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
+
+            </Grid>
+
+            <Grid Grid.Row="3" Height="25" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="1" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
                 IsEnabled="{Binding CanClick}" />
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
-        <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
+                <Button Grid.Row="0" Grid.Column="0" Content="Zurück" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding IsBackButtonEnabled}"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="abbrechen" x:Name="a" IsEnabled="{Binding CanClick}"/>
+                <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />hab ich auf Zeile 68 verschoben-->
+                <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
 
 
-      </Grid>
-    </Grid>
+            </Grid>
+        </Grid>
 
-    <Grid Grid.Row="1">
-      <Image Source="../Resources/map1.JPG" />
-      <ItemsControl ItemsSource="{Binding MeasuringPoints}">
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate>
-            <Canvas />
-          </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemContainerStyle>
-          <Style>
-            <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
-            <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
-          </Style>
-        </ItemsControl.ItemContainerStyle>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <Ellipse
+        <Grid Grid.Row="1">
+            <Image Source="../Resources/map1.JPG" />
+            <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
+                        <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse
               cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
               Cursor="{Binding IsArchived, Converter={krachConnect:IsArchivedToCursorConverter}}"
               Height="20" Width="20"
               Stroke="Black"
               StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}">
-              <Ellipse.ToolTip>
-                <StackPanel>
-                  <TextBlock Text="{Binding Name}" />
-                  <TextBlock Text="Ist Archiviert"
+                            <Ellipse.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text="Ist Archiviert"
                              Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}" />
-                </StackPanel>
-              </Ellipse.ToolTip>
-              <Ellipse.Fill>
-                <MultiBinding Converter="{krachConnect:MEPConverter}">
-                  <Binding Path="IsArchived" />
-                  <Binding Path="JustMeasured" />
-                </MultiBinding>
-              </Ellipse.Fill>
-            </Ellipse>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
+                                </StackPanel>
+                            </Ellipse.ToolTip>
+                            <Ellipse.Fill>
+                                <MultiBinding Converter="{krachConnect:MEPConverter}">
+                                    <Binding Path="IsArchived" />
+                                    <Binding Path="JustMeasured" />
+                                </MultiBinding>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Grid>
-  </Grid>
 </UserControl>
