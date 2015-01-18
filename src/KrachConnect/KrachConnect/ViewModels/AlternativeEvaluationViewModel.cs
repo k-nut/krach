@@ -22,7 +22,8 @@ namespace KrachConnect.ViewModels
     private PlotModel plotModel;
     private MeasuringPointViewModel selectedMeasuringPoint;
     private ObservableCollection<MeasuringPointViewModel> measuringPoints;
-    private ObservableCollection<NoiseMeasurementViewModel> tooLoudMeasurments; 
+    private ObservableCollection<NoiseMeasurementViewModel> tooLoudMeasurments;
+    private PlotModel totalsPlotModel;
 
     public PlotModel PlotModel
     {
@@ -79,12 +80,24 @@ namespace KrachConnect.ViewModels
       }
     }
 
+    public PlotModel TotalsPlotModel
+    {
+      get { return totalsPlotModel; }
+      set
+      {
+        totalsPlotModel = value;
+        NotifyOfPropertyChange(() => TotalsPlotModel);
+      }
+    }
+
     public AlternativeEvaluationViewModel(NoiseRepository repository)
     {
    //   PlotModel = new PlotModel();
     //  PlotModel.Axes.Add(new DateTimeAxis(AxisPosition.Bottom));
 
       this.repository = repository;
+
+
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
       NoiseMeasurements = new ObservableCollection<NoiseMeasurementViewModel>(repository.NoiseMeasurements.Select(nm => new NoiseMeasurementViewModel(nm)));
       SelectedMeasuringPoint = MeasuringPoints.First();
@@ -92,6 +105,30 @@ namespace KrachConnect.ViewModels
       var tooLoudMeasurements = NoiseMeasurements.Where(nm => nm.MeasurementDate == lastMeasuringDate)
         .Where(nm => nm.MaxValue > 60);
       TooLoudMeasurements = new ObservableCollection<NoiseMeasurementViewModel>(tooLoudMeasurements);
+
+      DrawTotalsChart();
+
+
+      
+    }
+
+    private class NameCountCouple
+      {
+      public string Name { get; set; }
+      public int Count { get; set; }
+    }
+
+    private void DrawTotalsChart()
+    {
+      TotalsPlotModel = new PlotModel();
+      var all = (from mp in MeasuringPoints
+                 let count = NoiseMeasurements.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
+                 select new NameCountCouple { Name = mp.Name, Count = count }
+                 ).ToList();
+      TotalsPlotModel.Axes.Add(new CategoryAxis { ItemsSource = all, LabelField = "Name", Angle = 45 });
+      TotalsPlotModel.Series.Add(new ColumnSeries { ItemsSource = all, ValueField = "Count" });
+      TotalsPlotModel.Title = "Grenzwerueberschreitungen pro Messpunkt (gesamt)";
+      
     }
 
     private void PopulatePlotModel()
