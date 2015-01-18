@@ -27,21 +27,14 @@ namespace KrachConnect.ViewModels
         private ShellViewModel shellViewModel;
 
 
-        public MapAddViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
+        public MapAddViewModel(NoiseRepository repository, ShellViewModel shellViewModel, ObservableCollection<MeasuringPointViewModel> selectedMeasuringPoints)
         {
-            // TODO: Complete member initialization
             this.repository = repository;
             this.shellViewModel = shellViewModel;
             MeasuringMethods = new ObservableCollection<MeasuringMethod>(repository.MeasuringMethods);
            
-            //if (repository.MeasuringWalk != null)
-            //{
-            MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringWalk);
-            //}
-            //else
-            //{
-                //MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-            //}
+            MeasuringPoints = selectedMeasuringPoints;
+
             NewNoiseMeasurement = new NoiseMeasurementViewModel(new NoiseMeasurement
             {
                 MeasurementDate = DateTime.Now

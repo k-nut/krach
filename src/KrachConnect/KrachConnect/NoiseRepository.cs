@@ -29,9 +29,7 @@ namespace KrachConnect
        //deleteMeasuringPointsWithoutPosition();
     }
 
-    public List<MeasuringPointViewModel> MeasuringWalk { get; set; }
-
-
+   
     public IEnumerable<MeasuringPointViewModel> MeasuringPointViewModels
     {
       get { return measuringPointViewModels; }

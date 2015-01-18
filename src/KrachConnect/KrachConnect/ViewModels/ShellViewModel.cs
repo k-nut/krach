@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Caliburn.Micro;
 
 namespace KrachConnect.ViewModels
@@ -13,9 +14,9 @@ namespace KrachConnect.ViewModels
       ActivateItem(new HomepageViewModel(nr));
     }
 
-    public void ShowMapScreen()
+    public void ShowMapScreen(ObservableCollection<MeasuringPointViewModel> selectedMeasuringPoints )
     {
-      ActivateItem(new MapAddViewModel(nr, this));
+      ActivateItem(new MapAddViewModel(nr, this, selectedMeasuringPoints));
     }
 
 
