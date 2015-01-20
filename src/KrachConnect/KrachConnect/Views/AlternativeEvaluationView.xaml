@@ -4,56 +4,56 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:oxy="http://oxyplot.org/wpf"
-                          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
 
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"></RowDefinition>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-    </Grid.ColumnDefinitions>
-    
-    <StackPanel Orientation="Horizontal">
-      <xctk:DateTimeUpDown Value="{Binding StartDate}"></xctk:DateTimeUpDown>
-      <DatePicker SelectedDate="{Binding EndDate}"></DatePicker>
-    </StackPanel>
-    
-    <Grid Grid.Row="1" Grid.Column="0">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="*"></RowDefinition>
-      </Grid.RowDefinitions>
-    <TextBlock Grid.Row="0" Text="Messpunkte, die in der letzten Messung den Grenzwert ueberschritten haben."></TextBlock>
-      <ItemsControl Grid.Row="1" ItemsSource="{Binding TooLoudMeasurements}">
-      <ItemsControl.ItemsPanel>
-        <ItemsPanelTemplate>
-          <StackPanel />
-        </ItemsPanelTemplate>
-      </ItemsControl.ItemsPanel>
-      <ItemsControl.ItemTemplate>
-        <DataTemplate>
-          <StackPanel Orientation="Horizontal">
-          <TextBlock Text="{Binding MeasuringPoint.Name}"/>
-          <TextBlock Text="{Binding MaxValue}"/>
-            </StackPanel>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
-  </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
-    <oxy:Plot Grid.Row="1" Grid.Column="1" Model="{Binding TotalsPlotModel}">
-    </oxy:Plot>
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="350"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-    <oxy:Plot Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Model="{Binding PlotModel}">
-    </oxy:Plot>
+            <xctk:DateTimeUpDown Value="{Binding StartDate}"></xctk:DateTimeUpDown>
+            <DatePicker Grid.Column="1" SelectedDate="{Binding EndDate}"></DatePicker>
 
-  </Grid>
+            <TextBlock Grid.Row="0" Grid.Column="2" >Diese Messpunkte haben zuletzt den Grenzwert überschritten:</TextBlock>
+            <ItemsControl Grid.Row="0" Grid.Column="3" ItemsSource="{Binding TooLoudMeasurements}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding MeasuringPoint.Name}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding MaxValue}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+        <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="1" Grid.Column="0" IsEnabled="True" >
+            <oxy:Plot  Model="{Binding TotalsPlotModel}">
+            </oxy:Plot>
+        </Expander>
+        <Expander Header="Zeige alle Messpunkte" Grid.Row="2" Grid.Column="0" IsEnabled="True" >
+            <oxy:Plot Model="{Binding PlotModel}">
+            </oxy:Plot>
+        </Expander>
+
+
+    </Grid>
 </UserControl>
