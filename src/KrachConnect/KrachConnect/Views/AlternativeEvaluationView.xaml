@@ -44,5 +44,8 @@
     <oxy:Plot Grid.Row="0" Grid.Column="1" Model="{Binding TotalsPlotModel}">
     </oxy:Plot>
 
+    <oxy:Plot Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Model="{Binding PlotModel}">
+    </oxy:Plot>
+
   </Grid>
 </UserControl>

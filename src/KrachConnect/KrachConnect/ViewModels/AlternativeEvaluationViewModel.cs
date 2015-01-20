@@ -6,6 +6,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
 using OxyPlot;
+using OxyPlot.Annotations;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
@@ -92,8 +93,9 @@ namespace KrachConnect.ViewModels
 
     public AlternativeEvaluationViewModel(NoiseRepository repository)
     {
-   //   PlotModel = new PlotModel();
-    //  PlotModel.Axes.Add(new DateTimeAxis(AxisPosition.Bottom));
+       PlotModel = new PlotModel();
+       PlotModel.Axes.Add(new DateTimeAxis(AxisPosition.Bottom));
+      PlotModel.Title = "Alle Messpunkte";
 
       this.repository = repository;
 
@@ -101,16 +103,25 @@ namespace KrachConnect.ViewModels
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
       NoiseMeasurements = new ObservableCollection<NoiseMeasurementViewModel>(repository.NoiseMeasurements.Select(nm => new NoiseMeasurementViewModel(nm)));
       SelectedMeasuringPoint = MeasuringPoints.First();
+      LoadTooLoudMeasuringPointsFromLastReading();
+      
+      DrawTotalsChart();
+      PopulatePlotModel();
+
+
+
+    }
+
+    private void LoadTooLoudMeasuringPointsFromLastReading()
+    {
       var lastMeasuringDate = NoiseMeasurements.Max(nm => nm.MeasurementDate);
       var tooLoudMeasurements = NoiseMeasurements.Where(nm => nm.MeasurementDate == lastMeasuringDate)
         .Where(nm => nm.MaxValue > 60);
       TooLoudMeasurements = new ObservableCollection<NoiseMeasurementViewModel>(tooLoudMeasurements);
-
-      DrawTotalsChart();
-
-
-      
     }
+
+
+
 
     private class NameCountCouple
       {
@@ -132,25 +143,30 @@ namespace KrachConnect.ViewModels
       
     }
 
+
     private void PopulatePlotModel()
     {
       PlotModel.Series.Clear();
-      PlotModel.Title = SelectedMeasuringPoint.Name;
 
-      var noiseMeausurements = NoiseMeasurements.Where(nm => nm.MeasuringPoint == SelectedMeasuringPoint.Model);
+      var noiseMeausurements = NoiseMeasurements.Where(nm => nm.MeasuringPoint != null).GroupBy(nm => nm.MeasuringPoint);
+      
 
-      this.MinValues = new LineSeries { Color = OxyColors.Green };
-      this.AverageValues = new LineSeries { Color = OxyColors.Orange };
-      this.MaxValues = new LineSeries { Color = OxyColors.Red };
-      foreach (var mearuement in noiseMeausurements.ToList().OrderBy(nm => nm.MeasurementDate))
+      foreach (var group in noiseMeausurements)
       {
-        this.MinValues.Points.Add(DateTimeAxis.CreateDataPoint(mearuement.MeasurementDate, mearuement.MinValue));
-        this.AverageValues.Points.Add(DateTimeAxis.CreateDataPoint(mearuement.MeasurementDate, mearuement.AverageValue));
-        this.MaxValues.Points.Add(DateTimeAxis.CreateDataPoint(mearuement.MeasurementDate, mearuement.MaxValue));
+        var lineSeries = new LineSeries { Title = group.Key.Name };
+        foreach(var measurement in group.OrderBy(nm => nm.MeasurementDate)){
+          lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MaxValue));
+        }
+        PlotModel.Series.Add(lineSeries);
       }
-      PlotModel.Series.Add(this.MinValues);
-      PlotModel.Series.Add(this.AverageValues);
-      PlotModel.Series.Add(this.MaxValues);
+      PlotModel.Annotations.Add(new LineAnnotation { Y = 60, Type = LineAnnotationType.Horizontal, Color = OxyColors.DarkRed });
+
+
+      PlotModel.IsLegendVisible = true;
+      PlotModel.LegendPosition = LegendPosition.TopRight;
+      PlotModel.LegendBackground = OxyColors.White;
+
+
       PlotModel.InvalidatePlot(true);
 
     }
