@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
 
-  <Grid Background="White" Width="500" Height="500">
+  <Grid>
     <Grid.RowDefinitions>
       <RowDefinition></RowDefinition>
       <RowDefinition></RowDefinition>

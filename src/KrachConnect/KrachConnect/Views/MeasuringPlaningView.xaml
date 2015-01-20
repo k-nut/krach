@@ -10,24 +10,25 @@
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition />
-      <RowDefinition Height="*" />
+      <RowDefinition Height="*"/>
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
 
-    <Grid Grid.Row="0">
+    <Grid Grid.Row="0" Grid.Column="0">
       <Grid.RowDefinitions>
-        <RowDefinition />
-        <RowDefinition />
+        <RowDefinition Height="Auto" />
         <RowDefinition />
       </Grid.RowDefinitions>
-      
+
       <StackPanel Orientation="Horizontal">
         <Label Content="Filter: "/>
-        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]">
-          </TextBox>
-          <Button x:Name="SelectAll" Content="Alle auswählen" />
-      <Button x:Name="DeSelectAll" Content="Alle abwählen" />
+        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" />
+        <Button x:Name="SelectAll" Content="Alle auswählen" />
+        <Button x:Name="DeSelectAll" Content="Alle abwählen" />
       </StackPanel>
 
       <ItemsControl Grid.Row="1" ItemsSource="{Binding FilteredMeasuringPoints}">
@@ -40,8 +41,9 @@
         <ItemsControl.ItemTemplate>
           <DataTemplate>
             <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding Name}" />
-              <CheckBox IsChecked="{Binding IsSelected}"></CheckBox>
+              <CheckBox IsChecked="{Binding IsSelected}">
+                <TextBlock Text="{Binding Name}" />
+              </CheckBox>
             </StackPanel>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
@@ -49,9 +51,9 @@
 
     </Grid>
 
-    <Grid Grid.Row="1">
-      <Image Source="../Resources/map1.JPG" />
-      <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
+    <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center">
+      <Image Name="Image" Source="../Resources/map1.JPG"  />
+      <ItemsControl Name="ItemsControl" ItemsSource="{Binding FilteredMeasuringPoints}" >
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
             <Canvas />
@@ -84,7 +86,16 @@
         </ItemsControl.ItemTemplate>
       </ItemsControl>
     </Grid>
-        <Button Grid.Row="2" x:Name="Save" IsEnabled="{Binding IsMeasuringPointEnabled}" Content="Begehung starten!" />
+
+
+    <Button BorderBrush="Green" 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2"
+            x:Name="Save" 
+            IsEnabled="{Binding IsMeasuringPointEnabled}"
+            Foreground="Green"
+            Content="Begehung starten!" />
   </Grid>
 
 </UserControl>
