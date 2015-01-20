@@ -4,12 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:oxy="http://oxyplot.org/wpf"
+                          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
 
   <Grid>
     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
       <RowDefinition></RowDefinition>
       <RowDefinition></RowDefinition>
     </Grid.RowDefinitions>
@@ -18,7 +21,12 @@
       <ColumnDefinition></ColumnDefinition>
     </Grid.ColumnDefinitions>
     
-    <Grid Grid.Row="0" Grid.Column="0">
+    <StackPanel Orientation="Horizontal">
+      <xctk:DateTimeUpDown Value="{Binding StartDate}"></xctk:DateTimeUpDown>
+      <DatePicker SelectedDate="{Binding EndDate}"></DatePicker>
+    </StackPanel>
+    
+    <Grid Grid.Row="1" Grid.Column="0">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
@@ -41,10 +49,10 @@
     </ItemsControl>
   </Grid>
 
-    <oxy:Plot Grid.Row="0" Grid.Column="1" Model="{Binding TotalsPlotModel}">
+    <oxy:Plot Grid.Row="1" Grid.Column="1" Model="{Binding TotalsPlotModel}">
     </oxy:Plot>
 
-    <oxy:Plot Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Model="{Binding PlotModel}">
+    <oxy:Plot Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Model="{Binding PlotModel}">
     </oxy:Plot>
 
   </Grid>
