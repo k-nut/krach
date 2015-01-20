@@ -26,7 +26,7 @@ namespace KrachConnect
       LoadMaps();
       LoadNoiseMeasurements();
       LoadMeasuringMethods();
-       //deleteMeasuringPointsWithoutPosition();
+      //deleteMeasuringPointsAndNoiseMeasurments();
     }
 
    
@@ -78,7 +78,8 @@ namespace KrachConnect
       DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints.Expand("Position");
 
       _measuringPoints.Load(query);
-      measuringPointViewModels = _measuringPoints.Select(mp => new MeasuringPointViewModel(mp));
+      measuringPointViewModels = _measuringPoints.Where(mp => mp.Position != null && mp.Position.XPosition != 0 && mp.Position.YPosition != 0)
+                                                 .Select(mp => new MeasuringPointViewModel(mp));
     }
 
     private void LoadMeasuringMethods()
@@ -90,10 +91,8 @@ namespace KrachConnect
         //measu = _measuringMethods.Select(mp => new MeasuringPointViewModel(mp));
     }
 
-    private void deleteMeasuringPointsWithoutPosition()
+    private void deleteMeasuringPointsAndNoiseMeasurments()
     {
-      //List<MeasuringPoint> measuringPointsWithPosition =
-      //  MeasuringPoints.Where(mp => mp.Position.XPosition != 0 && mp.Position.YPosition != 0).ToList();
       foreach (var noiseMeasurement in NoiseMeasurements)
       {
         _context.DeleteObject(noiseMeasurement);
@@ -101,9 +100,7 @@ namespace KrachConnect
       foreach (var measuringPoint in MeasuringPoints)
       {
         _context.DeleteObject(measuringPoint);
-      }
-      //MeasuringPoints.Load(measuringPointsWithPosition);
-      Save();
+      }     
     }
 
     public void Save()
