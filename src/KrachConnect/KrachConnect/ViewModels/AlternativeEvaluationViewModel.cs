@@ -138,7 +138,7 @@ namespace KrachConnect.ViewModels
                  );
         all = all.Where(ncc => ncc.Count > 0).OrderBy(ncc => ncc.Count).ToList();
       TotalsPlotModel.Axes.Add(new CategoryAxis { ItemsSource = all, LabelField = "Name", Position = AxisPosition.Left});
-      TotalsPlotModel.Series.Add(new BarSeries { ItemsSource = all, ValueField = "Count" });
+      TotalsPlotModel.Series.Add(new BarSeries { ItemsSource = all, ValueField = "Count", FillColor = OxyColors.Red});
       TotalsPlotModel.Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)";
       
     }
