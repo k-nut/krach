@@ -124,10 +124,11 @@ namespace KrachConnect.ViewModels
       var all = (from mp in MeasuringPoints
                  let count = NoiseMeasurements.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
                  select new NameCountCouple { Name = mp.Name, Count = count }
-                 ).ToList();
-      TotalsPlotModel.Axes.Add(new CategoryAxis { ItemsSource = all, LabelField = "Name", Angle = 45 });
-      TotalsPlotModel.Series.Add(new ColumnSeries { ItemsSource = all, ValueField = "Count" });
-      TotalsPlotModel.Title = "Grenzwerueberschreitungen pro Messpunkt (gesamt)";
+                 );
+        all = all.Where(ncc => ncc.Count > 0).OrderBy(ncc => ncc.Count).ToList();
+      TotalsPlotModel.Axes.Add(new CategoryAxis { ItemsSource = all, LabelField = "Name", Position = AxisPosition.Left});
+      TotalsPlotModel.Series.Add(new BarSeries { ItemsSource = all, ValueField = "Count" });
+      TotalsPlotModel.Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)";
       
     }
 
