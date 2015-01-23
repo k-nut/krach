@@ -9,95 +9,97 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="LightGray">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="Auto" />
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="Auto"></ColumnDefinition>
-      <ColumnDefinition Width="*"></ColumnDefinition>
-    </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-    <Grid Grid.Row="0" Grid.Column="0">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition />
-      </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-      <StackPanel Orientation="Horizontal">
-        <Label Content="Filter: "/>
-        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" />
-        <Button x:Name="SelectAll" Content="Alle auswählen" />
-        <Button x:Name="DeSelectAll" Content="Alle abwählen" />
-      </StackPanel>
-
-      <ItemsControl Grid.Row="1" ItemsSource="{Binding FilteredMeasuringPoints}">
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate>
-            <StackPanel Orientation="Vertical" />
-          </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
             <StackPanel Orientation="Horizontal">
-              <CheckBox IsChecked="{Binding IsSelected}">
-                <TextBlock Text="{Binding Name}" />
-              </CheckBox>
+                <Label Content="Filter: "/>
+                <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" />
+                <Button x:Name="SelectAll" Content="Alle auswählen" />
+                <Button x:Name="DeSelectAll" Content="Alle abwählen" />
             </StackPanel>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
 
-    </Grid>
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding FilteredMeasuringPoints}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-    <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center">
-      <Image Name="Image" Source="../Resources/map1.JPG"  />
-      <ItemsControl Name="ItemsControl" ItemsSource="{Binding FilteredMeasuringPoints}" >
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate>
-            <Canvas />
-          </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemContainerStyle>
-          <Style>
-            <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
-            <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
-          </Style>
-        </ItemsControl.ItemContainerStyle>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <Ellipse cal:Message.Attach="[Event MouseDown] = [Action ToggleSelection($datacontext)]"
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsSelected}">
+                                <TextBlock Text="{Binding Name}" />
+                            </CheckBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Bottom">
+            <Image Name="Image" Source="../Resources/map1.JPG"  />
+            <ItemsControl Name="ItemsControl" ItemsSource="{Binding FilteredMeasuringPoints}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
+                        <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse cal:Message.Attach="[Event MouseDown] = [Action ToggleSelection($datacontext)]"
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
                      StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}"
                      Height="20" Width="20"
                      Stroke="Black">
-              <Ellipse.ToolTip>
-                <StackPanel>
-                  <TextBlock Text="{Binding Name}" />
-                  <TextBlock Text="Ist Archiviert"
+                            <Ellipse.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text="Ist Archiviert"
                              Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}" />
-                </StackPanel>
-              </Ellipse.ToolTip>
-            </Ellipse>
+                                </StackPanel>
+                            </Ellipse.ToolTip>
+                        </Ellipse>
 
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
-    </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
 
 
-    <Button BorderBrush="Black" 
+        <Button BorderBrush="Black" 
             Grid.Row="1" 
-            Grid.Column="1" 
-            Background="Indigo"
-            Width="100"
+            Grid.Column="0" 
+            Background="Chartreuse"
+            Height="30"
+            Width="150"
             x:Name="Save" 
             IsEnabled="{Binding IsMeasuringPointEnabled}"
             Foreground="Black"
+            HorizontalAlignment="Center"
 
             Content="Begehung starten!" />
-  </Grid>
+    </Grid>
 
 </UserControl>
