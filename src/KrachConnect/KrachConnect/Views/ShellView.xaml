@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             WindowState="Normal">
+             WindowState="Normal"
+        ResizeMode="NoResize">
 
   <DockPanel Background="Gray">
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
