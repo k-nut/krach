@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -12,6 +14,8 @@ namespace KrachConnect.ViewModels
         private readonly NoiseRepository repository;
         private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
         private MeasuringPointViewModel selectedMeasuringPoint;
+      private bool showActive = true;
+      private bool showArchived = false;
 
 
         public MeasuringPointsEditViewModel(NoiseRepository repository)
@@ -42,7 +46,55 @@ namespace KrachConnect.ViewModels
             }
         }
 
-        public void SaveToHub()
+      public IEnumerable<MeasuringPointViewModel>  FilteredMeasuringPoints
+      {
+        get
+        {
+          IEnumerable<MeasuringPointViewModel> filtered;
+          if (ShowActive && !ShowArchived)
+          {
+            filtered = MeasuringPoints.Where(mp => !mp.IsArchived);
+          }
+          else if (!ShowActive && ShowArchived)
+          {
+            filtered = MeasuringPoints.Where(mp => mp.IsArchived);
+          }
+          else if (!ShowActive && !ShowArchived)
+          {
+            filtered = new List<MeasuringPointViewModel>();
+          }
+          else
+          {
+            filtered = MeasuringPoints;
+          }
+          return filtered;
+        } 
+      }
+
+      public bool ShowActive
+      {
+        get { return showActive; }
+        set
+        {
+          showActive = value; 
+          NotifyOfPropertyChange(() => ShowActive);
+          NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+
+        }
+      }
+
+      public bool ShowArchived
+      {
+        get { return showArchived; }
+        set
+        {
+          showArchived = value;
+          NotifyOfPropertyChange(() => ShowArchived);
+          NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+        }
+      }
+
+      public void SaveToHub()
         {
             repository.Save();
         }

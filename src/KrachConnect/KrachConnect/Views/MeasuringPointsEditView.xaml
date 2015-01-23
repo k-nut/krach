@@ -7,52 +7,71 @@
              xmlns:krachConnect="clr-namespace:KrachConnect"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="LightGray">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+  <Grid Background="LightGray">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Height="25" VerticalAlignment="Top">
+    <Grid Grid.Column="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
 
 
-        </Grid>
+      <TextBlock FontSize="25" Grid.Row="0" Text="Zeige:" />
+      <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <CheckBox IsChecked="{Binding ShowActive}">
+          <TextBlock Text="Aktived Messpunkte" />
+        </CheckBox>
+      </StackPanel>
+      <StackPanel Grid.Row="2">
+        <CheckBox IsChecked="{Binding ShowArchived}">
+          <TextBlock Text="Archivierte Messpunkte" />
+        </CheckBox>
+      </StackPanel>
 
-        <Grid Grid.Row="0" Width="1000">
-            <Image Cursor="Cross" Source="../Resources/map1.JPG" 
+    </Grid>
+
+
+    <Grid Column="1" Width="1000">
+      <Image Cursor="Cross" Source="../Resources/map1.JPG" 
              cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey) ]" />
-            <ItemsControl ItemsSource="{Binding MeasuringPoints}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
-                    <Style>
-                        <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
-                        <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Ellipse cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
+      <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <Canvas />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemContainerStyle>
+          <Style>
+            <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
+            <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
+          </Style>
+        </ItemsControl.ItemContainerStyle>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Ellipse cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
                      StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}"
                      Height="20" Width="20"
                      Stroke="Black">
-                            <Ellipse.ToolTip>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Name}" />
-                                    <TextBlock Text="Ist Archiviert"
+              <Ellipse.ToolTip>
+                <StackPanel>
+                  <TextBlock Text="{Binding Name}" />
+                  <TextBlock Text="Ist Archiviert"
                              Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}" />
-                                </StackPanel>
-                            </Ellipse.ToolTip>
-                        </Ellipse>
+                </StackPanel>
+              </Ellipse.ToolTip>
+            </Ellipse>
 
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Grid>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
     </Grid>
+  </Grid>
 
 </UserControl>
