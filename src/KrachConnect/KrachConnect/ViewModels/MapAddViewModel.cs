@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.OleDb;
 using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Forms;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 using Microsoft.Data.OData;
@@ -27,17 +31,25 @@ namespace KrachConnect.ViewModels
         private ShellViewModel shellViewModel;
 
 
+      private IEnumerable<String> employees;
+
+
         public MapAddViewModel(NoiseRepository repository, ShellViewModel shellViewModel, ObservableCollection<MeasuringPointViewModel> selectedMeasuringPoints)
         {
             this.repository = repository;
             this.shellViewModel = shellViewModel;
             MeasuringMethods = new ObservableCollection<MeasuringMethod>(repository.MeasuringMethods);
+            var allEmployees = new HashSet<String>(repository.NoiseMeasurements.Where(nm => nm.Employee != null).Select(nm => nm.Employee));
+            Employees = allEmployees;
+
+
            
             MeasuringPoints = selectedMeasuringPoints;
 
             NewNoiseMeasurement = new NoiseMeasurementViewModel(new NoiseMeasurement
             {
-                MeasurementDate = DateTime.Now
+                MeasurementDate = DateTime.Now,
+                Employee = ""
             });
             // TODO: Abfangen, wenn es keinerlei Messpunkte gibt
             SelectNextMeasuringPoint();
@@ -249,7 +261,17 @@ namespace KrachConnect.ViewModels
             set { measuringMethods = value; }
         }
 
-        public void CancelMeasuring ()
+      public IEnumerable<string> Employees
+      {
+        get { return employees; }
+        set
+        {
+          employees = value;
+          NotifyOfPropertyChange(() => Employees);
+        }
+      }
+
+      public void CancelMeasuring ()
         {
            this.shellViewModel.ShowHomePageScreen();
         }

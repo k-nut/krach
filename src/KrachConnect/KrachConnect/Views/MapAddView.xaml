@@ -7,8 +7,10 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -69,7 +71,7 @@
 
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />
                 <TextBlock Grid.Row="3" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewNoiseMeasurement.Employee}" />
+                <controls:AutoCompleteBox Name="EmployeeAutoCompleteBox" ItemsSource="{Binding Employees}" MinimumPrefixLength="0" IsDropDownOpen="True" Grid.Row="3" Grid.Column="1"  Text="{Binding NewNoiseMeasurement.Employee}" />
 
             </Grid>
             <Grid Grid.Row="2">
