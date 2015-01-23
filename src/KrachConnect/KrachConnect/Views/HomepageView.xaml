@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:krachConnect="clr-namespace:KrachConnect"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -41,10 +42,28 @@
         <Grid Grid.Row="1">
             <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-          <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
-          <DataGridTextColumn Header="Messpunkt" Binding="{Binding MeasuringPoint.Name}"  />
-          <DataGridTextColumn Header="Mittel-Messwert" Binding="{Binding AverageValue}"  />
-        </DataGrid.Columns>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                    <DataGridTextColumn Header="Messpunkt" Binding="{Binding MeasuringPoint.Name}"  />
+
+                    <DataGridTemplateColumn Header="Mittel-Messwert">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{Binding AverageValue}" HorizontalAlignment="Center"></TextBlock>
+                                    <Ellipse ToolTip="Grenzwert überschritten" Grid.Column="1" Width="10" Height="10" Fill="Red" HorizontalAlignment="Center" Visibility="{Binding AverageValue, Converter={krachConnect:AverageToVisibilityConverter}}"></Ellipse>
+                                </Grid>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
     </Grid>
