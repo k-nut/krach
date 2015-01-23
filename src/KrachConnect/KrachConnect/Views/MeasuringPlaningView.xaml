@@ -88,13 +88,15 @@
     </Grid>
 
 
-    <Button BorderBrush="Green" 
+    <Button BorderBrush="Black" 
             Grid.Row="1" 
-            Grid.Column="0" 
-            Grid.ColumnSpan="2"
+            Grid.Column="1" 
+            Background="Indigo"
+            Width="100"
             x:Name="Save" 
             IsEnabled="{Binding IsMeasuringPointEnabled}"
-            Foreground="Green"
+            Foreground="Black"
+
             Content="Begehung starten!" />
   </Grid>
 

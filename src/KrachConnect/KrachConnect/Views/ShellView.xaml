@@ -4,6 +4,10 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              WindowState="Normal"
+        Height="700"
+        Width="1300"
+        Title="Krach"
+        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
   <DockPanel Background="Gray">
