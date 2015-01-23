@@ -7,15 +7,16 @@
              xmlns:krachConnect="clr-namespace:KrachConnect"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-  <Grid Background="WhiteSmoke">
+  <Grid Background="LightGray">
     <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="10"/>
       <RowDefinition Height="*"/>
+       <RowDefinition Height="10"/>
     </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Height="25" VerticalAlignment="Top">
      
-      <TextBlock Grid.Row="0"  Text="Messpunkte erstellen/bearbeiten"  FontSize="16" />
+      <!--<TextBlock Grid.Row="0"  Text="Messpunkte erstellen/bearbeiten"  FontSize="16" />-->
     </Grid>
 
     <Grid Grid.Row="1" Width="1000">
