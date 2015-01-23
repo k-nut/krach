@@ -34,7 +34,7 @@ namespace KrachConnect.ViewModels
 
     public IEnumerable<NoiseMeasurementViewModel> FilteredNoiseMeasurementViewModels
     {
-      get { return NoiseMeasurements.Where(nm => nm.MeasurementDate > MinDate && nm.MeasurementDate < MaxDate); }
+      get { return NoiseMeasurements.Where(nm => nm.MeasurementDate >= MinDate && nm.MeasurementDate <= MaxDate); }
     }
 
     private PlotModel totalsPlotModel;

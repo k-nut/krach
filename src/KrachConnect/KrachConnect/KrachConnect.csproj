@@ -40,6 +40,12 @@
     <Reference Include="Caliburn.Micro.Platform">
       <HintPath>..\packages\Caliburn.Micro.2.0.1\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.4.0.2\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlusEnumerable">
+      <HintPath>..\packages\EPPlusEnumerable.1.0.0\lib\net45\EPPlusEnumerable.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -125,6 +131,7 @@
     <Compile Include="ViewModels\AlternativeEvaluationViewModel.cs" />
     <Compile Include="ViewModels\ConfirmationBoxViewModel.cs" />
     <Compile Include="ViewModels\EvaluationViewModel.cs" />
+    <Compile Include="ViewModels\ExportViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPlaningViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPointsEditViewModel.cs" />
@@ -150,6 +157,9 @@
     </Compile>
     <Compile Include="Views\EvaluationView.xaml.cs">
       <DependentUpon>EvaluationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExportView.xaml.cs">
+      <DependentUpon>ExportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomepageView.xaml.cs">
       <DependentUpon>HomepageView.xaml</DependentUpon>
@@ -228,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EvaluationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

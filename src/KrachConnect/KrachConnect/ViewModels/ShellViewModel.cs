@@ -46,5 +46,10 @@ namespace KrachConnect.ViewModels
       ActivateItem(new AlternativeEvaluationViewModel(nr));
     }
 
+    public void ShowExportScreen()
+    {
+      ActivateItem(new ExportViewModel(nr));
+    }
+
   }
 }
