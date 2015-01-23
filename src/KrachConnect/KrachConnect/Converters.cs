@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -125,5 +126,25 @@ namespace KrachConnect
     {
       return null;
     }
+  }
+  [ValueConversion(typeof(object), typeof(Visibility))]
+  public class AverageToVisibilityConverter : BaseConverter, IValueConverter
+  {
+      public object Convert(object value, Type targetType, object parameter,
+        CultureInfo culture)
+      {
+          var floatValue = (float)value;
+          if (floatValue>80)
+          {
+              return Visibility.Visible;
+          }
+          return Visibility.Hidden;
+      }
+
+      public object ConvertBack(object value, Type targetType, object parameter,
+        CultureInfo culture)
+      {
+          return null;
+      }
   }
 }
