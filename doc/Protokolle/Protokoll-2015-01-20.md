@@ -1,4 +1,4 @@
-#Meeting vom 2015-01-13
+#Meeting vom 2015-01-20
 Anwesend:
 - Lars Schiemann (Gewissen GmbH)
 - Artur Merkuschin (HTW Berlin - Projekt Krach)

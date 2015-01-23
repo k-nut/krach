@@ -57,7 +57,7 @@
                      Cursor="Hand"
                      Fill="{Binding IsArchived, Converter={krachConnect:IsArchivedToBrushConverter}}"
                      StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}"
-                     Height="20" Width="20"
+                     Height="15" Width="15"
                      Stroke="Black">
               <Ellipse.ToolTip>
                 <StackPanel>
