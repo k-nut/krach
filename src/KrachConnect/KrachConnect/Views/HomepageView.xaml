@@ -8,29 +8,35 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
 
-    <Grid Background="White">
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" RenderTransformOrigin="0.541,0.842">
 
+        <Grid Grid.Row="0">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>-->
+            <Grid Grid.Column="0">
                 <ContentControl x:Name="ActiveItem" />
             </Grid>
         </Grid>
-        <Grid Grid.Row="0" >
-            <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
-        Lärmkrach
+        <Grid Grid.Column="0" Height="150" VerticalAlignment="Center" >
+            <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        Krach
         professional
             </TextBlock>
-            <TextBlock FontSize="16" VerticalAlignment="Bottom"> Letzte Änderungen:</TextBlock>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" >
+            <TextBlock FontSize="16"> Letzte Änderungen:</TextBlock>
+        </Grid>
+        <Grid  Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="0*" />
@@ -39,7 +45,7 @@
             <Grid Grid.Column="0" />
             <Grid Grid.Column="0" />
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="1">
             <DataGrid ItemsSource="{Binding NoiseMeasurements}" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
