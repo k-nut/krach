@@ -8,58 +8,56 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="500">
 
     <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition />
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
-                <TextBlock Grid.Column="1" FontSize="20" HorizontalAlignment="Right">
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
+            <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20" HorizontalAlignment="Right">
           (<TextBlock Text="{Binding CurrentNumber}" />
           von
           <TextBlock Text="{Binding TotalMeasuringPoints}" />
           )
         </TextBlock>
-                <Button Grid.Column="2" x:Name="ToggleDetails" Height="25" Content="{Binding ShowHideContent}" />
-            </Grid>
-            <Grid Grid.Row="1" Visibility="{Binding DetailVisibility}">
+
+            <Button Grid.Row="1" Grid.Column="2" x:Name="ToggleDetails" Width="100" Content="{Binding ShowHideContent}" />
+
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"  Visibility="{Binding DetailVisibility}" >
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Messzeitpunkt" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Messzeitpunkt"  VerticalAlignment="Bottom"/>
                 <xctk:DateTimePicker Grid.Row="1" Grid.Column="0" TimeFormat="ShortTime" Format="Custom"
                              FormatString="dd.MM.yy HH:mm" Value="{Binding NewNoiseMeasurement.MeasurementDate}" />
 
-
-                <TextBlock Text="Messverfahren" Grid.Row="2" Grid.Column="0" />
-                <ComboBox Grid.Row="3" Grid.Column="0" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}">
+                <TextBlock Grid.Row="2" Text="Messverfahren"  Grid.Column="0" VerticalAlignment="Bottom"/>
+                <ComboBox  Grid.Row="3" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"></TextBlock>
@@ -67,62 +65,42 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />
-                <TextBlock Grid.Row="3" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Text="Kürzel" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
                 <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewNoiseMeasurement.Employee}" />
 
             </Grid>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="3" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="175"/>
+                    <ColumnDefinition Width="31"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0">Minimalwert in Dezibel</Label>
-                <Slider Grid.Row="1" Grid.Column="0" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
-                <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding NewNoiseMeasurement.MinValue}" />
+                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Min. Wert in dB</Label>
+                <Slider Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
+                <TextBox Grid.Row="0" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MinValue}" />
 
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Mitt. Wert in dB</Label>
+                <Slider Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
+                <TextBox Grid.Row="1" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.AverageValue}" />
 
-                <Label Grid.Row="0" Grid.Column="1">Mittelwert in Dezibel</Label>
-                <Slider Grid.Row="1" Grid.Column="1" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NewNoiseMeasurement.AverageValue}" />
-
-
-
-                <Label Grid.Row="0" Grid.Column="2">Maximalwert in Dezibel</Label>
-                <Slider Grid.Row="1" Grid.Column="2" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
-                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding NewNoiseMeasurement.MaxValue}" />
-
-
+                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Max. Wert in dB</Label>
+                <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
+                <TextBox Grid.Row="2" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MaxValue}" />
 
             </Grid>
-
-            <Grid Grid.Row="3" Height="25" VerticalAlignment="Bottom">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Row="0" Grid.Column="1" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
+            
+            <Button Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Content="Zurück" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding IsBackButtonEnabled}"/>
+            <Button Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
                 IsEnabled="{Binding CanClick}" />
-                <Button Grid.Row="0" Grid.Column="0" Content="Zurück" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding IsBackButtonEnabled}"/>
-                <Button Grid.Row="0" Grid.Column="2" Content="abbrechen" x:Name="CancelMeasuring" />
-                <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />hab ich auf Zeile 68 verschoben-->
-                <Button Grid.Column="3" x:Name="SaveToHub" Content="Speichern" />
-
-
-            </Grid>
         </Grid>
-
-        <Grid Grid.Row="1">
+        <Grid Grid.Column="1">
             <Image Source="../Resources/map1.JPG" />
             <ItemsControl ItemsSource="{Binding MeasuringPoints}">
                 <ItemsControl.ItemsPanel>
@@ -139,11 +117,11 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Ellipse
-              cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
-              Cursor="{Binding IsArchived, Converter={krachConnect:IsArchivedToCursorConverter}}"
-              Height="20" Width="20"
-              Stroke="Black"
-              StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}">
+                          cal:Message.Attach="[Event MouseDown] = [Action ChangeSelectedMeasuringPoint($datacontext)]"
+                          Cursor="{Binding IsArchived, Converter={krachConnect:IsArchivedToCursorConverter}}"
+                          Height="15" Width="15"
+                          Stroke="Black"
+                          StrokeThickness="{Binding IsSelected, Converter={krachConnect:BoolToStrokeThicknessConverter}}">
                             <Ellipse.ToolTip>
                                 <StackPanel>
                                     <TextBlock Text="{Binding Name}" />
@@ -161,6 +139,10 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Center"  Width="100"  Content="Abbrechen" x:Name="CancelMeasuring" />
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" x:Name="SaveToHub" Content="Speichern" />
+            
         </Grid>
     </Grid>
 </UserControl>

@@ -12,7 +12,7 @@ namespace KrachConnect.ViewModels
     internal class MapAddViewModel : PropertyChangedBase
     {
         private readonly NoiseRepository repository;
-        private Visibility detailVisibility = Visibility.Visible;
+        private Visibility detailVisibility = Visibility.Collapsed;
 
         private ObservableCollection<NoiseMeasurementViewModel> measurementsAddedInThisReading =
           new ObservableCollection<NoiseMeasurementViewModel>();
@@ -22,7 +22,7 @@ namespace KrachConnect.ViewModels
         private MeasuringPointViewModel selectedMeasuringPoint;
         private ObservableCollection<MeasuringMethod> measuringMethods; 
 
-        private string showHideContent = "verstecke Details";
+        private string showHideContent = "zeige Details";
         
         private ShellViewModel shellViewModel;
 
@@ -216,7 +216,7 @@ namespace KrachConnect.ViewModels
         {
             if (DetailVisibility == Visibility.Visible)
             {
-                DetailVisibility = Visibility.Hidden;
+                DetailVisibility = Visibility.Collapsed;
                 ShowHideContent = "zeige Details";
             }
             else
