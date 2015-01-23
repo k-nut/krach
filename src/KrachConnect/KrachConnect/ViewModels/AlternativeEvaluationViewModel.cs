@@ -124,7 +124,12 @@ namespace KrachConnect.ViewModels
     public AlternativeEvaluationViewModel(NoiseRepository repository)
     {
       PlotModel = new PlotModel { Title = "Alle Messpunkte" };
-      PlotModel.Axes.Add(new DateTimeAxis(AxisPosition.Bottom));
+      var dateAxis = new DateTimeAxis
+      {
+        Position = AxisPosition.Bottom,
+        StringFormat = "d.M.yyyy"
+      };
+      PlotModel.Axes.Add(dateAxis);
 
 
       TotalsPlotModel = new PlotModel { Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)" };
