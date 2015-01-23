@@ -18,6 +18,6 @@
       <Button x:Name="ShowEvaluationScreen" Content="Auswertung" Margin="12,0,0,0" Padding="5" />
       <Button x:Name="ShowAlternativeEvaluationScreen" Content="Alternative Auswertung" Margin="12,0,0,0" Padding="5" />
     </StackPanel>
-    <ContentControl  Padding="10" x:Name="ActiveItem" />
+    <ContentControl Padding="10,10,10,10" x:Name="ActiveItem" />
   </DockPanel>
 </Window>

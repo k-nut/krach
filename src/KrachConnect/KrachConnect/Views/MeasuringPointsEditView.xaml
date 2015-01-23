@@ -9,9 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Height="25" VerticalAlignment="Top">
@@ -19,7 +17,7 @@
 
         </Grid>
 
-        <Grid Grid.Row="1" Width="1000">
+        <Grid Grid.Row="0" Width="1000">
             <Image Cursor="Cross" Source="../Resources/map1.JPG" 
              cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey) ]" />
             <ItemsControl ItemsSource="{Binding MeasuringPoints}">
