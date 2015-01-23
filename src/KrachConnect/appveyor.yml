@@ -1,10 +1,18 @@
-configuration: Release
-
-# restore NuGet packages before running MSBuild
+version: 1.0.{build}
+clone_folder: c:\projects\krach
 before_build:
- - nuget restore
- 
- # package Web Application project for Web Deploy
- build:
+- ps: nuget restore src\KrachConnect\KrachConnect.sln
+build:
+  project: src/KrachConnect/KrachConnect.sln
   verbosity: minimal
-   publish_wap: true
+artifacts:
+- path: src\KrachConnect\KrachConnect\bin\Debug\
+  name: Executable
+notifications:
+- provider: Slack
+  channel: krach
+  auth_token:
+    secure: 2ugnToox8k0ohEk4vdWVA3UD6n+t+Ai2y+JTWJKmktDLN+DM9/6rV/L6Yuc0hh4H
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false

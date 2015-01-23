@@ -198,11 +198,10 @@ namespace KrachConnect.ViewModels
       }
       PlotModel.Annotations.Add(new LineAnnotation
       {
-        Y = 60,
+        Y = 80,
         Type = LineAnnotationType.Horizontal,
         Color = OxyColors.DarkRed
       });
-
 
       PlotModel.IsLegendVisible = true;
       PlotModel.LegendPosition = LegendPosition.TopRight;

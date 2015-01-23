@@ -8,7 +8,6 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
-
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"></RowDefinition>
@@ -29,11 +28,11 @@
       <DatePicker Grid.Column="2" SelectedDate="{Binding MaxDate}" />
 
     </Grid>
-    <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="1" Grid.Column="0" IsEnabled="True" >
+    <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="1" Grid.Column="0" IsExpanded="True">
       <oxy:Plot  Model="{Binding TotalsPlotModel}">
       </oxy:Plot>
     </Expander>
-    <Expander Header="Zeige alle Messpunkte" Grid.Row="2" Grid.Column="0" IsEnabled="True" >
+    <Expander Header="Zeige alle Messpunkte" Grid.Row="2" Grid.Column="0" IsExpanded="True" >
       <oxy:Plot Model="{Binding PlotModel}">
       </oxy:Plot>
     </Expander>
