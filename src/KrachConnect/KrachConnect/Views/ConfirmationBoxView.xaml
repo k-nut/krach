@@ -14,6 +14,7 @@
       <RowDefinition Height="70"/>
       <RowDefinition Height="30"/>
       <RowDefinition Height="30"/>
+      <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     <TextBlock Grid.Row="0" VerticalAlignment="Bottom" Text="Bezeichnung" />
     <TextBox Grid.Row="1"  Text="{Binding MeasuringPoint.Name}" />
@@ -25,16 +26,20 @@
       <Label Content="Archiviert" VerticalAlignment="Center" Grid.Row="0" Height="25"  />
     </CheckBox>
 
+
     <Grid Row="5" Column="0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
         <ColumnDefinition />
       </Grid.ColumnDefinitions>
       <Button Content="Abbrechen" HorizontalAlignment="Center" Height="25" x:Name="Cancel"/>
-      <Grid Column="1">
-        <Button  x:Name="OK" Content="Speichern"  HorizontalAlignment="Center" Height="25"/>
-      </Grid>
-
+      <Button Grid.Column="1"  x:Name="OK" Content="Speichern"  HorizontalAlignment="Center" Height="25"/>
     </Grid>
+
+    <Expander Grid.Row="6" Header="Gefährliche Aktionen"  Visibility="{Binding DeleteButtonVisibility}" >
+      <Button Background="Red" Content="Messpunkt löschen" x:Name="DeleteMeasuringPoint"/>
+    </Expander>
+
+
   </Grid>
 </UserControl>

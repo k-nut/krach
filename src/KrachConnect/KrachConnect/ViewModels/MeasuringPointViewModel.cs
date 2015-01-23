@@ -9,11 +9,13 @@ namespace KrachConnect
     private bool isArchived = false;
     private bool isSelected;
     private bool justMeasured;
+    private bool deleted;
 
     public MeasuringPointViewModel(MeasuringPoint mp)
     {
       m_Model = mp;
     }
+
 
     public MeasuringPoint Model
     {
@@ -99,6 +101,16 @@ namespace KrachConnect
       {
         justMeasured = value;
         NotifyOfPropertyChange(() => JustMeasured);
+      }
+    }
+
+    public bool Deleted
+    {
+      get { return deleted; }
+      set
+      {
+        deleted = value;
+        NotifyOfPropertyChange(() => Deleted);
       }
     }
   }

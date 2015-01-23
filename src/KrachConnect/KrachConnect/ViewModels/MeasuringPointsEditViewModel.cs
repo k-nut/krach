@@ -32,6 +32,7 @@ namespace KrachConnect.ViewModels
             {
                 measuringPointViewModels = value;
                 NotifyOfPropertyChange(() => MeasuringPoints);
+                NotifyOfPropertyChange(() => FilteredMeasuringPoints);
             }
         }
 
@@ -111,15 +112,23 @@ namespace KrachConnect.ViewModels
             SelectedMeasuringPoint.IsSelected = false;
             var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
             SelectedMeasuringPoint = measuringPointViewModel;
+
             var oldName = measuringPointViewModel.Name;
             var oldDescription = measuringPointViewModel.Notes;
             var oldIsArchived = measuringPointViewModel.IsArchived;
-            var box = new ConfirmationBoxViewModel(measuringPointViewModel);
+
+            var box = new ConfirmationBoxViewModel(measuringPointViewModel, repository);
             var result = new WindowManager().ShowDialog(box);
             if (result == true)
             {
                 // OK was clicked
                 SaveToHub();
+              if (measuringPointViewModel.Deleted == true)
+              {
+                MeasuringPoints.Remove(measuringPointViewModel);
+                NotifyOfPropertyChange(() => MeasuringPoints);
+                NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+              }
             }
             else
             {
@@ -148,13 +157,15 @@ namespace KrachConnect.ViewModels
                 Position = newPosition,
                 Name = "Neuer Messpunkt"
             });
-            var box = new ConfirmationBoxViewModel(SelectedMeasuringPoint);
+            var box = new ConfirmationBoxViewModel(SelectedMeasuringPoint, true);
             var result = new WindowManager().ShowDialog(box);
             if (result == true)
             {
                 // OK was clicked
                 MeasuringPoints.Add(SelectedMeasuringPoint);
                 repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
+                NotifyOfPropertyChange(() => MeasuringPoints);
+                NotifyOfPropertyChange(() => FilteredMeasuringPoints);
                 SaveToHub();
             }
         }
