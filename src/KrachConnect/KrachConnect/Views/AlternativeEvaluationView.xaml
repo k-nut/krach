@@ -16,8 +16,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!--<Grid Grid.Column="0">-->
@@ -33,9 +33,9 @@
             </Grid.RowDefinitions>-->
 
             <TextBlock Margin="10" Grid.Column="0" Grid.Row="0" Text="Auswertungszeitraum: " />
-            <DatePicker Margin="10" Grid.Column="0" Grid.Row="1" SelectedDate="{Binding MinDate}" />
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="bis" HorizontalAlignment="Center"/>
-            <DatePicker Margin="10" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Width="200" SelectedDate="{Binding MaxDate}" />
+            <DatePicker Margin="10" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
+            <!--<TextBlock Grid.Column="0" Grid.Row="2" Text="bis" HorizontalAlignment="Center"/>-->
+        <DatePicker Margin="10" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
 
         <!--</Grid>-->
         <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" IsExpanded="True">
@@ -43,7 +43,7 @@
             </oxy:Plot>
         </Expander>
         <Expander Header="Zeige alle Messpunkte"  Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" IsExpanded="True" >
-            <oxy:Plot Model="{Binding PlotModel}" Margin="-250,0,0,0">
+            <oxy:Plot Model="{Binding PlotModel}">
             </oxy:Plot>
         </Expander>
 
