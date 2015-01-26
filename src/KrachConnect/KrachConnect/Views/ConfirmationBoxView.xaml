@@ -6,40 +6,40 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-  <Grid Background="AliceBlue" Width="200">
-    <Grid.RowDefinitions >
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="70"/>
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="Auto"/>
-    </Grid.RowDefinitions>
-    <TextBlock Grid.Row="0" VerticalAlignment="Bottom" Text="Bezeichnung" />
-    <TextBox Grid.Row="1"  Text="{Binding MeasuringPoint.Name}" />
+    <Grid Background="AliceBlue" Width="200">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontSize="18"  Foreground="MidnightBlue" Text="{Binding MeasuringPoint.Name}" />
+        <TextBox Grid.Row="1"  Text="Name ändern"  />
 
-    <TextBlock Grid.Row="2" VerticalAlignment="Bottom" Text="Bemerkungen" />
-    <TextBox Grid.Row="3" Text="{Binding MeasuringPoint.Notes}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+        <TextBlock Grid.Row="2" VerticalAlignment="Bottom" Text="Bemerkungen" />
+        <TextBox Grid.Row="3" Text="{Binding MeasuringPoint.Notes}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
 
-    <CheckBox Grid.Row="4" VerticalAlignment="Bottom" Grid.Column="0" IsChecked="{Binding MeasuringPoint.IsArchived}" Height="20">
-      <Label Content="Archiviert" VerticalAlignment="Center" Grid.Row="0" Height="25"  />
-    </CheckBox>
+        <CheckBox Grid.Row="4" VerticalAlignment="Bottom" Grid.Column="0" IsChecked="{Binding MeasuringPoint.IsArchived}" Height="20">
+            <Label Content="Archiviert" VerticalAlignment="Center" Grid.Row="0" Height="25"  />
+        </CheckBox>
 
 
-    <Grid Row="5" Column="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition />
-        <ColumnDefinition />
-      </Grid.ColumnDefinitions>
-      <Button Content="Abbrechen" HorizontalAlignment="Center" Height="25" x:Name="Cancel"/>
-      <Button Grid.Column="1"  x:Name="OK" Content="Speichern"  HorizontalAlignment="Center" Height="25"/>
+        <Grid Row="5" Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Content="Abbrechen" HorizontalAlignment="Center" Height="25" x:Name="Cancel"/>
+            <Button Grid.Column="1"  x:Name="OK" Content="Speichern"  HorizontalAlignment="Center" Height="25"/>
+        </Grid>
+
+        <Expander Grid.Row="6" Header="Gefährliche Aktionen"  Visibility="{Binding DeleteButtonVisibility}" >
+            <Button Background="Red" Content="Messpunkt löschen" x:Name="DeleteMeasuringPoint"/>
+        </Expander>
+
+
     </Grid>
-
-    <Expander Grid.Row="6" Header="Gefährliche Aktionen"  Visibility="{Binding DeleteButtonVisibility}" >
-      <Button Background="Red" Content="Messpunkt löschen" x:Name="DeleteMeasuringPoint"/>
-    </Expander>
-
-
-  </Grid>
 </UserControl>
