@@ -20,7 +20,7 @@ namespace KrachConnect.ViewModels
     private NoiseRepository repository;
     private IEnumerable<NoiseMeasurementViewModel> noiseMeasurements;
     private DateTime minDate = DateTime.Today.AddYears(-1);
-    private DateTime maxDate = DateTime.Today;
+    private DateTime maxDate = DateTime.Today.AddDays(1);
     private List<NoiseMeasurementViewModel> _selectedNoiseMeasurementViewModels = new List<NoiseMeasurementViewModel>();
 
     private IEnumerable<NoiseMeasurementViewModel> selectedNoiseMeasurements;
@@ -87,40 +87,38 @@ namespace KrachConnect.ViewModels
 
       if (saveFileDialog1.ShowDialog() == DialogResult.OK)
       {
-        if ((myStream = saveFileDialog1.OpenFile()) != null)
+        myStream = saveFileDialog1.OpenFile();
+        using (var package = new ExcelPackage(myStream))
         {
-          using (ExcelPackage package = new ExcelPackage(myStream))
+          var groupedNoiseMeasurements = _selectedNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null)// TODO: If the data is valid this cannot happen
+            .GroupBy(nm => nm.MeasuringPoint);
+          foreach (var group in groupedNoiseMeasurements)
           {
-            var groupedNoiseMeasurements = _selectedNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null)// TODO: If the data is valid this cannot happen
-              .GroupBy(nm => nm.MeasuringPoint);
-            foreach (var group in groupedNoiseMeasurements)
+            var name = group.Key.Name;
+            while (package.Workbook.Worksheets.Any(ws => ws.Name == name))
             {
-              var name = group.Key.Name;
-              while (package.Workbook.Worksheets.Any(ws => ws.Name == name))
-              {
-                name = "(anderer) " + name;
-              }
-              ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(name);
-              worksheet.Cells[1, 1].Value = "Datum";
-              worksheet.Cells[1, 2].Value = "Minimalwert";
-              worksheet.Cells[1, 3].Value = "Durchschnittswert";
-              worksheet.Cells[1, 4].Value = "Maximalwert";
-              var list = group.ToList();
-              for (var i = 0; i < list.Count(); i++)
-              {
-                var nm = list[i];
-                worksheet.Cells[i + 2, 1].Value = nm.MeasurementDate;
-                worksheet.Cells[i + 2, 1].Style.Numberformat.Format = DateTimeFormatInfo.CurrentInfo.ShortDatePattern;
-                worksheet.Cells[i + 2, 2].Value = nm.MinValue;
-                worksheet.Cells[i + 2, 3].Value = nm.AverageValue;
-                worksheet.Cells[i + 2, 4].Value = nm.MaxValue;
-              }
-              worksheet.Cells.AutoFitColumns(0);
+              name = "(anderer) " + name;
             }
-            package.Save();
+            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(name);
+            worksheet.Cells[1, 1].Value = "Datum";
+            worksheet.Cells[1, 2].Value = "Minimalwert";
+            worksheet.Cells[1, 3].Value = "Durchschnittswert";
+            worksheet.Cells[1, 4].Value = "Maximalwert";
+            var list = group.ToList();
+            for (var i = 0; i < list.Count(); i++)
+            {
+              var nm = list[i];
+              worksheet.Cells[i + 2, 1].Value = nm.MeasurementDate;
+              worksheet.Cells[i + 2, 1].Style.Numberformat.Format = DateTimeFormatInfo.CurrentInfo.ShortDatePattern;
+              worksheet.Cells[i + 2, 2].Value = nm.MinValue;
+              worksheet.Cells[i + 2, 3].Value = nm.AverageValue;
+              worksheet.Cells[i + 2, 4].Value = nm.MaxValue;
+            }
+            worksheet.Cells.AutoFitColumns(0);
           }
-          myStream.Close();
+          package.Save();
         }
+        myStream.Close();
       }
     }
   }

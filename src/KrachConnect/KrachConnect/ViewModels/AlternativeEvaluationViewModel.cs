@@ -28,7 +28,7 @@ namespace KrachConnect.ViewModels
     private MeasuringPointViewModel selectedMeasuringPoint;
     private ObservableCollection<MeasuringPointViewModel> measuringPoints;
     private DateTime minDate = DateTime.Today.AddYears(-1);
-    private DateTime maxDate = DateTime.Today;
+    private DateTime maxDate = DateTime.Today.AddDays(1);
 
 
 

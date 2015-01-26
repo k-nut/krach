@@ -24,7 +24,7 @@
       <TextBlock FontSize="25" Grid.Row="0" Text="Zeige:" />
       <StackPanel Grid.Row="1" Orientation="Horizontal">
         <CheckBox IsChecked="{Binding ShowActive}">
-          <TextBlock Text="Aktived Messpunkte" />
+          <TextBlock Text="Aktive Messpunkte" />
         </CheckBox>
       </StackPanel>
       <StackPanel Grid.Row="2">
