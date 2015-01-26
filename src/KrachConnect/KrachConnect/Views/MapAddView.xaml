@@ -12,8 +12,8 @@
              d:DesignHeight="500" d:DesignWidth="500">
 
 
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
+  <Grid Background="LightGray">
+    <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>

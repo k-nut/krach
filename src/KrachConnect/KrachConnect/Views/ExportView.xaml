@@ -9,7 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="LightGray">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="300"></ColumnDefinition>
         <ColumnDefinition Width="*"></ColumnDefinition>
       </Grid.ColumnDefinitions>
       
