@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Security;
+using System.Windows.Documents;
 using Caliburn.Micro;
 
 namespace KrachConnect.ViewModels
@@ -7,11 +9,13 @@ namespace KrachConnect.ViewModels
   public class ShellViewModel : Conductor<Object>
   {
     private readonly NoiseRepository nr = new NoiseRepository();
+    private bool _isEnabled;
 
 
     public ShellViewModel()
     {
       ActivateItem(new HomepageViewModel(nr));
+      IsEnabled = true;
     }
 
     public void ShowMapScreen(ObservableCollection<MeasuringPointViewModel> selectedMeasuringPoints )
@@ -23,33 +27,49 @@ namespace KrachConnect.ViewModels
     public void ShowHomePageScreen()
     {
       ActivateItem(new HomepageViewModel(nr));
+      IsEnabled = true;
     }
 
 
     public void ShowMeasuringPointsEditScreen()
     {
       ActivateItem(new MeasuringPointsEditViewModel(nr));
+      IsEnabled = true;
     }
 
     public void ShowMeasuringPlaningScreen()
     {
       ActivateItem(new MeasuringPlaningViewModel(nr, this));
+      IsEnabled = false;
     }
 
     public void ShowEvaluationScreen()
     {
       ActivateItem(new EvaluationViewModel(nr));
+      IsEnabled = true;
     }
 
     public void ShowAlternativeEvaluationScreen()
     {
       ActivateItem(new AlternativeEvaluationViewModel(nr));
+      IsEnabled = true;
     }
 
     public void ShowExportScreen()
     {
       ActivateItem(new ExportViewModel(nr));
+      IsEnabled = true;
     }
 
+    public bool IsEnabled
+    {
+      get { return _isEnabled; }
+      set
+      {
+        if (value.Equals(_isEnabled)) return;
+        _isEnabled = value;
+        NotifyOfPropertyChange(() => IsEnabled);
+      }
+    }
   }
 }
