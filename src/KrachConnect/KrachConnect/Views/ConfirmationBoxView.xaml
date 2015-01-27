@@ -40,7 +40,7 @@
             <Button Grid.Column="1"  x:Name="OK" Content="Speichern"  HorizontalAlignment="Center" Height="25"/>
         </Grid>
 
-        <Expander Grid.Row="7" Header="Gefährliche Aktionen"  Visibility="{Binding DeleteButtonVisibility}" >
+        <Expander Grid.Row="7" Header="Messpunkt löschen"  Visibility="{Binding DeleteButtonVisibility}" >
             <Button Background="Red" Content="Messpunkt löschen" x:Name="DeleteMeasuringPoint"/>
         </Expander>
 
