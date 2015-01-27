@@ -20,9 +20,11 @@
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
-    <TextBlock Margin="10" Grid.Column="0" Grid.Row="0" Text="Auswertungszeitraum: " />
-    <DatePicker Margin="10" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
-    <DatePicker Margin="10" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+      <TextBlock Margin="10" Text="Auswertungszeitraum: " />
+      <DatePicker Margin="10" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
+      <DatePicker Margin="10" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+    </StackPanel>
 
     <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" IsExpanded="True">
       <oxy:Plot  Model="{Binding TotalsPlotModel}">
