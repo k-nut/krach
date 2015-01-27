@@ -199,6 +199,8 @@ namespace KrachConnect.ViewModels
           worksheet.Cells[1, 5].Value = "Maximalwert";
           worksheet.Cells[1, 6].Value = "Mitarbeiter";
           worksheet.Cells[1, 7].Value = "Bemerkung";
+          worksheet.Cells[1, 8].Value = "Messverfahren";
+          worksheet.Cells[1, 9].Value = "Messpunkt ist archiviert";
           worksheet.Cells[worksheet.Dimension.Address].AutoFilter = true;
 
 
@@ -213,6 +215,8 @@ namespace KrachConnect.ViewModels
             worksheet.Cells[i + 2, 5].Value = nm.MaxValue;
             worksheet.Cells[i + 2, 6].Value = nm.Employee;
             worksheet.Cells[i + 2, 7].Value = nm.MeasuringPoint.Notes;
+            worksheet.Cells[i + 2, 8].Value = nm.MeasuringMethod != null ? nm.MeasuringMethod.Name :"nicht angegeben";
+            worksheet.Cells[i + 2, 9].Value = nm.MeasuringPoint.IsArchived? "Ja": "Nein";
           }
           worksheet.Cells.AutoFitColumns(0);
 
