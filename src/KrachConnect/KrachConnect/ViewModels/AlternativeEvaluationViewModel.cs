@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Windows;
@@ -8,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
+using KrachConnect.DomainModelService;
 using OxyPlot;
 using OxyPlot.Annotations;
 using OxyPlot.Axes;
@@ -25,6 +27,7 @@ namespace KrachConnect.ViewModels
     public LineSeries AverageValues { get; private set; }
     public LineSeries MaxValues { get; private set; }
     private PlotModel plotModel;
+    private PlotModel totalsPlotModel;
     private MeasuringPointViewModel selectedMeasuringPoint;
     private ObservableCollection<MeasuringPointViewModel> measuringPoints;
     private DateTime minDate = DateTime.Today.AddYears(-1);
@@ -34,10 +37,15 @@ namespace KrachConnect.ViewModels
 
     public IEnumerable<NoiseMeasurementViewModel> FilteredNoiseMeasurementViewModels
     {
-      get { return NoiseMeasurements.Where(nm => nm.MeasurementDate >= MinDate && nm.MeasurementDate <= MaxDate); }
+      get { return NoiseMeasurements.Where(nm => nm.MeasurementDate >= MinDate && nm.MeasurementDate <= MaxDate)
+        .Where(nm => SelectedMeasuringPoints.Contains(nm.MeasuringPoint)); }
     }
 
-    private PlotModel totalsPlotModel;
+    public IEnumerable<MeasuringPoint> SelectedMeasuringPoints
+    {
+      get { return MeasuringPoints.Where(mp => mp.IsSelected).Select(mp => mp.Model); }
+    } 
+
 
     public PlotModel PlotModel
     {
@@ -146,8 +154,20 @@ namespace KrachConnect.ViewModels
       DrawTotalsChart();
       PopulatePlotModel();
 
+      foreach (var mp in MeasuringPoints)
+      {
+        mp.PropertyChanged += IsSelectedChanged;
+      }
+    }
 
-
+    private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == "IsSelected")
+      {
+        NotifyOfPropertyChange(() => SelectedMeasuringPoints);
+        NotifyOfPropertyChange(() => FilteredNoiseMeasurementViewModels);
+        UpdatePlots();
+      }
     }
 
     private class NameCountCouple
