@@ -10,48 +10,76 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
   <Grid Background="LightGray">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-    </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="300"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
-    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
-      <TextBlock Margin="10" Text="Auswertungszeitraum: " />
-      <DatePicker Margin="10" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
-      <DatePicker Margin="10" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
-      <ScrollViewer>
-        <ItemsControl ItemsSource="{Binding MeasuringPoints}">
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <CheckBox IsChecked="{Binding IsSelected}">
-              <StackPanel Orientation="Horizontal">
-              <TextBlock Text="{Binding Name}" />
-              <TextBlock Text=" (archiviert)"
+    <Grid Column="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+        <TextBlock Margin="10" Text="Auswertungszeitraum: " />
+        <DatePicker Margin="10" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
+        <DatePicker Margin="10" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <CheckBox IsChecked="{Binding IsSelected}">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text=" (archiviert)"
                          FontStyle="Italic"
                          Visibility="{Binding IsArchived, Converter={krachConnect:BoolToVisibilityConverter}}" />
-                </StackPanel>
-              
-              </CheckBox>
-            </DataTemplate>
-          </ItemsControl.ItemTemplate>
-        </ItemsControl>
-      </ScrollViewer>
-    </StackPanel>
+                  </StackPanel>
+                </CheckBox>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </StackPanel>
+      <Button Grid.Column="0" Grid.Row="1" Content="Export" x:Name="Export" />
+    </Grid>
 
-    <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" IsExpanded="True">
+
+    <Grid Column="1">
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+      </Grid.RowDefinitions>
+      
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition></ColumnDefinition>
+        <ColumnDefinition></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+
+    <Expander Header="Zeige Grenzwertüberschreitungen pro Messpunkt" Grid.Row="0" Grid.Column="0" IsExpanded="True">
       <oxy:Plot  Model="{Binding TotalsPlotModel}">
       </oxy:Plot>
     </Expander>
-    <Expander Header="Zeige alle Messpunkte"  Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" IsExpanded="True" >
+      
+      <Expander Header="Übersicht über Messwerte" Grid.Column="1" Grid.Row="0" IsExpanded="True">
+        <DataGrid ItemsSource="{Binding FilteredNoiseMeasurementViewModels}" AutoGenerateColumns="False">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Messpunkt" Binding="{Binding MeasuringPoint.Name}"/>
+            <DataGridTextColumn Header="Datum" Binding="{Binding MeasurementDate}"/>
+            <DataGridTextColumn Header="MinmalWert" Binding="{Binding MinValue}"/>
+            <DataGridTextColumn Header="Mittelwert" Binding="{Binding AverageValue}"/>
+            <DataGridTextColumn Header="Maximalwert" Binding="{Binding MaxValue}"/>
+          </DataGrid.Columns>
+
+        </DataGrid>
+      </Expander>
+      
+      
+    <Expander Header="Zeige alle Messpunkte"  Grid.Row="1" Grid.Column="0" IsExpanded="True" >
       <oxy:Plot Model="{Binding PlotModel}">
       </oxy:Plot>
     </Expander>
+    </Grid>
 
 
   </Grid>

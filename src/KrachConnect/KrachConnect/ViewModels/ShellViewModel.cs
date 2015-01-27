@@ -49,12 +49,6 @@ namespace KrachConnect.ViewModels
       IsEnabled = true;
     }
 
-    public void ShowExportScreen()
-    {
-      ActivateItem(new ExportViewModel(nr));
-      IsEnabled = true;
-    }
-
     public void ShowMapEvaluationScreen()
     {
       ActivateItem(new MapEvaluationViewModel(nr));
