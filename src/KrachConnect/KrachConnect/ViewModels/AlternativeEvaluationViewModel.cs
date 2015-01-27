@@ -191,10 +191,28 @@ namespace KrachConnect.ViewModels
       var noiseMeausurements =
           FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null).GroupBy(nm => nm.MeasuringPoint);
 
-
+      var allowedColors = new List<OxyColor>
+      {
+        OxyColors.Orchid,
+        OxyColors.Blue,
+        OxyColors.Purple,
+        OxyColors.MediumAquamarine,
+        OxyColors.MediumBlue,
+        OxyColors.Orchid,
+        OxyColors.PowderBlue,
+        OxyColors.RosyBrown,
+        OxyColors.Lavender,
+        OxyColors.Olive,
+        OxyColors.OldLace,
+        OxyColors.PeachPuff,
+        OxyColors.Pink,
+        OxyColors.Peru
+      };
+      var count = 0;
       foreach (var group in noiseMeausurements)
       {
-        var lineSeries = new LineSeries { Title = group.Key.Name };
+        var lineSeries = new LineSeries { Title = group.Key.Name, Color = allowedColors[count]};
+        count = allowedColors.Count() == count ? 0 : count + 1;
         foreach (var measurement in group.OrderBy(nm => nm.MeasurementDate))
         {
           lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MaxValue));
