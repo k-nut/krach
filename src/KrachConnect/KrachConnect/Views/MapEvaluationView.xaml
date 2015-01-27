@@ -37,19 +37,17 @@
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
+            <StackPanel>
 
-            <Ellipse Fill="{Binding MaxValue, Converter={krachConnect:IntToBrushConverter}}"
+              <Ellipse Fill="{Binding MaxValue, Converter={krachConnect:IntToBrushConverter}}"
                      Height="15" Width="15"
                      Stroke="Black">
-
-              <Ellipse.ToolTip>
-                <StackPanel Orientation="Horizontal">
-                  <TextBlock Text="{Binding MaxValue}" />
-                  <TextBlock Text=" db" />
-                </StackPanel>
-              </Ellipse.ToolTip>
-            </Ellipse>
-
+              </Ellipse>
+              <StackPanel Orientation="Horizontal" Background="LightGray">
+                <TextBlock Text="{Binding MaxValue}" />
+                <TextBlock Text=" db" />
+              </StackPanel>
+            </StackPanel>
 
           </DataTemplate>
         </ItemsControl.ItemTemplate>
