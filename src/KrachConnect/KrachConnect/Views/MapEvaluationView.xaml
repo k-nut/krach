@@ -15,9 +15,10 @@
 
     <Grid Column="0">
       <StackPanel>
-        <TextBlock Text="Zeitpunkt:" />
-        <ComboBox ItemsSource="{Binding MeasurementDates}" ItemStringFormat="dd.MM.yy hh:mm" SelectedItem="{Binding SelectedDate}" />
-      </StackPanel>
+        <TextBlock Text="Der aktuellste Messpunkt bis zu diesem Zeitpunkt: "/>
+        <!--<ComboBox ItemsSource="{Binding MeasurementDates}" ItemStringFormat="dd.MM.yy hh:mm" SelectedItem="{Binding SelectedDate}" />-->
+        <DatePicker SelectedDate="{Binding MaxDate}" />
+        </StackPanel>
     </Grid>
 
     <Grid Column="1" >

@@ -13,6 +13,7 @@ namespace KrachConnect.ViewModels
     private IEnumerable<MeasuringPointViewModel> measuringPoints;
     private IEnumerable<NoiseMeasurement> noiseMeasurements;
     private DateTime _selectedDate = DateTime.Today;
+    private DateTime maxDate = DateTime.Today;
 
 
     public MapEvaluationViewModel(NoiseRepository repository)
@@ -114,6 +115,16 @@ namespace KrachConnect.ViewModels
           NotifyOfPropertyChange(() => MaxValue);
         }
       }
+     
+    }
+    public DateTime MaxDate
+    {
+        get { return maxDate; }
+        set
+        {
+            maxDate = value;
+            NotifyOfPropertyChange(() => MaxDate);
+        }
     }
   }
 }
