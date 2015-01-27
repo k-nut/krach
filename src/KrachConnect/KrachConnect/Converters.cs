@@ -147,4 +147,25 @@ namespace KrachConnect
           return null;
       }
   }
+
+
+  [ValueConversion(typeof(object), typeof(Brush))]
+  public class IntToBrushConverter : BaseConverter, IValueConverter
+  {
+    public object Convert(object value, Type targetType, object parameter,
+      CultureInfo culture)
+    {
+      var floatValue = (float)value;
+      if (floatValue < 40) return Brushes.Green;
+      if (floatValue < 80) return Brushes.Orange;
+      return Brushes.Red;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter,
+      CultureInfo culture)
+    {
+      return null;
+    }
+  }
+
 }

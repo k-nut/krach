@@ -133,6 +133,7 @@
     <Compile Include="ViewModels\EvaluationViewModel.cs" />
     <Compile Include="ViewModels\ExportViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
+    <Compile Include="ViewModels\MapEvaluationViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPlaningViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPointsEditViewModel.cs" />
     <Compile Include="ViewModels\MeasuringPointViewModel.cs" />
@@ -166,6 +167,9 @@
     </Compile>
     <Compile Include="Views\MapAddView.xaml.cs">
       <DependentUpon>MapAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapEvaluationView.xaml.cs">
+      <DependentUpon>MapEvaluationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MeasuringPlaningView.xaml.cs">
       <DependentUpon>MeasuringPlaningView.xaml</DependentUpon>
@@ -250,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MapAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MapEvaluationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
