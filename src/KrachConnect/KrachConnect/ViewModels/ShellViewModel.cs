@@ -43,12 +43,6 @@ namespace KrachConnect.ViewModels
       IsEnabled = false;
     }
 
-    public void ShowEvaluationScreen()
-    {
-      ActivateItem(new EvaluationViewModel(nr));
-      IsEnabled = true;
-    }
-
     public void ShowAlternativeEvaluationScreen()
     {
       ActivateItem(new AlternativeEvaluationViewModel(nr));

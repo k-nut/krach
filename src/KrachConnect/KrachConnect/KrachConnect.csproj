@@ -130,7 +130,6 @@
     <Compile Include="Converters.cs" />
     <Compile Include="ViewModels\AlternativeEvaluationViewModel.cs" />
     <Compile Include="ViewModels\ConfirmationBoxViewModel.cs" />
-    <Compile Include="ViewModels\EvaluationViewModel.cs" />
     <Compile Include="ViewModels\ExportViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
     <Compile Include="ViewModels\MapEvaluationViewModel.cs" />
@@ -155,9 +154,6 @@
     </Compile>
     <Compile Include="Views\ConfirmationBoxView.xaml.cs">
       <DependentUpon>ConfirmationBoxView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EvaluationView.xaml.cs">
-      <DependentUpon>EvaluationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ExportView.xaml.cs">
       <DependentUpon>ExportView.xaml</DependentUpon>
@@ -238,10 +234,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ConfirmationBoxView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EvaluationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
