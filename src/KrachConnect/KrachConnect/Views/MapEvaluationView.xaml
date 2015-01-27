@@ -21,7 +21,7 @@
     </Grid>
 
     <Grid Column="1" >
-      <Image Cursor="Cross" Source="../Resources/map1.JPG" 
+      <Image Source="../Resources/map1.JPG" 
              cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey) ]" />
       <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
         <ItemsControl.ItemsPanel>
