@@ -5,13 +5,8 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 using OfficeOpenXml;
@@ -19,31 +14,59 @@ using OxyPlot;
 using OxyPlot.Annotations;
 using OxyPlot.Axes;
 using OxyPlot.Series;
-using OxyPlot.WindowsForms;
-
 
 namespace KrachConnect.ViewModels
 {
   internal class AlternativeEvaluationViewModel : PropertyChangedBase
   {
-    private ObservableCollection<NoiseMeasurementViewModel> noiseMeasurements;
-    private NoiseRepository repository;
-    public LineSeries MinValues { get; private set; }
-    public LineSeries AverageValues { get; private set; }
-    public LineSeries MaxValues { get; private set; }
-    private PlotModel plotModel;
-    private PlotModel totalsPlotModel;
-    private MeasuringPointViewModel selectedMeasuringPoint;
+    private string _searchTerm = "";
+    private string _selectedValueType;
+    private DateTime maxDate = DateTime.Today.AddDays(1);
     private ObservableCollection<MeasuringPointViewModel> measuringPoints;
     private DateTime minDate = DateTime.Today.AddYears(-1);
-    private DateTime maxDate = DateTime.Today.AddDays(1);
-    private string _searchTerm = "";
+    private ObservableCollection<NoiseMeasurementViewModel> noiseMeasurements;
+    private PlotModel plotModel;
+    private MeasuringPointViewModel selectedMeasuringPoint;
+    private PlotModel totalsPlotModel;
+
+    public AlternativeEvaluationViewModel(NoiseRepository repository)
+    {
+      PlotModel = new PlotModel {Title = "Alle Messpunkte"};
+      var dateAxis = new DateTimeAxis
+      {
+        Position = AxisPosition.Bottom,
+        StringFormat = "d.M.yyyy"
+      };
+      PlotModel.Axes.Add(dateAxis);
+
+
+      TotalsPlotModel = new PlotModel {Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)"};
+
+
+      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
+      NoiseMeasurements =
+        new ObservableCollection<NoiseMeasurementViewModel>(
+          repository.NoiseMeasurements.Select(nm => new NoiseMeasurementViewModel(nm)));
+
+      DrawTotalsChart();
+      PopulatePlotModel();
+
+      foreach (MeasuringPointViewModel mp in MeasuringPoints)
+      {
+        mp.PropertyChanged += IsSelectedChanged;
+      }
+
+      SelectedValueType = DisplayValueTypes.First();
+    }
 
 
     public IEnumerable<NoiseMeasurementViewModel> FilteredNoiseMeasurementViewModels
     {
-      get { return NoiseMeasurements.Where(nm => nm.MeasurementDate >= MinDate && nm.MeasurementDate <= MaxDate)
-        .Where(nm => SelectedMeasuringPoints.Contains(nm.MeasuringPoint)); }
+      get
+      {
+        return NoiseMeasurements.Where(nm => nm.MeasurementDate >= MinDate && nm.MeasurementDate <= MaxDate)
+          .Where(nm => SelectedMeasuringPoints.Contains(nm.MeasuringPoint));
+      }
     }
 
     public IEnumerable<MeasuringPoint> SelectedMeasuringPoints
@@ -51,12 +74,6 @@ namespace KrachConnect.ViewModels
       get { return MeasuringPoints.Where(mp => mp.IsSelected).Select(mp => mp.Model); }
     }
 
-
-    //TODO: Check if there is a cleaner solution for this (esp. on the xaml side)
-    public void Filter(object text)
-    {
-      SearchTerm = text.ToString();
-    }
 
     public string SearchTerm
     {
@@ -78,26 +95,7 @@ namespace KrachConnect.ViewModels
     {
       get
       {
-        var l = new List<String> {"Minimalwert", "Mittelwert", "Maximalwert"};
-        return l;
-      }
-    }
-
-    private string _selectedValueType;
-
-    public void SelectAll()
-    {
-      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
-      {
-        measuringPointViewModel.IsSelected = true;
-      }
-    }
-
-    public void DeSelectAll()
-    {
-      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
-      {
-        measuringPointViewModel.IsSelected = false;
+        return new List<String> {"Minimalwert", "Mittelwert", "Maximalwert"};
       }
     }
 
@@ -128,18 +126,6 @@ namespace KrachConnect.ViewModels
       {
         measuringPoints = value;
         NotifyOfPropertyChange(() => MeasuringPoints);
-      }
-    }
-
-
-    public MeasuringPointViewModel SelectedMeasuringPoint
-    {
-      get { return selectedMeasuringPoint; }
-      set
-      {
-        selectedMeasuringPoint = value;
-        //   PopulatePlotModel();
-        NotifyOfPropertyChange(() => SelectedMeasuringPoint);
       }
     }
 
@@ -188,44 +174,31 @@ namespace KrachConnect.ViewModels
       }
     }
 
+    public void Filter(object text)
+    {
+      SearchTerm = text.ToString();
+    }
+
+    public void SelectAll()
+    {
+      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
+      {
+        measuringPointViewModel.IsSelected = true;
+      }
+    }
+
+    public void DeSelectAll()
+    {
+      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
+      {
+        measuringPointViewModel.IsSelected = false;
+      }
+    }
+
     private void UpdatePlots()
     {
       DrawTotalsChart();
       PopulatePlotModel();
-    }
-
-    public AlternativeEvaluationViewModel(NoiseRepository repository)
-    {
-      PlotModel = new PlotModel { Title = "Alle Messpunkte" };
-      var dateAxis = new DateTimeAxis
-      {
-        Position = AxisPosition.Bottom,
-        StringFormat = "d.M.yyyy"
-      };
-      PlotModel.Axes.Add(dateAxis);
-
-
-      TotalsPlotModel = new PlotModel { Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)" };
-      
-
-
-      this.repository = repository;
-
-
-      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-      NoiseMeasurements =
-          new ObservableCollection<NoiseMeasurementViewModel>(
-              repository.NoiseMeasurements.Select(nm => new NoiseMeasurementViewModel(nm)));
-
-      DrawTotalsChart();
-      PopulatePlotModel();
-
-      foreach (var mp in MeasuringPoints)
-      {
-        mp.PropertyChanged += IsSelectedChanged;
-      }
-
-      SelectedValueType = DisplayValueTypes.First();
     }
 
     private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
@@ -240,8 +213,6 @@ namespace KrachConnect.ViewModels
 
     public void Export()
     {
-
-      Stream myStream;
       var saveFileDialog1 = new SaveFileDialog
       {
         FilterIndex = 2,
@@ -252,10 +223,12 @@ namespace KrachConnect.ViewModels
 
       if (saveFileDialog1.ShowDialog() == DialogResult.OK)
       {
-        myStream = saveFileDialog1.OpenFile();
+        var myStream = saveFileDialog1.OpenFile();
         using (var package = new ExcelPackage(myStream))
         {
-          var selectedNoiseMeasuremenets = FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null).ToList();// TODO: If the data is valid this cannot happen
+          var selectedNoiseMeasuremenets =
+            FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null).ToList();
+            
           ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Messwerte");
           worksheet.Cells[1, 1].Value = "Messpunkt";
           worksheet.Cells[1, 2].Value = "Datum";
@@ -269,9 +242,9 @@ namespace KrachConnect.ViewModels
           worksheet.Cells[worksheet.Dimension.Address].AutoFilter = true;
 
 
-          for (var i = 0; i < selectedNoiseMeasuremenets.Count(); i++)
+          for (int i = 0; i < selectedNoiseMeasuremenets.Count(); i++)
           {
-            var nm = selectedNoiseMeasuremenets[i];
+            NoiseMeasurementViewModel nm = selectedNoiseMeasuremenets[i];
             worksheet.Cells[i + 2, 1].Value = nm.MeasuringPoint.Name;
             worksheet.Cells[i + 2, 2].Value = nm.MeasurementDate;
             worksheet.Cells[i + 2, 2].Style.Numberformat.Format = DateTimeFormatInfo.CurrentInfo.FullDateTimePattern;
@@ -280,8 +253,8 @@ namespace KrachConnect.ViewModels
             worksheet.Cells[i + 2, 5].Value = nm.MaxValue;
             worksheet.Cells[i + 2, 6].Value = nm.Employee;
             worksheet.Cells[i + 2, 7].Value = nm.MeasuringPoint.Notes;
-            worksheet.Cells[i + 2, 8].Value = nm.MeasuringMethod != null ? nm.MeasuringMethod.Name :"nicht angegeben";
-            worksheet.Cells[i + 2, 9].Value = nm.MeasuringPoint.IsArchived? "Ja": "Nein";
+            worksheet.Cells[i + 2, 8].Value = nm.MeasuringMethod != null ? nm.MeasuringMethod.Name : "nicht angegeben";
+            worksheet.Cells[i + 2, 9].Value = nm.MeasuringPoint.IsArchived ? "Ja" : "Nein";
           }
           worksheet.Cells.AutoFitColumns(0);
 
@@ -292,22 +265,17 @@ namespace KrachConnect.ViewModels
     }
 
 
-    private class NameCountCouple
-    {
-      public string Name { get; set; }
-      public int Count { get; set; }
-    }
-
     private void DrawTotalsChart()
     {
       TotalsPlotModel.Series.Clear();
       TotalsPlotModel.Axes.Clear();
-      TotalsPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, MajorTickSize = 1, MinorTickSize = 0 });
+      TotalsPlotModel.Axes.Add(new LinearAxis {Position = AxisPosition.Bottom, MajorTickSize = 1, MinorTickSize = 0});
 
-      var all = (from mp in MeasuringPoints
-                 let count = FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
-                 select new NameCountCouple { Name = mp.Name, Count = count }
-          );
+      IEnumerable<NameCountCouple> all = (from mp in MeasuringPoints
+        let count =
+          FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
+        select new NameCountCouple {Name = mp.Name, Count = count}
+        );
       all = all.Where(ncc => ncc.Count > 0).OrderBy(ncc => ncc.Count).ToList();
       TotalsPlotModel.Axes.Add(new CategoryAxis
       {
@@ -323,7 +291,6 @@ namespace KrachConnect.ViewModels
       });
 
       TotalsPlotModel.InvalidatePlot(true);
-
     }
 
 
@@ -331,8 +298,8 @@ namespace KrachConnect.ViewModels
     {
       PlotModel.Series.Clear();
 
-      var noiseMeausurements =
-          FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null).GroupBy(nm => nm.MeasuringPoint);
+      IEnumerable<IGrouping<MeasuringPoint, NoiseMeasurementViewModel>> noiseMeausurements =
+        FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null).GroupBy(nm => nm.MeasuringPoint);
 
       var allowedColors = new List<OxyColor>
       {
@@ -351,19 +318,30 @@ namespace KrachConnect.ViewModels
         OxyColors.Pink,
         OxyColors.Peru
       };
-      var count = 0;
+      int count = 0;
       foreach (var group in noiseMeausurements)
       {
-        var lineSeries = new LineSeries { Title = group.Key.Name, Color = allowedColors[count]};
+        var lineSeries = new LineSeries {Title = group.Key.Name, Color = allowedColors[count]};
         count = allowedColors.Count() == count ? 0 : count + 1;
-        foreach (var measurement in group.OrderBy(nm => nm.MeasurementDate))
+
+        Func<NoiseMeasurementViewModel,float> func;
+
+        switch (SelectedValueType)
         {
-          if (SelectedValueType == "Minimalwert")
-            lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MinValue));
-          else if (SelectedValueType == "Mittelwert")
-            lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.AverageValue));
-          else
-            lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MaxValue));
+          case "Minimalwert":
+            func = (m) => m.MinValue;
+            break;
+          case "Mittelwert":
+            func = (m) => m.AverageValue;
+            break;
+          default:
+            func = (m) => m.MaxValue;
+            break;
+        }
+
+        foreach (NoiseMeasurementViewModel measurement in group.OrderBy(nm => nm.MeasurementDate))
+        {
+          lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, func(measurement)));
         }
         PlotModel.Series.Add(lineSeries);
       }
@@ -380,7 +358,12 @@ namespace KrachConnect.ViewModels
 
 
       PlotModel.InvalidatePlot(true);
+    }
 
+    private class NameCountCouple
+    {
+      public string Name { get; set; }
+      public int Count { get; set; }
     }
   }
 }
