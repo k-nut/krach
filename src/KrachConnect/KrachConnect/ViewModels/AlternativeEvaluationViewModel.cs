@@ -33,7 +33,7 @@ namespace KrachConnect.ViewModels
 
     public AlternativeEvaluationViewModel(NoiseRepository repository)
     {
-      PlotModel = new PlotModel {Title = "Alle Messpunkte"};
+      PlotModel = new PlotModel { Title = "Alle Messpunkte" };
       var dateAxis = new DateTimeAxis
       {
         Position = AxisPosition.Bottom,
@@ -42,7 +42,7 @@ namespace KrachConnect.ViewModels
       PlotModel.Axes.Add(dateAxis);
 
 
-      TotalsPlotModel = new PlotModel {Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)"};
+      TotalsPlotModel = new PlotModel { Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)" };
 
 
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
@@ -97,7 +97,7 @@ namespace KrachConnect.ViewModels
     {
       get
       {
-        return new List<String> {"Minimalwert", "Mittelwert", "Maximalwert"};
+        return new List<String> { "Minimalwert", "Mittelwert", "Maximalwert" };
       }
     }
 
@@ -230,7 +230,7 @@ namespace KrachConnect.ViewModels
         {
           var selectedNoiseMeasuremenets =
             FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint != null).ToList();
-            
+
           ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Messwerte");
           worksheet.Cells[1, 1].Value = "Messpunkt";
           worksheet.Cells[1, 2].Value = "Datum";
@@ -271,12 +271,12 @@ namespace KrachConnect.ViewModels
     {
       TotalsPlotModel.Series.Clear();
       TotalsPlotModel.Axes.Clear();
-      TotalsPlotModel.Axes.Add(new LinearAxis {Position = AxisPosition.Bottom, MajorTickSize = 1, MinorTickSize = 0});
+      TotalsPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, MajorTickSize = 1, MinorTickSize = 0 });
 
       IEnumerable<NameCountCouple> all = (from mp in MeasuringPoints
-        let count =
-          FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
-        select new NameCountCouple {Name = mp.Name, Count = count}
+                                          let count =
+                                            FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
+                                          select new NameCountCouple { Name = mp.Name, Count = count }
         );
       all = all.Where(ncc => ncc.Count > 0).OrderBy(ncc => ncc.Count).ToList();
       TotalsPlotModel.Axes.Add(new CategoryAxis
@@ -323,10 +323,17 @@ namespace KrachConnect.ViewModels
       int count = 0;
       foreach (var group in noiseMeausurements)
       {
-        var lineSeries = new LineSeries {Title = group.Key.Name, Color = allowedColors[count]};
+        var lineSeries = new LineSeries
+        {
+          Title = group.Key.Name,
+          Color = allowedColors[count],
+          MarkerType = MarkerType.Circle,
+          MarkerSize = 5,
+          MarkerFill = allowedColors[count]
+        };
         count = allowedColors.Count() == count ? 0 : count + 1;
 
-        Func<NoiseMeasurementViewModel,float> func;
+        Func<NoiseMeasurementViewModel, float> func;
 
         switch (SelectedValueType)
         {

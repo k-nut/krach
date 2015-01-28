@@ -75,7 +75,7 @@ namespace KrachConnect
     private void LoadMeasuringPoints()
     {
       _measuringPoints = new DataServiceCollection<MeasuringPoint>(_context);
-      DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints.Expand("Position");
+      DataServiceQuery<MeasuringPoint> query = _context.MeasuringPoints.Expand("Position").Expand("Position/NoiseMap").Expand("Position/NoiseMap/File");
 
       _measuringPoints.Load(query);
       measuringPointViewModels = _measuringPoints.Where(mp => mp.Position != null && mp.Position.XPosition != 0 && mp.Position.YPosition != 0)

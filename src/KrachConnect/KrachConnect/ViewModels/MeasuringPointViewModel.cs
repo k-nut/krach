@@ -93,6 +93,16 @@ namespace KrachConnect
       }
     }
 
+    public NoiseMap NoiseMap
+    {
+      get { return m_Model.Position.NoiseMap; }
+      set
+      {
+        m_Model.Position.NoiseMap = value;
+        NotifyOfPropertyChange(() => NoiseMap);
+      }
+    }
+
 
     public bool JustMeasured
     {

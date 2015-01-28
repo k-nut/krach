@@ -20,6 +20,7 @@ namespace KrachConnect.ViewModels
     private IEnumerable<NoiseMap> _maps;
     private bool showActive = true;
     private bool showArchived = false;
+    private NoiseMap _activeMap;
     public override string DisplayName { get { return "MeasuringPointsEdit"; } }
 
 
@@ -28,15 +29,28 @@ namespace KrachConnect.ViewModels
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
       SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
-      _maps = repository.Maps;
+      NoiseMaps = repository.Maps;
+      ActiveMap = NoiseMaps.First();
     }
 
-    public String ActiveMap
+    public NoiseMap ActiveMap
+    {
+      get { return _activeMap; }
+      set
+      {
+        _activeMap = value;
+        NotifyOfPropertyChange(() => ActiveMap);
+        NotifyOfPropertyChange(() => ActiveMapPath);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    public String ActiveMapPath
     {
       get
       {
         var filePath = Path.GetTempFileName();
-        System.IO.File.WriteAllBytes(filePath, _maps.Last().File.BinarySource);
+        System.IO.File.WriteAllBytes(filePath, ActiveMap.File.BinarySource);
         return filePath;
       }
     }
@@ -68,21 +82,18 @@ namespace KrachConnect.ViewModels
       get
       {
         IEnumerable<MeasuringPointViewModel> filtered;
+        filtered = MeasuringPoints.Where(mp => mp.NoiseMap == ActiveMap);
         if (ShowActive && !ShowArchived)
         {
-          filtered = MeasuringPoints.Where(mp => !mp.IsArchived);
+          filtered = filtered.Where(mp => !mp.IsArchived);
         }
         else if (!ShowActive && ShowArchived)
         {
-          filtered = MeasuringPoints.Where(mp => mp.IsArchived);
+          filtered = filtered.Where(mp => mp.IsArchived);
         }
         else if (!ShowActive && !ShowArchived)
         {
           filtered = new List<MeasuringPointViewModel>();
-        }
-        else
-        {
-          filtered = MeasuringPoints;
         }
         return filtered;
       }
@@ -111,15 +122,18 @@ namespace KrachConnect.ViewModels
       }
     }
 
-    public void SaveToHub()
+    public IEnumerable<NoiseMap> NoiseMaps
     {
-      repository.Save();
+      get { return _maps; }
+      set
+      {
+        _maps = value; 
+        NotifyOfPropertyChange(() => NoiseMaps);
+      }
     }
 
-    public void ToggleArchivation(object dataContext)
+    public void SaveToHub()
     {
-      var measuringPoint = (MeasuringPointViewModel)dataContext;
-      measuringPoint.IsArchived = !measuringPoint.IsArchived;
       repository.Save();
     }
 
@@ -160,6 +174,7 @@ namespace KrachConnect.ViewModels
       var y = (int)yPosition;
       var newPosition = new NoiseMapPosition
       {
+        NoiseMap = ActiveMap,
         XPosition = x - 10,
         YPosition = y - 10
         // 10 is a magic number
@@ -171,7 +186,7 @@ namespace KrachConnect.ViewModels
       SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint
       {
         Position = newPosition,
-        Name = "Neuer Messpunkt"
+        Name = "Neuer Messpunkt",
       });
       var box = new ConfirmationBoxViewModel(SelectedMeasuringPoint, true);
       var result = new WindowManager().ShowDialog(box);

@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using Caliburn.Micro;
+using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
@@ -12,6 +15,8 @@ namespace KrachConnect.ViewModels
     private string _searchTerm = "";
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
+    private IEnumerable<NoiseMap> _maps;
+    private NoiseMap _activeMap;
     public override string DisplayName { get { return "MeasuringPlanning"; } }
 
     public MeasuringPlaningViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
@@ -22,6 +27,40 @@ namespace KrachConnect.ViewModels
       foreach (MeasuringPointViewModel mp in MeasuringPoints)
       {
         mp.PropertyChanged += IsSelectedChanged;
+      }
+      NoiseMaps = repository.Maps;
+      ActiveMap = NoiseMaps.First();
+    }
+
+    public IEnumerable<NoiseMap> NoiseMaps
+    {
+      get { return _maps; }
+      set
+      {
+        _maps = value;
+        NotifyOfPropertyChange(() => NoiseMaps);
+      }
+    }
+
+    public NoiseMap ActiveMap
+    {
+      get { return _activeMap; }
+      set
+      {
+        _activeMap = value;
+        NotifyOfPropertyChange(() => ActiveMap);
+        NotifyOfPropertyChange(() => ActiveMapPath);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    public String ActiveMapPath
+    {
+      get
+      {
+        var filePath = Path.GetTempFileName();
+        System.IO.File.WriteAllBytes(filePath, ActiveMap.File.BinarySource);
+        return filePath;
       }
     }
 
@@ -50,10 +89,11 @@ namespace KrachConnect.ViewModels
     {
       get
       {
+        var filtered = measuringPointViewModels.Where(mp => mp.NoiseMap == ActiveMap);
         return SearchTerm != ""
-          ? measuringPointViewModels
+          ? filtered
             .Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower()))
-          : measuringPointViewModels;
+          : filtered;
       }
     }
 
