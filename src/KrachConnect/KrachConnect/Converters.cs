@@ -6,6 +6,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
+using Caliburn.Micro;
 
 namespace KrachConnect
 {
@@ -127,6 +128,25 @@ namespace KrachConnect
       return null;
     }
   }
+
+  [ValueConversion(typeof(object), typeof(FontWeight))]
+  public class StringToBrushConverter : BaseConverter, IValueConverter
+  {
+    public object Convert(object value, Type targetType, object parameter,
+      CultureInfo culture)
+    {
+      var selectedItem = ((Screen)value).DisplayName;
+      var compareItem = (string) parameter;
+      return selectedItem == compareItem ? FontWeights.Bold : FontWeights.Normal;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter,
+      CultureInfo culture)
+    {
+      return null;
+    }
+  }
+
   [ValueConversion(typeof(object), typeof(Visibility))]
   public class AverageToVisibilityConverter : BaseConverter, IValueConverter
   {

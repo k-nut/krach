@@ -6,9 +6,11 @@ using Caliburn.Micro;
 
 namespace KrachConnect.ViewModels
 {
-  internal class HomepageViewModel : PropertyChangedBase
+  internal class HomepageViewModel : Screen 
   {
     private IEnumerable<NoiseMeasurementViewModel> noiseMeasurements;
+    public override string DisplayName { get { return "HomePage"; }}
+
 
     public HomepageViewModel(NoiseRepository repository)
     {

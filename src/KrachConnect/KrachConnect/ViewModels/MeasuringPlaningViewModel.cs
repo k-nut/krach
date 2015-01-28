@@ -6,12 +6,13 @@ using Caliburn.Micro;
 
 namespace KrachConnect.ViewModels
 {
-  internal class MeasuringPlaningViewModel : PropertyChangedBase
+  internal class MeasuringPlaningViewModel : Screen
   {
     private readonly ShellViewModel shellViewModel;
     private string _searchTerm = "";
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
+    public override string DisplayName { get { return "MeasuringPlanning"; } }
 
     public MeasuringPlaningViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
     {

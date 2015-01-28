@@ -14,10 +14,11 @@ using OxyPlot;
 using OxyPlot.Annotations;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using Screen = Caliburn.Micro.Screen;
 
 namespace KrachConnect.ViewModels
 {
-  internal class AlternativeEvaluationViewModel : PropertyChangedBase
+  internal class AlternativeEvaluationViewModel : Screen
   {
     private string _searchTerm = "";
     private string _selectedValueType;
@@ -28,6 +29,7 @@ namespace KrachConnect.ViewModels
     private PlotModel plotModel;
     private MeasuringPointViewModel selectedMeasuringPoint;
     private PlotModel totalsPlotModel;
+    public override string DisplayName { get { return "Evaluation"; } }
 
     public AlternativeEvaluationViewModel(NoiseRepository repository)
     {

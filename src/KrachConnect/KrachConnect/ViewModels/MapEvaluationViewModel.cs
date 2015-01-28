@@ -15,6 +15,7 @@ namespace KrachConnect.ViewModels
     private IEnumerable<MeasuringPointViewModel> measuringPoints;
     private IEnumerable<NoiseMeasurement> noiseMeasurements;
     private DateTime maxDate = DateTime.Today;
+    public override string DisplayName { get { return "MapEvaluation"; } }
 
 
     public MapEvaluationViewModel(NoiseRepository repository)

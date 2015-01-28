@@ -9,13 +9,14 @@ using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
 {
-    internal class MeasuringPointsEditViewModel : PropertyChangedBase
+    internal class MeasuringPointsEditViewModel : Screen
     {
         private readonly NoiseRepository repository;
         private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
         private MeasuringPointViewModel selectedMeasuringPoint;
       private bool showActive = true;
       private bool showArchived = false;
+      public override string DisplayName { get { return "MeasuringPointsEdit"; } }
 
 
         public MeasuringPointsEditViewModel(NoiseRepository repository)

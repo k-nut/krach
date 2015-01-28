@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:krachConnect="clr-namespace:KrachConnect"
              WindowState="Normal"
         Height="700"
         Width="1300"
@@ -12,11 +13,11 @@
 
   <DockPanel Background="Gray">
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-      <Button x:Name="ShowHomepageScreen" Content="Startseite" Padding="5" />
-      <Button x:Name="ShowMeasuringPlaningScreen" IsEnabled="{Binding IsEnabled}" Content="Begehung" Margin="12,0,0,0" Padding="5" />
-      <Button x:Name="ShowMeasuringPointsEditScreen" Content="Messpunkte bearbeiten" Margin="12,0,0,0" Padding="5" />
-      <Button x:Name="ShowAlternativeEvaluationScreen" Content="Auswertung" Margin="12,0,0,0" Padding="5" />
-      <Button x:Name="ShowMapEvaluationScreen" Content="Kartenauswertung" Margin="12,0,0,0" Padding="5" />
+      <Button FontWeight="{Binding ActiveItem, Converter={krachConnect:StringToBrushConverter}, ConverterParameter=HomePage}" x:Name="ShowHomepageScreen" Content="Startseite" Padding="5" />
+      <Button FontWeight="{Binding ActiveItem, Converter={krachConnect:StringToBrushConverter}, ConverterParameter=MeasuringPlanning}" x:Name="ShowMeasuringPlaningScreen" IsEnabled="{Binding IsEnabled}" Content="Begehung" Margin="12,0,0,0" Padding="5" />
+      <Button FontWeight="{Binding ActiveItem, Converter={krachConnect:StringToBrushConverter}, ConverterParameter=MeasuringPointsEdit}" x:Name="ShowMeasuringPointsEditScreen" Content="Messpunkte bearbeiten" Margin="12,0,0,0" Padding="5" />
+      <Button FontWeight="{Binding ActiveItem, Converter={krachConnect:StringToBrushConverter}, ConverterParameter=Evaluation}"  x:Name="ShowAlternativeEvaluationScreen" Content="Auswertung" Margin="12,0,0,0" Padding="5" />
+      <Button FontWeight="{Binding ActiveItem, Converter={krachConnect:StringToBrushConverter}, ConverterParameter=MapEvaluation}"  x:Name="ShowMapEvaluationScreen" Content="Kartenauswertung" Margin="12,0,0,0" Padding="5" />
     </StackPanel>
     <ContentControl Padding="10,10,10,10" x:Name="ActiveItem" />
   </DockPanel>
