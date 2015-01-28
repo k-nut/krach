@@ -10,12 +10,13 @@ namespace KrachConnect.ViewModels
   {
     private readonly NoiseRepository nr = new NoiseRepository();
     private bool _isEnabled;
-
+    
 
     public ShellViewModel()
     {
       ActivateItem(new HomepageViewModel(nr));
       IsEnabled = true;
+      DisplayName = "Krach";
     }
 
     public void ShowMapScreen(ObservableCollection<MeasuringPointViewModel> selectedMeasuringPoints )

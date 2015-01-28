@@ -5,170 +5,185 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
+using System.IO;
 using KrachConnect.DomainModelService;
+using OxyPlot.Reporting;
+using Image = System.Drawing.Image;
 
 namespace KrachConnect.ViewModels
 {
-    internal class MeasuringPointsEditViewModel : Screen
+  internal class MeasuringPointsEditViewModel : Screen
+  {
+    private readonly NoiseRepository repository;
+    private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
+    private MeasuringPointViewModel selectedMeasuringPoint;
+    private IEnumerable<NoiseMap> _maps;
+    private bool showActive = true;
+    private bool showArchived = false;
+    public override string DisplayName { get { return "MeasuringPointsEdit"; } }
+
+
+    public MeasuringPointsEditViewModel(NoiseRepository repository)
     {
-        private readonly NoiseRepository repository;
-        private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
-        private MeasuringPointViewModel selectedMeasuringPoint;
-      private bool showActive = true;
-      private bool showArchived = false;
-      public override string DisplayName { get { return "MeasuringPointsEdit"; } }
-
-
-        public MeasuringPointsEditViewModel(NoiseRepository repository)
-        {
-            this.repository = repository;
-            MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
-            SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
-        }
-
-        public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
-        {
-            get { return measuringPointViewModels; }
-            set
-            {
-                measuringPointViewModels = value;
-                NotifyOfPropertyChange(() => MeasuringPoints);
-                NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-            }
-        }
-
-        public MeasuringPointViewModel SelectedMeasuringPoint
-        {
-            get { return selectedMeasuringPoint; }
-            set
-            {
-                selectedMeasuringPoint = value;
-                selectedMeasuringPoint.IsSelected = true;
-                NotifyOfPropertyChange(() => SelectedMeasuringPoint);
-            }
-        }
-
-      public IEnumerable<MeasuringPointViewModel>  FilteredMeasuringPoints
-      {
-        get
-        {
-          IEnumerable<MeasuringPointViewModel> filtered;
-          if (ShowActive && !ShowArchived)
-          {
-            filtered = MeasuringPoints.Where(mp => !mp.IsArchived);
-          }
-          else if (!ShowActive && ShowArchived)
-          {
-            filtered = MeasuringPoints.Where(mp => mp.IsArchived);
-          }
-          else if (!ShowActive && !ShowArchived)
-          {
-            filtered = new List<MeasuringPointViewModel>();
-          }
-          else
-          {
-            filtered = MeasuringPoints;
-          }
-          return filtered;
-        } 
-      }
-
-      public bool ShowActive
-      {
-        get { return showActive; }
-        set
-        {
-          showActive = value; 
-          NotifyOfPropertyChange(() => ShowActive);
-          NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-
-        }
-      }
-
-      public bool ShowArchived
-      {
-        get { return showArchived; }
-        set
-        {
-          showArchived = value;
-          NotifyOfPropertyChange(() => ShowArchived);
-          NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-        }
-      }
-
-      public void SaveToHub()
-        {
-            repository.Save();
-        }
-
-        public void ToggleArchivation(object dataContext)
-        {
-            var measuringPoint = (MeasuringPointViewModel)dataContext;
-            measuringPoint.IsArchived = !measuringPoint.IsArchived;
-            repository.Save();
-        }
-
-        public void ChangeSelectedMeasuringPoint(object dataContext)
-        {
-            SelectedMeasuringPoint.IsSelected = false;
-            var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
-            SelectedMeasuringPoint = measuringPointViewModel;
-
-            var oldName = measuringPointViewModel.Name;
-            var oldDescription = measuringPointViewModel.Notes;
-            var oldIsArchived = measuringPointViewModel.IsArchived;
-
-            var box = new ConfirmationBoxViewModel(measuringPointViewModel, repository);
-            var result = new WindowManager().ShowDialog(box);
-            if (result == true)
-            {
-                // OK was clicked
-                SaveToHub();
-              if (measuringPointViewModel.Deleted == true)
-              {
-                MeasuringPoints.Remove(measuringPointViewModel);
-                NotifyOfPropertyChange(() => MeasuringPoints);
-                NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-              }
-            }
-            else
-            {
-                measuringPointViewModel.Name = oldName;
-                measuringPointViewModel.Notes = oldDescription;
-                measuringPointViewModel.IsArchived = oldIsArchived;
-            }
-        }
-
-        public void AddNewMeasuringPoint(object xPosition, object yPosition)
-        {
-            var x = (int)xPosition;
-            var y = (int)yPosition;
-            var newPosition = new NoiseMapPosition
-            {
-                XPosition = x - 10,
-                YPosition = y - 10
-                // 10 is a magic number
-                // because our points are width and height 20px
-                // in order to position the points in the center
-                // we simply subtract half the size (10)
-            };
-            SelectedMeasuringPoint.IsSelected = false;
-            SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint
-            {
-                Position = newPosition,
-                Name = "Neuer Messpunkt"
-            });
-            var box = new ConfirmationBoxViewModel(SelectedMeasuringPoint, true);
-            var result = new WindowManager().ShowDialog(box);
-            if (result == true)
-            {
-                // OK was clicked
-                MeasuringPoints.Add(SelectedMeasuringPoint);
-                repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
-                NotifyOfPropertyChange(() => MeasuringPoints);
-                NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-                SaveToHub();
-            }
-        }
+      this.repository = repository;
+      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
+      SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
+      _maps = repository.Maps;
     }
+
+    public String ActiveMap
+    {
+      get
+      {
+        var filePath = Path.GetTempFileName();
+        System.IO.File.WriteAllBytes(filePath, _maps.Last().File.BinarySource);
+        return filePath;
+      }
+    }
+
+    public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
+    {
+      get { return measuringPointViewModels; }
+      set
+      {
+        measuringPointViewModels = value;
+        NotifyOfPropertyChange(() => MeasuringPoints);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    public MeasuringPointViewModel SelectedMeasuringPoint
+    {
+      get { return selectedMeasuringPoint; }
+      set
+      {
+        selectedMeasuringPoint = value;
+        selectedMeasuringPoint.IsSelected = true;
+        NotifyOfPropertyChange(() => SelectedMeasuringPoint);
+      }
+    }
+
+    public IEnumerable<MeasuringPointViewModel> FilteredMeasuringPoints
+    {
+      get
+      {
+        IEnumerable<MeasuringPointViewModel> filtered;
+        if (ShowActive && !ShowArchived)
+        {
+          filtered = MeasuringPoints.Where(mp => !mp.IsArchived);
+        }
+        else if (!ShowActive && ShowArchived)
+        {
+          filtered = MeasuringPoints.Where(mp => mp.IsArchived);
+        }
+        else if (!ShowActive && !ShowArchived)
+        {
+          filtered = new List<MeasuringPointViewModel>();
+        }
+        else
+        {
+          filtered = MeasuringPoints;
+        }
+        return filtered;
+      }
+    }
+
+    public bool ShowActive
+    {
+      get { return showActive; }
+      set
+      {
+        showActive = value;
+        NotifyOfPropertyChange(() => ShowActive);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+
+      }
+    }
+
+    public bool ShowArchived
+    {
+      get { return showArchived; }
+      set
+      {
+        showArchived = value;
+        NotifyOfPropertyChange(() => ShowArchived);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    public void SaveToHub()
+    {
+      repository.Save();
+    }
+
+    public void ToggleArchivation(object dataContext)
+    {
+      var measuringPoint = (MeasuringPointViewModel)dataContext;
+      measuringPoint.IsArchived = !measuringPoint.IsArchived;
+      repository.Save();
+    }
+
+    public void ChangeSelectedMeasuringPoint(object dataContext)
+    {
+      SelectedMeasuringPoint.IsSelected = false;
+      var measuringPointViewModel = (MeasuringPointViewModel)dataContext;
+      SelectedMeasuringPoint = measuringPointViewModel;
+
+      var oldName = measuringPointViewModel.Name;
+      var oldDescription = measuringPointViewModel.Notes;
+      var oldIsArchived = measuringPointViewModel.IsArchived;
+
+      var box = new ConfirmationBoxViewModel(measuringPointViewModel, repository);
+      var result = new WindowManager().ShowDialog(box);
+      if (result == true)
+      {
+        // OK was clicked
+        SaveToHub();
+        if (measuringPointViewModel.Deleted == true)
+        {
+          MeasuringPoints.Remove(measuringPointViewModel);
+          NotifyOfPropertyChange(() => MeasuringPoints);
+          NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+        }
+      }
+      else
+      {
+        measuringPointViewModel.Name = oldName;
+        measuringPointViewModel.Notes = oldDescription;
+        measuringPointViewModel.IsArchived = oldIsArchived;
+      }
+    }
+
+    public void AddNewMeasuringPoint(object xPosition, object yPosition)
+    {
+      var x = (int)xPosition;
+      var y = (int)yPosition;
+      var newPosition = new NoiseMapPosition
+      {
+        XPosition = x - 10,
+        YPosition = y - 10
+        // 10 is a magic number
+        // because our points are width and height 20px
+        // in order to position the points in the center
+        // we simply subtract half the size (10)
+      };
+      SelectedMeasuringPoint.IsSelected = false;
+      SelectedMeasuringPoint = new MeasuringPointViewModel(new MeasuringPoint
+      {
+        Position = newPosition,
+        Name = "Neuer Messpunkt"
+      });
+      var box = new ConfirmationBoxViewModel(SelectedMeasuringPoint, true);
+      var result = new WindowManager().ShowDialog(box);
+      if (result == true)
+      {
+        // OK was clicked
+        MeasuringPoints.Add(SelectedMeasuringPoint);
+        repository.MeasuringPoints.Add(SelectedMeasuringPoint.Model);
+        NotifyOfPropertyChange(() => MeasuringPoints);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+        SaveToHub();
+      }
+    }
+  }
 }

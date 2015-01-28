@@ -6,14 +6,13 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
 using Microsoft.Data.OData;
 
 namespace KrachConnect.ViewModels
 {
-    internal class MapAddViewModel : PropertyChangedBase
+    internal class MapAddViewModel : Screen
     {
         private readonly NoiseRepository repository;
         private Visibility detailVisibility = Visibility.Visible;
@@ -29,6 +28,7 @@ namespace KrachConnect.ViewModels
         private string showHideContent = "verstecke Details";
         
         private ShellViewModel shellViewModel;
+      public override string DisplayName { get { return "MapAdd"; } }
 
 
       private IEnumerable<String> employees;
