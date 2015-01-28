@@ -17,21 +17,19 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
 
 
-      <TextBlock FontSize="25" Grid.Row="0" Text="Zeige:" />
-      <StackPanel Grid.Row="1" Orientation="Horizontal">
-        <CheckBox IsChecked="{Binding ShowActive}">
-          <TextBlock Text="Aktive Messpunkte" />
-        </CheckBox>
+      <StackPanel Grid.Row="0">
+        <TextBlock FontSize="25" Text="Zeige:" />
+        <CheckBox IsChecked="{Binding ShowActive}" Content="Aktive Messpunkte" />
+        <CheckBox IsChecked="{Binding ShowArchived}" Content="Archivierte Messpunkte" />
       </StackPanel>
-      <StackPanel Grid.Row="2">
-        <CheckBox IsChecked="{Binding ShowArchived}">
-          <TextBlock Text="Archivierte Messpunkte" />
-        </CheckBox>
-      </StackPanel>
+
+      <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0 40 0 0"> 
+        Klicken Sie auf die Karte, um einen neuen Messpunkt anzulegen. Oder klicken Sie auf einen
+        bestehenden Messunkt, um diesen zu bearbeiten.
+      </TextBlock>
 
     </Grid>
 
