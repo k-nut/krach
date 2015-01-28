@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
@@ -184,6 +185,7 @@ namespace KrachConnect.ViewModels
 
 
       TotalsPlotModel = new PlotModel { Title = "Grenzwertüberschreitungen pro Messpunkt (gesamt)" };
+      
 
 
       this.repository = repository;
@@ -217,12 +219,13 @@ namespace KrachConnect.ViewModels
     {
 
       Stream myStream;
-      SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-      saveFileDialog1.FilterIndex = 2;
-      saveFileDialog1.FileName = "Export.xlsx";
-      saveFileDialog1.DefaultExt = "xlsx";
-      saveFileDialog1.RestoreDirectory = true;
+      var saveFileDialog1 = new SaveFileDialog
+      {
+        FilterIndex = 2,
+        FileName = "Export.xlsx",
+        DefaultExt = "xlsx",
+        RestoreDirectory = true
+      };
 
       if (saveFileDialog1.ShowDialog() == DialogResult.OK)
       {
@@ -276,6 +279,7 @@ namespace KrachConnect.ViewModels
     {
       TotalsPlotModel.Series.Clear();
       TotalsPlotModel.Axes.Clear();
+      TotalsPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, MajorTickSize = 1, MinorTickSize = 0 });
 
       var all = (from mp in MeasuringPoints
                  let count = FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
