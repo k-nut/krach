@@ -79,7 +79,7 @@ namespace KrachConnect.ViewModels
 
     public void SelectAll()
     {
-      foreach (var measuringPointViewModel in MeasuringPoints)
+      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
       {
         measuringPointViewModel.IsSelected = true;
       }
@@ -87,7 +87,7 @@ namespace KrachConnect.ViewModels
 
     public void DeSelectAll()
     {
-      foreach (var measuringPointViewModel in MeasuringPoints)
+      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
       {
         measuringPointViewModel.IsSelected = false;
       }

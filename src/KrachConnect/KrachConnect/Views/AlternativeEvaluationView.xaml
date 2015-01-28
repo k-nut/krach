@@ -6,6 +6,7 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:krachConnect="clr-namespace:KrachConnect"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -17,15 +18,30 @@
 
     <Grid Column="0">
       <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
         <RowDefinition Height="Auto"/>
       </Grid.RowDefinitions>
-      <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+
+      <StackPanel Orientation="Vertical" Grid.Row="0">
         <TextBlock Margin="10" Text="Auswertungszeitraum: " />
         <DatePicker Margin="10" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
         <DatePicker Margin="10" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+
+        <Label Content="Filter: "/>
+        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" />
+        <Button x:Name="SelectAll" Content="Alle auswählen" />
+        <Button x:Name="DeSelectAll" Content="Alle abwählen" />
+      </StackPanel>
+      
+      <StackPanel Orientation="Vertical" Grid.Row="2" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-          <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+          <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
             <ItemsControl.ItemTemplate>
               <DataTemplate>
                 <CheckBox IsChecked="{Binding IsSelected}">
@@ -41,7 +57,7 @@
           </ItemsControl>
         </ScrollViewer>
       </StackPanel>
-      <Button Grid.Column="0" Grid.Row="1" Content="Export" x:Name="Export" />
+      <Button Grid.Row="3" Content="Export" x:Name="Export" />
     </Grid>
 
 

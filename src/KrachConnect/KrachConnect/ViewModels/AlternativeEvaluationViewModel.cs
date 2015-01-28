@@ -36,7 +36,7 @@ namespace KrachConnect.ViewModels
     private ObservableCollection<MeasuringPointViewModel> measuringPoints;
     private DateTime minDate = DateTime.Today.AddYears(-1);
     private DateTime maxDate = DateTime.Today.AddDays(1);
-
+    private string _searchTerm = "";
 
 
     public IEnumerable<NoiseMeasurementViewModel> FilteredNoiseMeasurementViewModels
@@ -48,8 +48,47 @@ namespace KrachConnect.ViewModels
     public IEnumerable<MeasuringPoint> SelectedMeasuringPoints
     {
       get { return MeasuringPoints.Where(mp => mp.IsSelected).Select(mp => mp.Model); }
-    } 
+    }
 
+
+    //TODO: Check if there is a cleaner solution for this (esp. on the xaml side)
+    public void Filter(object text)
+    {
+      SearchTerm = text.ToString();
+    }
+
+    public string SearchTerm
+    {
+      get { return _searchTerm; }
+      set
+      {
+        _searchTerm = value;
+        NotifyOfPropertyChange(() => SearchTerm);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    public IEnumerable<MeasuringPointViewModel> FilteredMeasuringPoints
+    {
+      get { return MeasuringPoints.Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower())); }
+    }
+
+
+    public void SelectAll()
+    {
+      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
+      {
+        measuringPointViewModel.IsSelected = true;
+      }
+    }
+
+    public void DeSelectAll()
+    {
+      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
+      {
+        measuringPointViewModel.IsSelected = false;
+      }
+    }
 
     public PlotModel PlotModel
     {
