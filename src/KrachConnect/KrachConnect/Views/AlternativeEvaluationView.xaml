@@ -28,6 +28,10 @@
         <TextBlock Margin="10" Text="Auswertungszeitraum: " />
         <DatePicker Margin="10" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
         <DatePicker Margin="10" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+        
+        <TextBlock Margin="20 0 0 0" Text="Zeige:">
+          <ComboBox ItemsSource="{Binding DisplayValueTypes}" SelectedItem="{Binding SelectedValueType}"></ComboBox>
+        </TextBlock>
       </StackPanel>
 
       <StackPanel Orientation="Horizontal" Grid.Row="1">

@@ -74,6 +74,16 @@ namespace KrachConnect.ViewModels
       get { return MeasuringPoints.Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower())); }
     }
 
+    public IEnumerable<String> DisplayValueTypes
+    {
+      get
+      {
+        var l = new List<String> {"Minimalwert", "Mittelwert", "Maximalwert"};
+        return l;
+      }
+    }
+
+    private string _selectedValueType;
 
     public void SelectAll()
     {
@@ -167,6 +177,17 @@ namespace KrachConnect.ViewModels
       }
     }
 
+    public string SelectedValueType
+    {
+      get { return _selectedValueType; }
+      set
+      {
+        _selectedValueType = value;
+        NotifyOfPropertyChange(() => SelectedValueType);
+        UpdatePlots();
+      }
+    }
+
     private void UpdatePlots()
     {
       DrawTotalsChart();
@@ -203,6 +224,8 @@ namespace KrachConnect.ViewModels
       {
         mp.PropertyChanged += IsSelectedChanged;
       }
+
+      SelectedValueType = DisplayValueTypes.First();
     }
 
     private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
@@ -335,7 +358,12 @@ namespace KrachConnect.ViewModels
         count = allowedColors.Count() == count ? 0 : count + 1;
         foreach (var measurement in group.OrderBy(nm => nm.MeasurementDate))
         {
-          lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MaxValue));
+          if (SelectedValueType == "Minimalwert")
+            lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MinValue));
+          else if (SelectedValueType == "Mittelwert")
+            lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.AverageValue));
+          else
+            lineSeries.Points.Add(DateTimeAxis.CreateDataPoint(measurement.MeasurementDate, measurement.MaxValue));
         }
         PlotModel.Series.Add(lineSeries);
       }
