@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:krachConnect="clr-namespace:KrachConnect"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid Background="LightGray">
@@ -15,15 +16,13 @@
 
     <Grid Column="0">
       <StackPanel>
-        <TextBlock Text="Der aktuellste Messpunkt bis zu diesem Zeitpunkt: "/>
-        <!--<ComboBox ItemsSource="{Binding MeasurementDates}" ItemStringFormat="dd.MM.yy hh:mm" SelectedItem="{Binding SelectedDate}" />-->
-        <DatePicker SelectedDate="{Binding MaxDate}" />
-        </StackPanel>
+        <TextBlock Text="Zeige Messwerte an diesem Zeitpunkt: "/>
+        <xctk:DateTimePicker Value="{Binding MaxDate}" />
+      </StackPanel>
     </Grid>
 
     <Grid Column="1" >
-      <Image Source="../Resources/map1.JPG" 
-             cal:Message.Attach="[Event MouseLeftButtonUp] = [Action AddNewMeasuringPoint($scaledmousex, $scaledmousey) ]" />
+      <Image Source="../Resources/map1.JPG" />
       <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
@@ -44,10 +43,11 @@
                      Height="15" Width="15"
                      Stroke="Black">
               </Ellipse>
-              <StackPanel Orientation="Horizontal" Background="LightGray">
-                <TextBlock Text="{Binding MaxValue}" />
-                <TextBlock Text=" db" />
+              <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="{Binding MaxValue}" Background="LightGray"/>
+                <TextBlock Text=" db" Background="LightGray" />
               </StackPanel>
+              <TextBlock Text="{Binding Date, StringFormat={}{0:dd.MM.yy HH:mm}}" Background="LightGray"  />
             </StackPanel>
 
           </DataTemplate>

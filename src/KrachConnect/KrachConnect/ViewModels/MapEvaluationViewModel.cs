@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 
 namespace KrachConnect.ViewModels
 {
-  class MapEvaluationViewModel:Screen
+  class MapEvaluationViewModel : Screen
   {
     private IEnumerable<MeasuringPointViewModel> measuringPoints;
     private IEnumerable<NoiseMeasurement> noiseMeasurements;
-    private DateTime _selectedDate = DateTime.Today;
     private DateTime maxDate = DateTime.Today;
 
 
@@ -21,7 +22,7 @@ namespace KrachConnect.ViewModels
       MeasuringPoints = repository.MeasuringPointViewModels;
       noiseMeasurements = repository.NoiseMeasurements;
       MeasurementDates = new HashSet<DateTime>(noiseMeasurements.Select(nm => nm.MeasurementDate));
-      SelectedDate = MeasurementDates.Max();
+      MaxDate = MeasurementDates.Max();
     }
 
     public IEnumerable<MeasuringPointViewModel> MeasuringPoints
@@ -40,32 +41,31 @@ namespace KrachConnect.ViewModels
     {
       get
       {
-        var measurementsForSelectedDate = noiseMeasurements.Where(nm => nm.MeasurementDate == SelectedDate);
         var all = new List<MeasuringPointWithValue>();
-        foreach (var measurement in measurementsForSelectedDate)
+        foreach (var measuringPoint in MeasuringPoints)
         {
-          var measuringPoint = measurement.MeasuringPoint;
-          if (measuringPoint.Position == null) continue;
+          NoiseMeasurement lastNoiseMeasurementForPoint;
+          try
+          {
+            lastNoiseMeasurementForPoint = noiseMeasurements.Where(nm => nm.MeasuringPoint == measuringPoint.Model)
+                                                            .Where(nm => nm.MeasurementDate <= MaxDate)
+                                                            .OrderByDescending(nm => nm.MeasurementDate)
+                                                            .First();
+          }
+          catch (Exception e)
+          {
+            continue;
+          }
           all.Add(new MeasuringPointWithValue
           {
             XPosition = measuringPoint.Position.XPosition,
             YPosition = measuringPoint.Position.YPosition,
             Name = measuringPoint.Name,
-            MaxValue = measurement.MaxValue
+            MaxValue = lastNoiseMeasurementForPoint.MaxValue,
+            Date = lastNoiseMeasurementForPoint.MeasurementDate
           });
         }
         return all;
-      }
-    }
-
-    public DateTime SelectedDate
-    {
-      get { return _selectedDate; }
-      set
-      {
-        _selectedDate = value; 
-        NotifyOfPropertyChange(() => SelectedDate);
-        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
       }
     }
 
@@ -75,6 +75,7 @@ namespace KrachConnect.ViewModels
       private int _yPosition;
       private string _name;
       private float _maxValue;
+      private DateTime _date;
 
       public int XPosition
       {
@@ -115,16 +116,26 @@ namespace KrachConnect.ViewModels
           NotifyOfPropertyChange(() => MaxValue);
         }
       }
-     
+
+      public DateTime Date
+      {
+        get { return _date; }
+        set
+        {
+          _date = value;
+          NotifyOfPropertyChange(() => Date);
+        }
+      }
     }
     public DateTime MaxDate
     {
-        get { return maxDate; }
-        set
-        {
-            maxDate = value;
-            NotifyOfPropertyChange(() => MaxDate);
-        }
+      get { return maxDate; }
+      set
+      {
+        maxDate = value;
+        NotifyOfPropertyChange(() => MaxDate);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
     }
   }
 }
