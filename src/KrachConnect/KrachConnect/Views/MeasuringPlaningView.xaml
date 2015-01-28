@@ -56,7 +56,7 @@
             Height="30"
             Width="150"
             x:Name="Save" 
-            IsEnabled="{Binding IsMeasuringPointEnabled}"
+            IsEnabled="{Binding IsStartButtonEnabled}"
             Foreground="Black"
             HorizontalAlignment="Center"
             Content="Begehung starten!" />

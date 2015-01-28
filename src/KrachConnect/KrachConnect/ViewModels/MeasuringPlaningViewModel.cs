@@ -8,28 +8,19 @@ namespace KrachConnect.ViewModels
 {
   internal class MeasuringPlaningViewModel : PropertyChangedBase
   {
-    private readonly NoiseRepository repository;
+    private readonly ShellViewModel shellViewModel;
+    private string _searchTerm = "";
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
-    private string _searchTerm = "";
-    private ShellViewModel shellViewModel;
 
     public MeasuringPlaningViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
     {
-      this.repository = repository;
       this.shellViewModel = shellViewModel;
-      MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels.Where(mp => !mp.IsArchived));
-      foreach (var mp in MeasuringPoints)
+      MeasuringPoints =
+        new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels.Where(mp => !mp.IsArchived));
+      foreach (MeasuringPointViewModel mp in MeasuringPoints)
       {
         mp.PropertyChanged += IsSelectedChanged;
-      }
-    }
-
-    private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
-    {
-      if (e.PropertyName == "IsSelected")
-      {
-        NotifyOfPropertyChange(() => IsMeasuringPointEnabled);
       }
     }
 
@@ -54,21 +45,33 @@ namespace KrachConnect.ViewModels
       }
     }
 
-    //TODO: Check if there is a cleaner solution for this (esp. on the xaml side)
+    public IEnumerable<MeasuringPointViewModel> FilteredMeasuringPoints
+    {
+      get
+      {
+        return SearchTerm != ""
+          ? measuringPointViewModels
+            .Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower()))
+          : measuringPointViewModels;
+      }
+    }
+
+    public bool IsStartButtonEnabled
+    {
+      get { return MeasuringPoints.Any(mp => mp.IsSelected); }
+    }
+
+    private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == "IsSelected")
+      {
+        NotifyOfPropertyChange(() => IsStartButtonEnabled);
+      }
+    }
+
     public void Filter(object text)
     {
       SearchTerm = text.ToString();
-    }
-
-    public ObservableCollection<MeasuringPointViewModel> FilteredMeasuringPoints
-    {
-      get { return SearchTerm != "" ? new ObservableCollection<MeasuringPointViewModel>(measuringPointViewModels
-        .Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower()))) : measuringPointViewModels; }
-      set
-      {
-        measuringPointViewModels = value;
-        NotifyOfPropertyChange(() => MeasuringPoints);
-      }
     }
 
     public void ToggleSelection(object dataContext)
@@ -79,7 +82,7 @@ namespace KrachConnect.ViewModels
 
     public void SelectAll()
     {
-      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
+      foreach (MeasuringPointViewModel measuringPointViewModel in FilteredMeasuringPoints)
       {
         measuringPointViewModel.IsSelected = true;
       }
@@ -87,7 +90,7 @@ namespace KrachConnect.ViewModels
 
     public void DeSelectAll()
     {
-      foreach (var measuringPointViewModel in FilteredMeasuringPoints)
+      foreach (MeasuringPointViewModel measuringPointViewModel in FilteredMeasuringPoints)
       {
         measuringPointViewModel.IsSelected = false;
       }
@@ -100,13 +103,7 @@ namespace KrachConnect.ViewModels
       {
         measuringPointViewModel.IsSelected = false;
       }
-   //   repository.MeasuringWalk = selectedMeasuringPoints;
       shellViewModel.ShowMapScreen(new ObservableCollection<MeasuringPointViewModel>(selectedMeasuringPoints));
-      }
-
-      public bool IsMeasuringPointEnabled
-      {
-          get { return MeasuringPoints.Any(mp => mp.IsSelected); }
-      }
+    }
   }
 }
