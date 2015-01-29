@@ -88,15 +88,15 @@
 
                 <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Min. Wert in dB</Label>
                 <Slider Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
-                <TextBox Grid.Row="0" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MinValue}" />
+                <xctk:AutoSelectTextBox Grid.Row="0" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MinValue}" />
 
                 <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Mitt. Wert in dB</Label>
                 <Slider Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
-                <TextBox Grid.Row="1" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.AverageValue}" />
+                <xctk:AutoSelectTextBox  Grid.Row="1" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.AverageValue}" />
 
                 <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Max. Wert in dB</Label>
                 <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
-                <TextBox Grid.Row="2" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MaxValue}" />
+                <xctk:AutoSelectTextBox  Grid.Row="2" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MaxValue}" />
 
             </Grid>
             
