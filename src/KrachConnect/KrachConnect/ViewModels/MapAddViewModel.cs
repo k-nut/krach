@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using KrachConnect.DomainModelService;
 
 namespace KrachConnect.ViewModels
@@ -12,7 +13,7 @@ namespace KrachConnect.ViewModels
     private readonly NoiseRepository repository;
     private readonly ShellViewModel shellViewModel;
     private Visibility detailVisibility = Visibility.Visible;
-    private IEnumerable<String> employees;
+    private ObservableCollection<String> employees;
 
     private ObservableCollection<NoiseMeasurementViewModel> measurementsAddedInThisReading =
       new ObservableCollection<NoiseMeasurementViewModel>();
@@ -32,7 +33,7 @@ namespace KrachConnect.ViewModels
       MeasuringMethods = new ObservableCollection<MeasuringMethod>(repository.MeasuringMethods);
       var allEmployees =
         new HashSet<String>(repository.NoiseMeasurements.Where(nm => nm.Employee != null).Select(nm => nm.Employee));
-      Employees = allEmployees;
+      Employees = new ObservableCollection<String>(allEmployees);
 
 
       MeasuringPoints = selectedMeasuringPoints;
@@ -44,6 +45,19 @@ namespace KrachConnect.ViewModels
       });
       // TODO: Abfangen, wenn es keinerlei Messpunkte gibt
       SelectNextMeasuringPoint();
+    }
+
+    public void Foo(object source)
+    {
+      var autocompletebox = (AutoCompleteBox) source;
+      if (autocompletebox.SelectedItem != null)
+      {
+        NewNoiseMeasurement.Employee = autocompletebox.SelectedItem.ToString();
+      }
+      else
+      {
+        NewNoiseMeasurement.Employee = autocompletebox.SearchText;
+      }
     }
 
     public override string DisplayName
@@ -112,16 +126,6 @@ namespace KrachConnect.ViewModels
       get { return MeasuringPoints.Any(mp => !mp.JustMeasured && !mp.IsArchived); }
     }
 
-    public ObservableCollection<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
-    {
-      get { return measurementsAddedInThisReading; }
-      set
-      {
-        measurementsAddedInThisReading = value;
-        NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
-      }
-    }
-
     public Visibility AllDone
     {
       get { return MeasuringPoints.Any(mp => !mp.JustMeasured) ? Visibility.Hidden : Visibility.Visible; }
@@ -148,7 +152,7 @@ namespace KrachConnect.ViewModels
 
     public ObservableCollection<MeasuringMethod> MeasuringMethods { get; set; }
 
-    public IEnumerable<string> Employees
+    public ObservableCollection<string> Employees
     {
       get { return employees; }
       set
@@ -166,9 +170,11 @@ namespace KrachConnect.ViewModels
         repository.NoiseMeasurements.Add(NewNoiseMeasurement.Model);
       }
 
-
-      MeasurementsAddedInThisReading.Add(newNoiseMeasurement);
-      NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
+      if (!Employees.Contains(NewNoiseMeasurement.Employee))
+      {
+        Employees.Add(NewNoiseMeasurement.Employee);
+        NotifyOfPropertyChange(() => Employees);
+      }
 
       NoiseMeasurementViewModel oldNewNoiseMearument = newNoiseMeasurement;
       NewNoiseMeasurement = createNewNoiseMeasurementWithStaticValuesFromOldOne(oldNewNoiseMearument);
@@ -196,7 +202,6 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => FilteredMeasuringPoints);
       }
 
-      NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
       NotifyOfPropertyChange(() => MeasuringPoints);
       NotifyOfPropertyChange(() => CurrentNumber);
       NotifyOfPropertyChange(() => IsBackButtonEnabled);

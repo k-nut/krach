@@ -59,18 +59,17 @@
                              FormatString="dd.MM.yy HH:mm" Value="{Binding NewNoiseMeasurement.MeasurementDate}" />
 
                 <TextBlock Grid.Row="2" Text="Messverfahren"  Grid.Column="0" VerticalAlignment="Bottom"/>
-                <ComboBox  Grid.Row="3" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-
+                <ComboBox  Grid.Row="3" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}" DisplayMemberPath="Name" />
+               
 
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />
                 <TextBlock Grid.Row="3" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
-                <controls:AutoCompleteBox Name="EmployeeAutoCompleteBox" ItemsSource="{Binding Employees}" MinimumPrefixLength="0" IsDropDownOpen="True" Grid.Row="3" Grid.Column="1"  Text="{Binding NewNoiseMeasurement.Employee}" />
+                <controls:AutoCompleteBox ItemsSource="{Binding Employees}"
+                                          MinimumPrefixLength="0" 
+                                          IsDropDownOpen="True" 
+                                          Grid.Row="3" 
+                                          Grid.Column="1" 
+                                          cal:Message.Attach="[Event KeyUp] = [Action Foo($source)]"/>
 
 
             </Grid>
