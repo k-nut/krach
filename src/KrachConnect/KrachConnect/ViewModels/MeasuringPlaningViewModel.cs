@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using Caliburn.Micro;
-using KrachConnect.DomainModelService;
-using Action = System.Action;
 
 namespace KrachConnect.ViewModels
 {
@@ -16,9 +11,6 @@ namespace KrachConnect.ViewModels
     private string _searchTerm = "";
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
-    public override string DisplayName { get { return "MeasuringPlanning"; } }
-
-    public MeasuringPlaningViewModel() { }
 
     public MeasuringPlaningViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
       : base(repository)
@@ -31,15 +23,11 @@ namespace KrachConnect.ViewModels
         mp.PropertyChanged += IsSelectedChanged;
       }
       PropertyChanged += NotifyActiveMapChanged;
-
     }
 
-    private void NotifyActiveMapChanged(object sender, PropertyChangedEventArgs e)
+    public override string DisplayName
     {
-      if (e.PropertyName == "ActiveMap")
-      {
-        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-      }
+      get { return "MeasuringPlanning"; }
     }
 
 
@@ -68,7 +56,7 @@ namespace KrachConnect.ViewModels
     {
       get
       {
-        var filtered = measuringPointViewModels.Where(mp => mp.NoiseMap == ActiveMap);
+        IEnumerable<MeasuringPointViewModel> filtered = measuringPointViewModels.Where(mp => mp.NoiseMap == ActiveMap);
         return SearchTerm != ""
           ? filtered
             .Where(mp => mp.Name.ToLower().Contains(SearchTerm.ToLower()))
@@ -79,6 +67,14 @@ namespace KrachConnect.ViewModels
     public bool IsStartButtonEnabled
     {
       get { return MeasuringPoints.Any(mp => mp.IsSelected); }
+    }
+
+    private void NotifyActiveMapChanged(object sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == "ActiveMap")
+      {
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
     }
 
     private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
@@ -96,7 +92,7 @@ namespace KrachConnect.ViewModels
 
     public void ToggleSelection(object dataContext)
     {
-      var measuringPoint = (MeasuringPointViewModel)dataContext;
+      var measuringPoint = (MeasuringPointViewModel) dataContext;
       measuringPoint.IsSelected = !measuringPoint.IsSelected;
     }
 

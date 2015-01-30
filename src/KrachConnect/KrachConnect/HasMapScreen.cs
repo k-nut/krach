@@ -16,10 +16,6 @@ namespace KrachConnect
     private IEnumerable<NoiseMap> _maps;
     public void Update(){}
     
-    public HasMapScreen()
-    {
-    }
-
     public HasMapScreen(NoiseRepository repository)
     {
       NoiseMaps = repository.Maps;

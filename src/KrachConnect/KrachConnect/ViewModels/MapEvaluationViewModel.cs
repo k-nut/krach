@@ -1,37 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 
 namespace KrachConnect.ViewModels
 {
-  class MapEvaluationViewModel : Screen
+  internal class MapEvaluationViewModel : HasMapScreen
   {
-    private IEnumerable<MeasuringPointViewModel> measuringPoints;
-    private IEnumerable<NoiseMeasurement> noiseMeasurements;
-    private DateTime maxDate = DateTime.Today;
-    public override string DisplayName { get { return "MapEvaluation"; } }
+    private readonly IEnumerable<NoiseMeasurement> _noiseMeasurements;
+    private DateTime _maxDate = DateTime.Today;
+    private IEnumerable<MeasuringPointViewModel> _measuringPoints;
 
 
-    public MapEvaluationViewModel(NoiseRepository repository)
+    public MapEvaluationViewModel(NoiseRepository repository) :base(repository)
     {
       MeasuringPoints = repository.MeasuringPointViewModels;
-      noiseMeasurements = repository.NoiseMeasurements;
-      MeasurementDates = new HashSet<DateTime>(noiseMeasurements.Select(nm => nm.MeasurementDate));
+      _noiseMeasurements = repository.NoiseMeasurements;
+      MeasurementDates = new HashSet<DateTime>(_noiseMeasurements.Select(nm => nm.MeasurementDate));
       MaxDate = MeasurementDates.Max();
+      PropertyChanged += NotifyActiveMapChanged;
+     }
+
+    private void NotifyActiveMapChanged(object sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == "ActiveMap")
+      {
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
+    public override string DisplayName
+    {
+      get { return "MapEvaluation"; }
     }
 
     public IEnumerable<MeasuringPointViewModel> MeasuringPoints
     {
-      get { return measuringPoints; }
+      get { return _measuringPoints; }
       set
       {
-        measuringPoints = value;
+        _measuringPoints = value;
         NotifyOfPropertyChange(() => MeasuringPoints);
       }
     }
@@ -43,15 +53,15 @@ namespace KrachConnect.ViewModels
       get
       {
         var all = new List<MeasuringPointWithValue>();
-        foreach (var measuringPoint in MeasuringPoints)
+        foreach (MeasuringPointViewModel measuringPoint in MeasuringPoints)
         {
           NoiseMeasurement lastNoiseMeasurementForPoint;
           try
           {
-            lastNoiseMeasurementForPoint = noiseMeasurements.Where(nm => nm.MeasuringPoint == measuringPoint.Model)
-                                                            .Where(nm => nm.MeasurementDate <= MaxDate)
-                                                            .OrderByDescending(nm => nm.MeasurementDate)
-                                                            .First();
+            lastNoiseMeasurementForPoint = _noiseMeasurements.Where(nm => nm.MeasuringPoint == measuringPoint.Model && nm.MeasuringPoint.Position.NoiseMap == ActiveMap)
+              .Where(nm => nm.MeasurementDate <= MaxDate)
+              .OrderByDescending(nm => nm.MeasurementDate)
+              .First();
           }
           catch (Exception e)
           {
@@ -70,13 +80,24 @@ namespace KrachConnect.ViewModels
       }
     }
 
+    public DateTime MaxDate
+    {
+      get { return _maxDate; }
+      set
+      {
+        _maxDate = value;
+        NotifyOfPropertyChange(() => MaxDate);
+        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
+      }
+    }
+
     public class MeasuringPointWithValue : PropertyChangedBase
     {
+      private DateTime _date;
+      private float _maxValue;
+      private string _name;
       private int _xPosition;
       private int _yPosition;
-      private string _name;
-      private float _maxValue;
-      private DateTime _date;
 
       public int XPosition
       {
@@ -126,16 +147,6 @@ namespace KrachConnect.ViewModels
           _date = value;
           NotifyOfPropertyChange(() => Date);
         }
-      }
-    }
-    public DateTime MaxDate
-    {
-      get { return maxDate; }
-      set
-      {
-        maxDate = value;
-        NotifyOfPropertyChange(() => MaxDate);
-        NotifyOfPropertyChange(() => FilteredMeasuringPoints);
       }
     }
   }
