@@ -128,6 +128,7 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Converters.cs" />
+    <Compile Include="HasMapScreen.cs" />
     <Compile Include="ViewModels\AlternativeEvaluationViewModel.cs" />
     <Compile Include="ViewModels\ConfirmationBoxViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />

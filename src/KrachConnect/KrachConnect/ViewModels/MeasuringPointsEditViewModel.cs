@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
@@ -12,7 +13,7 @@ using Image = System.Drawing.Image;
 
 namespace KrachConnect.ViewModels
 {
-  internal class MeasuringPointsEditViewModel : Screen
+  internal class MeasuringPointsEditViewModel : HasMapScreen
   {
     private readonly NoiseRepository repository;
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
@@ -20,38 +21,23 @@ namespace KrachConnect.ViewModels
     private IEnumerable<NoiseMap> _maps;
     private bool showActive = true;
     private bool showArchived = false;
-    private NoiseMap _activeMap;
     public override string DisplayName { get { return "MeasuringPointsEdit"; } }
 
 
-    public MeasuringPointsEditViewModel(NoiseRepository repository)
+    public MeasuringPointsEditViewModel(NoiseRepository repository) :base(repository)
     {
       this.repository = repository;
       MeasuringPoints = new ObservableCollection<MeasuringPointViewModel>(repository.MeasuringPointViewModels);
       SelectedMeasuringPoint = MeasuringPoints.Any() ? MeasuringPoints.First() : new MeasuringPointViewModel(new MeasuringPoint());
-      NoiseMaps = repository.Maps;
-      ActiveMap = NoiseMaps.First();
+      PropertyChanged += NotifyActiveMapChanged;
+
     }
 
-    public NoiseMap ActiveMap
+    private void NotifyActiveMapChanged(object sender, PropertyChangedEventArgs e)
     {
-      get { return _activeMap; }
-      set
+      if (e.PropertyName == "ActiveMap")
       {
-        _activeMap = value;
-        NotifyOfPropertyChange(() => ActiveMap);
-        NotifyOfPropertyChange(() => ActiveMapPath);
         NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-      }
-    }
-
-    public String ActiveMapPath
-    {
-      get
-      {
-        var filePath = Path.GetTempFileName();
-        System.IO.File.WriteAllBytes(filePath, ActiveMap.File.BinarySource);
-        return filePath;
       }
     }
 
@@ -119,16 +105,6 @@ namespace KrachConnect.ViewModels
         showArchived = value;
         NotifyOfPropertyChange(() => ShowArchived);
         NotifyOfPropertyChange(() => FilteredMeasuringPoints);
-      }
-    }
-
-    public IEnumerable<NoiseMap> NoiseMaps
-    {
-      get { return _maps; }
-      set
-      {
-        _maps = value; 
-        NotifyOfPropertyChange(() => NoiseMaps);
       }
     }
 

@@ -6,20 +6,22 @@ using System.IO;
 using System.Linq;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
+using Action = System.Action;
 
 namespace KrachConnect.ViewModels
 {
-  internal class MeasuringPlaningViewModel : Screen
+  internal class MeasuringPlaningViewModel : HasMapScreen
   {
     private readonly ShellViewModel shellViewModel;
     private string _searchTerm = "";
     private ObservableCollection<MeasuringPointViewModel> measuringPointViewModels;
     private MeasuringPointViewModel selectedMeasuringPoint;
-    private IEnumerable<NoiseMap> _maps;
-    private NoiseMap _activeMap;
     public override string DisplayName { get { return "MeasuringPlanning"; } }
 
+    public MeasuringPlaningViewModel() { }
+
     public MeasuringPlaningViewModel(NoiseRepository repository, ShellViewModel shellViewModel)
+      : base(repository)
     {
       this.shellViewModel = shellViewModel;
       MeasuringPoints =
@@ -28,41 +30,18 @@ namespace KrachConnect.ViewModels
       {
         mp.PropertyChanged += IsSelectedChanged;
       }
-      NoiseMaps = repository.Maps;
-      ActiveMap = NoiseMaps.First();
+      PropertyChanged += NotifyActiveMapChanged;
+
     }
 
-    public IEnumerable<NoiseMap> NoiseMaps
+    private void NotifyActiveMapChanged(object sender, PropertyChangedEventArgs e)
     {
-      get { return _maps; }
-      set
+      if (e.PropertyName == "ActiveMap")
       {
-        _maps = value;
-        NotifyOfPropertyChange(() => NoiseMaps);
-      }
-    }
-
-    public NoiseMap ActiveMap
-    {
-      get { return _activeMap; }
-      set
-      {
-        _activeMap = value;
-        NotifyOfPropertyChange(() => ActiveMap);
-        NotifyOfPropertyChange(() => ActiveMapPath);
         NotifyOfPropertyChange(() => FilteredMeasuringPoints);
       }
     }
 
-    public String ActiveMapPath
-    {
-      get
-      {
-        var filePath = Path.GetTempFileName();
-        System.IO.File.WriteAllBytes(filePath, ActiveMap.File.BinarySource);
-        return filePath;
-      }
-    }
 
     public ObservableCollection<MeasuringPointViewModel> MeasuringPoints
     {
@@ -117,7 +96,7 @@ namespace KrachConnect.ViewModels
 
     public void ToggleSelection(object dataContext)
     {
-      var measuringPoint = (MeasuringPointViewModel) dataContext;
+      var measuringPoint = (MeasuringPointViewModel)dataContext;
       measuringPoint.IsSelected = !measuringPoint.IsSelected;
     }
 
