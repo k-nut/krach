@@ -105,8 +105,8 @@
                 IsEnabled="{Binding CanClick}" />
         </Grid>
         <Grid Grid.Column="1">
-            <Image Source="../Resources/map1.JPG" />
-            <ItemsControl ItemsSource="{Binding MeasuringPoints}">
+      <Image Source="{Binding ActiveMapPath}" />
+            <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas />

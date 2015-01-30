@@ -5,15 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:krachConnect="clr-namespace:KrachConnect"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid Background="LightGray">
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="300"></ColumnDefinition>
-      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="300" />
+      <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
     <Grid Grid.Column="0">
@@ -21,7 +19,7 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition />
-        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
       <StackPanel Grid.Row="0" Margin="0 40 0 0">
@@ -31,7 +29,7 @@
 
 
       <StackPanel Grid.Row="1" Orientation="Horizontal">
-        <Label Content="Filter: "/>
+        <Label Content="Filter: " />
         <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" />
         <Button x:Name="SelectAll" Content="Alle auswählen" />
         <Button x:Name="DeSelectAll" Content="Alle abwählen" />
@@ -47,32 +45,28 @@
 
           <ItemsControl.ItemTemplate>
             <DataTemplate>
-              <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding IsSelected}">
-                <xctk:AutoSelectTextBox Text="{Binding Name}" />
-                </CheckBox>
-              </StackPanel>
+              <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Name}" />
             </DataTemplate>
           </ItemsControl.ItemTemplate>
         </ItemsControl>
       </ScrollViewer>
 
-      <Button BorderBrush="Black" 
-            Grid.Row="3" 
-            Background="Chartreuse"
-            Height="30"
-            Width="150"
-            x:Name="Save" 
-            IsEnabled="{Binding IsStartButtonEnabled}"
-            Foreground="Black"
-            HorizontalAlignment="Center"
-            Content="Begehung starten!" />
+      <Button BorderBrush="Black"
+              Grid.Row="3"
+              Background="Chartreuse"
+              Height="30"
+              Width="150"
+              x:Name="Save"
+              IsEnabled="{Binding IsStartButtonEnabled}"
+              Foreground="Black"
+              HorizontalAlignment="Center"
+              Content="Begehung starten!" />
 
     </Grid>
 
     <Grid Grid.Column="1">
-      <Image Source="{Binding ActiveMapPath}"  />
-      <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}" >
+      <Image Source="{Binding ActiveMapPath}" />
+      <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
             <Canvas />
@@ -105,7 +99,6 @@
         </ItemsControl.ItemTemplate>
       </ItemsControl>
     </Grid>
-
 
 
   </Grid>
