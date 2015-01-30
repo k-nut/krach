@@ -236,6 +236,12 @@ namespace KrachConnect.ViewModels
       });
     }
 
+    public void CollapseIt()
+    {
+      DetailVisibility = Visibility.Collapsed;
+      ShowHideContent = "zeige Details";
+    }
+
 
     public void ChangeSelectedMeasuringPoint(object dataContext)
     {
