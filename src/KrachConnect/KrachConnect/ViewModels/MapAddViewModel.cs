@@ -126,6 +126,16 @@ namespace KrachConnect.ViewModels
       get { return MeasuringPoints.Any(mp => !mp.JustMeasured && !mp.IsArchived); }
     }
 
+    public ObservableCollection<NoiseMeasurementViewModel> MeasurementsAddedInThisReading
+    {
+      get { return measurementsAddedInThisReading; }
+      set
+      {
+        measurementsAddedInThisReading = value;
+        NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
+      }
+    }
+
     public Visibility AllDone
     {
       get { return MeasuringPoints.Any(mp => !mp.JustMeasured) ? Visibility.Hidden : Visibility.Visible; }
@@ -176,6 +186,10 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => Employees);
       }
 
+
+      MeasurementsAddedInThisReading.Add(newNoiseMeasurement);
+      NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
+
       NoiseMeasurementViewModel oldNewNoiseMearument = newNoiseMeasurement;
       NewNoiseMeasurement = createNewNoiseMeasurementWithStaticValuesFromOldOne(oldNewNoiseMearument);
 
@@ -202,6 +216,7 @@ namespace KrachConnect.ViewModels
         NotifyOfPropertyChange(() => FilteredMeasuringPoints);
       }
 
+      NotifyOfPropertyChange(() => MeasurementsAddedInThisReading);
       NotifyOfPropertyChange(() => MeasuringPoints);
       NotifyOfPropertyChange(() => CurrentNumber);
       NotifyOfPropertyChange(() => IsBackButtonEnabled);
@@ -226,10 +241,6 @@ namespace KrachConnect.ViewModels
     {
       var measuringPointViewModel = (MeasuringPointViewModel) dataContext;
       MeasuringPoint measuringPoint = measuringPointViewModel.Model;
-      if (measuringPointViewModel.IsArchived)
-      {
-        return;
-      }
       try
       {
         NoiseMeasurementViewModel correspondingNoiseMeasurement =
@@ -280,7 +291,7 @@ namespace KrachConnect.ViewModels
     {
       int index = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
 
-      SetSelectedMeasuringPoint(MeasuringPoints[index - 1]);
+      ChangeSelectedMeasuringPoint(MeasuringPoints[index - 1]);
     }
 
     public void CancelMeasuring()
