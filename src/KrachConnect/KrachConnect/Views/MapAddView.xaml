@@ -28,7 +28,7 @@
             </Grid.RowDefinitions>
 
             <DockPanel>
-              <TextBlock DockPanel.Dock="Left" FontSize="20" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
+              <TextBlock DockPanel.Dock="Left" FontSize="22"  Foreground="MidnightBlue" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
               <TextBlock DockPanel.Dock="Right" FontSize="15" HorizontalAlignment="Right">
                 (<TextBlock Text="{Binding CurrentNumber}" />
                 von
@@ -51,16 +51,16 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Messzeitpunkt"  VerticalAlignment="Bottom"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Messzeitpunkt"  VerticalAlignment="Bottom" FontSize="14"/>
                 <xctk:DateTimePicker Grid.Row="1" Grid.Column="0" TimeFormat="ShortTime" Format="Custom"
-                             FormatString="dd.MM.yy HH:mm" Value="{Binding NewNoiseMeasurement.MeasurementDate}" />
+                             FormatString="dd.MM.yy HH:mm" Value="{Binding NewNoiseMeasurement.MeasurementDate}" Margin="10 0 0 0" />
 
-                <TextBlock Grid.Row="2" Text="Messverfahren"  Grid.Column="0" VerticalAlignment="Bottom"/>
-                <ComboBox  Grid.Row="3" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}" DisplayMemberPath="Name" />
-               
+                <Label Grid.Row="2" Content="Messverfahren"  Grid.Column="0" VerticalAlignment="Bottom" FontSize="14"/>
+                <ComboBox  Grid.Row="3" ItemsSource="{Binding MeasuringMethods}" SelectedIndex="1" SelectedItem="{Binding NewNoiseMeasurement.MeasuringMethod}" DisplayMemberPath="Name" Margin="10 0 0 0"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="Kürzel" />
-                <TextBlock Grid.Row="3" Grid.Column="2" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
+
+                <Label Grid.Row="2" Grid.Column="1" Content="Kürzel" FontSize="14" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Alle Messpunkte ausgefuellt!" Visibility="{Binding AllDone}" />
                 <controls:AutoCompleteBox ItemsSource="{Binding Employees}"
                                           MinimumPrefixLength="0" 
                                           IsDropDownOpen="True" 
@@ -79,22 +79,22 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="175"/>
-                    <ColumnDefinition Width="31"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="45"/>
                 </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Min. Wert in dB</Label>
+                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Min. Wert in dB</Label>
         <Slider KeyboardNavigation.IsTabStop="False"
   Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
                 <xctk:AutoSelectTextBox Grid.Row="0" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MinValue}" 
                                         />
 
-                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Mitt. Wert in dB</Label>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Mitt. Wert in dB</Label>
         <Slider Grid.Row="1" Grid.Column="1" KeyboardNavigation.IsTabStop="False"
  VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
                 <xctk:AutoSelectTextBox  Grid.Row="1" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.AverageValue}" />
 
-                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Max. Wert in dB</Label>
+                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Max. Wert in dB</Label>
         <Slider Grid.Row="2" Grid.Column="1" KeyboardNavigation.IsTabStop="False"
  VerticalAlignment="Center" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
                 <xctk:AutoSelectTextBox  Grid.Row="2" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MaxValue}" />

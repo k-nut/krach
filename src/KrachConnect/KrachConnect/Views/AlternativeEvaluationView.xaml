@@ -24,26 +24,27 @@
         <RowDefinition Height="Auto"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Orientation="Vertical" Grid.Row="0">
-        <TextBlock Margin="10" Text="Auswertungszeitraum: " />
-        <DatePicker Margin="10" VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
-        <DatePicker Margin="10" VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <Label  Content="Auswertungszeitraum: " FontSize="18"/>
+                <DatePicker VerticalAlignment="Bottom" Width="200" SelectedDate="{Binding MinDate}" />
+                <DatePicker VerticalAlignment="Top" Width="200" SelectedDate="{Binding MaxDate}" />
+
+                <TextBlock Margin="5 10 5 10" Text="Zeige:" FontSize="18">
+                <ComboBox ItemsSource="{Binding DisplayValueTypes}" SelectedItem="{Binding SelectedValueType}" FontSize="12" Margin="5 0 0 0"></ComboBox>
+                </TextBlock>
+            </StackPanel>
         
-        <TextBlock Margin="20 0 0 0" Text="Zeige:">
-          <ComboBox ItemsSource="{Binding DisplayValueTypes}" SelectedItem="{Binding SelectedValueType}"></ComboBox>
-        </TextBlock>
-      </StackPanel>
 
       <StackPanel Orientation="Horizontal" Grid.Row="1">
 
 
-        <Label Content="Filter: "/>
-        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" />
+        <Label Content="Filter: " FontSize="18"/>
+        <TextBox Text="{Binding SearchTerm}" Width="50" cal:Message.Attach="[Event KeyUp] = [Action Filter($text)]" Margin="0 0 5 3" />
         <Button x:Name="SelectAll" Content="Alle auswählen" />
         <Button x:Name="DeSelectAll" Content="Alle abwählen" />
       </StackPanel>
       
-      <StackPanel Orientation="Vertical" Grid.Row="2" >
+      <StackPanel Orientation="Vertical" Grid.Row="2" Margin="10 0 0 0" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
           <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
             <ItemsControl.ItemTemplate>

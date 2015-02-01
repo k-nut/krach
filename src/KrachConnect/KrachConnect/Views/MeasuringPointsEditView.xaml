@@ -22,17 +22,17 @@
 
 
       <StackPanel Grid.Row="0">
-        <TextBlock FontSize="25" Text="Zeige:" />
-        <CheckBox IsChecked="{Binding ShowActive}" Content="Aktive Messpunkte" />
-        <CheckBox IsChecked="{Binding ShowArchived}" Content="Archivierte Messpunkte" />
+        <Label FontSize="18" Content="Zeige:"  />
+        <CheckBox IsChecked="{Binding ShowActive}" Content="Aktive Messpunkte" Margin="10 0 0 0" />
+        <CheckBox IsChecked="{Binding ShowArchived}" Content="Archivierte Messpunkte" Margin="10 0 0 0"  />
       </StackPanel>
       
-      <StackPanel Grid.Row="1" Margin="0 40 0 0">
-        <TextBlock FontSize="25" Text="Karte:" />
-        <ComboBox ItemsSource="{Binding NoiseMaps}" DisplayMemberPath="Building" SelectedItem="{Binding ActiveMap}" />
+      <StackPanel Grid.Row="1" Margin="0 20 0 0">
+        <Label FontSize="18" Content="Karte:" />
+        <ComboBox ItemsSource="{Binding NoiseMaps}" DisplayMemberPath="Building" SelectedItem="{Binding ActiveMap}" Margin="10 0 0 0" />
       </StackPanel>
 
-      <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="0 40 0 0"> 
+      <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="10 40 0 0"> 
         Klicken Sie auf die Karte, um einen neuen Messpunkt anzulegen. Oder klicken Sie auf einen
         bestehenden Messunkt, um diesen zu bearbeiten.
       </TextBlock>

@@ -16,13 +16,13 @@
 
     <Grid Column="0">
       <StackPanel>
-        <TextBlock Text="Zeige Messwerte an diesem Zeitpunkt: " />
-        <xctk:DateTimePicker Value="{Binding MaxDate}" />
+        <Label Content="Zeige Messwerte an diesem Tag: " FontSize="18"/>
+        <xctk:DateTimePicker Value="{Binding MaxDate}" Margin="10 0 0 0" />
       </StackPanel>
 
-      <StackPanel Margin="0 40 0 0">
-        <TextBlock FontSize="25" Text="Karte:" />
-        <ComboBox ItemsSource="{Binding NoiseMaps}" DisplayMemberPath="Building" SelectedItem="{Binding ActiveMap}" />
+      <StackPanel Margin="0 60 0 0">
+        <Label FontSize="18" Content="Kartenauswahl:" />
+        <ComboBox ItemsSource="{Binding NoiseMaps}" DisplayMemberPath="Building" SelectedItem="{Binding ActiveMap}" Margin="10 0 0 0" />
       </StackPanel>
 
     </Grid>
