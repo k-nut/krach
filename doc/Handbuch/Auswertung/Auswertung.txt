@@ -1,0 +1,43 @@
+#Handbuch Auswertung
+Der Tab "Auswertung" wurde ausgewählt um die erhobenen Daten auszuwerten und ggf. zu exportieren
+
+##Überblick
+- linke Seite: verschiedene Auswahlmöglichkeiten werden dargestellt 
+- rechte Seite: Auswertungen der Messpunkte mit Hilfe von Diagrammen und einer Tabelle
+
+###linke Seite
+Hier können folgende Einstellungen vorgenommen werden:
+- "Auswertungszeitraum": Zeitraum auswählen in dem die Messwerte betrachtet werden sollen
+									   erste Datumsangabe = Start des Betrachtungszeitraum
+									   zweite Datumsangabe = Ende des Betrachtungszeitraum
+- "Zeige": Liste, in der ausgewählt werden kann, ob Minimal-, Mittel- oder Maximalwert betrachtet werden sollen
+			   Minimalwert ist voreingestellt
+- "Filter": Textbox, in der nach Zeichen gefiltert werden kann
+- "Alle auswählen": Betrachtet alle Messpunkte in der Betrachtung
+- "Alle abwählen" : Wählt alle Messpunkte in der Betrachtung ab
+- "Checkbox Messpunkt": Alle hinzugefügte Messpunkte werden dort angezeigt und können da einzeln und miteinander betrachtet werden
+- "Export": Bei Klick öffnet sich der Dateimanager zum Auswählen eines Speicherortes des Exportes. Die Datei wird als "xlsx" Datei gespeichert. 
+				 Zum Betrachten wird der Microsoft Excel ab Version 2007 benötigt.
+				 
+###rechte Seite
+Jedes Diagramm kann mit Klick auf den Pfeil versteckt werden.
+- "Zeige Grenzwertüberschreitungen pro Messpunkt": - In diesem Diagramm wird verdeutlicht, wie viele Grenzwertüberschreitungen ein Messpunkt besitzt. 
+																			   - (Wichtig!) Es werden nur Messpunkte angezeigt, die Grenzwerte überschritten habe, alle andere werden nicht angezeigt
+																			   
+																			   - Achsenbeschriftung:
+																					Y- Achse: Messpunktname
+																					X- Achse: Anzahl der Überschreitungen
+																					
+- "Übersicht über Messwerte": - Tabelle, in der alle Messpunkte mit ihren Messwerten angezeigt werden, nach Datum aufsteigend sortiert
+											- Enthält Spalten, wie "Messpunkt", "Datum", "Minimalwert", "Mittelwert", "Maximalwert". Auf Klick diese Tabs werden sie nach diesen sortiert
+											- (Wichtig!) Die Tabelle kann sehr lang werden bei längerer Benutzung. Sie dient nur dazu um einen Überblick sich zu verschaffen
+											
+- "Zeige alle Messpunkte":  - Liniendiagramm zum Verdeutlichen des Verlaufs der Messwerte.
+										- In das Diagramm kann mit Hilfe des Mausrades gezoomt werden.
+										- Legende befindet sich oben rechts
+										- Auf Dezibel 80 rote Linie = Grenzwert
+										- (Wichtig!) Beachten Sie die Auswählung der Dezibelangabe in der linken Seite, sie bezieht sich auf dieses Diagramm [Minimalwert ist voreingestellt]
+										
+										- Achsenbeschriftung:
+												Y- Achse: Dezibelangabe
+												X- Achse: Zeitraum nach Tagen angegeben

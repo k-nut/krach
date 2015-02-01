@@ -1,0 +1,20 @@
+#Handbuch Kartenauswertung
+Der Tab "Kartenauswertung" wurde ausgewählt um auf der Karte die erhobenen Daten grafisch auszuwerten.
+(grüner Messpunk  = 
+(gelber Messpunkt = 
+(roter Messpunkt   =
+
+##Überblick
+- linke Seite:   Auswahlmöglichkeiten werden dargestellt 
+- rechte Seite: Karte mit Ansicht der Messpunkte
+
+###linke Seite
+Hier können folgende Einstellungen vorgenommen werden:
+- "Zeige Messwerte an diesem Zeitpunkt": Zeitpunkt auswählen in dem die Messwerte betrachtet werden sollen
+															  Es werden alle Messwerte grafisch (grüner, gelber oder roter Punkt) dargestellt, die an dem Zeitpunkt eingestellt wurde
+- "Karte": Umschalter zwischen den beiden Karten
+				"Fertigungsanlage 1" ist voreingestellt
+				 
+###rechte Seite
+- "Karte": Karte, welche ausgewählt wurde mit dem Zeitpunkt
+				Am Messwertpunkt befindet sich unterhalb die genaue dB- Angabe sowie das Datum mit Uhrzeit
