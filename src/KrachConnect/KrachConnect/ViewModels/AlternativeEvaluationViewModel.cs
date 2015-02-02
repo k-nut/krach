@@ -228,6 +228,7 @@ namespace KrachConnect.ViewModels
     {
       DrawTotalsChart();
       PopulatePlotModel();
+      DrawHistogramm();
     }
 
     private void IsSelectedChanged(object sender, PropertyChangedEventArgs e)
@@ -308,7 +309,7 @@ namespace KrachConnect.ViewModels
 
       IEnumerable<NameCountCouple> all = (from mp in MeasuringPoints
                                           let count =
-                                            FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 60)
+                                            FilteredNoiseMeasurementViewModels.Where(nm => nm.MeasuringPoint == mp.Model).Count(nm => nm.MaxValue > 80)
                                           select new NameCountCouple { Name = mp.Name, Count = count }
         );
       all = all.Where(ncc => ncc.Count > 0).OrderBy(ncc => ncc.Count).ToList();
@@ -426,17 +427,34 @@ namespace KrachConnect.ViewModels
 
     private void DrawHistogramm()
     {
+      if (SelectedMeasuringPoint == null) return;
       var measurements = NoiseMeasurements.Where(nm => nm.MeasuringPoint == SelectedMeasuringPoint).ToList();
+
+      Func<NoiseMeasurementViewModel, float> func;
+
+      switch (SelectedValueType)
+      {
+        case "Minimalwert":
+          func = (m) => m.MinValue;
+          break;
+        case "Mittelwert":
+          func = (m) => m.AverageValue;
+          break;
+        default:
+          func = (m) => m.MaxValue;
+          break;
+      }
+
       var total = new List<NameCountCouple>();
       for (var i = 0; i <= 120; i+=20)
       {
         total.Add(new NameCountCouple
         {
-          Count = measurements.Count(nm => nm.MinValue >= i && nm.MinValue < i + 20),
+          Count = measurements.Count(nm => func(nm) >= i && func(nm) < i + 20),
           Name = i + "-" + (i + 20) + " db"
         });
       }
-      var b = 12;
+
       HistorgrammPlotModel = new PlotModel();
       HistorgrammPlotModel.Title = SelectedMeasuringPoint.Name;
       HistorgrammPlotModel.Series.Add(new ColumnSeries{ItemsSource = total, ValueField = "Count", ColumnWidth = 100});
