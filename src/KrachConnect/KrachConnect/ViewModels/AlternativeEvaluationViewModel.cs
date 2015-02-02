@@ -32,7 +32,7 @@ namespace KrachConnect.ViewModels
     private MeasuringPointViewModel selectedMeasuringPoint;
     private PlotModel totalsPlotModel;
     private PlotModel _historgrammPlotModel;
-    private MeasuringPointViewModel _selectedMeasuringPoint;
+    private MeasuringPoint _selectedMeasuringPoint;
     public override string DisplayName { get { return "Evaluation"; } }
 
     public AlternativeEvaluationViewModel(NoiseRepository repository)
@@ -63,7 +63,6 @@ namespace KrachConnect.ViewModels
       }
 
       SelectedValueType = DisplayValueTypes.First();
-      SelectedMeasuringPoint = FilteredMeasuringPoints.First();
     }
 
 
@@ -191,7 +190,7 @@ namespace KrachConnect.ViewModels
       }
     }
 
-    public MeasuringPointViewModel SelectedMeasuringPoint
+    public MeasuringPoint SelectedMeasuringPoint
     {
       get { return _selectedMeasuringPoint; }
       set
@@ -237,6 +236,12 @@ namespace KrachConnect.ViewModels
       {
         NotifyOfPropertyChange(() => SelectedMeasuringPoints);
         NotifyOfPropertyChange(() => FilteredNoiseMeasurementViewModels);
+        if (SelectedMeasuringPoint == null)
+        {
+          SelectedMeasuringPoint = SelectedMeasuringPoints.First();
+        }
+        NotifyOfPropertyChange(() => NextEnabled);
+        NotifyOfPropertyChange(() => PrevEnabled);
         UpdatePlots();
       }
     }
@@ -325,24 +330,24 @@ namespace KrachConnect.ViewModels
 
     public void SelectNextMeasuringPoint()
     {
-      var position = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
-      SelectedMeasuringPoint = MeasuringPoints[++position];
+      var position = SelectedMeasuringPoints.IndexOf(SelectedMeasuringPoint);
+      SelectedMeasuringPoint = SelectedMeasuringPoints[++position];
     }
 
     public void SelectPreviousMeasuringPoint()
     {
-      var position = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
-      SelectedMeasuringPoint = MeasuringPoints[--position];
+      var position = SelectedMeasuringPoints.IndexOf(SelectedMeasuringPoint);
+      SelectedMeasuringPoint = SelectedMeasuringPoints[--position];
     }
 
     public bool NextEnabled
     {
-      get { return MeasuringPoints.IndexOf(SelectedMeasuringPoint) < MeasuringPoints.Count() -1; }
+      get { return SelectedMeasuringPoints.IndexOf(SelectedMeasuringPoint) < SelectedMeasuringPoints.Count() - 1; }
     }
 
     public bool PrevEnabled
     {
-      get { return MeasuringPoints.IndexOf(SelectedMeasuringPoint) != 0; }
+      get { return SelectedMeasuringPoints.IndexOf(SelectedMeasuringPoint) != 0; }
     }
 
 
@@ -421,7 +426,7 @@ namespace KrachConnect.ViewModels
 
     private void DrawHistogramm()
     {
-      var measurements = NoiseMeasurements.Where(nm => nm.MeasuringPoint == SelectedMeasuringPoint.Model).ToList();
+      var measurements = NoiseMeasurements.Where(nm => nm.MeasuringPoint == SelectedMeasuringPoint).ToList();
       var total = new List<NameCountCouple>();
       for (var i = 0; i <= 120; i+=20)
       {
