@@ -97,9 +97,24 @@
       
       
     <Expander Header="Zeige alle Messpunkte"  Grid.Row="1" Grid.Column="0" IsExpanded="True" >
-      <oxy:Plot Model="{Binding PlotModel}">
-      </oxy:Plot>
+      <oxy:Plot Model="{Binding PlotModel}" />
     </Expander>
+      
+      <Expander Header="Histrogramme" Grid.Row="1" Grid.Column="1" IsExpanded="True">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+        <oxy:Plot Model="{Binding HistorgrammPlotModel}" />
+          <DockPanel Grid.Row="1">
+            <Button DockPanel.Dock="Left"  HorizontalAlignment="Left"  Content="Vorheriger" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding PrevEnabled}" />
+            <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Content="Nächster"   x:Name="SelectNextMeasuringPoint"     IsEnabled="{Binding NextEnabled}" />
+          </DockPanel>
+        </Grid>
+      </Expander>
+      
     </Grid>
 
 

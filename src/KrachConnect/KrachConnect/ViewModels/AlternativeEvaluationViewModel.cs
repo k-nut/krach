@@ -5,10 +5,12 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Navigation;
 using Caliburn.Micro;
 using KrachConnect.DomainModelService;
+using MahApps.Metro.Controls;
 using OfficeOpenXml;
 using OxyPlot;
 using OxyPlot.Annotations;
@@ -29,6 +31,8 @@ namespace KrachConnect.ViewModels
     private PlotModel plotModel;
     private MeasuringPointViewModel selectedMeasuringPoint;
     private PlotModel totalsPlotModel;
+    private PlotModel _historgrammPlotModel;
+    private MeasuringPointViewModel _selectedMeasuringPoint;
     public override string DisplayName { get { return "Evaluation"; } }
 
     public AlternativeEvaluationViewModel(NoiseRepository repository)
@@ -59,6 +63,7 @@ namespace KrachConnect.ViewModels
       }
 
       SelectedValueType = DisplayValueTypes.First();
+      SelectedMeasuringPoint = FilteredMeasuringPoints.First();
     }
 
 
@@ -71,9 +76,9 @@ namespace KrachConnect.ViewModels
       }
     }
 
-    public IEnumerable<MeasuringPoint> SelectedMeasuringPoints
+    public List<MeasuringPoint> SelectedMeasuringPoints
     {
-      get { return MeasuringPoints.Where(mp => mp.IsSelected).Select(mp => mp.Model); }
+      get { return MeasuringPoints.Where(mp => mp.IsSelected).Select(mp => mp.Model).ToList(); }
     }
 
 
@@ -98,6 +103,16 @@ namespace KrachConnect.ViewModels
       get
       {
         return new List<String> { "Minimalwert", "Mittelwert", "Maximalwert" };
+      }
+    }
+
+    public PlotModel HistorgrammPlotModel
+    {
+      get { return _historgrammPlotModel; }
+      set
+      {
+        _historgrammPlotModel = value;
+        NotifyOfPropertyChange(() => HistorgrammPlotModel);
       }
     }
 
@@ -173,6 +188,19 @@ namespace KrachConnect.ViewModels
         _selectedValueType = value;
         NotifyOfPropertyChange(() => SelectedValueType);
         UpdatePlots();
+      }
+    }
+
+    public MeasuringPointViewModel SelectedMeasuringPoint
+    {
+      get { return _selectedMeasuringPoint; }
+      set
+      {
+        _selectedMeasuringPoint = value; 
+        NotifyOfPropertyChange(() => SelectedMeasuringPoint);
+        NotifyOfPropertyChange(() => NextEnabled);
+        NotifyOfPropertyChange(() => PrevEnabled);
+        DrawHistogramm();
       }
     }
 
@@ -295,6 +323,28 @@ namespace KrachConnect.ViewModels
       TotalsPlotModel.InvalidatePlot(true);
     }
 
+    public void SelectNextMeasuringPoint()
+    {
+      var position = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
+      SelectedMeasuringPoint = MeasuringPoints[++position];
+    }
+
+    public void SelectPreviousMeasuringPoint()
+    {
+      var position = MeasuringPoints.IndexOf(SelectedMeasuringPoint);
+      SelectedMeasuringPoint = MeasuringPoints[--position];
+    }
+
+    public bool NextEnabled
+    {
+      get { return MeasuringPoints.IndexOf(SelectedMeasuringPoint) < MeasuringPoints.Count() -1; }
+    }
+
+    public bool PrevEnabled
+    {
+      get { return MeasuringPoints.IndexOf(SelectedMeasuringPoint) != 0; }
+    }
+
 
     private void PopulatePlotModel()
     {
@@ -367,6 +417,26 @@ namespace KrachConnect.ViewModels
 
 
       PlotModel.InvalidatePlot(true);
+    }
+
+    private void DrawHistogramm()
+    {
+      var measurements = NoiseMeasurements.Where(nm => nm.MeasuringPoint == SelectedMeasuringPoint.Model).ToList();
+      var total = new List<NameCountCouple>();
+      for (var i = 0; i <= 120; i+=20)
+      {
+        total.Add(new NameCountCouple
+        {
+          Count = measurements.Count(nm => nm.MinValue >= i && nm.MinValue < i + 20),
+          Name = i + "-" + (i + 20) + " db"
+        });
+      }
+      var b = 12;
+      HistorgrammPlotModel = new PlotModel();
+      HistorgrammPlotModel.Title = SelectedMeasuringPoint.Name;
+      HistorgrammPlotModel.Series.Add(new ColumnSeries{ItemsSource = total, ValueField = "Count", ColumnWidth = 100});
+      HistorgrammPlotModel.Axes.Add(new CategoryAxis{Position = AxisPosition.Bottom, ItemsSource = total, LabelField = "Name"});
+      HistorgrammPlotModel.InvalidatePlot(true);
     }
 
     private class NameCountCouple
