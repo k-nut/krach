@@ -387,7 +387,7 @@ namespace KrachConnect.ViewModels
           MarkerSize = 5,
           MarkerFill = allowedColors[count]
         };
-        count = allowedColors.Count() == count ? 0 : count + 1;
+        count = (count + 1) % allowedColors.Count();
 
         Func<NoiseMeasurementViewModel, float> func;
 
