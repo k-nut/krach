@@ -100,7 +100,7 @@
       <oxy:Plot Model="{Binding PlotModel}" />
     </Expander>
       
-      <Expander Header="Histrogramme" Grid.Row="1" Grid.Column="1" IsExpanded="True">
+      <Expander Header="Histogramme" Grid.Row="1" Grid.Column="1" IsExpanded="True">
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="*" />
