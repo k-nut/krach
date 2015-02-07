@@ -12,13 +12,13 @@
              d:DesignHeight="500" d:DesignWidth="500">
 
 
-  <Grid Background="LightGray">
-    <Grid.ColumnDefinitions>
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-    <Grid Grid.Column="0"  KeyboardNavigation.TabNavigation="Cycle">
+        <Grid Grid.Column="0"  KeyboardNavigation.TabNavigation="Cycle">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
@@ -28,16 +28,16 @@
             </Grid.RowDefinitions>
 
             <DockPanel>
-              <TextBlock DockPanel.Dock="Left" FontSize="22"  Foreground="MidnightBlue" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
-              <TextBlock DockPanel.Dock="Right" FontSize="15" HorizontalAlignment="Right">
+                <TextBlock DockPanel.Dock="Left" FontSize="22"  Foreground="MidnightBlue" Text="{Binding SelectedMeasuringPoint.Model.Name}" />
+                <TextBlock DockPanel.Dock="Right" FontSize="15" HorizontalAlignment="Right">
                 (<TextBlock Text="{Binding CurrentNumber}" />
                 von
                 <TextBlock Text="{Binding TotalMeasuringPoints}" />
                 )
               </TextBlock>
-             </DockPanel>
+            </DockPanel>
 
-      <Button Grid.Row="1" HorizontalAlignment="Right" x:Name="ToggleDetails" Width="100" Content="{Binding ShowHideContent}" />
+            <Button Grid.Row="1" HorizontalAlignment="Right" x:Name="ToggleDetails" Width="100" Content="{Binding ShowHideContent}" />
 
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"  Visibility="{Binding DetailVisibility}" >
                 <Grid.RowDefinitions>
@@ -71,7 +71,7 @@
 
 
             </Grid>
-      <Grid Grid.Row="3" Grid.ColumnSpan="3">
+            <Grid Grid.Row="3" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -84,32 +84,32 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Min. Wert in dB</Label>
-        <Slider KeyboardNavigation.IsTabStop="False"
+                <Slider KeyboardNavigation.IsTabStop="False"
   Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.MinValue}" />
                 <xctk:AutoSelectTextBox Grid.Row="0" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MinValue}" 
                                         />
 
                 <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Mitt. Wert in dB</Label>
-        <Slider Grid.Row="1" Grid.Column="1" KeyboardNavigation.IsTabStop="False"
+                <Slider Grid.Row="1" Grid.Column="1" KeyboardNavigation.IsTabStop="False"
  VerticalAlignment="Center" Maximum="140" Minimum="0" Value="{Binding NewNoiseMeasurement.AverageValue}" />
                 <xctk:AutoSelectTextBox  Grid.Row="1" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.AverageValue}" />
 
                 <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Max. Wert in dB</Label>
-        <Slider Grid.Row="2" Grid.Column="1" KeyboardNavigation.IsTabStop="False"
+                <Slider Grid.Row="2" Grid.Column="1" KeyboardNavigation.IsTabStop="False"
  VerticalAlignment="Center" Maximum="140" Minimum="0" TickFrequency="1" Value="{Binding NewNoiseMeasurement.MaxValue}" />
                 <xctk:AutoSelectTextBox  Grid.Row="2" Grid.Column="2" Height="25" Text="{Binding NewNoiseMeasurement.MaxValue}" />
 
             </Grid>
-            
-          <DockPanel Grid.Row="4">
-        <Button KeyboardNavigation.IsTabStop="False" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="100" Content="Zurück" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding IsBackButtonEnabled}"/>
-        <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Width="100"  Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
+
+            <DockPanel Grid.Row="4">
+                <Button KeyboardNavigation.IsTabStop="False" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="100" Content="Zurück" x:Name="SelectPreviousMeasuringPoint" IsEnabled="{Binding IsBackButtonEnabled}"/>
+                <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Width="100"  Content="Nächster" x:Name="AddNoiseMeasurementToSelectedMeasuringPoint"
                 IsEnabled="{Binding CanClick}" />
-      </DockPanel>
-    </Grid>
-    
+            </DockPanel>
+        </Grid>
+
         <Grid Grid.Column="1">
-      <Image Source="{Binding ActiveMapPath}" />
+            <Image Source="{Binding ActiveMapPath}" />
             <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -147,10 +147,10 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            
+
             <Button VerticalAlignment="Bottom" HorizontalAlignment="Center"  Width="100"  Content="Abbrechen" x:Name="CancelMeasuring" />
             <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" x:Name="SaveToHub" Content="Speichern" />
-            
+
         </Grid>
     </Grid>
 </UserControl>

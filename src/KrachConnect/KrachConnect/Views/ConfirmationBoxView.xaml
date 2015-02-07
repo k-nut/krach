@@ -17,9 +17,9 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <TextBlock Grid.Row="0" VerticalAlignment="Bottom" FontSize="14" Foreground="MidnightBlue" Text="{Binding MeasuringPoint.Name}"/>
-        
+
         <TextBlock Grid.Row="1" VerticalAlignment="Bottom" Text="Bezeichnung"/>
         <TextBox Grid.Row="2"  Text="{Binding MeasuringPoint.Name}"  />
 

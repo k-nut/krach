@@ -7,64 +7,64 @@ using Caliburn.Micro;
 
 namespace KrachConnect.ViewModels
 {
-  internal class ConfirmationBoxViewModel : Screen
-  {
-    private MeasuringPointViewModel measuringPoint;
-    private NoiseRepository repository;
-    private bool thisIsANewMeasuringPoint;
-
-    public ConfirmationBoxViewModel(MeasuringPointViewModel measuringPoint, NoiseRepository repository)
+    internal class ConfirmationBoxViewModel : Screen
     {
-      this.MeasuringPoint = measuringPoint;
-      this.repository = repository;
-    }
+        private MeasuringPointViewModel measuringPoint;
+        private NoiseRepository repository;
+        private bool thisIsANewMeasuringPoint;
 
-    public ConfirmationBoxViewModel(MeasuringPointViewModel measuringPoint, bool thisIsANewMeasuringPoint)
-    {
-      this.MeasuringPoint = measuringPoint;
-      this.repository = repository;
-      this.thisIsANewMeasuringPoint = thisIsANewMeasuringPoint;
-    }
-
-    public MeasuringPointViewModel MeasuringPoint
-    {
-      get { return measuringPoint; }
-      set
-      {
-        measuringPoint = value;
-        NotifyOfPropertyChange(() => MeasuringPoint);
-      }
-    }
-
-    public Visibility DeleteButtonVisibility
-    {
-      get
-      {
-        if (thisIsANewMeasuringPoint)
+        public ConfirmationBoxViewModel(MeasuringPointViewModel measuringPoint, NoiseRepository repository)
         {
-          return Visibility.Collapsed;
+            this.MeasuringPoint = measuringPoint;
+            this.repository = repository;
         }
-        var thereAreNoiseMeasuremetnsWithThisMeasuringPoint =
-          repository.NoiseMeasurements.Any(nm => nm.MeasuringPoint == MeasuringPoint.Model);
-        return thereAreNoiseMeasuremetnsWithThisMeasuringPoint ? Visibility.Collapsed : Visibility.Visible;
-      }
-    }
 
-    public void DeleteMeasuringPoint()
-    {
-      repository.MeasuringPoints.Remove(MeasuringPoint.Model);
-      MeasuringPoint.Deleted = true;
-      TryClose(true);
-    }
+        public ConfirmationBoxViewModel(MeasuringPointViewModel measuringPoint, bool thisIsANewMeasuringPoint)
+        {
+            this.MeasuringPoint = measuringPoint;
+            this.repository = repository;
+            this.thisIsANewMeasuringPoint = thisIsANewMeasuringPoint;
+        }
 
-    public void OK()
-    {
-      TryClose(true);
-    }
+        public MeasuringPointViewModel MeasuringPoint
+        {
+            get { return measuringPoint; }
+            set
+            {
+                measuringPoint = value;
+                NotifyOfPropertyChange(() => MeasuringPoint);
+            }
+        }
 
-    public void Cancel()
-    {
-      TryClose(false);
-    } 
-  }
+        public Visibility DeleteButtonVisibility
+        {
+            get
+            {
+                if (thisIsANewMeasuringPoint)
+                {
+                    return Visibility.Collapsed;
+                }
+                var thereAreNoiseMeasuremetnsWithThisMeasuringPoint =
+                  repository.NoiseMeasurements.Any(nm => nm.MeasuringPoint == MeasuringPoint.Model);
+                return thereAreNoiseMeasuremetnsWithThisMeasuringPoint ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public void DeleteMeasuringPoint()
+        {
+            repository.MeasuringPoints.Remove(MeasuringPoint.Model);
+            MeasuringPoint.Deleted = true;
+            TryClose(true);
+        }
+
+        public void OK()
+        {
+            TryClose(true);
+        }
+
+        public void Cancel()
+        {
+            TryClose(false);
+        }
+    }
 }

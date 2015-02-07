@@ -8,57 +8,57 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-  <Grid Background="LightGray">
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="300" />
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-    <Grid Column="0">
-      <StackPanel>
-        <Label Content="Zeige Messwerte bis zum Zeitpunkt: " FontSize="18"/>
-        <xctk:DateTimePicker Value="{Binding MaxDate}" Margin="10 0 0 0" />
-      </StackPanel>
-
-      <StackPanel Margin="0 60 0 0">
-        <Label FontSize="18" Content="Kartenauswahl:" />
-        <ComboBox ItemsSource="{Binding NoiseMaps}" DisplayMemberPath="Building" SelectedItem="{Binding ActiveMap}" Margin="10 0 0 0" />
-      </StackPanel>
-
-    </Grid>
-
-    <Grid Column="1">
-      <Image Source="{Binding ActiveMapPath}" />
-      <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate>
-            <Canvas />
-          </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemContainerStyle>
-          <Style>
-            <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
-            <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
-          </Style>
-        </ItemsControl.ItemContainerStyle>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
+        <Grid Column="0">
             <StackPanel>
-
-              <Ellipse Fill="{Binding MaxValue, Converter={krachConnect:IntToBrushConverter}}"
-                       Height="15" Width="15"
-                       Stroke="Black" />
-              <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding MaxValue}" Background="LightGray" />
-                <TextBlock Text=" db" Background="LightGray" />
-              </StackPanel>
-              <TextBlock Text="{Binding Date, StringFormat={}{0:dd.MM.yy HH:mm}}" Background="LightGray" />
+                <Label Content="Zeige Messwerte bis zum Zeitpunkt: " FontSize="18"/>
+                <xctk:DateTimePicker Value="{Binding MaxDate}" Margin="10 0 0 0" />
             </StackPanel>
 
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
-    </Grid>
+            <StackPanel Margin="0 60 0 0">
+                <Label FontSize="18" Content="Kartenauswahl:" />
+                <ComboBox ItemsSource="{Binding NoiseMaps}" DisplayMemberPath="Building" SelectedItem="{Binding ActiveMap}" Margin="10 0 0 0" />
+            </StackPanel>
 
-  </Grid>
+        </Grid>
+
+        <Grid Column="1">
+            <Image Source="{Binding ActiveMapPath}" />
+            <ItemsControl ItemsSource="{Binding FilteredMeasuringPoints}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding XPosition}" />
+                        <Setter Property="Canvas.Top" Value="{Binding YPosition}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+
+                            <Ellipse Fill="{Binding MaxValue, Converter={krachConnect:IntToBrushConverter}}"
+                       Height="15" Width="15"
+                       Stroke="Black" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding MaxValue}" Background="LightGray" />
+                                <TextBlock Text=" db" Background="LightGray" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding Date, StringFormat={}{0:dd.MM.yy HH:mm}}" Background="LightGray" />
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+    </Grid>
 </UserControl>
