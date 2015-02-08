@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrachConnect", "KrachConnec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrachConnect.Tests", "KrachConnect.Tests\KrachConnect.Tests.csproj", "{2B415178-D1FB-43AC-A607-234A8ACDE4B2}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup2", "Setup2\Setup2.vdproj", "{74137807-CD36-4714-B3FC-DB1697A4094C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -38,14 +36,6 @@ Global
 		{2B415178-D1FB-43AC-A607-234A8ACDE4B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B415178-D1FB-43AC-A607-234A8ACDE4B2}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{2B415178-D1FB-43AC-A607-234A8ACDE4B2}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.CD_ROM|Any CPU.ActiveCfg = Release
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.CD_ROM|Any CPU.Build.0 = Release
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.Debug|Any CPU.ActiveCfg = Debug
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.DVD-5|Any CPU.ActiveCfg = Debug
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.DVD-5|Any CPU.Build.0 = Debug
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.Release|Any CPU.ActiveCfg = Release
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.SingleImage|Any CPU.ActiveCfg = Release
-		{74137807-CD36-4714-B3FC-DB1697A4094C}.SingleImage|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
